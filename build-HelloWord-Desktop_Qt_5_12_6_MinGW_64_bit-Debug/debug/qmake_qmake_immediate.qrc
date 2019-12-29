@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+<file alias="test.jpg">F:/Users/Dave/Documents/LearningQT/HelloWord/test.jpg</file>
+</qresource>
+</RCC>

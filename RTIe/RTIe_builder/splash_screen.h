@@ -1,0 +1,27 @@
+#ifndef SPLASHSCREEN_H
+#define SPLASHSCREEN_H
+
+#include <QMainWindow>
+#include <QWidget>
+#include "new_Project.h"
+
+class splashScreen : public QMainWindow
+{
+    Q_OBJECT
+public:
+    explicit splashScreen(QWidget *parent = nullptr);
+
+private:
+    new_Project new_project;
+
+signals:
+
+public slots:
+
+
+private slots:
+    void exit_App();
+};
+
+
+#endif // SPLASHSCREEN_H

@@ -1,0 +1,4 @@
+TEMPLATE = subdirs
+
+SUBDIRS = RTIe_builder\
+          RTIe_tests

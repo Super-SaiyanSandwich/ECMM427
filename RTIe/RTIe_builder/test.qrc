@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>test.png</file>
+        <file>test.jpg</file>
+        <file>RTIEx.jpg</file>
+        <file>Exit.png</file>
+        <file>settings.png</file>
+    </qresource>
+</RCC>
