@@ -14,14 +14,15 @@ public:
     explicit new_Project(QWidget *parent = nullptr);
 
 private:
-    new_Project_Settings new_project_settings;
+    QString project_Name;
+    QString project_Location;
 
 signals:
 
 
 public slots:
    static void new_Project_Open_Page();
-
+   void update_Edit_Boxes(QString project_Location, QString project_Name);
 
 
 private slots:
@@ -29,10 +30,6 @@ private slots:
    void open_Location_Select();
    void next_Page();
 
-
-private:
-    //QLineEdit *project_Location;
-    //QLineEdit *project_Name = nullptr;
 
 
 };

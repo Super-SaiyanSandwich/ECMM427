@@ -9,14 +9,20 @@ class new_Project_Settings : public QMainWindow
 public:
     explicit new_Project_Settings(QWidget *parent = nullptr);
 
+private:
+    QString project_Location;
+    QString project_Name;
+
 signals:
 
 public slots:
-   static void new_Project_Settings_Open_Page();
+   static void new_Project_Settings_Open_Page(QString project_Location, QString project_Name);
 
 
 private slots:
    void close_Page();
+   void back_Trigger();
+   void create_Project();
 
 };
 

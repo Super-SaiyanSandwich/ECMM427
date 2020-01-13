@@ -36,11 +36,11 @@ new_Project::new_Project(QWidget *parent) : QMainWindow(parent)
      project_Name_Label->setGeometry(28,70, 45, 30);
      project_Name_Label->setAlignment(Qt::AlignRight | Qt::AlignVCenter); // RIGHT CENTER ALLIGNMENT
 
-     QLineEdit *project_Name = new QLineEdit(this);
-     project_Name->setPlaceholderText("Untitled Project");
-     project_Name->setFocus();
-     project_Name->setGeometry(75, 70, 295, 30);
-     project_Name->setObjectName("project_Name");
+     QLineEdit *project_Name_Edit = new QLineEdit(this);
+     project_Name_Edit->setPlaceholderText("Untitled Project");
+     project_Name_Edit->setFocus();
+     project_Name_Edit->setGeometry(75, 70, 295, 30);
+     project_Name_Edit->setObjectName("project_Name");
 
 
 
@@ -48,10 +48,10 @@ new_Project::new_Project(QWidget *parent) : QMainWindow(parent)
      project_Location_Label->setGeometry(28,110, 45, 30);
      project_Location_Label->setAlignment(Qt::AlignRight | Qt::AlignVCenter); // RIGHT CENTER ALLIGNMENT
 
-     QLineEdit *project_Location = new QLineEdit(this);
-     project_Location->setPlaceholderText("Default Location (Documents)?"); // TODO:: DETERMINE DEFAULT PATH
-     project_Location->setGeometry(75, 110, 260, 30);
-     project_Location->setObjectName("project_Location"); //USED TO BE FOUND LATER THROUGH SEARCH OF CHILDREN
+     QLineEdit *project_Location_Edit = new QLineEdit(this);
+     project_Location_Edit->setPlaceholderText("Default Location (Documents)?"); // TODO:: DETERMINE DEFAULT PATH
+     project_Location_Edit->setGeometry(75, 110, 260, 30);
+     project_Location_Edit->setObjectName("project_Location"); //USED TO BE FOUND LATER THROUGH SEARCH OF CHILDREN
 
      QPushButton *location_Select_Open = new QPushButton("<", this);
      location_Select_Open->setGeometry(340, 110, 30, 30);
@@ -94,22 +94,32 @@ void new_Project::open_Location_Select()
 
 void new_Project::next_Page()
 {
-    QLineEdit *project_Location = this->findChild<QLineEdit *>("project_Location", Qt::FindDirectChildrenOnly);
-    QLineEdit *project_Name = this->findChild<QLineEdit *>("project_Name", Qt::FindDirectChildrenOnly);
+    project_Location = this->findChild<QLineEdit *>("project_Location", Qt::FindDirectChildrenOnly)->text();
+    project_Name = this->findChild<QLineEdit *>("project_Name", Qt::FindDirectChildrenOnly)->text();
 
-    if (project_Location->text() == "")
+    if (project_Location == "")
     {
         QMessageBox errorBox;
         errorBox.setText("There is no location set for the project");
         errorBox.exec();
-    } else if (project_Name->text() == "")
+    } else if (project_Name == "")
     {
         QMessageBox errorBox;
         errorBox.setText("There is no name set for the project");
         errorBox.exec();
     } else {
-        SLOT(new_Project_Settings_Open_Page());
+        new_Project_Settings::new_Project_Settings_Open_Page(project_Location, project_Name);
+        this->close();
     }
+}
+
+void new_Project::update_Edit_Boxes(QString project_Location, QString project_Name)
+{
+    this->project_Name = project_Name;
+    this->project_Location = project_Location;
+
+    this->findChild<QLineEdit *>("project_Location", Qt::FindDirectChildrenOnly)->setText(this->project_Location);
+    this->findChild<QLineEdit *>("project_Name", Qt::FindDirectChildrenOnly)->setText(this->project_Name);
 }
 
 
