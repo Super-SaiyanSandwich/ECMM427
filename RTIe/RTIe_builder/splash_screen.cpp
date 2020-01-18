@@ -65,11 +65,13 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 
 
 }
-
+/*
+ * Functionality: on button press to link to wiki through user's default browser.
+ */
 void splashScreen::help_Button_Clicked()
 {
-    QString wiki_link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
-    QDesktopServices::openUrl(QUrl(wiki_link, QUrl::TolerantMode));
+    QString wiki_Link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
+    QDesktopServices::openUrl(QUrl(wiki_Link, QUrl::TolerantMode));
 
 }
 
