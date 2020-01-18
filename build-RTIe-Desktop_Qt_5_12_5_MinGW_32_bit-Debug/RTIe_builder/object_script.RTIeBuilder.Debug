@@ -1,0 +1,10 @@
+debug/main.o
+debug/new_Project.o
+debug/new_Project_Settings.o
+debug/new_projectw.o
+debug/splash_screen.o
+debug/qrc_test.o
+debug/moc_new_Project.o
+debug/moc_new_Project_Settings.o
+debug/moc_new_projectw.o
+debug/moc_splash_screen.o

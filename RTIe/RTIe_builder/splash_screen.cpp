@@ -53,7 +53,8 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
      settings_Button->setMaximumSize(30, 30);
 
      connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
-     connect(new_Project_Button, SIGNAL(clicked()), &new_project, SLOT(new_Project_Open_Page()));
+//     connect(new_Project_Button, SIGNAL(clicked()), &new_project, SLOT(new_Project_Open_Page()));open_Project_Button
+     connect(new_Project_Button, SIGNAL(clicked()), &new_projectw, SLOT(new_projectw_Open_Page()));
 
 
 }
