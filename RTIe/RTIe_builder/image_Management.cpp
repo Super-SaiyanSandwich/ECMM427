@@ -10,18 +10,31 @@
 #include <QDesktopServices>
 #include <iostream>
 #include "ui_image_Management.h"
+#include <QFileDialog>
+#include <QAction>
+#include <QPushButton>
+
 
 
 
 image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(new Ui::image_Management)
 {
 
+    qInfo() << "Begin MVC";
+    Ui->setupUi(this);
+    this->show();
+
+    connect(Ui->action_Import_Label, SIGNAL(triggered()), this, SLOT(import()));
+
+    connect(Ui->import_Button_Label, SIGNAL(clicked()), this, SLOT(import()));
 
 
-    QString project_Location = "/Users/jordan/Network Drives/Git/ECMM427/jordan_test_dir/images" ;//new_Project_Settings::project_Location;
 
-    QString source_Directory = project_Location;// + "/images/src";
-    QString working_Directory = project_Location;// + "/images/wd";
+
+
+    QString project_Location = "/Users/jordan/Network Drives/Git/ECMM427/jordan_test_dir/project" ;//new_Project_Settings::project_Location;
+    QString source_Directory = project_Location + "/images/src";
+    QString working_Directory = project_Location + "/images/wd";
 
     read(working_Directory);
 
@@ -39,6 +52,18 @@ image_Management::~image_Management(){
  *
  */
 void image_Management::import(){
+
+    QString dir = "/";
+
+    QFileDialog dialog(this);
+    //dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setNameFilter("Supported Image Files (*.JPG *.jpg *.PNG *.png *.tiff *.DNG)");
+    //dialog.setOption(QFileDialog::ShowDirsOnly, true);
+    dialog.setDirectory(dir);
+
+    dir = dialog.getExistingDirectory();
+    //qDebug() << dir;
+    qDebug() << "test";
 
 }
 

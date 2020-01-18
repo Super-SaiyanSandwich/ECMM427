@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QPushButton>
+#include <QAction>
 
 namespace Ui {
     class image_Management;
@@ -17,16 +19,19 @@ public:
 
 private:
     Ui::image_Management *Ui;
-    QImage image;
-    QLabel *image_Label;
+    QAction action_Import;
+    QLabel *action_Import_Label;
+
+    QPushButton import_Button;
+    QLabel *import_Button_Label;
 
 signals:
 
-private slots:
-    static void import();
-    static void read(QString wd);
-    static void update();
-    static void remove();
+public slots:
+    void import();
+    void read(QString wd);
+    void update();
+    void remove();
 
 };
 
