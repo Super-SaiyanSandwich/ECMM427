@@ -23,6 +23,7 @@ public slots:
 
 private slots:
     void exit_App();
+    void help_Button_Clicked();
 };
 
 
