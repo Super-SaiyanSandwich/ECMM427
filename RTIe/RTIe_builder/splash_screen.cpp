@@ -6,6 +6,7 @@
 #include <QtCore>
 #include <QUrl>
 #include <QDesktopServices>
+#include <iostream>
 
 splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 {    
@@ -58,13 +59,16 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 
      //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
      connect(new_Project_Button, SIGNAL(clicked()), &new_project, SLOT(new_Project_Open_Page()));
+     connect(help_Button, SIGNAL(clicked()), this, SLOT(help_Button_Clicked()));
 
 
 }
 
 void splashScreen::help_Button_Clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx", QUrl::TolerantMode));
+    QString wiki_link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
+    QDesktopServices::openUrl(QUrl(wiki_link, QUrl::TolerantMode));
+
 }
 
 void splashScreen::exit_App()
