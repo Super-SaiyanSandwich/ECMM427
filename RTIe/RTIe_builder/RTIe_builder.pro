@@ -11,7 +11,6 @@ SOURCES += \
     marble_detection.cpp \
     new_Project.cpp \
     new_Project_Settings.cpp \
-    new_Project_Wizard.cpp \
     splash_Screen.cpp
 
 
@@ -23,8 +22,8 @@ HEADERS += \
     marble_detection.h \
     new_Project.h \
     new_Project_Settings.h \
-    new_Project_Wizard.h \
     splash_Screen.h
 
 FORMS += \
+    image_Management.ui \
     new_Project_Wizard.ui

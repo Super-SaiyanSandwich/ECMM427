@@ -1,9 +1,24 @@
 #include "image_Management.h"
+#include "new_Project_Settings.h"
+
 #include <QDir>
 #include <QDebug>
+#include <QApplication>
+#include <QPushButton>
+#include <QtCore>
+#include <QUrl>
+#include <QDesktopServices>
+#include <iostream>
+#include "ui_image_Management.h"
 
-image_Management::image_Management(QWidget *parent) : QMainWindow(parent)
+
+
+image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(new Ui::image_Management)
 {
+
+
+
+    QString project_Location = "";//new_Project_Settings::project_Location;
 
     QString source_Directory = project_Location + "/images/src";
     QString working_Directory = project_Location + "/images/wd";
@@ -12,6 +27,10 @@ image_Management::image_Management(QWidget *parent) : QMainWindow(parent)
 
 
 
+}
+
+image_Management::~image_Management(){
+    delete Ui;
 }
 
 //Import image
