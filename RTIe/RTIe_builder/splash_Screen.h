@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QWidget>
 #include "new_Project.h"
-#include "new_projectw.h"
+#include "new_Projectw.h"
 
 class splashScreen : public QMainWindow
 {

@@ -1,4 +1,4 @@
-#include "splash_screen.h"
+#include "splash_Screen.h"
 #include "new_Project.h"
 
 #include <QApplication>

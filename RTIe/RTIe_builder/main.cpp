@@ -2,7 +2,7 @@
 #include <QPushButton>
 #include <QLabel>
 
-#include "splash_screen.h"
+#include "splash_Screen.h"
 
 int main(int argc, char **argv)
 {
