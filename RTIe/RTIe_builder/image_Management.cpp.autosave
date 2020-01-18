@@ -18,7 +18,7 @@ image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(ne
 
 
 
-    QString project_Location = "/Users/jordan/Network Drives/Git/ECMM427/jordan_test_dir/images" ;//new_Project_Settings::project_Location;
+    QString project_Location = "/Users/jordan/Network Drives/Git/ECMM427/jordan_test_dir/project" ;//new_Project_Settings::project_Location;
 
     QString source_Directory = project_Location;// + "/images/src";
     QString working_Directory = project_Location;// + "/images/wd";
