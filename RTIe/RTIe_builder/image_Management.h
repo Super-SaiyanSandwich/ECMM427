@@ -13,8 +13,8 @@ signals:
 
 
 private slots:
-    void create();
-    void read();
+    void import();
+    void read(QString wd);
     void update();
     void remove();
 

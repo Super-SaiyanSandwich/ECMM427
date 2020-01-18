@@ -8,9 +8,10 @@ class new_Project_Settings : public QMainWindow
     Q_OBJECT
 public:
     explicit new_Project_Settings(QWidget *parent = nullptr);
+    QString project_Location;
 
 private:
-    QString project_Location;
+
     QString project_Name;
 
 signals:
