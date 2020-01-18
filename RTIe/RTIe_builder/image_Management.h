@@ -11,6 +11,13 @@ public:
 
 signals:
 
+
+private slots:
+    void create();
+    void read();
+    void update();
+    void remove();
+
 };
 
 #endif // IMAGE_MANAGEMENT_H

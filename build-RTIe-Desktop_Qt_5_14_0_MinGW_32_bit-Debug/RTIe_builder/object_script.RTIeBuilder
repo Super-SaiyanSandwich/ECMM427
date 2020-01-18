@@ -1,0 +1,12 @@
+image_management.o
+main.o
+new_Project.o
+new_Project_Settings.o
+new_projectw.o
+splash_screen.o
+qrc_test.o
+moc_image_management.o
+moc_new_Project.o
+moc_new_Project_Settings.o
+moc_new_projectw.o
+moc_splash_screen.o

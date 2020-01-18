@@ -10,7 +10,7 @@ SOURCES += \
     main.cpp \
     new_Project.cpp \
     new_Project_Settings.cpp \
-    new_Projectw.cpp \
+    new_Project_Wizard.cpp \
     splash_Screen.cpp
 
 
@@ -21,8 +21,8 @@ HEADERS += \
     image_Management.h \
     new_Project.h \
     new_Project_Settings.h \
-    new_Projectw.h \
+    new_Project_Wizard.h \
     splash_Screen.h
 
 FORMS += \
-    new_Projectw.ui
+    new_Project_Wizard.ui
