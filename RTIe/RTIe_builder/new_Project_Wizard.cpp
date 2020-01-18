@@ -48,7 +48,7 @@
 **
 ****************************************************************************/
 
-#include "new_projectw.h"
+#include "new_Project_Wizard.h"
 #include "ui_new_projectw.h"
 
 #include <QtWidgets>
