@@ -1,0 +1,10 @@
+release/main.o
+release/new_Project.o
+release/new_Project_Settings.o
+release/new_projectw.o
+release/splash_screen.o
+release/qrc_test.o
+release/moc_new_Project.o
+release/moc_new_Project_Settings.o
+release/moc_new_projectw.o
+release/moc_splash_screen.o

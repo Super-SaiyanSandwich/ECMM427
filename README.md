@@ -1,4 +1,15 @@
-# ECMM427
+
+## Exeter University
+# ECMM427 - Group Development Project
 
 
-Main file is RTIe, the others are things used to experiment on QT with. Needs to be tidied up.
+### Developers
+David Dixon  
+Tolu Abolude  
+Jordan Isaac
+### Project Lead
+Dr. Sam Stevens
+
+Source code for ECMM427 project. 
+
+#RTI
