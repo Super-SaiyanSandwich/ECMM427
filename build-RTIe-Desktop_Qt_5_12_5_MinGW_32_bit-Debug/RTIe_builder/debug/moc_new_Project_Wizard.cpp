@@ -20,28 +20,28 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_new_Projectw_t {
+struct qt_meta_stringdata_new_Project_Wizard_t {
     QByteArrayData data[3];
-    char stringdata0[37];
+    char stringdata0[49];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_new_Projectw_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_new_Project_Wizard_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_new_Projectw_t qt_meta_stringdata_new_Projectw = {
+static const qt_meta_stringdata_new_Project_Wizard_t qt_meta_stringdata_new_Project_Wizard = {
     {
-QT_MOC_LITERAL(0, 0, 12), // "new_Projectw"
-QT_MOC_LITERAL(1, 13, 22), // "new_projectw_Open_Page"
-QT_MOC_LITERAL(2, 36, 0) // ""
+QT_MOC_LITERAL(0, 0, 18), // "new_Project_Wizard"
+QT_MOC_LITERAL(1, 19, 28), // "new_Project_Wizard_Open_Page"
+QT_MOC_LITERAL(2, 48, 0) // ""
 
     },
-    "new_Projectw\0new_projectw_Open_Page\0"
+    "new_Project_Wizard\0new_Project_Wizard_Open_Page\0"
     ""
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_new_Projectw[] = {
+static const uint qt_meta_data_new_Project_Wizard[] = {
 
  // content:
        8,       // revision
@@ -63,43 +63,43 @@ static const uint qt_meta_data_new_Projectw[] = {
        0        // eod
 };
 
-void new_Projectw::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void new_Project_Wizard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<new_Projectw *>(_o);
+        auto *_t = static_cast<new_Project_Wizard *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->new_projectw_Open_Page(); break;
+        case 0: _t->new_Project_Wizard_Open_Page(); break;
         default: ;
         }
     }
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject new_Projectw::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject new_Project_Wizard::staticMetaObject = { {
     &QWizard::staticMetaObject,
-    qt_meta_stringdata_new_Projectw.data,
-    qt_meta_data_new_Projectw,
+    qt_meta_stringdata_new_Project_Wizard.data,
+    qt_meta_data_new_Project_Wizard,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *new_Projectw::metaObject() const
+const QMetaObject *new_Project_Wizard::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *new_Projectw::qt_metacast(const char *_clname)
+void *new_Project_Wizard::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_new_Projectw.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_new_Project_Wizard.stringdata0))
         return static_cast<void*>(this);
     return QWizard::qt_metacast(_clname);
 }
 
-int new_Projectw::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int new_Project_Wizard::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWizard::qt_metacall(_c, _id, _a);
     if (_id < 0)

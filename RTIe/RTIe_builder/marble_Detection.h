@@ -35,6 +35,9 @@ private slots:
     void on_spin_Box_X_valueChanged(int X);
     void on_spin_Box_Y_valueChanged(int arg1);
     void on_spin_Box_Radius_valueChanged(double arg1);
+    void on_horizontal_Slider_X_valueChanged(int value);
+    void on_horizontal_Slider_Y_valueChanged(int value);
+    void on_colour_Selector_Button_triggered(QAction *arg1);
 };
 
 #endif // MARBLE_DETECTION_H
