@@ -18,59 +18,59 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_new_Projectw
+class Ui_new_Project_Wizard
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_4;
 
-    void setupUi(QWizardPage *new_Projectw)
+    void setupUi(QWizardPage *new_Project_Wizard)
     {
-        if (new_Projectw->objectName().isEmpty())
-            new_Projectw->setObjectName(QString::fromUtf8("new_Projectw"));
-        new_Projectw->resize(631, 383);
-        widget = new QWidget(new_Projectw);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(370, 340, 239, 25));
-        horizontalLayout = new QHBoxLayout(widget);
+        if (new_Project_Wizard->objectName().isEmpty())
+            new_Project_Wizard->setObjectName(QString::fromUtf8("new_Project_Wizard"));
+        new_Project_Wizard->resize(631, 383);
+        layoutWidget = new QWidget(new_Project_Wizard);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(370, 340, 239, 25));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(widget);
+        pushButton = new QPushButton(layoutWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
         horizontalLayout->addWidget(pushButton);
 
-        pushButton_2 = new QPushButton(widget);
+        pushButton_2 = new QPushButton(layoutWidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
 
         horizontalLayout->addWidget(pushButton_2);
 
-        pushButton_4 = new QPushButton(widget);
+        pushButton_4 = new QPushButton(layoutWidget);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
 
         horizontalLayout->addWidget(pushButton_4);
 
 
-        retranslateUi(new_Projectw);
+        retranslateUi(new_Project_Wizard);
 
-        QMetaObject::connectSlotsByName(new_Projectw);
+        QMetaObject::connectSlotsByName(new_Project_Wizard);
     } // setupUi
 
-    void retranslateUi(QWizardPage *new_Projectw)
+    void retranslateUi(QWizardPage *new_Project_Wizard)
     {
-        new_Projectw->setWindowTitle(QApplication::translate("new_Projectw", "WizardPage", nullptr));
-        pushButton->setText(QApplication::translate("new_Projectw", "PushButton", nullptr));
-        pushButton_2->setText(QApplication::translate("new_Projectw", "PushButton", nullptr));
-        pushButton_4->setText(QApplication::translate("new_Projectw", "PushButton", nullptr));
+        new_Project_Wizard->setWindowTitle(QApplication::translate("new_Project_Wizard", "WizardPage", nullptr));
+        pushButton->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
+        pushButton_2->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
+        pushButton_4->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class new_Projectw: public Ui_new_Projectw {};
+    class new_Project_Wizard: public Ui_new_Project_Wizard {};
 } // namespace Ui
 
 QT_END_NAMESPACE

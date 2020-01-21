@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>new_Projectw</class>
- <widget class="QWizardPage" name="new_Projectw">
+ <class>new_Project_Wizard</class>
+ <widget class="QWizardPage" name="new_Project_Wizard">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>WizardPage</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>370</x>

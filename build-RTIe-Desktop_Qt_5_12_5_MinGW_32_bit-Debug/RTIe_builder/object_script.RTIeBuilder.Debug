@@ -1,13 +1,13 @@
 debug/image_Management.o
 debug/main.o
-debug/marble_detection.o
+debug/marble_Detection.o
 debug/new_Project.o
 debug/new_Project_Settings.o
 debug/new_Project_Wizard.o
 debug/splash_Screen.o
 debug/qrc_test.o
 debug/moc_image_Management.o
-debug/moc_marble_detection.o
+debug/moc_marble_Detection.o
 debug/moc_new_Project.o
 debug/moc_new_Project_Settings.o
 debug/moc_new_Project_Wizard.o

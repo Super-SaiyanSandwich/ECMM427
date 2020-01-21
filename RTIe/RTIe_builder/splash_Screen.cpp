@@ -1,5 +1,6 @@
 #include "splash_Screen.h"
 #include "new_Project.h"
+#include "marble_detection.h"
 
 #include <QApplication>
 #include <QPushButton>
@@ -7,6 +8,7 @@
 #include <QUrl>
 #include <QDesktopServices>
 #include <iostream>
+
 
 splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 {    
@@ -70,8 +72,9 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
  */
 void splashScreen::help_Button_Clicked()
 {
-    QString wiki_Link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
-    QDesktopServices::openUrl(QUrl(wiki_Link, QUrl::TolerantMode));
+//    QString wiki_Link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
+//    QDesktopServices::openUrl(QUrl(wiki_Link, QUrl::TolerantMode));
+    marble_Detection *a = new marble_Detection();
 
 }
 

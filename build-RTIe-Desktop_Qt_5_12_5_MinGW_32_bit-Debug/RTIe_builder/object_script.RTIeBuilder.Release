@@ -1,13 +1,13 @@
 release/image_Management.o
 release/main.o
-release/marble_detection.o
+release/marble_Detection.o
 release/new_Project.o
 release/new_Project_Settings.o
 release/new_Project_Wizard.o
 release/splash_Screen.o
 release/qrc_test.o
 release/moc_image_Management.o
-release/moc_marble_detection.o
+release/moc_marble_Detection.o
 release/moc_new_Project.o
 release/moc_new_Project_Settings.o
 release/moc_new_Project_Wizard.o

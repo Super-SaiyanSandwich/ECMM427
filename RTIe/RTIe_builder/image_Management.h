@@ -13,10 +13,10 @@ signals:
 
 
 private slots:
-    void create();
-    void read();
-    void update();
-    void remove();
+//    void create();
+//    void read();
+//    void update();
+//    void remove();
 
 };
 
