@@ -4,19 +4,19 @@
 #include <QWizardPage>
 
 namespace Ui {
-class new_Projectw;
+class new_Project_Wizard;
 }
 
-class new_Projectw : public QWizard
+class new_Project_Wizard : public QWizard
 {
     Q_OBJECT
 
 public:
-    explicit new_Projectw(QWidget *parent = nullptr);
-    ~new_Projectw();
+    explicit new_Project_Wizard(QWidget *parent = nullptr);
+    ~new_Project_Wizard();
 
 private:
-    Ui::new_Projectw *ui;
+    Ui::new_Project_Wizard *ui;
 
 //private slots:
 //    QWizardPage* createIntroPage();
@@ -24,7 +24,7 @@ private:
 //    QWizardPage* createRegistrationPage();
 
 public slots:
-    static void new_projectw_Open_Page();
+    static void new_Project_Wizard_Open_Page();
 };
 
 #endif // NEW_PROJECTW_H

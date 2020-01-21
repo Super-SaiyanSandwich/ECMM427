@@ -14,7 +14,7 @@ public:
 
 private:
     new_Project new_project;
-    new_Projectw new_projectw;
+    new_Project_Wizard new_project_wizard;
 
 signals:
 

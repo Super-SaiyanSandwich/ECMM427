@@ -25,36 +25,139 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QSpinBox" name="spin_Box_X">
-       <property name="toolTip">
-        <string>X Value of Sphere</string>
+      <widget class="QToolBox" name="toolBox">
+       <property name="styleSheet">
+        <string notr="true">QToolBox::tab {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E1E1E1, stop: 0.4 #DDDDDD, stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+border: 2px solid #C4C4C3;
+border-bottom-color: #C2C7CB; /* same as the pane color */
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+min-width: 8ex;
+padding: 2px;
+}
+QToolBox::tab:selected, QTabBar::tab:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #fafafa, stop: 0.4 #f4f4f4, stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+QToolBox::tab:selected {
+border-color: #9B9B9B;
+border-bottom-color: #C2C7CB; /* same as pane color */
+}
+QToolBox::tab:!selected {
+margin-top: 2px; /* make non-selected tabs look smaller */
+}
+/*
+QToolBox::tab:selected { 
+    font: italic;
+    color: white;
+}*/</string>
        </property>
-       <property name="maximum">
-        <number>2088</number>
+       <property name="currentIndex">
+        <number>0</number>
        </property>
-       <property name="value">
-        <number>128</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spin_Box_Y">
-       <property name="maximum">
-        <number>1387</number>
-       </property>
-       <property name="value">
-        <number>128</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDoubleSpinBox" name="spin_Box_Radius">
-       <property name="toolTip">
-        <string>Selecter for Radius of Sphere</string>
-       </property>
-       <property name="value">
-        <double>10.000000000000000</double>
-       </property>
+       <widget class="QWidget" name="movement_Page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>149</width>
+          <height>633</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Position</string>
+        </attribute>
+        <widget class="QWidget" name="verticalLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>151</width>
+           <height>611</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_X">
+            <property name="text">
+             <string>X Position:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spin_Box_X">
+            <property name="toolTip">
+             <string>X Value of Sphere</string>
+            </property>
+            <property name="maximum">
+             <number>2088</number>
+            </property>
+            <property name="value">
+             <number>500</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_Y">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="text">
+             <string>Y Position:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spin_Box_Y">
+            <property name="maximum">
+             <number>1387</number>
+            </property>
+            <property name="value">
+             <number>128</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="scale_Page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>149</width>
+          <height>633</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Scale</string>
+        </attribute>
+        <widget class="QDoubleSpinBox" name="spin_Box_Radius">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>50</y>
+           <width>149</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Selecter for Radius of Sphere</string>
+         </property>
+         <property name="maximum">
+          <double>99999.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>60.000000000000000</double>
+         </property>
+        </widget>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -85,7 +188,7 @@
      <x>0</x>
      <y>0</y>
      <width>1202</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

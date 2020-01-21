@@ -49,7 +49,7 @@
 ****************************************************************************/
 
 #include "new_Project_Wizard.h"
-#include "ui_new_projectw.h"
+#include "ui_new_Project_Wizard.h"
 
 #include <QtWidgets>
 #include <QTranslator>
@@ -57,9 +57,9 @@
 #include <QLibraryInfo>
 
 
-new_Projectw::new_Projectw(QWidget *parent) :
+new_Project_Wizard::new_Project_Wizard(QWidget *parent) :
     QWizard(parent),
-    ui(new Ui::new_Projectw)
+    ui(new Ui::new_Project_Wizard)
 {
 //    ui->setupUi(this);
 
@@ -75,7 +75,7 @@ new_Projectw::new_Projectw(QWidget *parent) :
 }
 
 
-new_Projectw::~new_Projectw()
+new_Project_Wizard::~new_Project_Wizard()
 {
     delete ui;
 
@@ -140,10 +140,10 @@ QWizardPage *createConclusionPage()
 }
 
 
-void new_Projectw::new_projectw_Open_Page()
+void new_Project_Wizard::new_Project_Wizard_Open_Page()
 {
     qInfo() << "Begin Test";
-    new_Projectw* window = new new_Projectw();
+    new_Project_Wizard* window = new new_Project_Wizard();
 
 //    window->addPage(createIntroPage());
     window->addPage(createRegistrationPage());

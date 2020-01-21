@@ -11,6 +11,8 @@ public:
 
 signals:
 
+private:
+    QString project_Location;
 
 private slots:
     void import();
