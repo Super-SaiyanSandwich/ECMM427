@@ -27,6 +27,10 @@ private:
     int y;
     double radius;
 
+    int r = 0;
+    int g = 255;
+    int b = 0;
+
     void update_Marble_Marker();
 
 signals:
@@ -37,7 +41,11 @@ private slots:
     void on_spin_Box_Radius_valueChanged(double arg1);
     void on_horizontal_Slider_X_valueChanged(int value);
     void on_horizontal_Slider_Y_valueChanged(int value);
-    void on_colour_Selector_Button_triggered(QAction *arg1);
+    void on_horizontal_Scroll_Bar_Red_valueChanged(int value);
+    void on_horizontal_Scroll_Bar_Green_valueChanged(int value);
+    void on_horizontal_Scroll_Bar_Blue_valueChanged(int value);
+    void on_colour_Selector_Button_clicked();
+    void on_horizontal_Slider_Radius_valueChanged(int value);
 };
 
 #endif // MARBLE_DETECTION_H

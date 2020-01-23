@@ -227,6 +227,7 @@ public:
         toolBox->addItem(scale_Page, QString::fromUtf8("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QString::fromUtf8("tools_Page"));
+        tools_Page->setGeometry(QRect(0, 0, 189, 375));
         verticalLayoutWidget_4 = new QWidget(tools_Page);
         verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
         verticalLayoutWidget_4->setGeometry(QRect(10, 0, 171, 361));
@@ -279,6 +280,47 @@ public:
 
         horizontal_Scroll_Bar_Red = new QScrollBar(verticalLayoutWidget_4);
         horizontal_Scroll_Bar_Red->setObjectName(QString::fromUtf8("horizontal_Scroll_Bar_Red"));
+        horizontal_Scroll_Bar_Red->setAutoFillBackground(false);
+        horizontal_Scroll_Bar_Red->setStyleSheet(QString::fromUtf8("QScrollBar:horizontal {\n"
+"    border: 0px solid white;\n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"    height: 15px;\n"
+"    margin: 0px 20px 0 20px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: rgb(255, 0, 0);\n"
+"    min-width: 20px;\n"
+"	border: 1px solid black;\n"
+"}\n"
+"\n"
+"QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
+"    border: 2px solid grey;\n"
+"    width: 3px;\n"
+"    height: 3px;\n"
+"    background: white;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal {\n"
+"    border: 2px solid black;\n"
+"    background:grey;\n"
+"    width: 20px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    border: 2px solid black;\n"
+"    background: grey;\n"
+"    width: 20px;\n"
+"    subcontrol-p"
+                        "osition: left;\n"
+"    subcontrol-origin: margin;\n"
+"}"));
         horizontal_Scroll_Bar_Red->setMaximum(255);
         horizontal_Scroll_Bar_Red->setOrientation(Qt::Horizontal);
 
@@ -291,6 +333,46 @@ public:
 
         horizontal_Scroll_Bar_Green = new QScrollBar(verticalLayoutWidget_4);
         horizontal_Scroll_Bar_Green->setObjectName(QString::fromUtf8("horizontal_Scroll_Bar_Green"));
+        horizontal_Scroll_Bar_Green->setStyleSheet(QString::fromUtf8("QScrollBar:horizontal {\n"
+"    border: 0px solid white;\n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"    height: 15px;\n"
+"    margin: 0px 20px 0 20px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: rgb(0, 255, 0);\n"
+"    min-width: 20px;\n"
+"	border: 1px solid black;\n"
+"}\n"
+"\n"
+"QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
+"    border: 2px solid grey;\n"
+"    width: 3px;\n"
+"    height: 3px;\n"
+"    background: white;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal {\n"
+"    border: 2px solid black;\n"
+"    background:grey;\n"
+"    width: 20px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    border: 2px solid black;\n"
+"    background: grey;\n"
+"    width: 20px;\n"
+"    subcontrol-p"
+                        "osition: left;\n"
+"    subcontrol-origin: margin;\n"
+"}"));
         horizontal_Scroll_Bar_Green->setMaximum(255);
         horizontal_Scroll_Bar_Green->setValue(255);
         horizontal_Scroll_Bar_Green->setOrientation(Qt::Horizontal);
@@ -304,6 +386,46 @@ public:
 
         horizontal_Scroll_Bar_Blue = new QScrollBar(verticalLayoutWidget_4);
         horizontal_Scroll_Bar_Blue->setObjectName(QString::fromUtf8("horizontal_Scroll_Bar_Blue"));
+        horizontal_Scroll_Bar_Blue->setStyleSheet(QString::fromUtf8("QScrollBar:horizontal {\n"
+"    border: 0px solid white;\n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"    height: 15px;\n"
+"    margin: 0px 20px 0 20px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: rgb(0, 0, 255);\n"
+"    min-width: 20px;\n"
+"	border: 1px solid black;\n"
+"}\n"
+"\n"
+"QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
+"    border: 2px solid grey;\n"
+"    width: 3px;\n"
+"    height: 3px;\n"
+"    background: white;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal {\n"
+"    border: 2px solid black;\n"
+"    background:grey;\n"
+"    width: 20px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    border: 2px solid black;\n"
+"    background: grey;\n"
+"    width: 20px;\n"
+"    subcontrol-p"
+                        "osition: left;\n"
+"    subcontrol-origin: margin;\n"
+"}"));
         horizontal_Scroll_Bar_Blue->setMaximum(255);
         horizontal_Scroll_Bar_Blue->setOrientation(Qt::Horizontal);
 

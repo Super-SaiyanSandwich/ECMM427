@@ -247,6 +247,14 @@ QToolBox::tab:selected {
         </widget>
        </widget>
        <widget class="QWidget" name="tools_Page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>189</width>
+          <height>375</height>
+         </rect>
+        </property>
         <attribute name="label">
          <string>Tools</string>
         </attribute>
@@ -317,6 +325,50 @@ QToolBox::tab:selected {
             </item>
             <item>
              <widget class="QScrollBar" name="horizontal_Scroll_Bar_Red">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QScrollBar:horizontal {
+    border: 0px solid white;
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+    height: 15px;
+    margin: 0px 20px 0 20px;
+}
+
+QScrollBar::handle:horizontal {
+    background: rgb(255, 0, 0);
+    min-width: 20px;
+	border: 1px solid black;
+}
+
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    border: 2px solid grey;
+    width: 3px;
+    height: 3px;
+    background: white;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 2px solid black;
+    background:grey;
+    width: 20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 2px solid black;
+    background: grey;
+    width: 20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}</string>
+              </property>
               <property name="maximum">
                <number>255</number>
               </property>
@@ -334,6 +386,47 @@ QToolBox::tab:selected {
             </item>
             <item>
              <widget class="QScrollBar" name="horizontal_Scroll_Bar_Green">
+              <property name="styleSheet">
+               <string notr="true">QScrollBar:horizontal {
+    border: 0px solid white;
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+    height: 15px;
+    margin: 0px 20px 0 20px;
+}
+
+QScrollBar::handle:horizontal {
+    background: rgb(0, 255, 0);
+    min-width: 20px;
+	border: 1px solid black;
+}
+
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    border: 2px solid grey;
+    width: 3px;
+    height: 3px;
+    background: white;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 2px solid black;
+    background:grey;
+    width: 20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 2px solid black;
+    background: grey;
+    width: 20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}</string>
+              </property>
               <property name="maximum">
                <number>255</number>
               </property>
@@ -354,6 +447,47 @@ QToolBox::tab:selected {
             </item>
             <item>
              <widget class="QScrollBar" name="horizontal_Scroll_Bar_Blue">
+              <property name="styleSheet">
+               <string notr="true">QScrollBar:horizontal {
+    border: 0px solid white;
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+    height: 15px;
+    margin: 0px 20px 0 20px;
+}
+
+QScrollBar::handle:horizontal {
+    background: rgb(0, 0, 255);
+    min-width: 20px;
+	border: 1px solid black;
+}
+
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    border: 2px solid grey;
+    width: 3px;
+    height: 3px;
+    background: white;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 2px solid black;
+    background:grey;
+    width: 20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 2px solid black;
+    background: grey;
+    width: 20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}</string>
+              </property>
               <property name="maximum">
                <number>255</number>
               </property>

@@ -53,28 +53,28 @@ void marble_Detection::update_Marble_Marker()
 
     QPen pen;
 
-    pen.setBrush(Qt::green);
+    pen.setBrush(QColor(r,g,b));
     pen.setWidth(5);
 
-    int r = this->radius;
+    int rad = this->radius;
 
 
     float scaled_Radius = this->radius * CENTER_SCALE_FACTOR;
 
     paint->setPen(pen);
     // -----------------------paint->drawArc(x,y,radius,radius,360);
-    paint->drawEllipse(QPointF(this->x + r, this->y + r), r, r);
-    paint->drawLine(this->x - scaled_Radius + r, this->y + r, this->x + scaled_Radius + r, this->y + r);
-    paint->drawLine(this->x + r, this->y - scaled_Radius + r, this->x + r, this->y + scaled_Radius + r);
+    paint->drawEllipse(QPointF(this->x + rad, this->y + rad), rad, rad);
+    paint->drawLine(this->x - scaled_Radius + rad, this->y + rad, this->x + scaled_Radius + rad, this->y + rad);
+    paint->drawLine(this->x + rad, this->y - scaled_Radius + rad, this->x + rad, this->y + scaled_Radius + rad);
     paint->end();
     ui->image_Label->clear();
     ui->image_Label->setPixmap(base_Pix);
     ui->image_Label->update();
 
-    QPixmap target(r * 2, r * 2);
+    QPixmap target(rad * 2, rad * 2);
     paint = new QPainter(&target);
-    paint->fillRect(QRect(0, 0, r * 2, r * 2),Qt::gray);
-    QRegion mask(QRect(0, 0, r * 2, r * 2), QRegion::Ellipse);
+    paint->fillRect(QRect(0, 0, rad * 2, rad * 2),Qt::gray);
+    QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
     paint->setClipRegion(mask);
 
     //base_Pix = QPixmap::fromImage(this->base_Image);
@@ -102,6 +102,7 @@ void marble_Detection::on_spin_Box_Y_valueChanged(int Y)
 void marble_Detection::on_spin_Box_Radius_valueChanged(double radius)
 {
     this->radius = radius;
+    ui->horizontal_Slider_Radius->setValue(radius);
     this->update_Marble_Marker();
 
     ui->spin_Box_X->setMaximum(base_Image.width() - 2*radius);
@@ -124,7 +125,46 @@ void marble_Detection::on_horizontal_Slider_Y_valueChanged(int value)
     this->update_Marble_Marker();
 }
 
-void marble_Detection::on_colour_Selector_Button_triggered(QAction *arg1)
+void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
 {
+    this->radius = radius;
+    ui->spin_Box_Radius->setValue(value);
+    this->update_Marble_Marker();
 
+    ui->spin_Box_X->setMaximum(base_Image.width() - 2*radius);
+    ui->spin_Box_Y->setMaximum(base_Image.height() - 2*radius);
+    ui->horizontal_Slider_X->setMaximum(base_Image.width() - 2*radius);
+    ui->horizontal_Slider_Y->setMaximum(base_Image.height() - 2*radius);
 }
+
+void marble_Detection::on_horizontal_Scroll_Bar_Red_valueChanged(int value)
+{
+    this->r = value;
+    this->update_Marble_Marker();
+}
+
+void marble_Detection::on_horizontal_Scroll_Bar_Green_valueChanged(int value)
+{
+    this->g = value;
+    this->update_Marble_Marker();
+}
+
+void marble_Detection::on_horizontal_Scroll_Bar_Blue_valueChanged(int value)
+{
+    this->b = value;
+    this->update_Marble_Marker();
+}
+
+void marble_Detection::on_colour_Selector_Button_clicked()
+{
+    QColor new_Colour = QColorDialog::getColor(QColor(r,g,b), this );
+    r = new_Colour.red();
+    g = new_Colour.green();
+    b = new_Colour.blue();
+
+    ui->horizontal_Scroll_Bar_Red->setValue(r);
+    ui->horizontal_Scroll_Bar_Green->setValue(g);
+    ui->horizontal_Scroll_Bar_Blue->setValue(b);
+}
+
+
