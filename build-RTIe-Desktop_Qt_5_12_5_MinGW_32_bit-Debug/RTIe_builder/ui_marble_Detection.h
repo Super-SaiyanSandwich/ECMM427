@@ -11,14 +11,21 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDoubleSpinBox>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBox>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -43,11 +50,36 @@ public:
     QWidget *scale_Page;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_3;
-    QLabel *label_2;
+    QLabel *radius_Label;
     QDoubleSpinBox *spin_Box_Radius;
-    QLabel *image_Label;
+    QSlider *horizontal_Slider_Radius;
+    QFrame *line;
+    QCheckBox *check_Box_Spherical;
+    QWidget *tools_Page;
+    QWidget *verticalLayoutWidget_4;
+    QVBoxLayout *verticalLayout_4;
+    QLabel *zoom_Label;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *zoom_Out_Button;
+    QPushButton *zoom_In_Button;
+    QPushButton *zoom_Reset_Button;
+    QFrame *seperator;
+    QLabel *colour_Label;
+    QVBoxLayout *verticalLayout_5;
+    QLabel *label_Red;
+    QScrollBar *horizontal_Scroll_Bar_Red;
+    QLabel *label_Green;
+    QScrollBar *horizontal_Scroll_Bar_Green;
+    QLabel *label_Blue;
+    QScrollBar *horizontal_Scroll_Bar_Blue;
+    QToolButton *colour_Selector_Button;
     QLabel *label;
     QLabel *preivew_Label;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QLabel *image_Label;
+    QWidget *widget;
+    QWidget *widget_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -92,10 +124,10 @@ public:
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QString::fromUtf8("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 189, 403));
+        movement_Page->setGeometry(QRect(0, 0, 189, 375));
         verticalLayoutWidget_2 = new QWidget(movement_Page);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 171, 381));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 171, 361));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -149,35 +181,146 @@ public:
         toolBox->addItem(movement_Page, QString::fromUtf8("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QString::fromUtf8("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 189, 403));
+        scale_Page->setGeometry(QRect(0, 0, 189, 375));
         verticalLayoutWidget_3 = new QWidget(scale_Page);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(10, 0, 171, 391));
+        verticalLayoutWidget_3->setGeometry(QRect(10, 0, 171, 371));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(verticalLayoutWidget_3);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
+        radius_Label = new QLabel(verticalLayoutWidget_3);
+        radius_Label->setObjectName(QString::fromUtf8("radius_Label"));
+        radius_Label->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
-        verticalLayout_3->addWidget(label_2);
+        verticalLayout_3->addWidget(radius_Label);
 
         spin_Box_Radius = new QDoubleSpinBox(verticalLayoutWidget_3);
         spin_Box_Radius->setObjectName(QString::fromUtf8("spin_Box_Radius"));
-        spin_Box_Radius->setMaximum(99999.000000000000000);
-        spin_Box_Radius->setValue(60.000000000000000);
+        spin_Box_Radius->setMinimum(50.000000000000000);
+        spin_Box_Radius->setMaximum(500.000000000000000);
+        spin_Box_Radius->setValue(100.000000000000000);
 
         verticalLayout_3->addWidget(spin_Box_Radius);
 
+        horizontal_Slider_Radius = new QSlider(verticalLayoutWidget_3);
+        horizontal_Slider_Radius->setObjectName(QString::fromUtf8("horizontal_Slider_Radius"));
+        horizontal_Slider_Radius->setMinimum(50);
+        horizontal_Slider_Radius->setMaximum(500);
+        horizontal_Slider_Radius->setValue(100);
+        horizontal_Slider_Radius->setOrientation(Qt::Horizontal);
+
+        verticalLayout_3->addWidget(horizontal_Slider_Radius);
+
+        line = new QFrame(verticalLayoutWidget_3);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_3->addWidget(line);
+
+        check_Box_Spherical = new QCheckBox(verticalLayoutWidget_3);
+        check_Box_Spherical->setObjectName(QString::fromUtf8("check_Box_Spherical"));
+        check_Box_Spherical->setChecked(true);
+
+        verticalLayout_3->addWidget(check_Box_Spherical);
+
         toolBox->addItem(scale_Page, QString::fromUtf8("Scale"));
+        tools_Page = new QWidget();
+        tools_Page->setObjectName(QString::fromUtf8("tools_Page"));
+        verticalLayoutWidget_4 = new QWidget(tools_Page);
+        verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
+        verticalLayoutWidget_4->setGeometry(QRect(10, 0, 171, 361));
+        verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_4);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        zoom_Label = new QLabel(verticalLayoutWidget_4);
+        zoom_Label->setObjectName(QString::fromUtf8("zoom_Label"));
+
+        verticalLayout_4->addWidget(zoom_Label, 0, Qt::AlignBottom);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        zoom_Out_Button = new QPushButton(verticalLayoutWidget_4);
+        zoom_Out_Button->setObjectName(QString::fromUtf8("zoom_Out_Button"));
+
+        horizontalLayout_2->addWidget(zoom_Out_Button);
+
+        zoom_In_Button = new QPushButton(verticalLayoutWidget_4);
+        zoom_In_Button->setObjectName(QString::fromUtf8("zoom_In_Button"));
+
+        horizontalLayout_2->addWidget(zoom_In_Button);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_2);
+
+        zoom_Reset_Button = new QPushButton(verticalLayoutWidget_4);
+        zoom_Reset_Button->setObjectName(QString::fromUtf8("zoom_Reset_Button"));
+
+        verticalLayout_4->addWidget(zoom_Reset_Button);
+
+        seperator = new QFrame(verticalLayoutWidget_4);
+        seperator->setObjectName(QString::fromUtf8("seperator"));
+        seperator->setFrameShape(QFrame::HLine);
+        seperator->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_4->addWidget(seperator);
+
+        colour_Label = new QLabel(verticalLayoutWidget_4);
+        colour_Label->setObjectName(QString::fromUtf8("colour_Label"));
+
+        verticalLayout_4->addWidget(colour_Label, 0, Qt::AlignBottom);
+
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        label_Red = new QLabel(verticalLayoutWidget_4);
+        label_Red->setObjectName(QString::fromUtf8("label_Red"));
+
+        verticalLayout_5->addWidget(label_Red);
+
+        horizontal_Scroll_Bar_Red = new QScrollBar(verticalLayoutWidget_4);
+        horizontal_Scroll_Bar_Red->setObjectName(QString::fromUtf8("horizontal_Scroll_Bar_Red"));
+        horizontal_Scroll_Bar_Red->setMaximum(255);
+        horizontal_Scroll_Bar_Red->setOrientation(Qt::Horizontal);
+
+        verticalLayout_5->addWidget(horizontal_Scroll_Bar_Red);
+
+        label_Green = new QLabel(verticalLayoutWidget_4);
+        label_Green->setObjectName(QString::fromUtf8("label_Green"));
+
+        verticalLayout_5->addWidget(label_Green);
+
+        horizontal_Scroll_Bar_Green = new QScrollBar(verticalLayoutWidget_4);
+        horizontal_Scroll_Bar_Green->setObjectName(QString::fromUtf8("horizontal_Scroll_Bar_Green"));
+        horizontal_Scroll_Bar_Green->setMaximum(255);
+        horizontal_Scroll_Bar_Green->setValue(255);
+        horizontal_Scroll_Bar_Green->setOrientation(Qt::Horizontal);
+
+        verticalLayout_5->addWidget(horizontal_Scroll_Bar_Green);
+
+        label_Blue = new QLabel(verticalLayoutWidget_4);
+        label_Blue->setObjectName(QString::fromUtf8("label_Blue"));
+
+        verticalLayout_5->addWidget(label_Blue);
+
+        horizontal_Scroll_Bar_Blue = new QScrollBar(verticalLayoutWidget_4);
+        horizontal_Scroll_Bar_Blue->setObjectName(QString::fromUtf8("horizontal_Scroll_Bar_Blue"));
+        horizontal_Scroll_Bar_Blue->setMaximum(255);
+        horizontal_Scroll_Bar_Blue->setOrientation(Qt::Horizontal);
+
+        verticalLayout_5->addWidget(horizontal_Scroll_Bar_Blue);
+
+        colour_Selector_Button = new QToolButton(verticalLayoutWidget_4);
+        colour_Selector_Button->setObjectName(QString::fromUtf8("colour_Selector_Button"));
+
+        verticalLayout_5->addWidget(colour_Selector_Button, 0, Qt::AlignRight);
+
+
+        verticalLayout_4->addLayout(verticalLayout_5);
+
+        toolBox->addItem(tools_Page, QString::fromUtf8("Tools"));
 
         verticalLayout->addWidget(toolBox);
 
-        image_Label = new QLabel(centralwidget);
-        image_Label->setObjectName(QString::fromUtf8("image_Label"));
-        image_Label->setGeometry(QRect(1, 1, 1044, 694));
-        image_Label->setFrameShape(QFrame::Panel);
-        image_Label->setScaledContents(true);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(1050, 480, 61, 20));
@@ -192,6 +335,25 @@ public:
         preivew_Label->setLineWidth(1);
         preivew_Label->setText(QString::fromUtf8(""));
         preivew_Label->setScaledContents(true);
+        scrollArea = new QScrollArea(centralwidget);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setGeometry(QRect(1, 1, 1044, 694));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1042, 692));
+        image_Label = new QLabel(scrollAreaWidgetContents);
+        image_Label->setObjectName(QString::fromUtf8("image_Label"));
+        image_Label->setGeometry(QRect(0, 0, 1044, 694));
+        image_Label->setFrameShape(QFrame::Panel);
+        image_Label->setScaledContents(true);
+        widget = new QWidget(scrollAreaWidgetContents);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(700, 240, 120, 80));
+        widget_2 = new QWidget(scrollAreaWidgetContents);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        widget_2->setGeometry(QRect(10, 10, 120, 80));
+        scrollArea->setWidget(scrollAreaWidgetContents);
         marble_Detection->setCentralWidget(centralwidget);
         menubar = new QMenuBar(marble_Detection);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -203,7 +365,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(0);
+        toolBox->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);
@@ -218,13 +380,24 @@ public:
 #endif // QT_NO_TOOLTIP
         label_Y->setText(QApplication::translate("marble_Detection", "Y Position:", nullptr));
         toolBox->setItemText(toolBox->indexOf(movement_Page), QApplication::translate("marble_Detection", "Position", nullptr));
-        label_2->setText(QApplication::translate("marble_Detection", "Radius", nullptr));
+        radius_Label->setText(QApplication::translate("marble_Detection", "Radius", nullptr));
 #ifndef QT_NO_TOOLTIP
         spin_Box_Radius->setToolTip(QApplication::translate("marble_Detection", "Selecter for Radius of Sphere", nullptr));
 #endif // QT_NO_TOOLTIP
+        check_Box_Spherical->setText(QApplication::translate("marble_Detection", "Force Circular?", nullptr));
         toolBox->setItemText(toolBox->indexOf(scale_Page), QApplication::translate("marble_Detection", "Scale", nullptr));
-        image_Label->setText(QString());
+        zoom_Label->setText(QApplication::translate("marble_Detection", "Zoom:", nullptr));
+        zoom_Out_Button->setText(QApplication::translate("marble_Detection", "Zoom Out", nullptr));
+        zoom_In_Button->setText(QApplication::translate("marble_Detection", "Zoom In", nullptr));
+        zoom_Reset_Button->setText(QApplication::translate("marble_Detection", "Reset", nullptr));
+        colour_Label->setText(QApplication::translate("marble_Detection", "Colour:", nullptr));
+        label_Red->setText(QApplication::translate("marble_Detection", "   Red:", nullptr));
+        label_Green->setText(QApplication::translate("marble_Detection", "   Green:", nullptr));
+        label_Blue->setText(QApplication::translate("marble_Detection", "   Blue:", nullptr));
+        colour_Selector_Button->setText(QApplication::translate("marble_Detection", "...", nullptr));
+        toolBox->setItemText(toolBox->indexOf(tools_Page), QApplication::translate("marble_Detection", "Tools", nullptr));
         label->setText(QApplication::translate("marble_Detection", "Preview:", nullptr));
+        image_Label->setText(QString());
     } // retranslateUi
 
 };
