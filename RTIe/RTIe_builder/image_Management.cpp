@@ -13,6 +13,7 @@
 #include <QFileDialog>
 #include <QAction>
 #include <QPushButton>
+#include <QApplication>
 
 
 
@@ -20,12 +21,11 @@
 image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(new Ui::image_Management)
 {
 
-    qInfo() << "Begin MVC";
+    qInfo() << "Start";
     Ui->setupUi(this);
     this->show();
 
     connect(Ui->action_Import_Label, SIGNAL(triggered()), this, SLOT(import()));
-
     connect(Ui->import_Button_Label, SIGNAL(clicked()), this, SLOT(import()));
 
 
@@ -36,9 +36,11 @@ image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(ne
     QString source_Directory = project_Location + "/images/src";
     QString working_Directory = project_Location + "/images/wd";
 
-    read(working_Directory);
+    QStringList file_List;
 
+    //read(working_Directory);
 
+    qInfo() << "Stop";
 
 }
 
@@ -56,14 +58,41 @@ void image_Management::import(){
     QString dir = "/";
 
     QFileDialog dialog(this);
-    //dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setNameFilter("Supported Image Files (*.JPG *.jpg *.PNG *.png *.tiff *.DNG)");
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+    dialog.setNameFilter(tr("Images ( *.jpg .png )"));//*.tiff *.DNG)"));
     //dialog.setOption(QFileDialog::ShowDirsOnly, true);
-    dialog.setDirectory(dir);
+    //dialog.setDirectory(dir);
 
-    dir = dialog.getExistingDirectory();
+    QStringList file_Paths;
+    QStringList file_Names;
+    QString file_Dir;
+
+    if (dialog.exec()){
+        file_Paths = dialog.selectedFiles();
+        file_Dir = dialog.directory().path();
+
+        QStringListIterator file_Iterator(file_Paths);
+           while (file_Iterator.hasNext()){
+
+               //cout << javaStyleIterator.next().toLocal8Bit().constData() << Qt::endl;
+
+               QFile::copy(file_Iterator.next().toLocal8Bit().constData(), "/path/copy-of-file");
+           }
+    }
+
+    //ERROR HANDLING
+    //Althought the use of setFileMode : ExistingFiles requires the files to exist in order to execute. So this is an impossibility.
+    if (file_Names.isEmpty()){
+    }
+
+
+
+
     //qDebug() << dir;
-    qDebug() << "test";
+   // qDebug() << file_Dir;
+    qInfo() << file_Paths;
+    qInfo() << file_Dir;
+    qInfo() << file_Names;
 
 }
 
@@ -76,7 +105,7 @@ void image_Management::import(){
 void image_Management::read(QString working_Dir){
     QDir wd = working_Dir;
 
-    QStringList images = wd.entryList(QStringList() << "*.jpg" << "*.JPG" << ".png",QDir::Files);
+    QStringList images = wd.entryList(QStringList() << "*.jpg" << ".png",QDir::Files);
     foreach(QString filename, images) {
 
     }
