@@ -52,6 +52,10 @@ image_Management::~image_Management(){
 /*
  * Used to import images after project setup
  *
+ * Opens a dialog to select images to be added to the "project/images/src" directory
+ *
+ * preserves file names.
+ *
  */
 void image_Management::import(){
 
@@ -72,15 +76,27 @@ void image_Management::import(){
         file_Dir = dialog.directory().path();
 
         QStringListIterator file_Iterator(file_Paths);
-           while (file_Iterator.hasNext()){
 
-               //cout << javaStyleIterator.next().toLocal8Bit().constData() << Qt::endl;
+        while (file_Iterator.hasNext()){
 
-               QFile::copy(file_Iterator.next().toLocal8Bit().constData(), "/path/copy-of-file");
-           }
+            //cout << javaStyleIterator.next().toLocal8Bit().constData() << Qt::endl;
+            qInfo() << "src_DIR::" << source_Directory;
+            QString current_Image_Path = file_Iterator.next().toLocal8Bit().constData();
+
+            QFile current_Image(current_Image_Path);
+            QFileInfo current_Image_Info(current_Image.fileName());
+            QString file_Name(current_Image_Info.fileName());
+            qInfo() << "File name:" << file_Name;
+
+            //[TODO] ERROR HANDLING : NEED TO CHECK DUPLICATE FILE NAMES
+            QString src_Path = source_Directory + "/" + file_Name;
+            qInfo() << "path to source" << src_Path << "\n";
+
+            QFile::copy(current_Image_Path, src_Path);
+        }
     }
 
-    //ERROR HANDLING
+    //[TODO] ERROR HANDLING
     //Althought the use of setFileMode : ExistingFiles requires the files to exist in order to execute. So this is an impossibility.
     if (file_Names.isEmpty()){
     }
@@ -90,9 +106,9 @@ void image_Management::import(){
 
     //qDebug() << dir;
    // qDebug() << file_Dir;
-    qInfo() << file_Paths;
-    qInfo() << file_Dir;
-    qInfo() << file_Names;
+    //qInfo() << file_Paths;
+    //qInfo() << file_Dir;
+    //qInfo() << file_Names;
 
 }
 
