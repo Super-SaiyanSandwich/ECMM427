@@ -86,7 +86,9 @@ void image_Management::import(){
             QFile current_Image(current_Image_Path);
             QFileInfo current_Image_Info(current_Image.fileName());
             QString file_Name(current_Image_Info.fileName());
+            file_Names.append(file_Name);
             qInfo() << "File name:" << file_Name;
+
 
             //[TODO] ERROR HANDLING : NEED TO CHECK DUPLICATE FILE NAMES
             QString src_Path = source_Directory + "/" + file_Name;
@@ -103,14 +105,6 @@ void image_Management::import(){
     if (file_Names.isEmpty()){
     }
 
-
-
-
-    //qDebug() << dir;
-   // qDebug() << file_Dir;
-    //qInfo() << file_Paths;
-    //qInfo() << file_Dir;
-    //qInfo() << file_Names;
 
 }
 
