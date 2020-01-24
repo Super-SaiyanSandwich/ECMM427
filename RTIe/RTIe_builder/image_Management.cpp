@@ -90,9 +90,11 @@ void image_Management::import(){
 
             //[TODO] ERROR HANDLING : NEED TO CHECK DUPLICATE FILE NAMES
             QString src_Path = source_Directory + "/" + file_Name;
+            QString wd_Path = working_Directory + "/" + file_Name;
             qInfo() << "path to source" << src_Path << "\n";
 
             QFile::copy(current_Image_Path, src_Path);
+            QFile::copy(current_Image_Path, wd_Path);
         }
     }
 
