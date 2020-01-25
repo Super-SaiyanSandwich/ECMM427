@@ -167,4 +167,55 @@ void marble_Detection::on_colour_Selector_Button_clicked()
     ui->horizontal_Scroll_Bar_Blue->setValue(b);
 }
 
+bool marble_Detection::load_File(const QString &fileName)
+{
+    QImageReader reader(fileName);
+    reader.setAutoTransform(true);
+    const QImage newImage = reader.read();
+    if (newImage.isNull()) {
+        QMessageBox::information(this, QGuiApplication::applicationDisplayName(),
+                                 tr("Cannot load %1: %2")
+                                 .arg(QDir::toNativeSeparators(fileName), reader.errorString()));
+        return false;
+    }
+    base_Image = newImage;
 
+    setWindowFilePath(fileName);
+
+    const QString message = tr("Opened \"%1\", %2x%3, Depth: %4")
+        .arg(QDir::toNativeSeparators(fileName)).arg(base_Image.width()).arg(base_Image.height()).arg(base_Image.depth());
+    statusBar()->showMessage(message);
+    return true;
+}
+
+
+static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
+{
+    static bool firstDialog = true;
+
+    if (firstDialog) {
+        firstDialog = false;
+        const QStringList picturesLocations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+        dialog.setDirectory(picturesLocations.isEmpty() ? QDir::currentPath() : picturesLocations.last());
+    }
+
+    QStringList mimeTypeFilters;
+    const QByteArrayList supportedMimeTypes = acceptMode == QFileDialog::AcceptOpen
+        ? QImageReader::supportedMimeTypes() : QImageWriter::supportedMimeTypes();
+    foreach (const QByteArray &mimeTypeName, supportedMimeTypes)
+        mimeTypeFilters.append(mimeTypeName);
+    mimeTypeFilters.sort();
+    dialog.setMimeTypeFilters(mimeTypeFilters);
+    dialog.selectMimeTypeFilter("image/jpeg");
+    if (acceptMode == QFileDialog::AcceptSave)
+        dialog.setDefaultSuffix("jpg");
+}
+
+void marble_Detection::on_pushButton_clicked()
+{
+
+    QFileDialog dialog(this, tr("Open File"));
+    initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
+
+    while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {}
+}

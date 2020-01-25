@@ -16,6 +16,7 @@ class marble_Detection : public QMainWindow
 public:
     explicit marble_Detection(QWidget *parent = nullptr);
     ~marble_Detection();
+    bool load_File(const QString &);
 
 
 private:
@@ -46,6 +47,7 @@ private slots:
     void on_horizontal_Scroll_Bar_Blue_valueChanged(int value);
     void on_colour_Selector_Button_clicked();
     void on_horizontal_Slider_Radius_valueChanged(int value);
+    void on_pushButton_clicked();
 };
 
 #endif // MARBLE_DETECTION_H

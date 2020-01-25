@@ -53,7 +53,7 @@ QToolBox::tab:selected {
 }*/</string>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="movement_Page">
         <property name="geometry">
@@ -61,7 +61,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>189</width>
-          <height>375</height>
+          <height>347</height>
          </rect>
         </property>
         <attribute name="label">
@@ -73,7 +73,7 @@ QToolBox::tab:selected {
            <x>10</x>
            <y>10</y>
            <width>171</width>
-           <height>361</height>
+           <height>331</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -168,7 +168,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>189</width>
-          <height>375</height>
+          <height>347</height>
          </rect>
         </property>
         <attribute name="label">
@@ -180,7 +180,7 @@ QToolBox::tab:selected {
            <x>10</x>
            <y>0</y>
            <width>171</width>
-           <height>371</height>
+           <height>341</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -252,7 +252,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>189</width>
-          <height>375</height>
+          <height>347</height>
          </rect>
         </property>
         <attribute name="label">
@@ -264,7 +264,7 @@ QToolBox::tab:selected {
            <x>10</x>
            <y>0</y>
            <width>171</width>
-           <height>361</height>
+           <height>341</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -508,6 +508,58 @@ QScrollBar::sub-line:horizontal {
          </layout>
         </widget>
        </widget>
+       <widget class="QWidget" name="images_Page">
+        <attribute name="label">
+         <string>Images</string>
+        </attribute>
+        <widget class="QScrollArea" name="scrollArea_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>171</width>
+           <height>221</height>
+          </rect>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>169</width>
+            <height>219</height>
+           </rect>
+          </property>
+          <widget class="QWidget" name="verticalLayoutWidget_5">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>171</width>
+             <height>221</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6"/>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>290</y>
+           <width>75</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Open</string>
+         </property>
+        </widget>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -593,26 +645,6 @@ QScrollBar::sub-line:horizontal {
       </property>
       <property name="scaledContents">
        <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QWidget" name="widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>700</x>
-        <y>240</y>
-        <width>120</width>
-        <height>80</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QWidget" name="widget_2" native="true">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>120</width>
-        <height>80</height>
-       </rect>
       </property>
      </widget>
     </widget>
