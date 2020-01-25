@@ -31,8 +31,12 @@ private:
     int r = 0;
     int g = 255;
     int b = 0;
+    int zoom_Percentage = 100;
 
     void update_Marble_Marker();
+    void reset_Image_Zoom();
+    void image_Zoom_In();
+    void image_Zoom_Out();
 
 signals:
 
@@ -47,7 +51,7 @@ private slots:
     void on_horizontal_Scroll_Bar_Blue_valueChanged(int value);
     void on_colour_Selector_Button_clicked();
     void on_horizontal_Slider_Radius_valueChanged(int value);
-    void on_pushButton_clicked();
+    void on_open_Button_clicked();
 };
 
 #endif // MARBLE_DETECTION_H

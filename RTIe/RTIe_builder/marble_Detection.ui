@@ -509,6 +509,14 @@ QScrollBar::sub-line:horizontal {
         </widget>
        </widget>
        <widget class="QWidget" name="images_Page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>189</width>
+          <height>347</height>
+         </rect>
+        </property>
         <attribute name="label">
          <string>Images</string>
         </attribute>
@@ -518,7 +526,7 @@ QScrollBar::sub-line:horizontal {
            <x>10</x>
            <y>0</y>
            <width>171</width>
-           <height>221</height>
+           <height>300</height>
           </rect>
          </property>
          <property name="widgetResizable">
@@ -530,27 +538,27 @@ QScrollBar::sub-line:horizontal {
             <x>0</x>
             <y>0</y>
             <width>169</width>
-            <height>219</height>
+            <height>298</height>
            </rect>
           </property>
-          <widget class="QWidget" name="verticalLayoutWidget_5">
+          <widget class="QWidget" name="formLayoutWidget">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
              <width>171</width>
-             <height>221</height>
+             <height>291</height>
             </rect>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_6"/>
+           <layout class="QFormLayout" name="formLayout"/>
           </widget>
          </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="open_Button">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>290</y>
+           <y>310</y>
            <width>75</width>
            <height>23</height>
           </rect>
@@ -656,7 +664,7 @@ QScrollBar::sub-line:horizontal {
      <x>0</x>
      <y>0</y>
      <width>1251</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

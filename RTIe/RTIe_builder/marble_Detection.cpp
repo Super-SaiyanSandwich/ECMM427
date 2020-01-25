@@ -6,8 +6,15 @@
 #include <QLocale>
 #include <QLibraryInfo>
 
-
+// CONSTANT VALUES
 #define CENTER_SCALE_FACTOR 0.3
+#define SCROLL_AREA_HEIGHT 694
+#define SCROLL_AREA_WIDTH 1044
+
+///////////////////////////////////////////////////////////////
+//
+//    PAGE CREATION AND SETUP FUNCTIONS
+//
 
 
 marble_Detection::marble_Detection(QWidget *parent) : QMainWindow(parent),
@@ -45,6 +52,13 @@ marble_Detection::~marble_Detection()
     delete ui;
 }
 
+//////////////////////////////////////////////////////////////////////
+
+
+
+///
+/// Updates the images displayed on screen by painting over the base image
+///
 void marble_Detection::update_Marble_Marker()
 {
     //qInfo() << "TWtatat";
@@ -62,27 +76,54 @@ void marble_Detection::update_Marble_Marker()
     float scaled_Radius = this->radius * CENTER_SCALE_FACTOR;
 
     paint->setPen(pen);
-    // -----------------------paint->drawArc(x,y,radius,radius,360);
+
+    // Cirlce
     paint->drawEllipse(QPointF(this->x + rad, this->y + rad), rad, rad);
+
+    // Cross
     paint->drawLine(this->x - scaled_Radius + rad, this->y + rad, this->x + scaled_Radius + rad, this->y + rad);
     paint->drawLine(this->x + rad, this->y - scaled_Radius + rad, this->x + rad, this->y + scaled_Radius + rad);
+
     paint->end();
+
+
     ui->image_Label->clear();
     ui->image_Label->setPixmap(base_Pix);
     ui->image_Label->update();
 
     QPixmap target(rad * 2, rad * 2);
+
     paint = new QPainter(&target);
     paint->fillRect(QRect(0, 0, rad * 2, rad * 2),Qt::gray);
     QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
     paint->setClipRegion(mask);
 
-    //base_Pix = QPixmap::fromImage(this->base_Image);
+
+    base_Pix = QPixmap::fromImage(this->base_Image);
     paint->drawPixmap(-this->x, -this->y, base_Pix);
+
+
     ui->preivew_Label->clear();
     ui->preivew_Label->setPixmap(target);
     ui->preivew_Label->update();
 }
+
+
+void marble_Detection::reset_Image_Zoom()
+{
+    float height_Scale = this->base_Image.height() / SCROLL_AREA_HEIGHT;
+    float width_Scale = this->base_Image.width() / SCROLL_AREA_WIDTH;
+
+    return;
+}
+
+
+
+
+
+
+
+
 
 void marble_Detection::on_spin_Box_X_valueChanged(int X)
 {
@@ -127,7 +168,7 @@ void marble_Detection::on_horizontal_Slider_Y_valueChanged(int value)
 
 void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
 {
-    this->radius = radius;
+    this->radius = value;
     ui->spin_Box_Radius->setValue(value);
     this->update_Marble_Marker();
 
@@ -167,6 +208,7 @@ void marble_Detection::on_colour_Selector_Button_clicked()
     ui->horizontal_Scroll_Bar_Blue->setValue(b);
 }
 
+
 bool marble_Detection::load_File(const QString &fileName)
 {
     QImageReader reader(fileName);
@@ -185,6 +227,8 @@ bool marble_Detection::load_File(const QString &fileName)
     const QString message = tr("Opened \"%1\", %2x%3, Depth: %4")
         .arg(QDir::toNativeSeparators(fileName)).arg(base_Image.width()).arg(base_Image.height()).arg(base_Image.depth());
     statusBar()->showMessage(message);
+
+    this->update_Marble_Marker();
     return true;
 }
 
@@ -211,11 +255,11 @@ static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMo
         dialog.setDefaultSuffix("jpg");
 }
 
-void marble_Detection::on_pushButton_clicked()
-{
 
+void marble_Detection::on_open_Button_clicked()
+{
     QFileDialog dialog(this, tr("Open File"));
     initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
 
-    while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {}
+    while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {};
 }
