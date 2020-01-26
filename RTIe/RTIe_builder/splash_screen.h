@@ -4,7 +4,8 @@
 #include <QMainWindow>
 #include <QWidget>
 #include "new_Project.h"
-#include "new_projectw.h"
+#include "new_Project_Wizard.h"
+#include "stackedexample.h"
 
 class splashScreen : public QMainWindow
 {
@@ -15,6 +16,7 @@ public:
 private:
     new_Project new_project;
     new_Projectw new_projectw;
+    stackedExample home_Page;
 
 signals:
 

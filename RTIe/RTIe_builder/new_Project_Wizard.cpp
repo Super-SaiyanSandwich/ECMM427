@@ -103,13 +103,13 @@ new_Projectw::~new_Projectw()
 QWizardPage *createRegistrationPage()
 {
     QWizardPage *page = new QWizardPage;
-    page->setTitle("Registration");
-    page->setSubTitle("Please fill both fields.");
+    page->setTitle("Create a New Project");
+    page->setSubTitle("Please fill both fields./n Note: The file location for the new Project should be  folder that containd .JPG files ");
 
     QLabel *nameLabel = new QLabel("Name:");
     QLineEdit *nameLineEdit = new QLineEdit;
 
-    QLabel *emailLabel = new QLabel("Email address:");
+    QLabel *emailLabel = new QLabel("File Location:");
     QLineEdit *emailLineEdit = new QLineEdit;
 
     QGridLayout *layout = new QGridLayout;
@@ -126,10 +126,9 @@ QWizardPage *createRegistrationPage()
 QWizardPage *createConclusionPage()
 {
     QWizardPage *page = new QWizardPage;
-    page->setTitle("Conclusion");
+    page->setTitle("Summary");
 
-    QLabel *label = new QLabel("You are now successfully registered. Have a "
-                               "nice day!");
+    QLabel *label = new QLabel("Files to be added are :");
     label->setWordWrap(true);
 
     QVBoxLayout *layout = new QVBoxLayout;

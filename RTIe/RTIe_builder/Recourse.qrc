@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>img/close.png</file>
+        <file>img/exit.png</file>
+        <file>img/new.png</file>
+        <file>img/open.png</file>
+        <file>img/save.png</file>
+        <file>img/save_as.png</file>
+        <file>img/cut.png</file>
+        <file>img/paste.png</file>
+        <file>img/redo.png</file>
+        <file>img/undo.png</file>
+        <file>img/copy.png</file>
+        <file>img/RTIEx.jpg</file>
+        <file>img/Exit2.png</file>
+        <file>img/ExitLarge.png</file>
+        <file>img/settings.png</file>
+    </qresource>
+</RCC>

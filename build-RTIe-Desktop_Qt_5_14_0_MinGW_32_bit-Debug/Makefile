@@ -41,54 +41,54 @@ SUBTARGETS    =  \
 
 sub-RTIe_builder-qmake_all:  FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
+	cd RTIe_builder\ && $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 	cd RTIe_builder\ && $(MAKE) -f Makefile qmake_all
 sub-RTIe_builder: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile
 sub-RTIe_builder-make_first: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile 
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile 
 sub-RTIe_builder-all: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile all
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile all
 sub-RTIe_builder-clean: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile clean
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile clean
 sub-RTIe_builder-distclean: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile distclean
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile distclean
 sub-RTIe_builder-install_subtargets: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile install
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile install
 sub-RTIe_builder-uninstall_subtargets: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
 sub-RTIe_tests-qmake_all:  FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
+	cd RTIe_tests\ && $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 	cd RTIe_tests\ && $(MAKE) -f Makefile qmake_all
 sub-RTIe_tests: FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile
 sub-RTIe_tests-make_first: FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile 
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile 
 sub-RTIe_tests-all: FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile all
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile all
 sub-RTIe_tests-clean: FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile clean
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile clean
 sub-RTIe_tests-distclean: FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile distclean
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile distclean
 sub-RTIe_tests-install_subtargets: FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile install
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile install
 sub-RTIe_tests-uninstall_subtargets: FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ../RTIe/RTIe.pro C:/Qt/5.14.0/mingw73_32/mkspecs/win32-g++/qmake.conf C:/Qt/5.14.0/mingw73_32/mkspecs/features/spec_pre.prf \
 		C:/Qt/5.14.0/mingw73_32/mkspecs/qdevice.pri \
@@ -266,6 +266,7 @@ Makefile: ../RTIe/RTIe.pro C:/Qt/5.14.0/mingw73_32/mkspecs/win32-g++/qmake.conf 
 		C:/Qt/5.14.0/mingw73_32/mkspecs/features/qt_config.prf \
 		C:/Qt/5.14.0/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/5.14.0/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/5.14.0/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/5.14.0/mingw73_32/mkspecs/features/toolchain.prf \
 		C:/Qt/5.14.0/mingw73_32/mkspecs/features/default_pre.prf \
@@ -460,6 +461,7 @@ C:/Qt/5.14.0/mingw73_32/mkspecs/features/qt_functions.prf:
 C:/Qt/5.14.0/mingw73_32/mkspecs/features/qt_config.prf:
 C:/Qt/5.14.0/mingw73_32/mkspecs/win32-g++/qmake.conf:
 C:/Qt/5.14.0/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/5.14.0/mingw73_32/mkspecs/features/exclusive_builds.prf:
 C:/Qt/5.14.0/mingw73_32/mkspecs/features/toolchain.prf:
 C:/Qt/5.14.0/mingw73_32/mkspecs/features/default_pre.prf:
@@ -493,18 +495,18 @@ uninstall_subtargets: sub-RTIe_builder-uninstall_subtargets sub-RTIe_tests-unins
 
 sub-RTIe_builder-check:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
 sub-RTIe_tests-check:
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
 check: sub-RTIe_builder-check sub-RTIe_tests-check
 
 sub-RTIe_builder-benchmark:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
-	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
+	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
 sub-RTIe_tests-benchmark:
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\jorda\Documents\ToluGit\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
+	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tolu\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
 benchmark: sub-RTIe_builder-benchmark sub-RTIe_tests-benchmark
 install:install_subtargets  FORCE
 

@@ -1,6 +1,8 @@
 #include "splash_screen.h"
 #include "new_Project.h"
 
+
+
 #include <QApplication>
 #include <QPushButton>
 #include <QtCore>
@@ -57,12 +59,12 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
      settings_Button->setMinimumSize(30, 30);
      settings_Button->setMaximumSize(30, 30);
 
-     //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
-//     connect(new_Project_Button, SIGNAL(clicked()), &new_project, SLOT(new_Project_Open_Page()));open_Project_Button
-     connect(new_Project_Button, SIGNAL(clicked()), &new_projectw, SLOT(new_projectw_Open_Page()));
-     //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
-     connect(help_Button, SIGNAL(clicked()), this, SLOT(help_Button_Clicked()));
 
+     //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
+     connect(open_Project_Button, SIGNAL(clicked()), &home_Page, SLOT(open_Homepage()));
+     connect(new_Project_Button, SIGNAL(clicked()), &new_projectw, SLOT(new_projectw_Open_Page()));
+     connect(help_Button, SIGNAL(clicked()), this, SLOT(help_Button_Clicked()));
+     this->hide();
 
 }
 /*
