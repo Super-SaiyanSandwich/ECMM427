@@ -486,15 +486,23 @@ public:
         scrollArea = new QScrollArea(centralwidget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         scrollArea->setGeometry(QRect(1, 1, 1044, 694));
+        scrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
         scrollArea->setWidgetResizable(true);
+        scrollArea->setAlignment(Qt::AlignCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1042, 692));
         image_Label = new QLabel(scrollAreaWidgetContents);
         image_Label->setObjectName(QString::fromUtf8("image_Label"));
         image_Label->setGeometry(QRect(0, 0, 1044, 694));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(image_Label->sizePolicy().hasHeightForWidth());
+        image_Label->setSizePolicy(sizePolicy);
         image_Label->setFrameShape(QFrame::Panel);
         image_Label->setScaledContents(true);
+        image_Label->setAlignment(Qt::AlignCenter);
         scrollArea->setWidget(scrollAreaWidgetContents);
         marble_Detection->setCentralWidget(centralwidget);
         menubar = new QMenuBar(marble_Detection);
@@ -507,7 +515,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(3);
+        toolBox->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);

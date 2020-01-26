@@ -8,15 +8,19 @@
 
 // CONSTANT VALUES
 #define CENTER_SCALE_FACTOR 0.3
-#define SCROLL_AREA_HEIGHT 694
-#define SCROLL_AREA_WIDTH 1044
+#define SCROLL_AREA_HEIGHT 694.0
+#define SCROLL_AREA_WIDTH 1044.0
 
-///////////////////////////////////////////////////////////////
-//
-//    PAGE CREATION AND SETUP FUNCTIONS
-//
+//|=======================================
+//|
+//|    PAGE CREATION AND SETUP FUNCTIONS
+//|
 
 
+///
+/// \brief Page creation function - returns a "marble detection" page
+/// \param parent window
+///
 marble_Detection::marble_Detection(QWidget *parent) : QMainWindow(parent),
     ui(new Ui::marble_Detection)
 {
@@ -57,7 +61,7 @@ marble_Detection::~marble_Detection()
 
 
 ///
-/// Updates the images displayed on screen by painting over the base image
+/// \brief Updates the images displayed on screen by painting over the base image
 ///
 void marble_Detection::update_Marble_Marker()
 {
@@ -111,18 +115,60 @@ void marble_Detection::update_Marble_Marker()
 
 void marble_Detection::reset_Image_Zoom()
 {
-    float height_Scale = this->base_Image.height() / SCROLL_AREA_HEIGHT;
-    float width_Scale = this->base_Image.width() / SCROLL_AREA_WIDTH;
+    zoom_Percentage = 100;
+
+    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image.height();
+    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image.width());
+
+
+    ui->image_Label->resize(this->base_Image.width() * scaler, this->base_Image.height() * scaler);
 
     return;
 }
 
 
+void marble_Detection::image_Zoom_In(int percent)
+{
+    zoom_Percentage += percent;
+
+    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image.height();
+    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image.width());
+
+    ui->image_Label->resize(this->base_Image.width() * scaler * zoom_Percentage / 100, this->base_Image.height() * scaler * zoom_Percentage / 100);
+    //ui->scrollArea->adjustSize();
+
+    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 + percent);
+    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 + percent);
+
+    ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
+}
 
 
+void marble_Detection::image_Zoom_Out(int percent)
+{
+    zoom_Percentage -= percent;
 
+    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image.height();
+    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image.width());
 
+    ui->image_Label->resize(this->base_Image.width() * scaler * zoom_Percentage / 100, this->base_Image.height() * scaler * zoom_Percentage / 100);
+    //ui->scrollArea->adjustSize();
 
+    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 - percent);
+    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 - percent);
+
+    ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
+}
+//! [24]
+
+//! [25]
+void marble_Detection::adjust_Scroll_Bar(QScrollBar *scrollBar, double factor)
+//! [25] //! [26]
+{
+    factor = factor / 100.0;
+    scrollBar->setValue(int(factor * scrollBar->value()
+                            + ((factor - 1) * scrollBar->pageStep()/2)));
+}
 
 
 void marble_Detection::on_spin_Box_X_valueChanged(int X)
@@ -208,6 +254,11 @@ void marble_Detection::on_colour_Selector_Button_clicked()
     ui->horizontal_Scroll_Bar_Blue->setValue(b);
 }
 
+void marble_Detection::set_Maximums();
+{
+
+}
+
 
 bool marble_Detection::load_File(const QString &fileName)
 {
@@ -228,7 +279,10 @@ bool marble_Detection::load_File(const QString &fileName)
         .arg(QDir::toNativeSeparators(fileName)).arg(base_Image.width()).arg(base_Image.height()).arg(base_Image.depth());
     statusBar()->showMessage(message);
 
+    this->set_Maximums();
     this->update_Marble_Marker();
+    this->reset_Image_Zoom();
+
     return true;
 }
 
@@ -262,4 +316,19 @@ void marble_Detection::on_open_Button_clicked()
     initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
 
     while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {};
+}
+
+void marble_Detection::on_zoom_Reset_Button_clicked()
+{
+    reset_Image_Zoom();
+}
+
+void marble_Detection::on_zoom_In_Button_clicked()
+{
+    image_Zoom_In(25);
+}
+
+void marble_Detection::on_zoom_Out_Button_clicked()
+{
+    image_Zoom_Out(25);
 }

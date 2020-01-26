@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QLabel>
+#include <QScrollBar>
 
 namespace Ui {
 class marble_Detection;
@@ -35,8 +36,10 @@ private:
 
     void update_Marble_Marker();
     void reset_Image_Zoom();
-    void image_Zoom_In();
-    void image_Zoom_Out();
+    void image_Zoom_In(int percent);
+    void image_Zoom_Out(int percent);
+    void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
+    void set_Maximums();
 
 signals:
 
@@ -52,6 +55,9 @@ private slots:
     void on_colour_Selector_Button_clicked();
     void on_horizontal_Slider_Radius_valueChanged(int value);
     void on_open_Button_clicked();
+    void on_zoom_Reset_Button_clicked();
+    void on_zoom_In_Button_clicked();
+    void on_zoom_Out_Button_clicked();
 };
 
 #endif // MARBLE_DETECTION_H
