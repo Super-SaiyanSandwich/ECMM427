@@ -58,6 +58,7 @@ private slots:
     void on_zoom_Reset_Button_clicked();
     void on_zoom_In_Button_clicked();
     void on_zoom_Out_Button_clicked();
+    void on_test_Button_clicked();
 };
 
 #endif // MARBLE_DETECTION_H

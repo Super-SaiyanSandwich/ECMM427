@@ -53,7 +53,7 @@ QToolBox::tab:selected {
 }*/</string>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="movement_Page">
         <property name="geometry">
@@ -565,6 +565,19 @@ QScrollBar::sub-line:horizontal {
          </property>
          <property name="text">
           <string>Open</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="test_Button">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>310</y>
+           <width>80</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Test</string>
          </property>
         </widget>
        </widget>

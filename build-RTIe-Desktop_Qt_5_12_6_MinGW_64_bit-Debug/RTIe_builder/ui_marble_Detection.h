@@ -80,6 +80,7 @@ public:
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
     QPushButton *open_Button;
+    QPushButton *test_Button;
     QLabel *label;
     QLabel *preivew_Label;
     QScrollArea *scrollArea;
@@ -465,6 +466,9 @@ public:
         open_Button = new QPushButton(images_Page);
         open_Button->setObjectName(QString::fromUtf8("open_Button"));
         open_Button->setGeometry(QRect(10, 310, 75, 23));
+        test_Button = new QPushButton(images_Page);
+        test_Button->setObjectName(QString::fromUtf8("test_Button"));
+        test_Button->setGeometry(QRect(90, 310, 80, 22));
         toolBox->addItem(images_Page, QString::fromUtf8("Images"));
 
         verticalLayout->addWidget(toolBox);
@@ -515,7 +519,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(2);
+        toolBox->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);
@@ -547,6 +551,7 @@ public:
         colour_Selector_Button->setText(QApplication::translate("marble_Detection", "...", nullptr));
         toolBox->setItemText(toolBox->indexOf(tools_Page), QApplication::translate("marble_Detection", "Tools", nullptr));
         open_Button->setText(QApplication::translate("marble_Detection", "Open", nullptr));
+        test_Button->setText(QApplication::translate("marble_Detection", "Test", nullptr));
         toolBox->setItemText(toolBox->indexOf(images_Page), QApplication::translate("marble_Detection", "Images", nullptr));
         label->setText(QApplication::translate("marble_Detection", "Preview:", nullptr));
         image_Label->setText(QString());

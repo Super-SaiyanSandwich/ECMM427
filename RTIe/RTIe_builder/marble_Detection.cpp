@@ -1,15 +1,22 @@
 #include "marble_Detection.h"
 #include "ui_marble_Detection.h"
 
+#include <tuple>
+#include <vector>
+
 #include <QtWidgets>
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
 
+using namespace std;
+
 // CONSTANT VALUES
 #define CENTER_SCALE_FACTOR 0.3
 #define SCROLL_AREA_HEIGHT 694.0
 #define SCROLL_AREA_WIDTH 1044.0
+#define CONTRAST_PIVOT_POINT 200
+#define CONTRAST_SCALE 2.5
 
 //|=======================================
 //|
@@ -254,11 +261,6 @@ void marble_Detection::on_colour_Selector_Button_clicked()
     ui->horizontal_Scroll_Bar_Blue->setValue(b);
 }
 
-void marble_Detection::set_Maximums();
-{
-
-}
-
 
 bool marble_Detection::load_File(const QString &fileName)
 {
@@ -331,4 +333,85 @@ void marble_Detection::on_zoom_In_Button_clicked()
 void marble_Detection::on_zoom_Out_Button_clicked()
 {
     image_Zoom_Out(25);
+}
+
+
+void marble_Detection::set_Maximums()
+{
+    ui->horizontal_Slider_X->setMaximum(this->x - radius * 2);
+    ui->horizontal_Slider_Y->setMaximum(this->y - radius * 2);
+
+    ui->spin_Box_X->setMaximum(this->x - radius * 2);
+    ui->spin_Box_Y->setMaximum(this->y - radius * 2);
+}
+
+void marble_Detection::on_test_Button_clicked()
+{
+    QRgb pixel;
+    QColor col;
+    int r, g, b;
+
+    vector<tuple<int,int>> cluster_Points;
+
+    QImage marble = ui->preivew_Label->pixmap()->toImage();
+
+
+    for(int x = 0; x < marble.width(); x++)
+    {
+        for (int y = 0; y < marble.height(); y++) {
+            pixel  = marble.pixel(x,y);
+            col = QRgb(pixel);
+            col.getRgb(&r, &g, &b);
+
+            r -= CONTRAST_PIVOT_POINT;
+            r *= CONTRAST_SCALE;
+            r += CONTRAST_PIVOT_POINT;
+            r = r > 255 ? 255 : r;
+            r = r < 0 ? 0 : r;
+
+            g -= CONTRAST_PIVOT_POINT;
+            g *= CONTRAST_SCALE;
+            g += CONTRAST_PIVOT_POINT;
+            g = g > 255 ? 255 : g;
+            g = g < 0 ? 0 : g;
+
+            b -= CONTRAST_PIVOT_POINT;
+            b *= CONTRAST_SCALE;
+            b += CONTRAST_PIVOT_POINT;
+            b = b > 255 ? 255 : b;
+            b = b < 0 ? 0 : b;
+
+
+            if ((r == g) and (g == b) and (b == 255))
+            {
+                cluster_Points.emplace_back(x ,y);
+            }
+
+
+            marble.setPixel(x, y, qRgb(r, g, b));
+
+        }
+    }
+
+    double sum_X = 0;
+    double sum_Y = 0;
+    int count = 0;
+
+    for (tuple<int, int> p : cluster_Points)
+    {
+        sum_X += get<0>(p);
+        sum_Y += get<1>(p);
+        count++;
+    }
+    sum_X /= count;
+    sum_Y /= count;
+
+    sum_X = int(sum_X);
+    sum_Y = int(sum_Y);
+
+    marble.setPixel(sum_X, sum_Y, qRgb(0, 255, 0));
+
+
+
+    ui->preivew_Label->setPixmap(QPixmap::fromImage(marble));
 }
