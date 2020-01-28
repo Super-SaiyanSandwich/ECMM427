@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDoubleSpinBox>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -73,13 +74,18 @@ public:
     QLabel *label_Blue;
     QScrollBar *horizontal_Scroll_Bar_Blue;
     QToolButton *colour_Selector_Button;
+    QWidget *images_Page;
+    QScrollArea *scrollArea_2;
+    QWidget *scrollAreaWidgetContents_2;
+    QWidget *formLayoutWidget;
+    QFormLayout *formLayout;
+    QPushButton *open_Button;
+    QPushButton *test_Button;
     QLabel *label;
     QLabel *preivew_Label;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QLabel *image_Label;
-    QWidget *widget;
-    QWidget *widget_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -124,10 +130,10 @@ public:
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QString::fromUtf8("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 189, 375));
+        movement_Page->setGeometry(QRect(0, 0, 189, 347));
         verticalLayoutWidget_2 = new QWidget(movement_Page);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 171, 361));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 171, 331));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -181,10 +187,10 @@ public:
         toolBox->addItem(movement_Page, QString::fromUtf8("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QString::fromUtf8("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 189, 375));
+        scale_Page->setGeometry(QRect(0, 0, 189, 347));
         verticalLayoutWidget_3 = new QWidget(scale_Page);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(10, 0, 171, 371));
+        verticalLayoutWidget_3->setGeometry(QRect(10, 0, 171, 341));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -227,10 +233,10 @@ public:
         toolBox->addItem(scale_Page, QString::fromUtf8("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QString::fromUtf8("tools_Page"));
-        tools_Page->setGeometry(QRect(0, 0, 189, 375));
+        tools_Page->setGeometry(QRect(0, 0, 189, 347));
         verticalLayoutWidget_4 = new QWidget(tools_Page);
         verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
-        verticalLayoutWidget_4->setGeometry(QRect(10, 0, 171, 361));
+        verticalLayoutWidget_4->setGeometry(QRect(10, 0, 171, 341));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_4);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -440,6 +446,30 @@ public:
         verticalLayout_4->addLayout(verticalLayout_5);
 
         toolBox->addItem(tools_Page, QString::fromUtf8("Tools"));
+        images_Page = new QWidget();
+        images_Page->setObjectName(QString::fromUtf8("images_Page"));
+        images_Page->setGeometry(QRect(0, 0, 189, 347));
+        scrollArea_2 = new QScrollArea(images_Page);
+        scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
+        scrollArea_2->setGeometry(QRect(10, 0, 171, 300));
+        scrollArea_2->setWidgetResizable(true);
+        scrollAreaWidgetContents_2 = new QWidget();
+        scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 169, 298));
+        formLayoutWidget = new QWidget(scrollAreaWidgetContents_2);
+        formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
+        formLayoutWidget->setGeometry(QRect(0, 0, 171, 291));
+        formLayout = new QFormLayout(formLayoutWidget);
+        formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        scrollArea_2->setWidget(scrollAreaWidgetContents_2);
+        open_Button = new QPushButton(images_Page);
+        open_Button->setObjectName(QString::fromUtf8("open_Button"));
+        open_Button->setGeometry(QRect(10, 310, 75, 23));
+        test_Button = new QPushButton(images_Page);
+        test_Button->setObjectName(QString::fromUtf8("test_Button"));
+        test_Button->setGeometry(QRect(90, 310, 80, 22));
+        toolBox->addItem(images_Page, QString::fromUtf8("Images"));
 
         verticalLayout->addWidget(toolBox);
 
@@ -460,26 +490,28 @@ public:
         scrollArea = new QScrollArea(centralwidget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         scrollArea->setGeometry(QRect(1, 1, 1044, 694));
+        scrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
         scrollArea->setWidgetResizable(true);
+        scrollArea->setAlignment(Qt::AlignCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1042, 692));
         image_Label = new QLabel(scrollAreaWidgetContents);
         image_Label->setObjectName(QString::fromUtf8("image_Label"));
         image_Label->setGeometry(QRect(0, 0, 1044, 694));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(image_Label->sizePolicy().hasHeightForWidth());
+        image_Label->setSizePolicy(sizePolicy);
         image_Label->setFrameShape(QFrame::Panel);
         image_Label->setScaledContents(true);
-        widget = new QWidget(scrollAreaWidgetContents);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(700, 240, 120, 80));
-        widget_2 = new QWidget(scrollAreaWidgetContents);
-        widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        widget_2->setGeometry(QRect(10, 10, 120, 80));
+        image_Label->setAlignment(Qt::AlignCenter);
         scrollArea->setWidget(scrollAreaWidgetContents);
         marble_Detection->setCentralWidget(centralwidget);
         menubar = new QMenuBar(marble_Detection);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1251, 22));
+        menubar->setGeometry(QRect(0, 0, 1251, 21));
         marble_Detection->setMenuBar(menubar);
         statusbar = new QStatusBar(marble_Detection);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -487,7 +519,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(2);
+        toolBox->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);
@@ -518,6 +550,9 @@ public:
         label_Blue->setText(QApplication::translate("marble_Detection", "   Blue:", nullptr));
         colour_Selector_Button->setText(QApplication::translate("marble_Detection", "...", nullptr));
         toolBox->setItemText(toolBox->indexOf(tools_Page), QApplication::translate("marble_Detection", "Tools", nullptr));
+        open_Button->setText(QApplication::translate("marble_Detection", "Open", nullptr));
+        test_Button->setText(QApplication::translate("marble_Detection", "Test", nullptr));
+        toolBox->setItemText(toolBox->indexOf(images_Page), QApplication::translate("marble_Detection", "Images", nullptr));
         label->setText(QApplication::translate("marble_Detection", "Preview:", nullptr));
         image_Label->setText(QString());
     } // retranslateUi
