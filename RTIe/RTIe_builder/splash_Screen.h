@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QWidget>
 #include "new_Project.h"
-#include "new_Project_Wizard.h"
+//#include "new_Project_Wizard.h"
 
 class splashScreen : public QMainWindow
 {
@@ -14,7 +14,11 @@ public:
 
 private:
     new_Project new_project;
+<<<<<<< HEAD
     new_Project_Wizard new_project_wizard;
+=======
+    //new_Projectw new_projectw;
+>>>>>>> image_Manipulation_projectw_broken
 
 signals:
 
