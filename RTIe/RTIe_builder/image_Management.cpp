@@ -176,9 +176,9 @@ void image_Management::remove(){
         QInputDialog removal_Reason;
         //removal_Reason.setComboBoxItems(apply_All);
 
-        /*QString reason = removal_Reason.getMultiLineText(this, tr("QInputDialog::getMultiLineText()"),
+        QString reason = removal_Reason.getMultiLineText(this, tr("QInputDialog::getMultiLineText()"),
                                                       tr("Reason for removal:"), "Type reason(s) here", &ok);
-        */
+
 
         //QString reason = QError
 
