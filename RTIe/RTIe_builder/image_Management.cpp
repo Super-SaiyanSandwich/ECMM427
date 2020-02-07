@@ -41,6 +41,8 @@ image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(ne
     QStringList file_List;
 
     //read(working_Directory);
+    qInfo() << working_Directory;
+   //QStringList x = get_Working_Image_Paths(working_Directory);
 
     qInfo() << "Stop";
 
@@ -110,6 +112,18 @@ void image_Management::import(){
 
 }
 
+
+QStringList get_Working_Image_Paths(QString wd){
+
+    QDir dir(wd);
+
+    QStringList file_Paths = dir.entryList(QStringList() << "*.jpg" << "*.png",QDir::Files);
+
+    qInfo() << file_Paths;
+
+    return file_Paths;
+}
+
 // Read Working Directory
 /*
  * Reads images from working directory to show tiles
@@ -172,7 +186,7 @@ void image_Management::remove(){
 
 
         bool ok;
-        QCheckBox *apply_All = new QCheckBox("Apply all", this);
+        //QCheckBox *apply_All = new QCheckBox("Apply all", this);
         QInputDialog removal_Reason;
         //removal_Reason.setComboBoxItems(apply_All);
 
