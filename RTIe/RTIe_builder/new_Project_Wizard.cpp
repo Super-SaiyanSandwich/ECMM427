@@ -103,20 +103,23 @@ new_Project_Wizard::~new_Project_Wizard()
 QWizardPage *createRegistrationPage()
 {
     QWizardPage *page = new QWizardPage;
-    page->setTitle("Registration");
-    page->setSubTitle("Please fill both fields.");
+    page->setTitle("Project Creation");
+    page->setSubTitle("Please enter/choose a directory to create a project folder");
 
-    QLabel *nameLabel = new QLabel("Name:");
+    QLabel *nameLabel = new QLabel("Directory path:");
     QLineEdit *nameLineEdit = new QLineEdit;
+    QPushButton choose_Dir;
+    QLabel choose_Dir_Label;
 
-    QLabel *emailLabel = new QLabel("Email address:");
-    QLineEdit *emailLineEdit = new QLineEdit;
+    //QLabel *emailLabel = new QLabel("Email address:");
+    //QLineEdit *emailLineEdit = new QLineEdit;
 
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(nameLabel, 0, 0);
     layout->addWidget(nameLineEdit, 0, 1);
-    layout->addWidget(emailLabel, 1, 0);
-    layout->addWidget(emailLineEdit, 1, 1);
+    //connect(layout->)
+    //layout->addWidget(emailLabel, 1, 0);
+    //layout->addWidget(emailLineEdit, 1, 1);
     page->setLayout(layout);
 
     return page;
