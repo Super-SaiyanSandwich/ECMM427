@@ -1,6 +1,6 @@
 #include "splash_Screen.h"
 #include "new_Project.h"
-#include "marble_detection.h"
+#include "marble_Detection.h"
 
 #include <QApplication>
 #include <QPushButton>

@@ -1,6 +1,8 @@
 #ifndef NEW_PROJECTW_H
 #define NEW_PROJECTW_H
 
+#include <QPushButton>
+#include <QLabel>
 #include <QWizardPage>
 
 namespace Ui {
@@ -18,6 +20,8 @@ public:
 private:
     Ui::new_Project_Wizard *ui;
 
+
+
 //private slots:
 //    QWizardPage* createIntroPage();
 //    QWizardPage* createConclusionPage();
@@ -25,6 +29,7 @@ private:
 
 public slots:
     static void new_Project_Wizard_Open_Page();
+    void select_Project_Path();
 };
 
 #endif // NEW_PROJECTW_H
