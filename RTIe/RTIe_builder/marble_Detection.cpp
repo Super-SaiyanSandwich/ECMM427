@@ -193,7 +193,12 @@ void marble_Detection::on_spin_Box_Y_valueChanged(int Y)
 
 void marble_Detection::on_spin_Box_Radius_valueChanged(double radius)
 {
+    double delta_Radius = radius - this->radius;
+
     this->radius = radius;
+    this->x -= int(delta_Radius);
+    this->y -= int(delta_Radius);
+
     ui->horizontal_Slider_Radius->setValue(radius);
     this->update_Marble_Marker();
 
@@ -201,6 +206,11 @@ void marble_Detection::on_spin_Box_Radius_valueChanged(double radius)
     ui->spin_Box_Y->setMaximum(base_Image.height() - 2*radius);
     ui->horizontal_Slider_X->setMaximum(base_Image.width() - 2*radius);
     ui->horizontal_Slider_Y->setMaximum(base_Image.height() - 2*radius);
+
+    ui->spin_Box_X->setValue(this->x);
+    ui->spin_Box_Y->setValue(this->y);
+    ui->horizontal_Slider_X->setValue(this->x);
+    ui->horizontal_Slider_Y->setValue(this->y);
 }
 
 void marble_Detection::on_horizontal_Slider_X_valueChanged(int value)
@@ -407,17 +417,7 @@ void marble_Detection::on_test_Button_clicked()
     sum_X = int(sum_X);
     sum_Y = int(sum_Y);
 
-    QPixmap base_Pix = QPixmap::fromImage(marble);
-    QPainter *paint = new QPainter(&base_Pix);
-
-    QPen pen;
-
-    pen.setBrush(QColor(0,255,0));
-    pen.setWidth(3);
-
-    paint->drawLine(sum_X - 5, sum_Y - 5, sum_X + 5, sum_Y + 5);
-    paint->drawLine(sum_X - 5, sum_Y + 5, sum_X + 5, sum_Y - 5);
-
+    
 
     ui->preivew_Label->setPixmap(base_Pix);
 }
