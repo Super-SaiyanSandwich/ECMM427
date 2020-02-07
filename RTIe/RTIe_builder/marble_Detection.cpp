@@ -418,6 +418,6 @@ void marble_Detection::on_test_Button_clicked()
     sum_Y = int(sum_Y);
 
     
-
+    QPixmap base_Pix = QPixmap::fromImage(marble);
     ui->preivew_Label->setPixmap(base_Pix);
 }

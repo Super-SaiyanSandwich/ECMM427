@@ -26,6 +26,7 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_4;
+    QPushButton *pushButton_3;
 
     void setupUi(QWizardPage *new_Project_Wizard)
     {
@@ -34,7 +35,7 @@ public:
         new_Project_Wizard->resize(631, 383);
         layoutWidget = new QWidget(new_Project_Wizard);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(370, 340, 239, 25));
+        layoutWidget->setGeometry(QRect(370, 340, 254, 26));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -53,6 +54,9 @@ public:
 
         horizontalLayout->addWidget(pushButton_4);
 
+        pushButton_3 = new QPushButton(new_Project_Wizard);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setGeometry(QRect(250, 120, 80, 24));
 
         retranslateUi(new_Project_Wizard);
 
@@ -65,6 +69,7 @@ public:
         pushButton->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
         pushButton_2->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
         pushButton_4->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
+        pushButton_3->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
     } // retranslateUi
 
 };
