@@ -12,7 +12,7 @@ SOURCES += \
     new_Project_Settings.cpp \
     new_Project_Wizard.cpp \
     splash_screen.cpp \
-    stackedexample.cpp
+    system_ui.cpp
 
 
 RESOURCES += \
@@ -25,8 +25,10 @@ HEADERS += \
     new_Project_Settings.h \
     new_Project_Wizard.h \
     splash_screen.h \
-    stackedexample.h
+    system_ui.h
 
 FORMS += \
     new_Project_Wizard.ui \
-    stackedexample.ui
+    system_ui.ui
+
+DISTFILES +=

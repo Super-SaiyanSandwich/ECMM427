@@ -1,37 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>stackedExample</class>
- <widget class="QMainWindow" name="stackedExample">
+ <class>RTIBuilder</class>
+ <widget class="QMainWindow" name="RTIBuilder">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>936</width>
-    <height>626</height>
+    <width>933</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>stackedExample</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="Recourse.qrc">
+    <normaloff>:/rec/img/icon.png</normaloff>:/rec/img/icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>931</width>
-      <height>601</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>3</number>
-    </property>
-    <widget class="QWidget" name="page">
-     <layout class="QGridLayout" name="gridLayout_8">
-      <item row="0" column="0" rowspan="2" colspan="2">
-       <layout class="QGridLayout" name="gridLayout_2">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="page_1">
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0" rowspan="2" colspan="2">
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <pointsize>48</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Page 1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QListWidget" name="listWidget"/>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QPushButton" name="btn_page5">
+              <property name="text">
+               <string>&lt; Back</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_page2">
+              <property name="text">
+               <string>Next &gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
             <pointsize>48</pointsize>
@@ -40,24 +79,138 @@
            </font>
           </property>
           <property name="text">
-           <string>Page 1</string>
+           <string>Page 2</string>
           </property>
          </widget>
         </item>
+        <item row="1" column="1">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="btn_page1">
+            <property name="text">
+             <string>&lt; Back</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="btn_page3">
+            <property name="text">
+             <string>Next &gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item row="0" column="1">
-         <widget class="QListWidget" name="listWidget"/>
+         <widget class="QListWidget" name="listWidget_4"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <pointsize>48</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Page 3</string>
+          </property>
+         </widget>
         </item>
         <item row="1" column="1">
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="btn_page5">
+           <widget class="QPushButton" name="btn_page2_2">
             <property name="text">
              <string>&lt; Back</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btn_page2">
+           <widget class="QPushButton" name="btn_page4">
+            <property name="text">
+             <string>Next &gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <widget class="QListWidget" name="listWidget_2"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <pointsize>48</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Page 4</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="btn_page3_2">
+            <property name="text">
+             <string>&lt; Back</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_page5_2">
+            <property name="text">
+             <string>Next &gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <widget class="QListWidget" name="listWidget_3"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="font">
+           <font>
+            <pointsize>48</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Page 5</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QPushButton" name="btn_page4_2">
+            <property name="text">
+             <string>&lt; Back</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_page1_2">
             <property name="text">
              <string>Next &gt;</string>
             </property>
@@ -66,171 +219,18 @@
          </layout>
         </item>
        </layout>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="page_2">
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="font">
-         <font>
-          <pointsize>48</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Page 2</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="btn_page1">
-          <property name="text">
-           <string>&lt; Back</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="btn_page3">
-          <property name="text">
-           <string>Next &gt;</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="1">
-       <widget class="QListWidget" name="listWidget_4"/>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="page_3">
-     <layout class="QGridLayout" name="gridLayout_7">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <pointsize>48</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Page 3</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="btn_page2_2">
-          <property name="text">
-           <string>&lt; Back</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_page4">
-          <property name="text">
-           <string>Next &gt;</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="1">
-       <widget class="QListWidget" name="listWidget_2"/>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="page_4">
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="font">
-         <font>
-          <pointsize>48</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Page 4</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QPushButton" name="btn_page3_2">
-          <property name="text">
-           <string>&lt; Back</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_page5_2">
-          <property name="text">
-           <string>Next &gt;</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="1">
-       <widget class="QListWidget" name="listWidget_3"/>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="page_5">
-     <layout class="QGridLayout" name="gridLayout_6">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="font">
-         <font>
-          <pointsize>48</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Page 5</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QPushButton" name="btn_page4_2">
-          <property name="text">
-           <string>&lt; Back</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_page1_2">
-          <property name="text">
-           <string>Next &gt;</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>936</width>
-     <height>22</height>
+     <width>933</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu1">
@@ -279,7 +279,6 @@
    <addaction name="menu4"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="action_New_Project">
    <property name="icon">
     <iconset resource="Recourse.qrc">

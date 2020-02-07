@@ -15,5 +15,6 @@
         <file>img/Exit2.png</file>
         <file>img/ExitLarge.png</file>
         <file>img/settings.png</file>
+        <file>img/icon.png</file>
     </qresource>
 </RCC>

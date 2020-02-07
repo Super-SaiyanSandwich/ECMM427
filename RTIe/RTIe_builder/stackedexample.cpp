@@ -1,12 +1,10 @@
-#include "stackedexample.h"
-#include "ui_stackedexample.h"
-#include <iostream>
+#include "stackedExample.h"
+#include "ui_stackedExample.h"
+//#include <iostream>
 
-using namespace std;
+//using namespace std;
 
-stackedExample::stackedExample(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::stackedExample)
+stackedExample::stackedExample(QWidget *parent): QMainWindow(parent), ui(new Ui::stackedExample)
 {
     ui->setupUi(this);
     ui->listWidget->setViewMode(QListWidget::IconMode);

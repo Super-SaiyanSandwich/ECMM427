@@ -4,7 +4,7 @@ new_Project.o
 new_Project_Settings.o
 new_Project_Wizard.o
 splash_screen.o
-stackedexample.o
+system_ui.o
 qrc_Recourse.o
 qrc_test.o
 moc_image_Management.o
@@ -12,4 +12,4 @@ moc_new_Project.o
 moc_new_Project_Settings.o
 moc_new_Project_Wizard.o
 moc_splash_screen.o
-moc_stackedexample.o
+moc_system_ui.o

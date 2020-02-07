@@ -15,12 +15,11 @@ public:
     stackedExample(QWidget *parent = nullptr);
     ~stackedExample();
 
+private:
+    Ui::stackedExample *ui;
+
 private slots:
     void open_Homepage();
-
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
 
     void on_btn_page2_clicked();
 
@@ -41,8 +40,5 @@ private slots:
     void on_btn_page1_2_clicked();
 
     void on_btn_page4_2_clicked();
-
-private:
-    Ui::stackedExample *ui;
 };
 #endif // STACKEDEXAMPLE_H
