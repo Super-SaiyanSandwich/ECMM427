@@ -14,7 +14,10 @@
 #include <QAction>
 #include <QPushButton>
 #include <QApplication>
-
+#include <QInputDialog>
+#include <QMessageBox>
+#include <QCheckBox>
+#include <QErrorMessage>
 
 
 
@@ -27,8 +30,7 @@ image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(ne
 
     connect(Ui->action_Import_Label, SIGNAL(triggered()), this, SLOT(import()));
     connect(Ui->import_Button_Label, SIGNAL(clicked()), this, SLOT(import()));
-
-
+    connect(Ui->delete_Button_Label, SIGNAL(clicked()), this, SLOT(remove()));
 
 
 
@@ -140,5 +142,70 @@ void image_Management::update(){
  *
  */
 void image_Management::remove(){
+
+    QStringList file_Path_List;
+    file_Path_List << "image1" << "image3";
+
+    QString file_List_Str = file_Path_List.join( "\n");
+
+    QMessageBox verify;
+    verify.setText("Are you sure you want to delete these images?\n");
+    verify.setInformativeText("This includes the follwing file(s):\n" + file_List_Str);
+    verify.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    verify.setDefaultButton(QMessageBox::Yes);
+    int ret = verify.exec();
+    qInfo() << "ret:" << ret;
+
+    //YES : 16384
+    //NO : 65536
+
+    //IF RET  == NO
+    if(ret == 65536){
+        //END
+
+    } else {
+
+        QStringListIterator file_Iterator(file_Path_List);
+        QFile file(file_Iterator.next().toLocal8Bit().constData());
+        QFileInfo file_Name(file.fileName());
+
+
+
+        bool ok;
+        QCheckBox *apply_All = new QCheckBox("Apply all", this);
+        QInputDialog removal_Reason;
+        //removal_Reason.setComboBoxItems(apply_All);
+
+        /*QString reason = removal_Reason.getMultiLineText(this, tr("QInputDialog::getMultiLineText()"),
+                                                      tr("Reason for removal:"), "Type reason(s) here", &ok);
+        */
+
+        //QString reason = QError
+
+        /*while(file_Iterator.hasNext()){
+            //ERROR handling for null reason
+
+
+            if(ok){
+                //output
+
+
+                break;
+            }
+        }*/
+
+    }
+
+
+        //if (ok && !text.isEmpty())
+    //    multiLineTextLabel->setText(text);
+
+    //while(){
+
+    //}
+
+
+    //QFile f();
+    //f.remove();
 
 }

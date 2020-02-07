@@ -16,6 +16,7 @@ class image_Management : public QMainWindow
 public:
     explicit image_Management(QWidget *parent = nullptr);
     ~image_Management();
+
     QString project_Location = "/Users/jordan/Network Drives/Git/ECMM427/jordan_test_dir/project" ;//new_Project_Settings::project_Location;
     QString source_Directory = project_Location + "/images/src";
     QString working_Directory = project_Location + "/images/wd";
@@ -27,6 +28,9 @@ private:
 
     QPushButton import_Button;
     QLabel *import_Button_Label;
+
+    QPushButton delete_Button;
+    QLabel *delete_Button_Label;
 
 signals:
 
