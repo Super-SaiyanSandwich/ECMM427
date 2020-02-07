@@ -29,7 +29,7 @@ private:
 
 public slots:
     static void new_Project_Wizard_Open_Page();
-    void select_Project_Path();
+    static void select_Project_Path();
 };
 
 #endif // NEW_PROJECTW_H

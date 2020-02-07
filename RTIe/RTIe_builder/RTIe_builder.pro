@@ -28,4 +28,5 @@ HEADERS += \
 
 FORMS += \
     marble_Detection.ui \
-    new_Project_Wizard.ui
+    new_Project_Wizard.ui \
+    image_Management.ui

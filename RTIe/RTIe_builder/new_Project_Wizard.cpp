@@ -160,7 +160,7 @@ void new_Project_Wizard::new_Project_Wizard_Open_Page()
     window->show();
 }
 
-void select_Project_Path(){
+static void select_Project_Path(){
 
     QString dir = "/";
 

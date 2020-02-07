@@ -39,7 +39,7 @@ public slots:
     void read(QString wd);
     void update();
     void remove();
-    QStringList get_Working_Image_Paths(QString wd);
+    static QStringList get_Working_Image_Paths(QString wd);
 
 };
 
