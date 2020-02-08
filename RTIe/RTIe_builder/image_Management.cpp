@@ -42,7 +42,7 @@ image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(ne
 
     //read(working_Directory);
     qInfo() << working_Directory;
-   QStringList x = get_Working_Image_Paths(working_Directory);
+    QStringList x = image_Management::get_Working_Image_Paths(working_Directory);
 
     qInfo() << "Stop";
 
@@ -113,7 +113,7 @@ void image_Management::import(){
 }
 
 
-static QStringList get_Working_Image_Paths(QString wd){
+QStringList image_Management::get_Working_Image_Paths(QString wd){
 
     QDir dir(wd);
 

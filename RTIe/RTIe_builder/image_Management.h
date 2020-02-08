@@ -20,6 +20,7 @@ public:
     QString project_Location = "/Users/jordan/Network Drives/Git/ECMM427/jordan_test_dir/project" ;//new_Project_Settings::project_Location;
     QString source_Directory = project_Location + "/images/src";
     QString working_Directory = project_Location + "/images/wd";
+    static QStringList get_Working_Image_Paths(QString wd);
 
 private:
     Ui::image_Management *Ui;
@@ -39,7 +40,7 @@ public slots:
     void read(QString wd);
     void update();
     void remove();
-    static QStringList get_Working_Image_Paths(QString wd);
+
 
 };
 
