@@ -1,5 +1,6 @@
 #include "image_Management.h"
 #include "new_Project_Settings.h"
+#include "splash_Screen.h"
 
 #include <QDir>
 #include <QDebug>
@@ -97,7 +98,7 @@ void image_Management::import(){
 
 QStringList image_Management::get_Working_Image_Paths(){
     QString wd = splashScreen::project_Path + "/images/wd";
-    QDir dir(project_Path);
+    QDir dir(wd);
     QStringList file_Paths;
 
     QStringList file_Name_Paths = dir.entryList(ACCEPTED_FORMATS,QDir::Files);
