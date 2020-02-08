@@ -7,14 +7,12 @@
 #include <QPixmap>
 #include <QListWidgetItem>
 #include <QDebug>
-#include "marble_Detection.h"
 
 system_Ui::system_Ui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
-
     QString path2 = "C:/Users/Tolu/Desktop/images/";
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
@@ -27,13 +25,13 @@ system_Ui::system_Ui(QWidget *parent) :
     {
 
         QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-        QFile current_Image(path);
-        QFileInfo current_Image_Info(current_Image.fileName());
-        QString file_Name(current_Image_Info.fileName());
-        file_Names.append(file_Name);
+//        QFile current_Image(path1);
+//        QFileInfo current_Image_Info(current_Image.fileName());
+//        QString file_Name(current_Image_Info.fileName());
+//        file_Names.append(file_Name);
 
-//        qInfo() << "path1:" << path << "\npath3:" << path3;
-        QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString(file_Name));//
+        qInfo() << "path1:" << path << "\npath3:" << path3;
+        QListWidgetItem *item = new QListWidgetItem(QIcon(path3),QString(file_Name));//
 //        QImage result = item->scaled(800, 600)->scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
         item->setCheckState(Qt::Unchecked); // AND initialize check state
@@ -53,29 +51,15 @@ void system_Ui::open_Homepage()//IMPORTANT FUNCTION
 
 }
 
-//void system_Ui::image_Display(){
-//    QString path = "C:/Users/Tolu/Desktop/images/";
-//    ui->listWidget->setViewMode(QListWidget::IconMode);
-//    ui->listWidget->setIconSize(QSize(200,150));
-//    ui->listWidget->setResizeMode(QListWidget::Adjust);
-//    QStringList path_List = image_Management::get_Working_Image_Paths(path);//*splashScreen::project_Path
-//    QStringListIterator file_Iterator(path_List);
-//    QStringList file_Names;
+void system_Ui::image_Display(){
 
-//    while (file_Iterator.hasNext())
-//    {
+    ui->listWidget->setViewMode(QListWidget::IconMode);
+    ui->listWidget->setIconSize(QSize(200,150));
+    ui->listWidget->setResizeMode(QListWidget::Adjust);
+    QStringList path_List = image_Management::get_Working_Image_Paths(splashScreen::project_Path);
+    QStringListIterator file_Iterator(path_List);
+    QStringList file_Names;
 
-//        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-//        QFile current_Image(path);
-//        QFileInfo current_Image_Info(current_Image.fileName());
-//        QString file_Name(current_Image_Info.fileName());
-//        file_Names.append(file_Name);
-//        QString file_path = path+file_Name;
-//        QListWidgetItem *item = new QListWidgetItem(QIcon(file_path),file_Name);
-//       QImage result = item.scaled(800, 600).scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-//        ui->listWidget->addItem(item);
-//    }
-//}
 
 void system_Ui::on_btn5_clicked()
 {
@@ -85,7 +69,6 @@ void system_Ui::on_btn5_clicked()
 void system_Ui::on_btn2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    marble_Detection();//Check it again....
 }
 
 void system_Ui::on_btn1_clicked()
