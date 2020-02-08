@@ -229,7 +229,12 @@ void marble_Detection::on_horizontal_Slider_Y_valueChanged(int value)
 
 void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
 {
+    int delta_Radius = value - this->radius;
+
     this->radius = value;
+    this->x -= int(delta_Radius);
+    this->y -= int(delta_Radius);
+
     ui->spin_Box_Radius->setValue(value);
     this->update_Marble_Marker();
 
@@ -237,6 +242,11 @@ void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
     ui->spin_Box_Y->setMaximum(base_Image.height() - 2*radius);
     ui->horizontal_Slider_X->setMaximum(base_Image.width() - 2*radius);
     ui->horizontal_Slider_Y->setMaximum(base_Image.height() - 2*radius);
+
+    ui->spin_Box_X->setValue(this->x);
+    ui->spin_Box_Y->setValue(this->y);
+    ui->horizontal_Slider_X->setValue(this->x);
+    ui->horizontal_Slider_Y->setValue(this->y);
 }
 
 void marble_Detection::on_horizontal_Scroll_Bar_Red_valueChanged(int value)
