@@ -7,15 +7,19 @@
 #include <QPixmap>
 #include <QListWidgetItem>
 #include <QDebug>
-#include "marble_Detection.h"
+
 
 system_Ui::system_Ui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
+<<<<<<< HEAD
 
 //    QString path2 = "C:/Users/Tolu/Desktop/images/";
+=======
+    //QString path2 = "C:/Users/Tolu/Desktop/images/";
+>>>>>>> feb44476af7920e546fb3ae0487c97c14ec443c8
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
@@ -32,7 +36,6 @@ system_Ui::system_Ui(QWidget *parent) :
         QString file_Name(current_Image_Info.fileName());
         file_Names.append(file_Name);
 
-//        qInfo() << "path1:" << path << "\npath3:" << path3;
         QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString(file_Name));//
 //        QImage result = item->scaled(800, 600)->scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
@@ -53,29 +56,15 @@ void system_Ui::open_Homepage()//IMPORTANT FUNCTION
 
 }
 
-//void system_Ui::image_Display(){
-//    QString path = "C:/Users/Tolu/Desktop/images/";
-//    ui->listWidget->setViewMode(QListWidget::IconMode);
-//    ui->listWidget->setIconSize(QSize(200,150));
-//    ui->listWidget->setResizeMode(QListWidget::Adjust);
-//    QStringList path_List = image_Management::get_Working_Image_Paths(path);//*splashScreen::project_Path
-//    QStringListIterator file_Iterator(path_List);
-//    QStringList file_Names;
+void system_Ui::image_Display(){
 
-//    while (file_Iterator.hasNext())
-//    {
-
-//        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-//        QFile current_Image(path);
-//        QFileInfo current_Image_Info(current_Image.fileName());
-//        QString file_Name(current_Image_Info.fileName());
-//        file_Names.append(file_Name);
-//        QString file_path = path+file_Name;
-//        QListWidgetItem *item = new QListWidgetItem(QIcon(file_path),file_Name);
-//       QImage result = item.scaled(800, 600).scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-//        ui->listWidget->addItem(item);
-//    }
-//}
+    ui->listWidget->setViewMode(QListWidget::IconMode);
+    ui->listWidget->setIconSize(QSize(200,150));
+    ui->listWidget->setResizeMode(QListWidget::Adjust);
+    QStringList path_List = image_Management::get_Working_Image_Paths();
+    QStringListIterator file_Iterator(path_List);
+    QStringList file_Names;
+}
 
 void system_Ui::on_btn5_clicked()
 {
@@ -85,7 +74,6 @@ void system_Ui::on_btn5_clicked()
 void system_Ui::on_btn2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    marble_Detection();//Check it again....
 }
 
 void system_Ui::on_btn1_clicked()
@@ -131,7 +119,11 @@ void system_Ui::on_btn1_2_clicked()
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item)
 {
 //    QString image_path = "C:/Users/Tolu/Desktop/images/image_1.jpg";
+<<<<<<< HEAD
     QString wd = splashScreen::project_Path+"/images/wd";
+=======
+    QString wd = splashScreen::project_Path + "/images/wd";
+>>>>>>> feb44476af7920e546fb3ae0487c97c14ec443c8
     QPixmap pix(wd);
     int w = ui->image_Preview->width();
     int h = ui->image_Preview->height();

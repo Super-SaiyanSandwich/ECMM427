@@ -114,7 +114,7 @@ void system_Ui::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         auto *_t = static_cast<system_Ui *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->image_Display(); break;
+//        case 0: _t->image_Display(); break;
         case 1: _t->open_Homepage(); break;
         case 2: _t->on_btn5_clicked(); break;
         case 3: _t->on_btn2_clicked(); break;
