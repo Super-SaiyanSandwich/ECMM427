@@ -11,12 +11,12 @@ int main(int argc, char **argv)
     QApplication app (argc, argv);
 
     //PREVIEW SPLASH SCREEN & PROJECT WIZARD
-    splashScreen splashScreen;
-    splashScreen.show();
+    //splashScreen splashScreen;
+    //splashScreen.show();
 
     //PREVIEW IMAGE MANAMGEMENT
-    //image_Management img;
-    //img.show();
+    image_Management img;
+    img.show();
 
     return app.exec();
 }
