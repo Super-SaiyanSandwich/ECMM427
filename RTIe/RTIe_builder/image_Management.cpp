@@ -150,6 +150,8 @@ void image_Management::update(){
 
 }
 
+
+
 // Delete/Remove image from working directory
 /*
  * Removes image from working directory and removal reason to removal_Log file.
@@ -160,68 +162,79 @@ void image_Management::update(){
 void image_Management::remove(){
 
     QStringList file_Path_List;
-    file_Path_List << "image1" << "image3";
+    file_Path_List << "image1.png" << "image2.png"; //TODO: ALLOW SELECTION AND DELETION
 
     QString file_List_Str = file_Path_List.join( "\n");
 
     QMessageBox verify;
     verify.setText("Are you sure you want to delete these images?\n");
     verify.setInformativeText("This includes the follwing file(s):\n" + file_List_Str);
-    verify.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    verify.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
     verify.setDefaultButton(QMessageBox::Yes);
-    int ret = verify.exec();
-    qInfo() << "ret:" << ret;
 
-    //YES : 16384
-    //NO : 65536
+    if(QMessageBox::Cancel == verify.exec()){
 
-    //IF RET  == NO
-    if(ret == 65536){
-        //END
+        QMessageBox deletion_Cancellation;
+        deletion_Cancellation.setText("Delete Operation Cancelled.");
+        deletion_Cancellation.setInformativeText("No images will be deleted.");
+        deletion_Cancellation.setStandardButtons(QMessageBox::Ok);
+        deletion_Cancellation.setDefaultButton(QMessageBox::Ok);
+        int ret = deletion_Cancellation.exec();
 
     } else {
 
         QStringListIterator file_Iterator(file_Path_List);
-        QFile file(file_Iterator.next().toLocal8Bit().constData());
-        QFileInfo file_Name(file.fileName());
+        QStringList removed_Files;
+        QStringList cancelled_Files;
+
+        while(file_Iterator.hasNext()){
+
+            QFile file(file_Iterator.next().toLocal8Bit().constData());
+            QFileInfo file_Name_Info(file.fileName());
+            QString file_Name(file_Name_Info.fileName());
 
 
+            bool ok;
+            QInputDialog removal_Reason;
 
-        bool ok;
-        //QCheckBox *apply_All = new QCheckBox("Apply all", this);
-        QInputDialog removal_Reason;
-        //removal_Reason.setComboBoxItems(apply_All);
+            QString window_Title = "Delete Image";
+            QString info_Text = "Image: \"" + file_Name + "\".\nReason for removal:";
 
-        QString reason = removal_Reason.getMultiLineText(this, tr("QInputDialog::getMultiLineText()"),
-                                                      tr("Reason for removal:"), "Type reason(s) here", &ok);
-
-
-        //QString reason = QError
-
-        /*while(file_Iterator.hasNext()){
-            //ERROR handling for null reason
-
+            QString reason = removal_Reason.getMultiLineText(this, window_Title, info_Text, "Type reason here", &ok);
 
             if(ok){
-                //output
+
+                removed_Files << file_Name;
+                file.remove();
 
 
-                break;
+            }else{
+
+                cancelled_Files << file_Name;
+                QMessageBox delete_Cancellation_Alert;
+                delete_Cancellation_Alert.setText("Delete operation cancelled.");
+                delete_Cancellation_Alert.setInformativeText("Image \"" + file_Name + "\" will remain unchanged." );
+                delete_Cancellation_Alert.setStandardButtons(QMessageBox::Ok);
+                delete_Cancellation_Alert.setDefaultButton(QMessageBox::Ok);
+                int ret = delete_Cancellation_Alert.exec();
+
             }
-        }*/
+
+
+        //END OF WHILE LOOP
+        }
+
+        QString summary = "The following files were removed:\n" + removed_Files.join(", ")
+        + "\n\nThe following files were not removed:\n" + cancelled_Files.join(", ");
+
+        QMessageBox deletion_Summary;
+        deletion_Summary.setText("Delete operation summary.");
+        deletion_Summary.setInformativeText(summary );
+        deletion_Summary.setStandardButtons(QMessageBox::Ok);
+        deletion_Summary.setDefaultButton(QMessageBox::Ok);
+        int ret = deletion_Summary.exec();
 
     }
 
-
-        //if (ok && !text.isEmpty())
-    //    multiLineTextLabel->setText(text);
-
-    //while(){
-
-    //}
-
-
-    //QFile f();
-    //f.remove();
 
 }
