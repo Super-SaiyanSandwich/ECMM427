@@ -14,7 +14,12 @@ system_Ui::system_Ui(QWidget *parent) :
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
+<<<<<<< HEAD
+
+//    QString path2 = "C:/Users/Tolu/Desktop/images/";
+=======
     //QString path2 = "C:/Users/Tolu/Desktop/images/";
+>>>>>>> feb44476af7920e546fb3ae0487c97c14ec443c8
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
@@ -114,7 +119,11 @@ void system_Ui::on_btn1_2_clicked()
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item)
 {
 //    QString image_path = "C:/Users/Tolu/Desktop/images/image_1.jpg";
+<<<<<<< HEAD
+    QString wd = splashScreen::project_Path+"/images/wd";
+=======
     QString wd = splashScreen::project_Path + "/images/wd";
+>>>>>>> feb44476af7920e546fb3ae0487c97c14ec443c8
     QPixmap pix(wd);
     int w = ui->image_Preview->width();
     int h = ui->image_Preview->height();
