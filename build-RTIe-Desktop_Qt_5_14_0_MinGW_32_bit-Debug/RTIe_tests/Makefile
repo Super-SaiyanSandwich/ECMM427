@@ -14,7 +14,7 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_GUI_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR="\"C:/Users/jorda/Documents/ToluGit/ECMM427/build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_tests\"" -DQT_QML_DEBUG
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_GUI_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR="\"C:/Users/Tolu/Documents/GitHub/ECMM427/build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_tests\"" -DQT_QML_DEBUG
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
 INCPATH       = -I..\..\RTIe\RTIe_tests -I. -IC:\Qt\5.14.0\mingw73_32\include -IC:\Qt\5.14.0\mingw73_32\include\QtGui -IC:\Qt\5.14.0\mingw73_32\include\QtANGLE -IC:\Qt\5.14.0\mingw73_32\include\QtTest -IC:\Qt\5.14.0\mingw73_32\include\QtCore -I. -IC:\Qt\5.14.0\mingw73_32\mkspecs\win32-g++ 
@@ -489,12 +489,12 @@ clean: compiler_clean
 	-$(DEL_FILE) tst_rtie_tests.o
 
 distclean: clean 
-	-$(DEL_FILE) C:\Users\jorda\Documents\ToluGit\ECMM427\build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug\RTIe_tests\target_wrapper.bat
+	-$(DEL_FILE) C:\Users\Tolu\Documents\GitHub\ECMM427\build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug\RTIe_tests\target_wrapper.bat
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile
 
 check: first
-	call C:\Users\jorda\Documents\ToluGit\ECMM427\build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug\RTIe_tests\target_wrapper.bat $(TESTRUNNER) $(TARGET) $(TESTARGS)
+	call C:\Users\Tolu\Documents\GitHub\ECMM427\build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug\RTIe_tests\target_wrapper.bat $(TESTRUNNER) $(TARGET) $(TESTARGS)
 
 mocclean: compiler_moc_header_clean compiler_moc_objc_header_clean compiler_moc_source_clean
 
@@ -828,7 +828,7 @@ tst_rtie_tests.moc: ../../RTIe/RTIe_tests/tst_rtie_tests.cpp \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/QCoreApplication \
 		moc_predefs.h \
 		C:/Qt/5.14.0/mingw73_32/bin/moc.exe
-	C:\Qt\5.14.0\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/jorda/Documents/ToluGit/ECMM427/build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_tests/moc_predefs.h -IC:/Qt/5.14.0/mingw73_32/mkspecs/win32-g++ -IC:/Users/jorda/Documents/ToluGit/ECMM427/RTIe/RTIe_tests -IC:/Qt/5.14.0/mingw73_32/include -IC:/Qt/5.14.0/mingw73_32/include/QtGui -IC:/Qt/5.14.0/mingw73_32/include/QtANGLE -IC:/Qt/5.14.0/mingw73_32/include/QtTest -IC:/Qt/5.14.0/mingw73_32/include/QtCore -I. -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include ..\..\RTIe\RTIe_tests\tst_rtie_tests.cpp -o tst_rtie_tests.moc
+	C:\Qt\5.14.0\mingw73_32\bin\moc.exe $(DEFINES) --include C:/Users/Tolu/Documents/GitHub/ECMM427/build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_tests/moc_predefs.h -IC:/Qt/5.14.0/mingw73_32/mkspecs/win32-g++ -IC:/Users/Tolu/Documents/GitHub/ECMM427/RTIe/RTIe_tests -IC:/Qt/5.14.0/mingw73_32/include -IC:/Qt/5.14.0/mingw73_32/include/QtGui -IC:/Qt/5.14.0/mingw73_32/include/QtANGLE -IC:/Qt/5.14.0/mingw73_32/include/QtTest -IC:/Qt/5.14.0/mingw73_32/include/QtCore -I. -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_32/i686-w64-mingw32/include ..\..\RTIe\RTIe_tests\tst_rtie_tests.cpp -o tst_rtie_tests.moc
 
 compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
