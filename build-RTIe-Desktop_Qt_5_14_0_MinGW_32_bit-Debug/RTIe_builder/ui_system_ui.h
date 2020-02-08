@@ -287,7 +287,7 @@ public:
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -326,7 +326,7 @@ public:
 
         retranslateUi(system_Ui);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(system_Ui);

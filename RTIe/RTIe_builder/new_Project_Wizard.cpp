@@ -70,7 +70,7 @@ new_Projectw::new_Projectw(QWidget *parent) :
                           Qt::WindowMaximizeButtonHint |
                           Qt::WindowCloseButtonHint);
 
-    this->setWindowTitle("Trivial Wizard");
+    this->setWindowTitle("Welcome");
 
 }
 
@@ -104,7 +104,7 @@ QWizardPage *createRegistrationPage()
 {
     QWizardPage *page = new QWizardPage;
     page->setTitle("Create a New Project");
-    page->setSubTitle("Please fill both fields./n Note: The file location for the new Project should be  folder that containd .JPG files ");
+    page->setSubTitle("Please fill both fields.\nNote: The file location for the new project should be folder that containd .JPG files ");
 
     QLabel *nameLabel = new QLabel("Name:");
     QLineEdit *nameLineEdit = new QLineEdit;
@@ -112,11 +112,17 @@ QWizardPage *createRegistrationPage()
     QLabel *emailLabel = new QLabel("File Location:");
     QLineEdit *emailLineEdit = new QLineEdit;
 
+    QPushButton *browser = new QPushButton("...");
+    browser->setGeometry(5, 3, 18, 13);
+    browser->setObjectName("browser");
+
+
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(nameLabel, 0, 0);
     layout->addWidget(nameLineEdit, 0, 1);
     layout->addWidget(emailLabel, 1, 0);
     layout->addWidget(emailLineEdit, 1, 1);
+    layout->addWidget(browser, 1, 2);
     page->setLayout(layout);
 
     return page;

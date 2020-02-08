@@ -16,6 +16,8 @@ public:
     ~system_Ui();
 
 private slots:
+    void image_Display();
+
     void open_Homepage();
 
     void on_btn5_clicked();

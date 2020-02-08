@@ -1,22 +1,14 @@
 #include "system_ui.h"
 #include "ui_system_ui.h"
+#include <QFileDialog>
+#include <QDebug>
 
 system_Ui::system_Ui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
-    ui->listWidget->setViewMode(QListWidget::IconMode);
-    ui->listWidget->setIconSize(QSize(200,150));
-    ui->listWidget->setResizeMode(QListWidget::Adjust);
 
-    for(int i=1;i<=15;i++)
-    {
-        QString path = "C:/Users/Tolu/Documents/GitHub/ECMM427/RTIe/RTIe_builder/img/image"+QString::number(i) + ".jpg";
-        QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString("Image" + QString::number(i) + ".jpg"));
-//        QImage result = item.scaled(800, 600).scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-        ui->listWidget->addItem(item);
-    }
 }
 
 system_Ui::~system_Ui()
@@ -24,13 +16,34 @@ system_Ui::~system_Ui()
     delete ui;
 }
 
-void system_Ui::open_Homepage()
+void system_Ui::open_Homepage()//IMPORTANT FUNCTION
 {
    system_Ui *home = new system_Ui();
    home->showMaximized();
+
 }
 
+void system_Ui::image_Display(){
+    ui->listWidget->setViewMode(QListWidget::IconMode);
+    ui->listWidget->setIconSize(QSize(200,150));
+    ui->listWidget->setResizeMode(QListWidget::Adjust);
+    QStringList path_List = image_Management::get_Working_Image_Paths();
+    QStringListIterator file_Iterator(path_List);
+    QStringList file_Names;
 
+    while (file_Iterator.hasNext())
+    {
+        //"C:/Users/Tolu/Documents/GitHub/ECMM427/RTIe/RTIe_builder/img/image"
+        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
+        QFile current_Image(path);
+        QFileInfo current_Image_Info(current_Image.fileName());
+        QString file_Name(current_Image_Info.fileName());
+        file_Names.append(file_Name);
+        QListWidgetItem *item = new QListWidgetItem(QIcon(path),file_Name);
+//        QImage result = item.scaled(800, 600).scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        ui->listWidget->addItem(item);
+    }
+}
 void system_Ui::on_btn5_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);

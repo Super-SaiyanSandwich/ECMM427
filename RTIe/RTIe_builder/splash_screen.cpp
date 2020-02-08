@@ -34,6 +34,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 
 
 
+
      QPushButton *new_Project_Button = new QPushButton("New Project", this);
      new_Project_Button->setGeometry(135, 130, 80, 30);
      new_Project_Button->setObjectName("new_Project_Button");
@@ -61,7 +62,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 
 
      //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
-     connect(open_Project_Button, SIGNAL(clicked()), &home_Page, SLOT(open_Homepage()));
+     connect(open_Project_Button, SIGNAL(clicked()), &home_Page, SLOT(open_Homepage())); //Where I need to pass file location to system_ui.cpp
      connect(new_Project_Button, SIGNAL(clicked()), &new_projectw, SLOT(new_projectw_Open_Page()));
      connect(help_Button, SIGNAL(clicked()), this, SLOT(help_Button_Clicked()));
      this->hide();
