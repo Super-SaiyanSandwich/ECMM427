@@ -13,7 +13,6 @@ system_Ui::system_Ui(QWidget *parent) :
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
-
     QString path2 = "C:/Users/Tolu/Desktop/images/";
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
@@ -52,29 +51,15 @@ void system_Ui::open_Homepage()//IMPORTANT FUNCTION
 
 }
 
-//void system_Ui::image_Display(){
-//    QString path = "C:/Users/Tolu/Desktop/images/";
-//    ui->listWidget->setViewMode(QListWidget::IconMode);
-//    ui->listWidget->setIconSize(QSize(200,150));
-//    ui->listWidget->setResizeMode(QListWidget::Adjust);
-//    QStringList path_List = image_Management::get_Working_Image_Paths(path);//*splashScreen::project_Path
-//    QStringListIterator file_Iterator(path_List);
-//    QStringList file_Names;
+void system_Ui::image_Display(){
 
-//    while (file_Iterator.hasNext())
-//    {
+    ui->listWidget->setViewMode(QListWidget::IconMode);
+    ui->listWidget->setIconSize(QSize(200,150));
+    ui->listWidget->setResizeMode(QListWidget::Adjust);
+    QStringList path_List = image_Management::get_Working_Image_Paths(splashScreen::project_Path);
+    QStringListIterator file_Iterator(path_List);
+    QStringList file_Names;
 
-//        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-//        QFile current_Image(path);
-//        QFileInfo current_Image_Info(current_Image.fileName());
-//        QString file_Name(current_Image_Info.fileName());
-//        file_Names.append(file_Name);
-//        QString file_path = path+file_Name;
-//        QListWidgetItem *item = new QListWidgetItem(QIcon(file_path),file_Name);
-//       QImage result = item.scaled(800, 600).scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-//        ui->listWidget->addItem(item);
-//    }
-//}
 
 void system_Ui::on_btn5_clicked()
 {
