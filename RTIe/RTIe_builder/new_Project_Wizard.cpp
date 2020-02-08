@@ -179,6 +179,7 @@ void new_Project_Wizard::create_Project_Path(QString project_Name){
           dir.mkdir("./" + project_Name + "/images/wd");
 
           //TODO SET GLOBAL VARIABLE PROJECT PATH FOR OTHER FILES TO USE
+          //TODO CREATE DELETE_REASONS_TXT
 
         } else {
 
