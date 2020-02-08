@@ -1,5 +1,6 @@
 #include "image_Management.h"
 #include "new_Project_Settings.h"
+#include <splash_Screen.h>
 
 #include <QDir>
 #include <QDebug>
@@ -18,6 +19,9 @@
 #include <QMessageBox>
 #include <QCheckBox>
 #include <QErrorMessage>
+#include <QFile>
+#include <QTextStream>
+
 
 QStringList ACCEPTED_FORMATS = QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG";
 
@@ -179,13 +183,15 @@ void image_Management::remove(){
         deletion_Cancellation.setInformativeText("No images will be deleted.");
         deletion_Cancellation.setStandardButtons(QMessageBox::Ok);
         deletion_Cancellation.setDefaultButton(QMessageBox::Ok);
-        int ret = deletion_Cancellation.exec();
+        deletion_Cancellation.exec();
 
     } else {
 
         QStringListIterator file_Iterator(file_Path_List);
         QStringList removed_Files;
         QStringList cancelled_Files;
+
+
 
         while(file_Iterator.hasNext()){
 
@@ -200,12 +206,22 @@ void image_Management::remove(){
             QString window_Title = "Delete Image";
             QString info_Text = "Image: \"" + file_Name + "\".\nReason for removal:";
 
+            QString removal_Text_File_Header = "--===-- " + file_Name + " removal reason --===--\n";
             QString reason = removal_Reason.getMultiLineText(this, window_Title, info_Text, "Type reason here", &ok);
-
             if(ok){
 
                 removed_Files << file_Name;
                 file.remove();
+
+
+
+                QString image_Deletion_Reasons_File_Name = "removed_Images_Reasons.txt";
+                QString image_Deletion_Reasons_File_Path = splashScreen::project_Path + + "/images/wd" + image_Deletion_Reasons_File_Name;
+                QFile file(image_Deletion_Reasons_File_Path);
+                if (file.open(QIODevice::ReadWrite)) {
+                    QTextStream stream(&file);
+                    stream << removal_Text_File_Header << reason << endl;
+                }
 
 
             }else{
@@ -216,13 +232,16 @@ void image_Management::remove(){
                 delete_Cancellation_Alert.setInformativeText("Image \"" + file_Name + "\" will remain unchanged." );
                 delete_Cancellation_Alert.setStandardButtons(QMessageBox::Ok);
                 delete_Cancellation_Alert.setDefaultButton(QMessageBox::Ok);
-                int ret = delete_Cancellation_Alert.exec();
+                delete_Cancellation_Alert.exec();
 
             }
 
 
         //END OF WHILE LOOP
         }
+
+
+
 
         QString summary = "The following files were removed:\n" + removed_Files.join(", ")
         + "\n\nThe following files were not removed:\n" + cancelled_Files.join(", ");
@@ -232,7 +251,7 @@ void image_Management::remove(){
         deletion_Summary.setInformativeText(summary );
         deletion_Summary.setStandardButtons(QMessageBox::Ok);
         deletion_Summary.setDefaultButton(QMessageBox::Ok);
-        int ret = deletion_Summary.exec();
+        deletion_Summary.exec();
 
     }
 

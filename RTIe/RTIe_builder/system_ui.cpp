@@ -30,7 +30,7 @@ void system_Ui::image_Display(){
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
-    QStringList path_List = image_Management::get_Working_Image_Paths(*splashScreen::project_Path);
+    QStringList path_List = image_Management::get_Working_Image_Paths(splashScreen::project_Path);
     QStringListIterator file_Iterator(path_List);
     QStringList file_Names;
 
