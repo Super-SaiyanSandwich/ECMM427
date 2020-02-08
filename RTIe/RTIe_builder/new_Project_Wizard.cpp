@@ -50,7 +50,6 @@
 
 #include "new_Project_Wizard.h"
 #include "ui_new_Project_Wizard.h"
-#include "splash_Screen.h"
 
 #include <QtWidgets>
 #include <QTranslator>
@@ -168,34 +167,18 @@ void new_Project_Wizard::create_Project_Path(QString project_Name){
 
     if(dialog.exec()){
 
-        QString project_container_Path = dialog.directory().path();
+        QString project_Path = dialog.directory().path();
 
-        QDir dir(project_container_Path);
+        QDir dir(project_Path);
 
         if (!dir.exists()){
 
-
-
           dir.mkdir("./" + project_Name);
+          dir.mkdir("./" + project_Name + "/images");
+          dir.mkdir("./" + project_Name + "/images/src");
+          dir.mkdir("./" + project_Name + "/images/wd");
 
-          QString project_Path = project_container_Path + "\\" + project_Name;
-          splashScreen::project_Path = project_Path;
-          QDir dir(project_Path);
-
-          dir.mkdir("./images");
-          dir.mkdir("./images/src");
-          dir.mkdir("./images/wd");
-
-          QString image_Deletion_Reasons_File_Name = "removed_Images_Reasons.txt";
-          QFile removal_Reasons(dir.path() + "/images/wd" + image_Deletion_Reasons_File_Name);
-
-          QFile project_RTIE_File(dir.path() + project_Name + ".rtie");
-          if (project_RTIE_File.open(QIODevice::ReadWrite)) {
-              QTextStream stream(&project_RTIE_File);
-              stream << dir.path() << endl;
-          }
           //TODO SET GLOBAL VARIABLE PROJECT PATH FOR OTHER FILES TO USE
-          //TODO CREATE DELETE_REASONS_TXT
 
         } else {
 
@@ -204,11 +187,11 @@ void new_Project_Wizard::create_Project_Path(QString project_Name){
             dir_Exists_Alert.setInformativeText("Please enter a different name.");
             dir_Exists_Alert.setStandardButtons(QMessageBox::Ok);
             dir_Exists_Alert.setDefaultButton(QMessageBox::Ok);
-            dir_Exists_Alert.exec();
+            int ret = dir_Exists_Alert.exec();
 
             create_Project_Path(project_Name);
 
         }
     }
-
 }
+
