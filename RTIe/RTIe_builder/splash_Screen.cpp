@@ -77,6 +77,7 @@ void splashScreen::help_Button_Clicked()
     marble_Detection *a = new marble_Detection();
     a->show();
 
+
 }
 
 void splashScreen::exit_App()

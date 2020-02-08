@@ -55,6 +55,7 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QMessageBox>
 
 
 new_Project_Wizard::new_Project_Wizard(QWidget *parent) :
@@ -70,7 +71,7 @@ new_Project_Wizard::new_Project_Wizard(QWidget *parent) :
                           Qt::WindowMaximizeButtonHint |
                           Qt::WindowCloseButtonHint);
 
-    this->setWindowTitle("Trivial Wizard");
+    this->setWindowTitle("Project Creation Wizard");
 
 }
 
@@ -104,28 +105,26 @@ QWizardPage *createRegistrationPage()
 {
     QWizardPage *page = new QWizardPage;
     page->setTitle("Project Creation");
-    page->setSubTitle("Please enter/choose a directory to create a project folder");
+    page->setSubTitle("Please enter a name for your project.");
 
-    QLabel *nameLabel = new QLabel("Directory path:");
-    QLineEdit *nameLineEdit = new QLineEdit;
-
-    //QPushButton choose_Dir;
+    //QPushButton *choose_Dir;
+    //choose_Dir->setText("Select Directory");
     //QLabel *choose_Dir_Label;
 
-
-    //QLabel *emailLabel = new QLabel("Email address:");
-    //QLineEdit *emailLineEdit = new QLineEdit;
-
     QGridLayout *layout = new QGridLayout;
+
+    QLabel *nameLabel = new QLabel("Project Name:");
+    QLineEdit *nameLineEdit = new QLineEdit;
+
     layout->addWidget(nameLabel, 0, 0);
     layout->addWidget(nameLineEdit, 0, 1);
-    //layout->addWidget(choose_Dir_Label, 0, 2);
 
-    //connect(ui->choose_Dir_Label, SIGNAL(clicked()), this, SLOT( ));
-    //connect(Ui->delete_Button_Label, SIGNAL(clicked()), this, SLOT(remove()));
+    QLabel *pathLabel = new QLabel("Project Path:");
+    QLineEdit *PathLineEdit = new QLineEdit;
 
-    //layout->addWidget(emailLabel, 1, 0);
-    //layout->addWidget(emailLineEdit, 1, 1);
+    layout->addWidget(pathLabel, 1, 0);
+    layout->addWidget(PathLineEdit, 1, 1);
+
     page->setLayout(layout);
 
     return page;
@@ -160,11 +159,41 @@ void new_Project_Wizard::new_Project_Wizard_Open_Page()
     window->show();
 }
 
-static void select_Project_Path(){
+void new_Project_Wizard::create_Project_Path(QString project_Name){
 
-    QString dir = "/";
 
-    //QFileDialog dialog();
+    QFileDialog dialog;
+    dialog.setFileMode(QFileDialog::DirectoryOnly);
+
+    if(dialog.exec()){
+
+        QString project_Path = dialog.directory().path();
+
+        QDir dir(project_Path);
+
+        if (!dir.exists()){
+
+          dir.mkdir("./" + project_Name);
+          dir.mkdir("./" + project_Name + "/images");
+          dir.mkdir("./" + project_Name + "/images/src");
+          dir.mkdir("./" + project_Name + "/images/wd");
+
+          //TODO SET GLOBAL VARIABLE PROJECT PATH FOR OTHER FILES TO USE
+
+        } else {
+
+            QMessageBox dir_Exists_Alert;
+            dir_Exists_Alert.setText("A directory/project of this name already exists.");
+            dir_Exists_Alert.setInformativeText("Please enter a different name.");
+            dir_Exists_Alert.setStandardButtons(QMessageBox::Ok);
+            dir_Exists_Alert.setDefaultButton(QMessageBox::Ok);
+            int ret = dir_Exists_Alert.exec();
+
+            create_Project_Path(project_Name);
+
+        }
+
+    }
 
 }
 

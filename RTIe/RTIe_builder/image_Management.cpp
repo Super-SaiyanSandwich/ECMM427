@@ -19,7 +19,7 @@
 #include <QCheckBox>
 #include <QErrorMessage>
 
-
+QStringList ACCEPTED_FORMATS = QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG";
 
 image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(new Ui::image_Management)
 {
@@ -33,16 +33,11 @@ image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(ne
     connect(Ui->delete_Button_Label, SIGNAL(clicked()), this, SLOT(remove()));
 
 
-
-    QString project_Location = "/Users/jordan/Network Drives/Git/ECMM427/jordan_test_dir/project" ;//new_Project_Settings::project_Location;
-    QString source_Directory = project_Location + "/images/src";
-    QString working_Directory = project_Location + "/images/wd";
-
     QStringList file_List;
 
     //read(working_Directory);
     qInfo() << working_Directory;
-   QStringList x = get_Working_Image_Paths(working_Directory);
+    QStringList x = get_Working_Image_Paths(working_Directory);
 
     qInfo() << "Stop";
 
@@ -67,7 +62,7 @@ void image_Management::import(){
 
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFiles);
-    dialog.setNameFilter(tr("Images ( *.jpg .png )"));//*.tiff *.DNG)"));
+    dialog.setNameFilter(tr("Images ( *.jpg *.png *.JPG *.PNG)"));//*.tiff *.DNG)"));
     //dialog.setOption(QFileDialog::ShowDirsOnly, true);
     //dialog.setDirectory(dir);
 
@@ -113,13 +108,20 @@ void image_Management::import(){
 }
 
 
-static QStringList get_Working_Image_Paths(QString wd){
+QStringList image_Management::get_Working_Image_Paths(QString wd){
 
     QDir dir(wd);
+    QStringList file_Paths;
 
-    QStringList file_Paths = dir.entryList(QStringList() << "*.jpg" << "*.png",QDir::Files);
+    QStringList file_Name_Paths = dir.entryList(ACCEPTED_FORMATS,QDir::Files);
 
-    qInfo() << file_Paths;
+    QStringListIterator file_Iterator(file_Name_Paths);
+    while(file_Iterator.hasNext()){
+        file_Paths << (wd+file_Iterator.next());
+    }
+
+
+    qInfo() << "\nFILE PATHS"<< file_Paths << "\n";
 
     return file_Paths;
 }
@@ -133,7 +135,7 @@ static QStringList get_Working_Image_Paths(QString wd){
 void image_Management::read(QString working_Dir){
     QDir wd = working_Dir;
 
-    QStringList images = wd.entryList(QStringList() << "*.jpg" << ".png",QDir::Files);
+    QStringList images = wd.entryList(ACCEPTED_FORMATS,QDir::Files);
     foreach(QString filename, images) {
 
     }

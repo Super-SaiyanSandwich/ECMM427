@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QWizardPage>
+#include <QAction>
 
 namespace Ui {
 class new_Project_Wizard;
@@ -20,7 +21,11 @@ public:
 private:
     Ui::new_Project_Wizard *ui;
 
+    QPushButton choose_Dir;
+    QLabel *choose_Dir_Label;
 
+    QAction action_Choose_Dir;
+    QLabel *action_Choose_Dir_Label;
 
 //private slots:
 //    QWizardPage* createIntroPage();
@@ -29,7 +34,7 @@ private:
 
 public slots:
     static void new_Project_Wizard_Open_Page();
-    static void select_Project_Path();
+    void create_Project_Path(QString project_Name);
 };
 
 #endif // NEW_PROJECTW_H
