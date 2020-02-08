@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
     QApplication app (argc, argv);
-
+    QString project_Path;
     //PREVIEW SPLASH SCREEN & PROJECT WIZARD
     //splashScreen splashScreen;
     //splashScreen.show();

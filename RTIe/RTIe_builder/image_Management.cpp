@@ -108,9 +108,9 @@ void image_Management::import(){
 }
 
 
-QStringList image_Management::get_Working_Image_Paths(QString wd){
-
-    QDir dir(wd);
+QStringList image_Management::get_Working_Image_Paths(QString project_Path){
+    QString wd = project_Path + "/images/wd";
+    QDir dir(project_Path);
     QStringList file_Paths;
 
     QStringList file_Name_Paths = dir.entryList(ACCEPTED_FORMATS,QDir::Files);

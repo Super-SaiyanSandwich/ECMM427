@@ -194,5 +194,5 @@ void new_Project_Wizard::create_Project_Path(QString project_Name){
 
         }
     }
-
+    }
 }

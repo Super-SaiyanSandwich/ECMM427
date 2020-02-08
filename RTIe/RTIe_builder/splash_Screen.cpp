@@ -32,7 +32,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
                                  "border-style: inset;"
                               "}";
 
-
+//     QString *splashScreen::project_Path = "A Way";
 
      QPushButton *new_Project_Button = new QPushButton("New Project", this);
      new_Project_Button->setGeometry(135, 130, 80, 30);
@@ -61,6 +61,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 
      //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
 //     connect(new_Project_Button, SIGNAL(clicked()), &new_project, SLOT(new_Project_Open_Page()));open_Project_Button
+     connect(open_Project_Button, SIGNAL(clicked()), &home_Page, SLOT(open_Homepage())); //Where I need to pass file location to system_ui.cpp
      connect(new_Project_Button, SIGNAL(clicked()), &new_project_wizard, SLOT(new_Project_Wizard_Open_Page()));
      //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
      connect(help_Button, SIGNAL(clicked()), this, SLOT(help_Button_Clicked()));
