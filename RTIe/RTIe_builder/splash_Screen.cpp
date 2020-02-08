@@ -9,7 +9,6 @@
 #include <QDesktopServices>
 #include <iostream>
 
-QString splashScreen::project_Path;
 
 splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 {    

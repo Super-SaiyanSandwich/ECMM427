@@ -12,7 +12,7 @@ class splashScreen : public QMainWindow
     Q_OBJECT
 public:
     explicit splashScreen(QWidget *parent = nullptr);
-    static QString project_Path;
+    static QString *project_Path;
 
 private:
     new_Project new_project;
