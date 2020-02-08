@@ -2,6 +2,7 @@
 #define SYSTEM_UI_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
 
 namespace Ui {
 class system_Ui;
@@ -14,6 +15,7 @@ class system_Ui : public QMainWindow
 public:
     explicit system_Ui(QWidget *parent = nullptr);
     ~system_Ui();
+
 
 private slots:
     void image_Display();
@@ -39,6 +41,8 @@ private slots:
     void on_btn4_2_clicked();
 
     void on_btn1_2_clicked();
+
+    void on_listWidget_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::system_Ui *ui;

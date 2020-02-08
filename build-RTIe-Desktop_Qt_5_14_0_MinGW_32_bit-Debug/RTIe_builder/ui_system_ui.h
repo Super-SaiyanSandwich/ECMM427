@@ -48,7 +48,7 @@ public:
     QGridLayout *gridLayout_2;
     QPushButton *btn2;
     QPushButton *btn5;
-    QLabel *label;
+    QLabel *image_Preview;
     QListWidget *listWidget;
     QWidget *page2;
     QGridLayout *gridLayout_4;
@@ -166,15 +166,15 @@ public:
 
         gridLayout_2->addWidget(btn5, 3, 1, 1, 1);
 
-        label = new QLabel(page1);
-        label->setObjectName(QString::fromUtf8("label"));
+        image_Preview = new QLabel(page1);
+        image_Preview->setObjectName(QString::fromUtf8("image_Preview"));
         QFont font;
         font.setPointSize(48);
         font.setBold(true);
         font.setWeight(75);
-        label->setFont(font);
+        image_Preview->setFont(font);
 
-        gridLayout_2->addWidget(label, 0, 0, 1, 1);
+        gridLayout_2->addWidget(image_Preview, 0, 0, 1, 1);
 
         listWidget = new QListWidget(page1);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
@@ -326,7 +326,7 @@ public:
 
         retranslateUi(system_Ui);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(system_Ui);
@@ -382,7 +382,7 @@ public:
 #endif // QT_CONFIG(shortcut)
         btn2->setText(QCoreApplication::translate("system_Ui", "Next >", nullptr));
         btn5->setText(QCoreApplication::translate("system_Ui", "< Prev", nullptr));
-        label->setText(QCoreApplication::translate("system_Ui", "PAGE 1", nullptr));
+        image_Preview->setText(QString());
         label_3->setText(QCoreApplication::translate("system_Ui", "PAGE 2", nullptr));
         btn1->setText(QCoreApplication::translate("system_Ui", "< Prev", nullptr));
         btn3->setText(QCoreApplication::translate("system_Ui", "Next >", nullptr));

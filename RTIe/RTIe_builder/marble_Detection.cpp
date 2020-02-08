@@ -431,3 +431,5 @@ void marble_Detection::on_test_Button_clicked()
     QPixmap base_Pix = QPixmap::fromImage(marble);
     ui->preivew_Label->setPixmap(base_Pix);
 }
+
+
