@@ -100,7 +100,7 @@ void image_Management::import(){
 
 
 QStringList image_Management::get_Working_Image_Paths(){
-    QString wd = splashScreen::project_Path + "/images/wd";
+    QString wd = splashScreen::project_Path + "/images/wd/";
     QDir dir(wd);
     QStringList file_Paths;
 
@@ -108,7 +108,9 @@ QStringList image_Management::get_Working_Image_Paths(){
 
     QStringListIterator file_Iterator(file_Name_Paths);
     while(file_Iterator.hasNext()){
-        file_Paths << (wd+file_Iterator.next());
+        QString n = file_Iterator.next();
+        qInfo() << "iterator:" + n;
+        file_Paths << (n);
     }
 
 
