@@ -36,8 +36,7 @@ private:
 
     void update_Marble_Marker();
     void reset_Image_Zoom();
-    void image_Zoom_In(int percent);
-    void image_Zoom_Out(int percent);
+    void image_Zoom(int percent);
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
     void set_Maximums();
 

@@ -72,7 +72,7 @@ marble_Detection::~marble_Detection()
 ///
 void marble_Detection::update_Marble_Marker()
 {
-    //qInfo() << "TWtatat";
+
     QPixmap base_Pix = QPixmap::fromImage(this->base_Image);
     QPainter *paint = new QPainter(&base_Pix);
 
@@ -82,7 +82,6 @@ void marble_Detection::update_Marble_Marker()
     pen.setWidth(5);
 
     int rad = this->radius;
-
 
     float scaled_Radius = this->radius * CENTER_SCALE_FACTOR;
 
@@ -102,13 +101,13 @@ void marble_Detection::update_Marble_Marker()
     ui->image_Label->setPixmap(base_Pix);
     ui->image_Label->update();
 
+
     QPixmap target(rad * 2, rad * 2);
 
     paint = new QPainter(&target);
     paint->fillRect(QRect(0, 0, rad * 2, rad * 2),Qt::gray);
     QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
     paint->setClipRegion(mask);
-
 
     base_Pix = QPixmap::fromImage(this->base_Image);
     paint->drawPixmap(-this->x, -this->y, base_Pix);
@@ -134,26 +133,10 @@ void marble_Detection::reset_Image_Zoom()
 }
 
 
-void marble_Detection::image_Zoom_In(int percent)
+
+void marble_Detection::image_Zoom(int percent)
 {
     zoom_Percentage += percent;
-
-    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image.height();
-    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image.width());
-
-    ui->image_Label->resize(this->base_Image.width() * scaler * zoom_Percentage / 100, this->base_Image.height() * scaler * zoom_Percentage / 100);
-    //ui->scrollArea->adjustSize();
-
-    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 + percent);
-    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 + percent);
-
-    ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
-}
-
-
-void marble_Detection::image_Zoom_Out(int percent)
-{
-    zoom_Percentage -= percent;
 
     float scaler =  SCROLL_AREA_HEIGHT / this->base_Image.height();
     scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image.width());
@@ -164,6 +147,7 @@ void marble_Detection::image_Zoom_Out(int percent)
     adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 - percent);
     adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 - percent);
 
+    ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
     ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
 }
 
@@ -345,12 +329,12 @@ void marble_Detection::on_zoom_Reset_Button_clicked()
 
 void marble_Detection::on_zoom_In_Button_clicked()
 {
-    image_Zoom_In(25);
+    image_Zoom(25);
 }
 
 void marble_Detection::on_zoom_Out_Button_clicked()
 {
-    image_Zoom_Out(25);
+    image_Zoom(-25);
 }
 
 
