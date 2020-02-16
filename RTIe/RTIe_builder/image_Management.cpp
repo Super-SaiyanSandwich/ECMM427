@@ -1,10 +1,7 @@
 #include "image_Management.h"
 #include "new_Project_Settings.h"
-<<<<<<< HEAD
 #include "splash_Screen.h"
-=======
-#include <splash_Screen.h>
->>>>>>> feb44476af7920e546fb3ae0487c97c14ec443c8
+
 
 #include <QDir>
 #include <QDebug>

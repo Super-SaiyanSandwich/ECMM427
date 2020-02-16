@@ -3,11 +3,14 @@
 
 #include <tuple>
 #include <vector>
+#include <math.h>
+#define _USE_MATH_DEFINES
 
 #include <QtWidgets>
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QDebug>
 
 using namespace std;
 
@@ -353,6 +356,8 @@ void marble_Detection::on_test_Button_clicked()
     QColor col;
     int r, g, b;
 
+    statusBar()->showMessage(QString("Beginning Light Spot Detection"));
+
     vector<tuple<int,int>> cluster_Points;
 
     QImage marble = ui->preivew_Label->pixmap()->toImage();
@@ -411,6 +416,29 @@ void marble_Detection::on_test_Button_clicked()
     sum_X = int(sum_X);
     sum_Y = int(sum_Y);
 
+    marble.setPixel(sum_X, sum_Y, qRgb(0, 255, 0));
+    marble.setPixel(sum_X+1, sum_Y, qRgb(0, 255, 0));
+    marble.setPixel(sum_X-1, sum_Y, qRgb(0, 255, 0));
+    marble.setPixel(sum_X, sum_Y+1, qRgb(0, 255, 0));
+    marble.setPixel(sum_X, sum_Y-1, qRgb(0, 255, 0));
+
+    statusBar()->showMessage(QString("X: %1, Y: %2").arg(QString::number(sum_X), QString::number(sum_Y)));
+    qInfo() << "X" << sum_X;
+    qInfo() << "Y" << sum_Y;
+    qInfo() << "Radius" << radius;
+
+    double C2 = pow((sum_X - radius),2) + pow((sum_Y - radius),2);
+    double R2 = pow(radius, 2);
+
+    double theta = acos((radius - sum_Y)/ sqrt(C2));
+    theta = (sum_X < radius)? (2 * M_PI) - theta: theta;
+
+    double phi =  acos(  ( sqrt(R2 - C2) ) / (radius)  );
+
+
+    qInfo() << "Theta" << theta;
+
+    qInfo() << "Phi" << phi;
     
     QPixmap base_Pix = QPixmap::fromImage(marble);
     ui->preivew_Label->setPixmap(base_Pix);

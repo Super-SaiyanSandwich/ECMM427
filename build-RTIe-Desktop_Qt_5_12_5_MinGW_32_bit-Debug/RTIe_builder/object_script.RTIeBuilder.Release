@@ -5,6 +5,7 @@ release/new_Project.o
 release/new_Project_Settings.o
 release/new_Project_Wizard.o
 release/splash_Screen.o
+release/system_ui.o
 release/qrc_test.o
 release/moc_image_Management.o
 release/moc_marble_Detection.o
@@ -12,3 +13,4 @@ release/moc_new_Project.o
 release/moc_new_Project_Settings.o
 release/moc_new_Project_Wizard.o
 release/moc_splash_Screen.o
+release/moc_system_ui.o

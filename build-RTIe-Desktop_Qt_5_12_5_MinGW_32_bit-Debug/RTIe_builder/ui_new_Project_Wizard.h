@@ -11,9 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QWidget>
 #include <QtWidgets/QWizardPage>
 
 QT_BEGIN_NAMESPACE
@@ -21,42 +18,12 @@ QT_BEGIN_NAMESPACE
 class Ui_new_Project_Wizard
 {
 public:
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_3;
 
     void setupUi(QWizardPage *new_Project_Wizard)
     {
         if (new_Project_Wizard->objectName().isEmpty())
             new_Project_Wizard->setObjectName(QString::fromUtf8("new_Project_Wizard"));
-        new_Project_Wizard->resize(631, 383);
-        layoutWidget = new QWidget(new_Project_Wizard);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(370, 340, 254, 26));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        horizontalLayout->addWidget(pushButton);
-
-        pushButton_2 = new QPushButton(layoutWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        horizontalLayout->addWidget(pushButton_2);
-
-        pushButton_4 = new QPushButton(layoutWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-
-        horizontalLayout->addWidget(pushButton_4);
-
-        pushButton_3 = new QPushButton(new_Project_Wizard);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(250, 120, 80, 24));
+        new_Project_Wizard->resize(631, 391);
 
         retranslateUi(new_Project_Wizard);
 
@@ -66,10 +33,6 @@ public:
     void retranslateUi(QWizardPage *new_Project_Wizard)
     {
         new_Project_Wizard->setWindowTitle(QApplication::translate("new_Project_Wizard", "WizardPage", nullptr));
-        pushButton->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
-        pushButton_2->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
-        pushButton_4->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
-        pushButton_3->setText(QApplication::translate("new_Project_Wizard", "PushButton", nullptr));
     } // retranslateUi
 
 };
