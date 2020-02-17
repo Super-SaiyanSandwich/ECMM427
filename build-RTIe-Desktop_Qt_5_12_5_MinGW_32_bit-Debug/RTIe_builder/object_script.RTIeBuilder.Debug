@@ -5,6 +5,7 @@ debug/new_Project.o
 debug/new_Project_Settings.o
 debug/new_Project_Wizard.o
 debug/splash_Screen.o
+debug/system_ui.o
 debug/qrc_test.o
 debug/moc_image_Management.o
 debug/moc_marble_Detection.o
@@ -12,3 +13,4 @@ debug/moc_new_Project.o
 debug/moc_new_Project_Settings.o
 debug/moc_new_Project_Wizard.o
 debug/moc_splash_Screen.o
+debug/moc_system_ui.o

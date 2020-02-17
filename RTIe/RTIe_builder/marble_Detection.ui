@@ -637,11 +637,17 @@ QScrollBar::sub-line:horizontal {
       <height>694</height>
      </rect>
     </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
     <property name="sizeAdjustPolicy">
      <enum>QAbstractScrollArea::AdjustToContents</enum>
     </property>
     <property name="widgetResizable">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -649,10 +655,10 @@ QScrollBar::sub-line:horizontal {
     <widget class="QWidget" name="scrollAreaWidgetContents">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>1042</width>
-       <height>692</height>
+       <x>9</x>
+       <y>9</y>
+       <width>1025</width>
+       <height>675</height>
       </rect>
      </property>
      <widget class="QLabel" name="image_Label">
@@ -692,7 +698,7 @@ QScrollBar::sub-line:horizontal {
      <x>0</x>
      <y>0</y>
      <width>1251</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_new_Project_Wizard_t {
-    QByteArrayData data[4];
-    char stringdata0[69];
+    QByteArrayData data[5];
+    char stringdata0[82];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,11 +34,12 @@ static const qt_meta_stringdata_new_Project_Wizard_t qt_meta_stringdata_new_Proj
 QT_MOC_LITERAL(0, 0, 18), // "new_Project_Wizard"
 QT_MOC_LITERAL(1, 19, 28), // "new_Project_Wizard_Open_Page"
 QT_MOC_LITERAL(2, 48, 0), // ""
-QT_MOC_LITERAL(3, 49, 19) // "select_Project_Path"
+QT_MOC_LITERAL(3, 49, 19), // "create_Project_Path"
+QT_MOC_LITERAL(4, 69, 12) // "project_Name"
 
     },
     "new_Project_Wizard\0new_Project_Wizard_Open_Page\0"
-    "\0select_Project_Path"
+    "\0create_Project_Path\0project_Name"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,11 +58,11 @@ static const uint qt_meta_data_new_Project_Wizard[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    0,   24,    2, 0x0a /* Public */,
-       3,    0,   25,    2, 0x0a /* Public */,
+       3,    1,   25,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    4,
 
        0        // eod
 };
@@ -73,11 +74,10 @@ void new_Project_Wizard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->new_Project_Wizard_Open_Page(); break;
-        case 1: _t->select_Project_Path(); break;
+        case 1: _t->create_Project_Path((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject new_Project_Wizard::staticMetaObject = { {

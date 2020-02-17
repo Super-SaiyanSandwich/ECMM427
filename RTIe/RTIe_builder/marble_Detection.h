@@ -36,8 +36,7 @@ private:
 
     void update_Marble_Marker();
     void reset_Image_Zoom();
-    void image_Zoom_In(int percent);
-    void image_Zoom_Out(int percent);
+    void image_Zoom(int percent);
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
     void set_Maximums();
 
@@ -59,7 +58,6 @@ private slots:
     void on_zoom_In_Button_clicked();
     void on_zoom_Out_Button_clicked();
     void on_test_Button_clicked();
-    void on_image_Label_linkActivated(const QString &link);
 };
 
 #endif // MARBLE_DETECTION_H
