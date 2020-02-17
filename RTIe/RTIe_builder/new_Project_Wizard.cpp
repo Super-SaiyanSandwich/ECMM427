@@ -57,13 +57,17 @@
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QMessageBox>
+#include <QPushButton>
+#include <QLabel>
+#include <QFileDialog>
+#include <QObject>
 
 
 new_Project_Wizard::new_Project_Wizard(QWidget *parent) :
     QWizard(parent),
     ui(new Ui::new_Project_Wizard)
 {
-//    ui->setupUi(this);
+    //ui->setupUi(this);
 
 
 
@@ -73,6 +77,11 @@ new_Project_Wizard::new_Project_Wizard(QWidget *parent) :
                           Qt::WindowCloseButtonHint);
 
     this->setWindowTitle("Project Creation Wizard");
+
+    connect(button(choose_Dialog), SIGNAL(clicked()), window->layout , SLOT(choose_Project_Directory()));
+
+
+
 
 }
 
@@ -120,13 +129,18 @@ QWizardPage *createRegistrationPage()
     layout->addWidget(nameLabel, 0, 0);
     layout->addWidget(nameLineEdit, 0, 1);
 
-    QLabel *pathLabel = new QLabel("Project Path:");
-    QLineEdit *PathLineEdit = new QLineEdit;
+    QLabel *path_Label = new QLabel("Project Location:");
+    QLabel *set_Path = new QLabel;
+    QPushButton *choose_Dialog = new QPushButton("Choose Location");
 
-    layout->addWidget(pathLabel, 1, 0);
-    layout->addWidget(PathLineEdit, 1, 1);
+    layout->addWidget(path_Label, 1, 0);
+    layout->addWidget(set_Path, 1, 1);
+    layout->addWidget(choose_Dialog, 2, 1);
+
 
     page->setLayout(layout);
+
+//    QObject::connect(choose_Dialog, SIGNAL(clicked()), layout, SLOT(this->choose_Project_Directory()));
 
     return page;
 }
@@ -142,6 +156,8 @@ QWizardPage *createConclusionPage()
     label->setWordWrap(true);
 
     QVBoxLayout *layout = new QVBoxLayout;
+
+
     layout->addWidget(label);
     page->setLayout(layout);
 
@@ -156,7 +172,12 @@ void new_Project_Wizard::new_Project_Wizard_Open_Page()
 
 //    window->addPage(createIntroPage());
     window->addPage(createRegistrationPage());
-    window->addPage(createConclusionPage());
+
+
+
+
+    //window->addPage(createConclusionPage());
+
     window->show();
 }
 
@@ -165,6 +186,7 @@ void new_Project_Wizard::create_Project_Path(QString project_Name){
 
     QFileDialog dialog;
     dialog.setFileMode(QFileDialog::DirectoryOnly);
+    dialog.setOption(QFileDialog::ShowDirsOnly, true);
 
     if(dialog.exec()){
 
@@ -210,5 +232,32 @@ void new_Project_Wizard::create_Project_Path(QString project_Name){
 
         }
     }
+
+
+
+}
+
+void new_Project_Wizard::choose_Project_Directory(){
+
+    qInfo() << "WORKS!";
+
+    QString dir = "/";
+    QString chosen_Location;
+
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::DirectoryOnly);
+    dialog.setOption(QFileDialog::ShowDirsOnly, true);
+    dialog.setDirectory(dir);
+
+    if(dialog.exec()){
+
+        chosen_Location = dialog.getExistingDirectory();
+
+
+    }
+
+    QString chosen_Path = chosen_Location;//  + project_Name;
+    QLabel *path = this -> findChild<QLabel *>("set_Path", Qt::FindDirectChildrenOnly);
+    path -> setText(chosen_Path);
 
 }
