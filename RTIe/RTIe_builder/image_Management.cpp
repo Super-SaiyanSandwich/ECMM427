@@ -101,7 +101,7 @@ void image_Management::import(){
 
 
 QStringList image_Management::get_Working_Image_Paths(){
-    QString wd = splashScreen::project_Path + "/images/wd";
+    QString wd = splashScreen::project_Path + "/images/wd/";
     QDir dir(wd);
     QStringList file_Paths;
 
