@@ -17,3 +17,7 @@ build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detectio
 build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
 build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
 build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
+*.o
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.o
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
