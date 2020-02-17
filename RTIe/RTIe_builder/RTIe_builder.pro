@@ -15,7 +15,8 @@ SOURCES += \
     new_Project_Wizard.cpp \
     splash_Screen.cpp \
     system_ui.cpp \
-    wizardpage.cpp
+    wizardpage.cpp\
+    testwizard.cpp
 
 
 RESOURCES += \
@@ -30,14 +31,16 @@ HEADERS += \
     new_Project_Wizard.h \
     splash_Screen.h \
     system_ui.h \
-    wizardpage.h
+    wizardpage.h\
+    testwizard.h
 
 FORMS += \
     marble_Detection.ui \
     new_Project_Wizard.ui \
     image_Management.ui \
     system_ui.ui \
-    wizardpage.ui
+    wizardpage.ui\
+    testwizard.ui
 
 DISTFILES += \
     img/image1.jpg \

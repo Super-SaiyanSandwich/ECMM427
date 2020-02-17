@@ -7,6 +7,9 @@
 #include <QPixmap>
 #include <QListWidgetItem>
 #include <QDebug>
+#include <QFile>
+#include <QFileDialog>
+
 #include <QApplication>
 #include <QtWidgets>
 #include <QTranslator>
@@ -51,16 +54,30 @@ system_Ui::~system_Ui()
 void system_Ui::open_Homepage()//IMPORTANT FUNCTION
 {
 
-   splashScreen::project_Path = "/Users/Tolu/Documents/GitHub/ECMM427/test-root-dir/project";
-   system_Ui *home = new system_Ui();
-   home->showMaximized();
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setNameFilter(tr("RTIe Files (*.rtie *.RTIE"));
 
-   //QString dir = "/";
-   //QFileDialog dialog;
-   //dialog.setFileMode(QFileDialog::DirectoryOnly);
+    if(dialog.exec()){
+        QFile project_File(dialog.selectedFiles().at(0).toLocal8Bit().constData());
 
-   //QString path = dialog.directory.path();
+        if (project_File.open(QIODevice::ReadOnly))
+        {
+            QTextStream in(&project_File);
+            splashScreen::project_Path = in.readLine();
+            project_File.close();
+        }
 
+    }
+
+    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
+
+    system_Ui *home = new system_Ui();
+    home->showMaximized();
+
+
+
+    //QString path = dialog.directory.path();
 
 }
 
