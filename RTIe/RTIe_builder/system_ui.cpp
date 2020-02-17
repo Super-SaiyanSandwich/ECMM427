@@ -14,6 +14,7 @@ system_Ui::system_Ui(QWidget *parent) :
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
+
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
@@ -125,6 +126,7 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     QString wd = splashScreen::project_Path + "/images/wd/";
     qInfo() << "pixmap wd:" << wd;
+
     QPixmap pix(wd);
     int w = ui->image_Preview->width();
     int h = ui->image_Preview->height();
