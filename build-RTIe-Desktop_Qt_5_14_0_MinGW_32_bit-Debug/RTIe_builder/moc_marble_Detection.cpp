@@ -148,7 +148,7 @@ void marble_Detection::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 12: _t->on_zoom_In_Button_clicked(); break;
         case 13: _t->on_zoom_Out_Button_clicked(); break;
         case 14: _t->on_test_Button_clicked(); break;
-//        case 15: _t->on_image_Label_linkActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 15: _t->on_image_Label_linkActivated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
