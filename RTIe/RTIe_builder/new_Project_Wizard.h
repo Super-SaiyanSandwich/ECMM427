@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QWizardPage>
+#include <QWizard>
 #include <QAction>
 #include <QPushButton>
 #include <QLabel>

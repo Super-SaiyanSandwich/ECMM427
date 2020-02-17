@@ -78,7 +78,7 @@ new_Project_Wizard::new_Project_Wizard(QWidget *parent) :
 
     this->setWindowTitle("Project Creation Wizard");
 
-    connect(button(choose_Dialog), SIGNAL(clicked()), window->layout , SLOT(choose_Project_Directory()));
+    //connect(button(choose_Dialog), SIGNAL(clicked()), window->layout , SLOT(choose_Project_Directory()));
 
 
 
