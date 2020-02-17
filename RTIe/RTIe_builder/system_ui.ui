@@ -22,7 +22,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page1">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -48,6 +48,15 @@
             <weight>75</weight>
             <bold>true</bold>
            </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>25</number>
           </property>
           <property name="text">
            <string/>

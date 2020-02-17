@@ -173,6 +173,9 @@ public:
         font.setBold(true);
         font.setWeight(75);
         image_Preview->setFont(font);
+        image_Preview->setFrameShape(QFrame::StyledPanel);
+        image_Preview->setFrameShadow(QFrame::Sunken);
+        image_Preview->setLineWidth(25);
 
         gridLayout_2->addWidget(image_Preview, 0, 0, 1, 1);
 
@@ -326,7 +329,7 @@ public:
 
         retranslateUi(system_Ui);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(system_Ui);
