@@ -46,6 +46,7 @@ private slots:
 
 private:
     Ui::system_Ui *ui;
+    QImage base_Image;
 };
 
 #endif // SYSTEM_UI_H

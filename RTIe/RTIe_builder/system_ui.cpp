@@ -10,7 +10,11 @@
 #include <QFile>
 #include <QFileDialog>
 
-
+#include <QApplication>
+#include <QtWidgets>
+#include <QTranslator>
+#include <QLocale>
+#include <QLibraryInfo>
 
 system_Ui::system_Ui(QWidget *parent) :
     QMainWindow(parent),
@@ -141,11 +145,13 @@ void system_Ui::on_btn1_2_clicked()
 
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item)
 {
-    QString wd = splashScreen::project_Path + "/images/wd/";
-    qInfo() << "pixmap wd:" << wd;
-
-    QPixmap pix(wd);
+    QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
+    qInfo() << "Item Selected:" << preview_Image;
+    this->base_Image = QImage(preview_Image);
+    QPixmap pix = QPixmap::fromImage(this->base_Image);
     int w = ui->image_Preview->width();
     int h = ui->image_Preview->height();
+    ui->image_Preview->clear();
     ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+    ui->image_Preview->update();
 }
