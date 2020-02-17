@@ -7,13 +7,15 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
     image_Management.cpp \
+    image_Management_Nui.cpp \
     main.cpp \
     marble_Detection.cpp \
     new_Project.cpp \
     new_Project_Settings.cpp \
     new_Project_Wizard.cpp \
     splash_Screen.cpp \
-    system_ui.cpp
+    system_ui.cpp \
+    wizardpage.cpp
 
 
 RESOURCES += \
@@ -21,18 +23,21 @@ RESOURCES += \
 
 HEADERS += \
     image_Management.h \
+    image_Management_Nui.h \
     marble_Detection.h \
     new_Project.h \
     new_Project_Settings.h \
     new_Project_Wizard.h \
     splash_Screen.h \
-    system_ui.h
+    system_ui.h \
+    wizardpage.h
 
 FORMS += \
     marble_Detection.ui \
     new_Project_Wizard.ui \
     image_Management.ui \
-    system_ui.ui
+    system_ui.ui \
+    wizardpage.ui
 
 DISTFILES += \
     img/image1.jpg \

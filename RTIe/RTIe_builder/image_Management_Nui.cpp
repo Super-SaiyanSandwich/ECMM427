@@ -1,3 +1,4 @@
+#include "image_Management_Nui.h"
 #include "image_Management.h"
 #include "new_Project_Settings.h"
 #include "splash_Screen.h"
@@ -23,23 +24,9 @@
 #include <QFile>
 #include <QTextStream>
 
-
-QStringList ACCEPTED_FORMATS = QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG";
-
-image_Management::image_Management(QWidget *parent) : QMainWindow(parent), Ui(new Ui::image_Management)
+image_Management_Nui::image_Management_Nui()
 {
 
-    Ui->setupUi(this);
-    this->show();
-
-    connect(Ui->action_Import_Label, SIGNAL(triggered()), this, SLOT(import()));
-    connect(Ui->import_Button_Label, SIGNAL(clicked()), this, SLOT(import()));
-    connect(Ui->delete_Button_Label, SIGNAL(clicked()), this, SLOT(remove()));
-
-}
-
-image_Management::~image_Management(){
-    delete Ui;
 }
 
 //Import image
@@ -51,7 +38,7 @@ image_Management::~image_Management(){
  * preserves file names.
  *
  */
-void image_Management::import(){
+void image_Management_Nui::import(){
 
     QString dir = "/";
 
@@ -100,7 +87,7 @@ void image_Management::import(){
 }
 
 
-QStringList image_Management::get_Working_Image_Paths(){
+QStringList image_Management_Nui::get_Working_Image_Paths(){
     QString wd = splashScreen::project_Path + "/images/wd/";
     QDir dir(wd);
     QStringList file_Paths;
@@ -120,31 +107,6 @@ QStringList image_Management::get_Working_Image_Paths(){
     return file_Paths;
 }
 
-// Read Working Directory
-/*
- * Reads images from working directory to show tiles
- *
- * ONLY SUPPORTS JPGs and PNGs ~~CURRENTLY~~
- */
-void image_Management::read(QString working_Dir){
-    QDir wd = working_Dir;
-
-    QStringList images = wd.entryList(ACCEPTED_FORMATS,QDir::Files);
-    foreach(QString filename, images) {
-
-    }
-}
-
-// Update TODO: is this the same as read()??
-/*
- * Updates to show which images are in the working directory
- *
- */
-void image_Management::update(){
-
-}
-
-
 
 // Delete/Remove image from working directory
 /*
@@ -153,7 +115,7 @@ void image_Management::update(){
  *
  *
  */
-void image_Management::remove(){
+void image_Management_Nui::delete_(){
     QList<QListWidgetItem *> image_List = system_Ui::Ui->listWidget.selectedItems();
     for (QList<QListWidgetItem *>::iterator d = image_List.begin(); d != image_List.end(); ++d){
         qInfo() << "Item Selected:" << typeid(d).name();
@@ -251,3 +213,6 @@ void image_Management::remove(){
 
 
 }
+
+
+
