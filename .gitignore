@@ -8,3 +8,12 @@ build-RTIe-Desktop_Qt_5_12_5_MinGW_32_bit-Debug/RTIe_builder/debug/RTIeBuilder.e
 RTIe/RTIe.pro.user
 *.exe
 *.user
+*.o
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
+*.Release
+*.Debug
+*.o
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
+build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_marble_Detection.cpp
