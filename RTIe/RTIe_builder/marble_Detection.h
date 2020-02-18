@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QScrollBar>
+#include <QListWidgetItem>
 
 namespace Ui {
 class marble_Detection;
@@ -60,6 +61,7 @@ private slots:
     void on_zoom_Out_Button_clicked();
     void on_test_Button_clicked();
     void add_Item_To_List(const QImage image, const QString filename);
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
 };
 
 #endif // MARBLE_DETECTION_H
