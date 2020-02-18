@@ -13,7 +13,7 @@ public:
     image_Management_Nui();
     static void import();
     static QStringList get_Working_Image_Paths();
-    static void delete_();//QList<QListWidgetItem *> image_List);
+    static void delete_(QList<QListWidgetItem *> image_List);
     virtual ~image_Management_Nui();
 
 private:

@@ -21,6 +21,9 @@ system_Ui::system_Ui(QWidget *parent) :
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
+    ui->listWidget->setViewMode(QListWidget::IconMode);
+    ui->listWidget->setIconSize(QSize(200,150));
+    ui->listWidget->setResizeMode(QListWidget::Adjust);
     image_Display();
 
 }
@@ -66,9 +69,6 @@ void system_Ui::start(){
 
 void system_Ui::image_Display(){
 
-    ui->listWidget->setViewMode(QListWidget::IconMode);
-    ui->listWidget->setIconSize(QSize(200,150));
-    ui->listWidget->setResizeMode(QListWidget::Adjust);
     QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
     QStringList file_Names;
@@ -158,9 +158,12 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
 void system_Ui::on_import_btn_clicked()
 {
     image_Management_Nui::import();
+    system_Ui::image_Display();
 }
 
 void system_Ui::on_delete_Btn_clicked()
 {
-    image_Management_Nui::delete_();
+    //QList<QListWidgetItem *> image_List = ui->listWidget;
+    //image_Management_Nui::delete_();
+    system_Ui::image_Display();
 }
