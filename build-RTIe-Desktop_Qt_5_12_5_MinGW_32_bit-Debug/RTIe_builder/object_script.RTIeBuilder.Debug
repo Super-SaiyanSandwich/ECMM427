@@ -1,5 +1,4 @@
 debug/image_Management.o
-debug/image_Gatherer.o
 debug/main.o
 debug/marble_Detection.o
 debug/new_Project.o
@@ -9,7 +8,6 @@ debug/splash_Screen.o
 debug/system_ui.o
 debug/qrc_test.o
 debug/moc_image_Management.o
-debug/moc_image_Gatherer.o
 debug/moc_marble_Detection.o
 debug/moc_new_Project.o
 debug/moc_new_Project_Settings.o

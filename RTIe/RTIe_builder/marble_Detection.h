@@ -39,7 +39,6 @@ private:
     void image_Zoom(int percent);
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
     void set_Maximums();
-    void load_Image_Icons();
 
 signals:
 
@@ -59,7 +58,6 @@ private slots:
     void on_zoom_In_Button_clicked();
     void on_zoom_Out_Button_clicked();
     void on_test_Button_clicked();
-    void add_Item_To_List(const QImage image, const QString filename);
 };
 
 #endif // MARBLE_DETECTION_H

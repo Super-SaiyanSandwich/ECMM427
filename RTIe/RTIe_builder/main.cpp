@@ -15,6 +15,8 @@ int main(int argc, char **argv)
     splashScreen splashScreen;
     splashScreen.show();
 
+    //TestWizard test;
+    //test.show();
 
     //PREVIEW IMAGE MANAMGEMENT
     //image_Management img;
@@ -22,3 +24,5 @@ int main(int argc, char **argv)
 
     return app.exec();
 }
+
+

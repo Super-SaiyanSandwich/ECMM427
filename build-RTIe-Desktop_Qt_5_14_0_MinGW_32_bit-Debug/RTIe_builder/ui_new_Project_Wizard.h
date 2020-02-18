@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWizardPage>
 
 QT_BEGIN_NAMESPACE
@@ -19,16 +18,12 @@ QT_BEGIN_NAMESPACE
 class Ui_new_Project_Wizard
 {
 public:
-    QPushButton *choose_Dialog;
 
     void setupUi(QWizardPage *new_Project_Wizard)
     {
         if (new_Project_Wizard->objectName().isEmpty())
             new_Project_Wizard->setObjectName(QString::fromUtf8("new_Project_Wizard"));
         new_Project_Wizard->resize(631, 391);
-        choose_Dialog = new QPushButton(new_Project_Wizard);
-        choose_Dialog->setObjectName(QString::fromUtf8("choose_Dialog"));
-        choose_Dialog->setGeometry(QRect(340, 160, 151, 31));
 
         retranslateUi(new_Project_Wizard);
 
@@ -38,7 +33,6 @@ public:
     void retranslateUi(QWizardPage *new_Project_Wizard)
     {
         new_Project_Wizard->setWindowTitle(QCoreApplication::translate("new_Project_Wizard", "WizardPage", nullptr));
-        choose_Dialog->setText(QCoreApplication::translate("new_Project_Wizard", "Choose Location", nullptr));
     } // retranslateUi
 
 };

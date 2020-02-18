@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QListWidgetItem>
-#include <QListWidget>
 
 namespace Ui {
 class system_Ui;
@@ -17,7 +16,7 @@ public:
     explicit system_Ui(QWidget *parent = nullptr);
     ~system_Ui();
     static void start();
-    static QListWidget listWidget;
+
 
 private slots:
     void image_Display();
@@ -49,7 +48,6 @@ private slots:
 private:
     Ui::system_Ui *ui;
     QImage base_Image;
-
 };
 
 #endif // SYSTEM_UI_H

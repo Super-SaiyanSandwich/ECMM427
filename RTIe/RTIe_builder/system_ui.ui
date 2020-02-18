@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>925</width>
-    <height>697</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,13 +26,17 @@
       </property>
       <widget class="QWidget" name="page1">
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="1" colspan="2">
-         <widget class="QListWidget" name="listWidget"/>
-        </item>
         <item row="3" column="2">
          <widget class="QPushButton" name="btn2">
           <property name="text">
-           <string>Marble Detection</string>
+           <string>Next &gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="btn5">
+          <property name="text">
+           <string>&lt; Prev</string>
           </property>
          </widget>
         </item>
@@ -59,12 +63,8 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
-         <widget class="QPushButton" name="btn5">
-          <property name="text">
-           <string>Image Management</string>
-          </property>
-         </widget>
+        <item row="0" column="1" colspan="2">
+         <widget class="QListWidget" name="listWidget"/>
         </item>
        </layout>
       </widget>
@@ -214,13 +214,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>925</width>
+     <width>800</width>
      <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Project</string>
+     <string>File</string>
     </property>
     <addaction name="action_New_Project"/>
     <addaction name="action_Open_Project"/>
@@ -228,8 +228,6 @@
     <addaction name="action_Save"/>
     <addaction name="action_Save_As"/>
     <addaction name="action_Close"/>
-    <addaction name="separator"/>
-    <addaction name="actionImport"/>
     <addaction name="separator"/>
     <addaction name="action_Exit"/>
    </widget>
@@ -273,7 +271,7 @@
      <normaloff>:/rec/img/new.png</normaloff>:/rec/img/new.png</iconset>
    </property>
    <property name="text">
-    <string>New</string>
+    <string>New Project</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -285,7 +283,7 @@
      <normaloff>:/rec/img/open.png</normaloff>:/rec/img/open.png</iconset>
    </property>
    <property name="text">
-    <string>Open </string>
+    <string>Open Project</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -402,16 +400,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+C</string>
-   </property>
-  </action>
-  <action name="actionImport">
-   <property name="text">
-    <string>Import</string>
-   </property>
-  </action>
-  <action name="actionExport">
-   <property name="text">
-    <string>Export</string>
    </property>
   </action>
  </widget>

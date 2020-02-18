@@ -1,8 +1,5 @@
 #include "marble_Detection.h"
 #include "ui_marble_Detection.h"
-#include "image_Management_Nui.h"
-#include "image_Gatherer.h"
-#include "splash_Screen.h"
 
 #include <tuple>
 #include <vector>
@@ -14,8 +11,6 @@
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QDebug>
-#include <QThread>
-
 
 using namespace std;
 
@@ -37,7 +32,7 @@ using namespace std;
 /// \param parent window
 ///
 marble_Detection::marble_Detection(QWidget *parent) : QMainWindow(parent),
-   ui(new Ui::marble_Detection)
+    ui(new Ui::marble_Detection)
 {
     qInfo() << "Begin MD";
 
@@ -45,15 +40,12 @@ marble_Detection::marble_Detection(QWidget *parent) : QMainWindow(parent),
 
     this->base_Image = QImage(":/marble_Test_Image.jpg");
 
-    splashScreen::project_Path = "C:/Users/super/Documents/GitHub/ECMM427-LearningQT/RTIe/fish_fossil-data-set_2000";
-
-
     ui->image_Label->setPixmap(QPixmap::fromImage(this->base_Image));
 
     //this->image_Label->setPixmap(QPixmap::fromImage(base_Image));
+
     //connect(this->findChild<QSpinBox>("spin_Box_X"),SIGNAL(valueChanged(int X)),this,on_spin_Box_X_Value_Changed());
 
-    this->load_Image_Icons();
 
 
     this->x = ui->spin_Box_X->value();
@@ -127,46 +119,6 @@ void marble_Detection::update_Marble_Marker()
     ui->preivew_Label->clear();
     ui->preivew_Label->setPixmap(target);
     ui->preivew_Label->update();
-}
-
-
-void marble_Detection::load_Image_Icons()
-{
-    ui->listWidget->setViewMode(QListWidget::IconMode);
-    ui->listWidget->setIconSize(QSize(100,50));
-    ui->listWidget->setResizeMode(QListWidget::Adjust);
-
-    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
-    QStringListIterator file_Iterator(path_List);
-
-    QStringList file_Names;
-
-    while (file_Iterator.hasNext())
-    {
-        QThread *thread = new QThread();
-        image_Gatherer *ig = new image_Gatherer();
-        ig->moveToThread( thread);
-
-        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-        QFile current_Image(path);
-        QFileInfo current_Image_Info(current_Image.fileName());
-        QString file_Name(current_Image_Info.fileName());
-        file_Names.append(file_Name);
-        //QImage path_Image = QImage(path);
-
-        QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
-        QObject::connect( ig, SIGNAL(finished(const QImage &)), this, SLOT(add_Item_To_List(const QImage &, file_Name)));
-
-        ig->setInput(file_Name);
-
-        thread->start();
-    }
-}
-
-void marble_Detection::add_Item_To_List(const QImage image, const QString filename)
-{
-    QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
-    ui->listWidget->addItem(item);
 }
 
 
