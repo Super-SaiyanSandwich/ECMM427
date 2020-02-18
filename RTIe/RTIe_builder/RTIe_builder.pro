@@ -6,7 +6,6 @@ QT = core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
-    image_Management.cpp \
     image_Gatherer.cpp \
     image_Management_Nui.cpp \
     main.cpp \
@@ -24,7 +23,6 @@ RESOURCES += \
     test.qrc
 
 HEADERS += \
-    image_Management.h \
     image_Gatherer.h \
     image_Management_Nui.h \
     marble_Detection.h \
@@ -39,7 +37,6 @@ HEADERS += \
 FORMS += \
     marble_Detection.ui \
     new_Project_Wizard.ui \
-    image_Management.ui \
     system_ui.ui \
     wizardpage.ui\
     testwizard.ui

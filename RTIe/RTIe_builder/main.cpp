@@ -12,11 +12,10 @@ int main(int argc, char **argv)
     QApplication app (argc, argv);
     QString project_Path;
     //PREVIEW SPLASH SCREEN & PROJECT WIZARD
-    //splashScreen splashScreen;
-    //splashScreen.show();
+    splashScreen splashScreen;
+    splashScreen.show();
 
-    TestWizard test;
-    test.show();
+
 
     //PREVIEW IMAGE MANAMGEMENT
     //image_Management img;

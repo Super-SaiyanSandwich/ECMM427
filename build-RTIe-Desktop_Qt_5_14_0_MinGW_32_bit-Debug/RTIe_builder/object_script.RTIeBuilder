@@ -1,4 +1,4 @@
-image_Management.o
+image_Gatherer.o
 image_Management_Nui.o
 main.o
 marble_Detection.o
@@ -10,7 +10,8 @@ system_ui.o
 wizardpage.o
 testwizard.o
 qrc_test.o
-moc_image_Management.o
+moc_image_Gatherer.o
+moc_image_Management_Nui.o
 moc_marble_Detection.o
 moc_new_Project.o
 moc_new_Project_Settings.o

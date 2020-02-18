@@ -1,6 +1,6 @@
 #include "marble_Detection.h"
 #include "ui_marble_Detection.h"
-#include "image_Management.h"
+#include "image_Management_Nui.h"
 #include "image_Gatherer.h"
 #include "splash_Screen.h"
 
@@ -136,7 +136,7 @@ void marble_Detection::load_Image_Icons()
     ui->listWidget->setIconSize(QSize(100,50));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
-    QStringList path_List = image_Management::get_Working_Image_Paths();//*splashScreen::project_Path
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
 
     QStringList file_Names;

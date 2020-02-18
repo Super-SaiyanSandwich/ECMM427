@@ -1,5 +1,5 @@
+#include "ui_image_Management.h"
 #include "image_Management_Nui.h"
-#include "image_Management.h"
 #include "new_Project_Settings.h"
 #include "splash_Screen.h"
 #include "system_ui.h"
@@ -11,10 +11,13 @@
 #include <QtCore>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QTranslator>
+#include <QLocale>
 #include <iostream>
-#include "ui_image_Management.h"
 #include <QFileDialog>
+//#include <QtWidgets>
 #include <QAction>
+#include <QLibraryInfo>
 #include <QPushButton>
 #include <QApplication>
 #include <QInputDialog>
@@ -31,6 +34,8 @@ image_Management_Nui::image_Management_Nui()
 
 }
 
+image_Management_Nui::~image_Management_Nui() {};
+
 //Import image
 /*
  * Used to import images after project setup
@@ -44,7 +49,7 @@ void image_Management_Nui::import(){
 
     QString dir = "/";
 
-    QFileDialog dialog(this);
+    QFileDialog dialog(this, tr("Open File"));
     dialog.setFileMode(QFileDialog::ExistingFiles);
     //TODO SET NAME FILTER ACCORDING TO STRINGLIST
 
@@ -73,8 +78,8 @@ void image_Management_Nui::import(){
             //qInfo() << "File name:" << file_Name;
 
             //[TODO] ERROR HANDLING : NEED TO CHECK DUPLICATE FILE NAMES
-            QString src_Path = source_Directory + "/" + file_Name;
-            QString wd_Path = working_Directory + "/" + file_Name;
+            QString src_Path = splashScreen::project_Path + "/src/" + file_Name;
+            QString wd_Path = splashScreen::project_Path + "/wd/" + file_Name;
             //qInfo() << "path to source" << src_Path << "\n";
 
             QFile::copy(current_Image_Path, src_Path);
@@ -119,8 +124,8 @@ QStringList image_Management_Nui::get_Working_Image_Paths(){
  *
  *
  */
-void image_Management_Nui::delete_(){
-    QList<QListWidgetItem *> image_List = system_Ui::Ui->listWidget.selectedItems();
+void image_Management_Nui::delete_(QList<QListWidgetItem *> image_List){
+
     for (QList<QListWidgetItem *>::iterator d = image_List.begin(); d != image_List.end(); ++d){
         qInfo() << "Item Selected:" << typeid(d).name();
     }

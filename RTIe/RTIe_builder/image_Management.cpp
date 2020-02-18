@@ -154,7 +154,7 @@ void image_Management::update(){
  *
  */
 void image_Management::remove(){
-    QList<QListWidgetItem *> image_List = system_Ui::Ui->listWidget.selectedItems();
+    QList<QListWidgetItem *> image_List = system_Ui::ui->listWidget.selectedItems();
     for (QList<QListWidgetItem *>::iterator d = image_List.begin(); d != image_List.end(); ++d){
         qInfo() << "Item Selected:" << typeid(d).name();
     }

@@ -1,5 +1,5 @@
 #include "system_ui.h"
-#include "image_Management.h"
+#include "image_Management_Nui.h"
 #include "splash_Screen.h"
 #include "ui_system_ui.h"
 #include <QFileDialog>
@@ -25,7 +25,7 @@ system_Ui::system_Ui(QWidget *parent) :
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
-    QStringList path_List = image_Management::get_Working_Image_Paths();//*splashScreen::project_Path
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
     QStringList file_Names;
 
@@ -87,7 +87,7 @@ void system_Ui::image_Display(){
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
-    QStringList path_List = image_Management::get_Working_Image_Paths();
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();
     QStringListIterator file_Iterator(path_List);
     QStringList file_Names;
 
