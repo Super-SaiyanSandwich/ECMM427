@@ -41,15 +41,17 @@ public:
     QAction *action_Copy;
     QAction *action_Paste;
     QAction *action_Clear;
+    QAction *actionImport;
+    QAction *actionExport;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QStackedWidget *stackedWidget;
     QWidget *page1;
     QGridLayout *gridLayout_2;
-    QPushButton *btn2;
-    QPushButton *btn5;
-    QLabel *image_Preview;
     QListWidget *listWidget;
+    QPushButton *btn2;
+    QLabel *image_Preview;
+    QPushButton *btn5;
     QWidget *page2;
     QGridLayout *gridLayout_4;
     QLabel *label_3;
@@ -85,7 +87,7 @@ public:
     {
         if (system_Ui->objectName().isEmpty())
             system_Ui->setObjectName(QString::fromUtf8("system_Ui"));
-        system_Ui->resize(800, 600);
+        system_Ui->resize(925, 697);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/rec/img/icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         system_Ui->setWindowIcon(icon);
@@ -146,6 +148,10 @@ public:
         action_Paste->setIcon(icon11);
         action_Clear = new QAction(system_Ui);
         action_Clear->setObjectName(QString::fromUtf8("action_Clear"));
+        actionImport = new QAction(system_Ui);
+        actionImport->setObjectName(QString::fromUtf8("actionImport"));
+        actionExport = new QAction(system_Ui);
+        actionExport->setObjectName(QString::fromUtf8("actionExport"));
         centralwidget = new QWidget(system_Ui);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -156,15 +162,15 @@ public:
         page1->setObjectName(QString::fromUtf8("page1"));
         gridLayout_2 = new QGridLayout(page1);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        listWidget = new QListWidget(page1);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+
+        gridLayout_2->addWidget(listWidget, 0, 1, 1, 2);
+
         btn2 = new QPushButton(page1);
         btn2->setObjectName(QString::fromUtf8("btn2"));
 
         gridLayout_2->addWidget(btn2, 3, 2, 1, 1);
-
-        btn5 = new QPushButton(page1);
-        btn5->setObjectName(QString::fromUtf8("btn5"));
-
-        gridLayout_2->addWidget(btn5, 3, 1, 1, 1);
 
         image_Preview = new QLabel(page1);
         image_Preview->setObjectName(QString::fromUtf8("image_Preview"));
@@ -179,10 +185,10 @@ public:
 
         gridLayout_2->addWidget(image_Preview, 0, 0, 1, 1);
 
-        listWidget = new QListWidget(page1);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        btn5 = new QPushButton(page1);
+        btn5->setObjectName(QString::fromUtf8("btn5"));
 
-        gridLayout_2->addWidget(listWidget, 0, 1, 1, 2);
+        gridLayout_2->addWidget(btn5, 3, 1, 1, 1);
 
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
@@ -290,7 +296,7 @@ public:
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 925, 26));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -318,6 +324,8 @@ public:
         menuFile->addAction(action_Save_As);
         menuFile->addAction(action_Close);
         menuFile->addSeparator();
+        menuFile->addAction(actionImport);
+        menuFile->addSeparator();
         menuFile->addAction(action_Exit);
         menuEdit->addAction(action_Undo);
         menuEdit->addAction(action_Redo);
@@ -338,11 +346,11 @@ public:
     void retranslateUi(QMainWindow *system_Ui)
     {
         system_Ui->setWindowTitle(QCoreApplication::translate("system_Ui", "RTI Builder", nullptr));
-        action_New_Project->setText(QCoreApplication::translate("system_Ui", "New Project", nullptr));
+        action_New_Project->setText(QCoreApplication::translate("system_Ui", "New", nullptr));
 #if QT_CONFIG(shortcut)
         action_New_Project->setShortcut(QCoreApplication::translate("system_Ui", "Ctrl+N", nullptr));
 #endif // QT_CONFIG(shortcut)
-        action_Open_Project->setText(QCoreApplication::translate("system_Ui", "Open Project", nullptr));
+        action_Open_Project->setText(QCoreApplication::translate("system_Ui", "Open ", nullptr));
 #if QT_CONFIG(shortcut)
         action_Open_Project->setShortcut(QCoreApplication::translate("system_Ui", "Ctrl+O", nullptr));
 #endif // QT_CONFIG(shortcut)
@@ -383,9 +391,11 @@ public:
 #if QT_CONFIG(shortcut)
         action_Clear->setShortcut(QCoreApplication::translate("system_Ui", "Ctrl+Shift+C", nullptr));
 #endif // QT_CONFIG(shortcut)
-        btn2->setText(QCoreApplication::translate("system_Ui", "Next >", nullptr));
-        btn5->setText(QCoreApplication::translate("system_Ui", "< Prev", nullptr));
+        actionImport->setText(QCoreApplication::translate("system_Ui", "Import", nullptr));
+        actionExport->setText(QCoreApplication::translate("system_Ui", "Export", nullptr));
+        btn2->setText(QCoreApplication::translate("system_Ui", "Marble Detection", nullptr));
         image_Preview->setText(QString());
+        btn5->setText(QCoreApplication::translate("system_Ui", "Image Management", nullptr));
         label_3->setText(QCoreApplication::translate("system_Ui", "PAGE 2", nullptr));
         btn1->setText(QCoreApplication::translate("system_Ui", "< Prev", nullptr));
         btn3->setText(QCoreApplication::translate("system_Ui", "Next >", nullptr));
@@ -398,7 +408,7 @@ public:
         label_6->setText(QCoreApplication::translate("system_Ui", "PAGE 5", nullptr));
         btn4_2->setText(QCoreApplication::translate("system_Ui", "< Prev", nullptr));
         btn1_2->setText(QCoreApplication::translate("system_Ui", "Next >", nullptr));
-        menuFile->setTitle(QCoreApplication::translate("system_Ui", "File", nullptr));
+        menuFile->setTitle(QCoreApplication::translate("system_Ui", "Project", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("system_Ui", "Edit", nullptr));
         menuView->setTitle(QCoreApplication::translate("system_Ui", "View", nullptr));
         menuLanguage->setTitle(QCoreApplication::translate("system_Ui", "Language", nullptr));
