@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_system_Ui_t {
     QByteArrayData data[17];
-    char stringdata0[257];
+    char stringdata0[265];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,23 +35,23 @@ static const qt_meta_stringdata_system_Ui_t qt_meta_stringdata_system_Ui = {
 QT_MOC_LITERAL(0, 0, 9), // "system_Ui"
 QT_MOC_LITERAL(1, 10, 13), // "image_Display"
 QT_MOC_LITERAL(2, 24, 0), // ""
-QT_MOC_LITERAL(3, 25, 13), // "open_Homepage"
-QT_MOC_LITERAL(4, 39, 15), // "on_btn5_clicked"
-QT_MOC_LITERAL(5, 55, 15), // "on_btn2_clicked"
-QT_MOC_LITERAL(6, 71, 15), // "on_btn1_clicked"
-QT_MOC_LITERAL(7, 87, 15), // "on_btn3_clicked"
-QT_MOC_LITERAL(8, 103, 17), // "on_btn2_2_clicked"
-QT_MOC_LITERAL(9, 121, 15), // "on_btn4_clicked"
-QT_MOC_LITERAL(10, 137, 17), // "on_btn3_2_clicked"
-QT_MOC_LITERAL(11, 155, 17), // "on_btn5_2_clicked"
-QT_MOC_LITERAL(12, 173, 17), // "on_btn4_2_clicked"
-QT_MOC_LITERAL(13, 191, 17), // "on_btn1_2_clicked"
-QT_MOC_LITERAL(14, 209, 25), // "on_listWidget_itemClicked"
-QT_MOC_LITERAL(15, 235, 16), // "QListWidgetItem*"
-QT_MOC_LITERAL(16, 252, 4) // "item"
+QT_MOC_LITERAL(3, 25, 21), // "open_Selected_Project"
+QT_MOC_LITERAL(4, 47, 15), // "on_btn5_clicked"
+QT_MOC_LITERAL(5, 63, 15), // "on_btn2_clicked"
+QT_MOC_LITERAL(6, 79, 15), // "on_btn1_clicked"
+QT_MOC_LITERAL(7, 95, 15), // "on_btn3_clicked"
+QT_MOC_LITERAL(8, 111, 17), // "on_btn2_2_clicked"
+QT_MOC_LITERAL(9, 129, 15), // "on_btn4_clicked"
+QT_MOC_LITERAL(10, 145, 17), // "on_btn3_2_clicked"
+QT_MOC_LITERAL(11, 163, 17), // "on_btn5_2_clicked"
+QT_MOC_LITERAL(12, 181, 17), // "on_btn4_2_clicked"
+QT_MOC_LITERAL(13, 199, 17), // "on_btn1_2_clicked"
+QT_MOC_LITERAL(14, 217, 25), // "on_listWidget_itemClicked"
+QT_MOC_LITERAL(15, 243, 16), // "QListWidgetItem*"
+QT_MOC_LITERAL(16, 260, 4) // "item"
 
     },
-    "system_Ui\0image_Display\0\0open_Homepage\0"
+    "system_Ui\0image_Display\0\0open_Selected_Project\0"
     "on_btn5_clicked\0on_btn2_clicked\0"
     "on_btn1_clicked\0on_btn3_clicked\0"
     "on_btn2_2_clicked\0on_btn4_clicked\0"
@@ -115,7 +115,7 @@ void system_Ui::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->image_Display(); break;
-        case 1: _t->open_Homepage(); break;
+        case 1: _t->open_Selected_Project(); break;
         case 2: _t->on_btn5_clicked(); break;
         case 3: _t->on_btn2_clicked(); break;
         case 4: _t->on_btn1_clicked(); break;

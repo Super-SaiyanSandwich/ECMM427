@@ -14,6 +14,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
@@ -48,10 +49,14 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page1;
     QGridLayout *gridLayout_2;
-    QListWidget *listWidget;
-    QPushButton *btn2;
     QLabel *image_Preview;
-    QPushButton *btn5;
+    QPushButton *import_btn;
+    QPushButton *delete_Btn;
+    QHBoxLayout *horizontalLayout;
+    QListWidget *listWidget;
+    QPushButton *image_Management_Btn;
+    QPushButton *marble_Detection_Btn;
+    QPushButton *export_2;
     QWidget *page2;
     QGridLayout *gridLayout_4;
     QLabel *label_3;
@@ -162,16 +167,6 @@ public:
         page1->setObjectName(QString::fromUtf8("page1"));
         gridLayout_2 = new QGridLayout(page1);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        listWidget = new QListWidget(page1);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
-
-        gridLayout_2->addWidget(listWidget, 0, 1, 1, 2);
-
-        btn2 = new QPushButton(page1);
-        btn2->setObjectName(QString::fromUtf8("btn2"));
-
-        gridLayout_2->addWidget(btn2, 3, 2, 1, 1);
-
         image_Preview = new QLabel(page1);
         image_Preview->setObjectName(QString::fromUtf8("image_Preview"));
         QFont font;
@@ -183,12 +178,45 @@ public:
         image_Preview->setFrameShadow(QFrame::Sunken);
         image_Preview->setLineWidth(25);
 
-        gridLayout_2->addWidget(image_Preview, 0, 0, 1, 1);
+        gridLayout_2->addWidget(image_Preview, 1, 0, 1, 1);
 
-        btn5 = new QPushButton(page1);
-        btn5->setObjectName(QString::fromUtf8("btn5"));
+        import_btn = new QPushButton(page1);
+        import_btn->setObjectName(QString::fromUtf8("import_btn"));
 
-        gridLayout_2->addWidget(btn5, 3, 1, 1, 1);
+        gridLayout_2->addWidget(import_btn, 0, 1, 1, 1);
+
+        delete_Btn = new QPushButton(page1);
+        delete_Btn->setObjectName(QString::fromUtf8("delete_Btn"));
+
+        gridLayout_2->addWidget(delete_Btn, 0, 2, 1, 1);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+
+        gridLayout_2->addLayout(horizontalLayout, 0, 0, 1, 1);
+
+        listWidget = new QListWidget(page1);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+
+        gridLayout_2->addWidget(listWidget, 1, 1, 1, 2);
+
+        image_Management_Btn = new QPushButton(page1);
+        image_Management_Btn->setObjectName(QString::fromUtf8("image_Management_Btn"));
+        image_Management_Btn->setEnabled(false);
+        image_Management_Btn->setCheckable(false);
+        image_Management_Btn->setFlat(false);
+
+        gridLayout_2->addWidget(image_Management_Btn, 2, 0, 1, 1);
+
+        marble_Detection_Btn = new QPushButton(page1);
+        marble_Detection_Btn->setObjectName(QString::fromUtf8("marble_Detection_Btn"));
+
+        gridLayout_2->addWidget(marble_Detection_Btn, 2, 1, 1, 1);
+
+        export_2 = new QPushButton(page1);
+        export_2->setObjectName(QString::fromUtf8("export_2"));
+
+        gridLayout_2->addWidget(export_2, 2, 2, 1, 1);
 
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
@@ -296,7 +324,7 @@ public:
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 925, 26));
+        menubar->setGeometry(QRect(0, 0, 925, 22));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -393,9 +421,12 @@ public:
 #endif // QT_CONFIG(shortcut)
         actionImport->setText(QCoreApplication::translate("system_Ui", "Import", nullptr));
         actionExport->setText(QCoreApplication::translate("system_Ui", "Export", nullptr));
-        btn2->setText(QCoreApplication::translate("system_Ui", "Marble Detection", nullptr));
         image_Preview->setText(QString());
-        btn5->setText(QCoreApplication::translate("system_Ui", "Image Management", nullptr));
+        import_btn->setText(QCoreApplication::translate("system_Ui", "Import", nullptr));
+        delete_Btn->setText(QCoreApplication::translate("system_Ui", "Delete", nullptr));
+        image_Management_Btn->setText(QCoreApplication::translate("system_Ui", "Image Management", nullptr));
+        marble_Detection_Btn->setText(QCoreApplication::translate("system_Ui", "Marble Detection", nullptr));
+        export_2->setText(QCoreApplication::translate("system_Ui", "Export", nullptr));
         label_3->setText(QCoreApplication::translate("system_Ui", "PAGE 2", nullptr));
         btn1->setText(QCoreApplication::translate("system_Ui", "< Prev", nullptr));
         btn3->setText(QCoreApplication::translate("system_Ui", "Next >", nullptr));

@@ -142,7 +142,6 @@ void system_Ui::on_btn1_2_clicked()
 }
 
 
-
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
