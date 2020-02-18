@@ -68,7 +68,7 @@ QToolBox::tab:selected {
 }*/</string>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="movement_Page">
         <property name="geometry">
@@ -76,7 +76,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>189</width>
-          <height>319</height>
+          <height>339</height>
          </rect>
         </property>
         <attribute name="label">
@@ -120,7 +120,7 @@ QToolBox::tab:selected {
              <number>2088</number>
             </property>
             <property name="value">
-             <number>500</number>
+             <number>0</number>
             </property>
            </widget>
           </item>
@@ -130,7 +130,10 @@ QToolBox::tab:selected {
              <number>2088</number>
             </property>
             <property name="value">
-             <number>500</number>
+             <number>0</number>
+            </property>
+            <property name="sliderPosition">
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -165,7 +168,7 @@ QToolBox::tab:selected {
              <number>1387</number>
             </property>
             <property name="value">
-             <number>128</number>
+             <number>0</number>
             </property>
            </widget>
           </item>
@@ -175,7 +178,7 @@ QToolBox::tab:selected {
              <number>1387</number>
             </property>
             <property name="value">
-             <number>128</number>
+             <number>0</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -204,7 +207,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>189</width>
-          <height>319</height>
+          <height>339</height>
          </rect>
         </property>
         <attribute name="label">
@@ -301,7 +304,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>189</width>
-          <height>319</height>
+          <height>339</height>
          </rect>
         </property>
         <attribute name="label">
@@ -592,7 +595,7 @@ QScrollBar::sub-line:horizontal {
           <x>0</x>
           <y>0</y>
           <width>189</width>
-          <height>319</height>
+          <height>339</height>
          </rect>
         </property>
         <attribute name="label">
@@ -627,6 +630,15 @@ QScrollBar::sub-line:horizontal {
              <width>171</width>
              <height>271</height>
             </rect>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="defaultDropAction">
+            <enum>Qt::IgnoreAction</enum>
+           </property>
+           <property name="itemAlignment">
+            <set>Qt::AlignLeading</set>
            </property>
           </widget>
          </widget>
@@ -783,7 +795,7 @@ QScrollBar::sub-line:horizontal {
      <x>0</x>
      <y>0</y>
      <width>1251</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -16,7 +16,7 @@ class marble_Detection : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit marble_Detection(QWidget *parent = nullptr);
+    explicit marble_Detection(QWidget *parent = nullptr, QString base_Image = "");
     ~marble_Detection();
     bool load_File(const QString &);
 
