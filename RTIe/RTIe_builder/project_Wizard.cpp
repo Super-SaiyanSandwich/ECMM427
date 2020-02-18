@@ -64,13 +64,12 @@ void project_Wizard::create_Project_Wizard()
 void project_Wizard::create_Project(){
 
     //TODO
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::DirectoryOnly);
-    dialog.setOption(QFileDialog::ShowDirsOnly);
+    //QFileDialog dialog(this);
+    //dialog.setFileMode(QFileDialog::DirectoryOnly);
+    //dialog.setOption(QFileDialog::ShowDirsOnly);
 
 
-    QString project_container_Path = dialog.directory().path();
-
+    QString project_container_Path = verification_Path;//dialog.directory().path();
 
     QDir verification_Dir(project_container_Path + "/" + project_Name);
 
@@ -91,7 +90,6 @@ void project_Wizard::create_Project(){
       // Uses the project's directory to create all nested directories.
       QDir project_Dir(project_Path);
       project_Dir.mkdir("./images/");
-      project_Dir.mkdir("./fitters/");
       project_Dir.mkdir("./images/src/");
       project_Dir.mkdir("./images/wd/");
 
@@ -122,6 +120,7 @@ void project_Wizard::create_Project(){
         dir_Exists_Alert.exec();
 
         // Re-opens the project creation wizard
+        verification_Path = "";
         create_Project_Wizard();
     }
 
@@ -150,6 +149,8 @@ void project_Wizard::choose_Project_Directory(){
     // project wizard for the user to validate
     QString chosen_Path = chosen_Location + "/" + project_Name;
     ui->path_Placeholder->setText(chosen_Path);
+
+    verification_Path = chosen_Location;
 
 
 }
