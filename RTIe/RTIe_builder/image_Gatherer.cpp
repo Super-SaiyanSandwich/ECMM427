@@ -8,7 +8,7 @@ image_Gatherer::image_Gatherer(QObject *parent) : QObject(parent)
 {
     gathererPrivate gp = {
         "",
-        QImage(":/marble_Test_Image.jpg"),
+        QImage(""),
     };
 
     this->d = gp;

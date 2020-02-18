@@ -36,16 +36,16 @@ using namespace std;
 /// \brief Page creation function - returns a "marble detection" page
 /// \param parent window
 ///
-marble_Detection::marble_Detection(QWidget *parent) : QMainWindow(parent),
+marble_Detection::marble_Detection(QWidget *parent, QString base_Image) : QMainWindow(parent),
    ui(new Ui::marble_Detection)
 {
     qInfo() << "Begin MD";
 
     ui->setupUi(this);
 
-    this->base_Image = QImage(":/marble_Test_Image.jpg");
+    this->base_Image = QImage(base_Image);
 
-    splashScreen::project_Path = "C:/Users/Tolu/Documents/GitHub/ECMM427/RTIe/fish_fossil-data-set_2000";
+    splashScreen::project_Path = "F:/Users/Dave/Documents/LearningQT/RTIe/fish_fossil-data-set_2000";
 
 
     ui->image_Label->setPixmap(QPixmap::fromImage(this->base_Image));
@@ -53,20 +53,15 @@ marble_Detection::marble_Detection(QWidget *parent) : QMainWindow(parent),
     //this->image_Label->setPixmap(QPixmap::fromImage(base_Image));
     //connect(this->findChild<QSpinBox>("spin_Box_X"),SIGNAL(valueChanged(int X)),this,on_spin_Box_X_Value_Changed());
 
-    this->load_Image_Icons();
 
-
-    this->x = ui->spin_Box_X->value();
-    this->y = ui->spin_Box_Y->value();
+    this->x = 0;
+    this->y = 0;
     this->radius = ui->spin_Box_Radius->value();
     this->update_Marble_Marker();
 
-    ui->spin_Box_X->setMaximum(base_Image.width() - 2*radius);
-    ui->spin_Box_Y->setMaximum(base_Image.height() - 2*radius);
-    ui->horizontal_Slider_X->setMaximum(base_Image.width() - 2*radius);
-    ui->horizontal_Slider_Y->setMaximum(base_Image.height() - 2*radius);
-
     this->show();
+
+    this->load_Image_Icons();
 }
 
 marble_Detection::~marble_Detection()
@@ -136,8 +131,12 @@ void marble_Detection::load_Image_Icons()
     ui->listWidget->setIconSize(QSize(100,50));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
+    qInfo() << "Meep";
+
     QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
+
+    qInfo() << "Moop";
 
     QStringList file_Names;
 
@@ -145,7 +144,7 @@ void marble_Detection::load_Image_Icons()
     {
         QThread *thread = new QThread();
         image_Gatherer *ig = new image_Gatherer();
-        ig->moveToThread( thread);
+        ig->moveToThread( thread );
 
         QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
         QFile current_Image(path);
@@ -161,10 +160,6 @@ void marble_Detection::load_Image_Icons()
 
         thread->start();
     }
-
-    QPixmap base_Pix = QPixmap::fromImage(base_Image);
-    ui->image_Label->setPixmap(base_Pix);
-    ui->image_Label->update();
 }
 
 void marble_Detection::add_Item_To_List(QImage image, QString filename)
@@ -175,6 +170,8 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
     qInfo() << "\t-Height:"<< image.height();
     qInfo() << "\t-Width:"<< image.width();
     this->base_Image = image;
+    this->update_Marble_Marker();
+    this->set_Maximums();
 }
 
 
@@ -244,11 +241,7 @@ void marble_Detection::on_spin_Box_Radius_valueChanged(double radius)
 
     ui->horizontal_Slider_Radius->setValue(radius);
     this->update_Marble_Marker();
-
-    ui->spin_Box_X->setMaximum(base_Image.width() - 2*radius);
-    ui->spin_Box_Y->setMaximum(base_Image.height() - 2*radius);
-    ui->horizontal_Slider_X->setMaximum(base_Image.width() - 2*radius);
-    ui->horizontal_Slider_Y->setMaximum(base_Image.height() - 2*radius);
+    this->set_Maximums();
 
     ui->spin_Box_X->setValue(this->x);
     ui->spin_Box_Y->setValue(this->y);
@@ -280,11 +273,7 @@ void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
 
     ui->spin_Box_Radius->setValue(value);
     this->update_Marble_Marker();
-
-    ui->spin_Box_X->setMaximum(base_Image.width() - 2*radius);
-    ui->spin_Box_Y->setMaximum(base_Image.height() - 2*radius);
-    ui->horizontal_Slider_X->setMaximum(base_Image.width() - 2*radius);
-    ui->horizontal_Slider_Y->setMaximum(base_Image.height() - 2*radius);
+    this->set_Maximums();
 
     ui->spin_Box_X->setValue(this->x);
     ui->spin_Box_Y->setValue(this->y);
@@ -399,11 +388,11 @@ void marble_Detection::on_zoom_Out_Button_clicked()
 
 void marble_Detection::set_Maximums()
 {
-    ui->horizontal_Slider_X->setMaximum(this->x - radius * 2);
-    ui->horizontal_Slider_Y->setMaximum(this->y - radius * 2);
+    ui->horizontal_Slider_X->setMaximum(this->base_Image.width() - radius * 2);
+    ui->horizontal_Slider_Y->setMaximum(this->base_Image.height() - radius * 2);
 
-    ui->spin_Box_X->setMaximum(this->x - radius * 2);
-    ui->spin_Box_Y->setMaximum(this->y - radius * 2);
+    ui->spin_Box_X->setMaximum(this->base_Image.width() - radius * 2);
+    ui->spin_Box_Y->setMaximum(this->base_Image.height() - radius * 2);
 }
 
 void marble_Detection::on_test_Button_clicked()

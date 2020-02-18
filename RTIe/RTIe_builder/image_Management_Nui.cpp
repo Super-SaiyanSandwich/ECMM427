@@ -1,4 +1,3 @@
-#include "ui_image_Management.h"
 #include "image_Management_Nui.h"
 #include "new_Project_Settings.h"
 #include "splash_Screen.h"
