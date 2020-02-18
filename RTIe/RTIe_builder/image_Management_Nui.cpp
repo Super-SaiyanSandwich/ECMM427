@@ -24,6 +24,8 @@
 #include <QFile>
 #include <QTextStream>
 
+QStringList ACCEPTED_FORMATS = QStringList()<<"*.jpg" << "*.JPG"<< "*.png"<< "*.PNG";
+
 image_Management_Nui::image_Management_Nui()
 {
 
@@ -45,7 +47,9 @@ void image_Management_Nui::import(){
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFiles);
     //TODO SET NAME FILTER ACCORDING TO STRINGLIST
-    dialog.setNameFilter(tr("Images ( *.jpg *.png *.JPG *.PNG)"));//*.tiff *.DNG)"));
+
+    QString l = "Images ( *.jpg *.png *.JPG *.PNG)";
+    dialog.setNameFilter(l);//*.tiff *.DNG)"));
 
     QStringList file_Paths;
     QStringList file_Names;

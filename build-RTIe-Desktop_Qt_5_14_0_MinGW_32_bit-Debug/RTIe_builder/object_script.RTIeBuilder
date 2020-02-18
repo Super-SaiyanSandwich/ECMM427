@@ -1,4 +1,5 @@
 image_Management.o
+image_Management_Nui.o
 main.o
 marble_Detection.o
 new_Project.o
@@ -6,6 +7,8 @@ new_Project_Settings.o
 new_Project_Wizard.o
 splash_Screen.o
 system_ui.o
+wizardpage.o
+testwizard.o
 qrc_test.o
 moc_image_Management.o
 moc_marble_Detection.o
@@ -14,3 +17,5 @@ moc_new_Project_Settings.o
 moc_new_Project_Wizard.o
 moc_splash_Screen.o
 moc_system_ui.o
+moc_wizardpage.o
+moc_testwizard.o
