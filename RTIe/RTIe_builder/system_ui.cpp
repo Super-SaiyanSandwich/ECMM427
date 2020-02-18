@@ -147,13 +147,6 @@ void system_Ui::on_btn1_2_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void system_Ui::on_Import_Btn_Clicked(){
-    image_Management_Nui::import();
-}
-void system_Ui::on_Delete_Btn_Clicked(){
-
-}
-
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
