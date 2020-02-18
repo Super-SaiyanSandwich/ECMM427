@@ -4264,15 +4264,9 @@ system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_builder/syste
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QListWidget \
-		../../RTIe/RTIe_builder/image_Management.h \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QLabel \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
+		../../RTIe/RTIe_builder/image_Management_Nui.h \
+		C:/Qt/5.14.0/mingw73_32/include/QtCore/QStringList \
+		C:/Qt/5.14.0/mingw73_32/include/QtCore/QList \
 		../../RTIe/RTIe_builder/splash_Screen.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QWidget \
 		../../RTIe/RTIe_builder/new_Project.h \
@@ -4284,10 +4278,18 @@ system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_builder/syste
 		C:/Qt/5.14.0/mingw73_32/include/QtGui/qtextoption.h \
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/new_Project_Wizard.h \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QLabel \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qlabel.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QWizardPage \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qwizard.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qdialog.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QWizard \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
+		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
 		ui_system_ui.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/QFileDialog \
 		C:/Qt/5.14.0/mingw73_32/include/QtWidgets/qfiledialog.h \
@@ -4345,7 +4347,6 @@ system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_builder/syste
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/qfactoryinterface.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/qfileselector.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/QObject \
-		C:/Qt/5.14.0/mingw73_32/include/QtCore/QStringList \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/qfilesystemwatcher.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/qfinalstate.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/qfuture.h \
@@ -4507,7 +4508,6 @@ system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_builder/syste
 		C:/Qt/5.14.0/mingw73_32/include/QtGui/qpixmapcache.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtGui/qrasterwindow.h \
 		C:/Qt/5.14.0/mingw73_32/include/QtGui/qscreen.h \
-		C:/Qt/5.14.0/mingw73_32/include/QtCore/QList \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/QSize \
 		C:/Qt/5.14.0/mingw73_32/include/QtCore/QSizeF \
 		C:/Qt/5.14.0/mingw73_32/include/QtGui/QTransform \

@@ -145,10 +145,10 @@ public:
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QString::fromUtf8("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 189, 339));
+        movement_Page->setGeometry(QRect(0, 0, 189, 319));
         verticalLayoutWidget_2 = new QWidget(movement_Page);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 171, 331));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 0, 171, 311));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -204,7 +204,7 @@ public:
         toolBox->addItem(movement_Page, QString::fromUtf8("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QString::fromUtf8("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 189, 339));
+        scale_Page->setGeometry(QRect(0, 0, 189, 319));
         verticalLayoutWidget_3 = new QWidget(scale_Page);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
         verticalLayoutWidget_3->setGeometry(QRect(10, 0, 171, 341));
@@ -254,11 +254,12 @@ public:
         toolBox->addItem(scale_Page, QString::fromUtf8("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QString::fromUtf8("tools_Page"));
-        tools_Page->setGeometry(QRect(0, 0, 189, 339));
+        tools_Page->setGeometry(QRect(0, 0, 189, 319));
         verticalLayoutWidget_4 = new QWidget(tools_Page);
         verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
-        verticalLayoutWidget_4->setGeometry(QRect(10, 0, 171, 341));
+        verticalLayoutWidget_4->setGeometry(QRect(0, 0, 196, 321));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_4);
+        verticalLayout_4->setSpacing(4);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         zoom_Label = new QLabel(verticalLayoutWidget_4);
@@ -477,24 +478,24 @@ public:
         toolBox->addItem(tools_Page, QString::fromUtf8("Tools"));
         images_Page = new QWidget();
         images_Page->setObjectName(QString::fromUtf8("images_Page"));
-        images_Page->setGeometry(QRect(0, 0, 189, 339));
+        images_Page->setGeometry(QRect(0, 0, 189, 319));
         scrollArea_2 = new QScrollArea(images_Page);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
-        scrollArea_2->setGeometry(QRect(10, 0, 171, 300));
+        scrollArea_2->setGeometry(QRect(10, 0, 171, 271));
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 169, 298));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 169, 269));
         listWidget = new QListWidget(scrollAreaWidgetContents_2);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        listWidget->setGeometry(QRect(0, 0, 171, 301));
+        listWidget->setGeometry(QRect(0, 0, 171, 271));
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
         open_Button = new QPushButton(images_Page);
         open_Button->setObjectName(QString::fromUtf8("open_Button"));
-        open_Button->setGeometry(QRect(10, 310, 75, 23));
+        open_Button->setGeometry(QRect(10, 280, 75, 23));
         test_Button = new QPushButton(images_Page);
         test_Button->setObjectName(QString::fromUtf8("test_Button"));
-        test_Button->setGeometry(QRect(90, 310, 80, 22));
+        test_Button->setGeometry(QRect(100, 280, 80, 22));
         toolBox->addItem(images_Page, QString::fromUtf8("Images"));
 
         verticalLayout->addWidget(toolBox);
@@ -545,7 +546,7 @@ public:
         marble_Detection->setCentralWidget(centralwidget);
         menubar = new QMenuBar(marble_Detection);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1251, 22));
+        menubar->setGeometry(QRect(0, 0, 1251, 27));
         marble_Detection->setMenuBar(menubar);
         statusbar = new QStatusBar(marble_Detection);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -553,7 +554,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(3);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);

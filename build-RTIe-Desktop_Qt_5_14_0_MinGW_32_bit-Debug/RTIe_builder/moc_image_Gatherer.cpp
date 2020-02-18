@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_image_Gatherer_t {
-    QByteArrayData data[8];
-    char stringdata0[62];
+    QByteArrayData data[9];
+    char stringdata0[67];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,13 +37,14 @@ QT_MOC_LITERAL(1, 15, 5), // "error"
 QT_MOC_LITERAL(2, 21, 0), // ""
 QT_MOC_LITERAL(3, 22, 8), // "finished"
 QT_MOC_LITERAL(4, 31, 6), // "output"
-QT_MOC_LITERAL(5, 38, 8), // "setInput"
-QT_MOC_LITERAL(6, 47, 8), // "filename"
-QT_MOC_LITERAL(7, 56, 5) // "start"
+QT_MOC_LITERAL(5, 38, 4), // "name"
+QT_MOC_LITERAL(6, 43, 8), // "setInput"
+QT_MOC_LITERAL(7, 52, 8), // "filename"
+QT_MOC_LITERAL(8, 61, 5) // "start"
 
     },
     "image_Gatherer\0error\0\0finished\0output\0"
-    "setInput\0filename\0start"
+    "name\0setInput\0filename\0start"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,18 +63,18 @@ static const uint qt_meta_data_image_Gatherer[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    0,   34,    2, 0x06 /* Public */,
-       3,    1,   35,    2, 0x06 /* Public */,
+       3,    2,   35,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    1,   38,    2, 0x0a /* Public */,
-       7,    0,   41,    2, 0x0a /* Public */,
+       6,    1,   40,    2, 0x0a /* Public */,
+       8,    0,   43,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QImage,    4,
+    QMetaType::Void, QMetaType::QImage, QMetaType::QString,    4,    5,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, QMetaType::QString,    7,
     QMetaType::Void,
 
        0        // eod
@@ -86,7 +87,7 @@ void image_Gatherer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->error(); break;
-        case 1: _t->finished((*reinterpret_cast< const QImage(*)>(_a[1]))); break;
+        case 1: _t->finished((*reinterpret_cast< const QImage(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         case 2: _t->setInput((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 3: _t->start(); break;
         default: ;
@@ -101,7 +102,7 @@ void image_Gatherer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
             }
         }
         {
-            using _t = void (image_Gatherer::*)(const QImage & );
+            using _t = void (image_Gatherer::*)(const QImage & , const QString & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&image_Gatherer::finished)) {
                 *result = 1;
                 return;
@@ -157,9 +158,9 @@ void image_Gatherer::error()
 }
 
 // SIGNAL 1
-void image_Gatherer::finished(const QImage & _t1)
+void image_Gatherer::finished(const QImage & _t1, const QString & _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

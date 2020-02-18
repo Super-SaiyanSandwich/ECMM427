@@ -23,8 +23,8 @@ using namespace std;
 #define CENTER_SCALE_FACTOR 0.3
 #define SCROLL_AREA_HEIGHT 694.0
 #define SCROLL_AREA_WIDTH 1044.0
-#define CONTRAST_PIVOT_POINT 210
-#define CONTRAST_SCALE 3
+#define CONTRAST_PIVOT_POINT 215
+#define CONTRAST_SCALE 2
 
 //|=======================================
 //|
@@ -45,7 +45,7 @@ marble_Detection::marble_Detection(QWidget *parent) : QMainWindow(parent),
 
     this->base_Image = QImage(":/marble_Test_Image.jpg");
 
-    splashScreen::project_Path = "C:/Users/super/Documents/GitHub/ECMM427-LearningQT/RTIe/fish_fossil-data-set_2000";
+    splashScreen::project_Path = "C:/Users/Tolu/Documents/GitHub/ECMM427/RTIe/fish_fossil-data-set_2000";
 
 
     ui->image_Label->setPixmap(QPixmap::fromImage(this->base_Image));
@@ -155,18 +155,26 @@ void marble_Detection::load_Image_Icons()
         //QImage path_Image = QImage(path);
 
         QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
-        QObject::connect( ig, SIGNAL(finished(const QImage &)), this, SLOT(add_Item_To_List(const QImage &, file_Name)));
+        QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Item_To_List(const QImage &, const QString &)));
 
         ig->setInput(file_Name);
 
         thread->start();
     }
+
+    QPixmap base_Pix = QPixmap::fromImage(base_Image);
+    ui->image_Label->setPixmap(base_Pix);
+    ui->image_Label->update();
 }
 
-void marble_Detection::add_Item_To_List(const QImage image, const QString filename)
+void marble_Detection::add_Item_To_List(QImage image, QString filename)
 {
+    qInfo() << "ITEM BEING ADDED: " << filename;
     QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
     ui->listWidget->addItem(item);
+    qInfo() << "\t-Height:"<< image.height();
+    qInfo() << "\t-Width:"<< image.width();
+    this->base_Image = image;
 }
 
 
@@ -490,4 +498,11 @@ void marble_Detection::on_test_Button_clicked()
     
     QPixmap base_Pix = QPixmap::fromImage(marble);
     ui->preivew_Label->setPixmap(base_Pix);
+}
+
+void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
+    this->base_Image = QImage(image_Path);
+    this->update_Marble_Marker();
 }

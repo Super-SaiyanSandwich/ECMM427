@@ -2,6 +2,12 @@
 #define IMAGE_GATHERER_H
 
 #include <QObject>
+#include <QImage>
+
+typedef struct gathererPrivate{
+    QString inputFilename;
+    QImage image;
+};
 
 class image_Gatherer : public QObject
 {
@@ -16,10 +22,10 @@ public slots:
 
 signals:
     void error();
-    void finished(const QImage &output);
+    void finished(const QImage &output, const QString &name);
 
 private:
-    struct gathererPrivate *d;
+    struct gathererPrivate d;
 
 };
 
