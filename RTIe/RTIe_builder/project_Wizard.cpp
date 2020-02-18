@@ -64,7 +64,7 @@ void project_Wizard::create_Project_Wizard()
 void project_Wizard::create_Project(){
 
     //TODO
-    QFileDialog dialog;
+    QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::DirectoryOnly);
     dialog.setOption(QFileDialog::ShowDirsOnly);
 
@@ -91,6 +91,7 @@ void project_Wizard::create_Project(){
       // Uses the project's directory to create all nested directories.
       QDir project_Dir(project_Path);
       project_Dir.mkdir("./images/");
+      project_Dir.mkdir("./fitters/");
       project_Dir.mkdir("./images/src/");
       project_Dir.mkdir("./images/wd/");
 

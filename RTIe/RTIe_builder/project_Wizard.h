@@ -28,6 +28,7 @@ private:
     QLabel *choose_Dialog_Label;
 
     QString project_Name;
+    //QString verification_Path;
 
 public slots:
     static void create_Project_Wizard();

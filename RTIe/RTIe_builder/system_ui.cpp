@@ -155,15 +155,44 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
     ui->image_Preview->update();
 }
 
+/*
+ * Triggers the event for image_Management_Nui::import()
+ */
 void system_Ui::on_import_btn_clicked()
 {
     image_Management_Nui::import();
+
+    // We must clear the listWidget in order to prevent populating it with the
+    // same items repeatedly
+    ui->listWidget->clear();
     system_Ui::image_Display();
 }
 
+/*
+ * When the delete button is pressed it will get all the items
+ * in the QListWidget that are Qt::Checked and pass them to the
+ * delete function to be deleted (or not, depending on the user's choice).
+ */
 void system_Ui::on_delete_Btn_clicked()
 {
-    //QList<QListWidgetItem *> image_List = ui->listWidget;
-    //image_Management_Nui::delete_();
+    // checked_Image_Names will contain the file_Names of all checked images
+    QStringList checked_Image_Names;
+    // Iterate over all listWidget items and check their states
+    for(int i = 0; i < ui->listWidget->count(); ++i)
+    {
+        QListWidgetItem* item = ui->listWidget->item(i);
+        bool isChecked = item->checkState();
+
+        //If isChecked is true, the item names will be appended to Checked_Image_Names
+        if(isChecked){
+            checked_Image_Names<< item->text();
+        }
+    }
+
+    image_Management_Nui::delete_(checked_Image_Names);
+
+    // We must clear the listWidget in order to prevent populating it with the
+    // same items repeatedly
+    ui->listWidget->clear();
     system_Ui::image_Display();
 }

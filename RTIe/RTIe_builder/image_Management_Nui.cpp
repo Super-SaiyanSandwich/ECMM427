@@ -128,18 +128,10 @@ QStringList image_Management_Nui::get_Working_Image_Paths(){
  *
  *
  */
-void image_Management_Nui::delete_(QList<QListWidgetItem *> image_List){
-
-    for (QList<QListWidgetItem *>::iterator d = image_List.begin(); d != image_List.end(); ++d){
-        qInfo() << "Item Selected:" << typeid(d).name();
-    };
-
-    //QStringList contains all image file paths of "QtChecked" QListWidget Items
-    QStringList file_Path_List;
-    file_Path_List << "image1.png" << "image2.png"; //TODO: ALLOW SELECTION AND DELETION
+void image_Management_Nui::delete_(QStringList file_Names){
 
     //Combines QStringList into singular QStrings
-    QString file_List_Str = file_Path_List.join( "\n");
+    QString file_List_Str = file_Names.join( "\n");
 
     //Verification & Notification of choices to be deleted
     QMessageBox verify;
@@ -158,9 +150,13 @@ void image_Management_Nui::delete_(QList<QListWidgetItem *> image_List){
         deletion_Cancellation.exec();
 
     } else {
+        // wd_Path is used to prepend the file_Names for the file_Path List
+        QString wd_Path = splashScreen::project_Path + "/images/wd/";
+        // QStringList will contain all the file paths for the checked images
+        QStringList file_Path_List;
 
         //If confirmed user still has choice to individually confirm or cancel images.
-        QStringListIterator file_Iterator(file_Path_List);
+        QStringListIterator file_Name_Iterator(file_Names);
         QStringList removed_Files;
         QStringList cancelled_Files;
 
@@ -168,10 +164,11 @@ void image_Management_Nui::delete_(QList<QListWidgetItem *> image_List){
          * Iterates per image requesting reason from user and appends the given
          * reason to the separating headers.
          */
-        while(file_Iterator.hasNext()){
-            QFile file(file_Iterator.next().toLocal8Bit().constData());
-            QFileInfo file_Name_Info(file.fileName());
-            QString file_Name(file_Name_Info.fileName());
+        while(file_Name_Iterator.hasNext()){
+
+            QString file_Name = file_Name_Iterator.next().toLocal8Bit().constData();
+            QString file_Path = wd_Path + file_Name;
+            QFile file(file_Path);
 
             bool ok;
             QInputDialog removal_Reason;
