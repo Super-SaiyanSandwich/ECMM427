@@ -1,6 +1,7 @@
 #include "image_Management.h"
 #include "new_Project_Settings.h"
 #include "splash_Screen.h"
+#include "system_ui.h"
 
 #include <QDir>
 #include <QDebug>
@@ -153,6 +154,10 @@ void image_Management::update(){
  *
  */
 void image_Management::remove(){
+    QList<QListWidgetItem *> image_List = system_Ui::ui->listWidget.selectedItems();
+    for (QList<QListWidgetItem *>::iterator d = image_List.begin(); d != image_List.end(); ++d){
+        qInfo() << "Item Selected:" << typeid(d).name();
+    }
 
     QStringList file_Path_List;
     file_Path_List << "image1.png" << "image2.png"; //TODO: ALLOW SELECTION AND DELETION
