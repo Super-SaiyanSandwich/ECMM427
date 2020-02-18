@@ -2,6 +2,9 @@
 #include "image_Management_Nui.h"
 #include "splash_Screen.h"
 #include "ui_system_ui.h"
+#include "marble_Detection.h"
+#include "ptm_fitter.h"
+
 #include <QFileDialog>
 #include <QDebug>
 #include <QPixmap>
@@ -9,6 +12,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
+
 
 #include <QApplication>
 #include <QtWidgets>
@@ -195,4 +199,17 @@ void system_Ui::on_delete_Btn_clicked()
     // same items repeatedly
     ui->listWidget->clear();
     system_Ui::image_Display();
+}
+
+void system_Ui::on_marble_Detection_Btn_clicked()
+{
+    this->hide();
+    marble_Detection *u = new marble_Detection();
+    u->show();
+}
+
+void system_Ui::on_export_2_clicked()
+{
+    ptm_fitter *t = new ptm_fitter();
+    t->show();
 }

@@ -22,7 +22,10 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::ptm_fitter *ui;
+    QString ptm_Path;
 };
 #endif // PTM_FITTER_H

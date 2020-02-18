@@ -53,6 +53,10 @@ private slots:
 
     void on_delete_Btn_clicked();
 
+    void on_marble_Detection_Btn_clicked();
+
+    void on_export_2_clicked();
+
 private:
     Ui::system_Ui *ui;
     QImage base_Image;

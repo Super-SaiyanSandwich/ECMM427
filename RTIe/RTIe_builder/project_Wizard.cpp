@@ -2,7 +2,7 @@
 #include "ui_project_Wizard.h"
 
 #include "new_Project_Wizard.h"
-#include "ui_new_Project_Wizard.h"
+//#include "new_Project_Wizard.h"
 #include "splash_Screen.h"
 #include "system_ui.h"
 
