@@ -7,7 +7,14 @@
 #include <QPixmap>
 #include <QListWidgetItem>
 #include <QDebug>
+#include <QFile>
+#include <QFileDialog>
 
+#include <QApplication>
+#include <QtWidgets>
+#include <QTranslator>
+#include <QLocale>
+#include <QLibraryInfo>
 
 system_Ui::system_Ui(QWidget *parent) :
     QMainWindow(parent),
@@ -15,7 +22,6 @@ system_Ui::system_Ui(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //QString path2 = "C:/Users/Tolu/Desktop/images/";
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
@@ -33,7 +39,7 @@ system_Ui::system_Ui(QWidget *parent) :
         file_Names.append(file_Name);
 
         QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString(file_Name));//
-//        QImage result = item->scaled(800, 600)->scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        //QImage result = item->scaled(800, 600)->scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
         item->setCheckState(Qt::Unchecked); // AND initialize check state
         ui->listWidget->addItem(item);
@@ -47,8 +53,31 @@ system_Ui::~system_Ui()
 
 void system_Ui::open_Homepage()//IMPORTANT FUNCTION
 {
-   system_Ui *home = new system_Ui();
-   home->showMaximized();
+
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setNameFilter(tr("RTIe Files (*.rtie *.RTIE"));
+
+    if(dialog.exec()){
+        QFile project_File(dialog.selectedFiles().at(0).toLocal8Bit().constData());
+
+        if (project_File.open(QIODevice::ReadOnly))
+        {
+            QTextStream in(&project_File);
+            splashScreen::project_Path = in.readLine();
+            project_File.close();
+        }
+
+    }
+
+    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
+
+    system_Ui *home = new system_Ui();
+    home->showMaximized();
+
+
+
+    //QString path = dialog.directory.path();
 
 }
 
@@ -57,9 +86,11 @@ void system_Ui::image_Display(){
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
+
     QStringList path_List = image_Management::get_Working_Image_Paths();
     QStringListIterator file_Iterator(path_List);
     QStringList file_Names;
+
 }
 
 void system_Ui::on_btn5_clicked()
@@ -114,10 +145,13 @@ void system_Ui::on_btn1_2_clicked()
 
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item)
 {
-//    QString image_path = "C:/Users/Tolu/Desktop/images/image_1.jpg";
-    QString wd = splashScreen::project_Path + "/images/wd";
-    QPixmap pix(wd);
+    QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
+    qInfo() << "Item Selected:" << preview_Image;
+    this->base_Image = QImage(preview_Image);
+    QPixmap pix = QPixmap::fromImage(this->base_Image);
     int w = ui->image_Preview->width();
     int h = ui->image_Preview->height();
+    ui->image_Preview->clear();
     ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+    ui->image_Preview->update();
 }

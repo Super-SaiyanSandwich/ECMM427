@@ -2,7 +2,6 @@
 #include "new_Project_Settings.h"
 #include "splash_Screen.h"
 
-
 #include <QDir>
 #include <QDebug>
 #include <QApplication>
@@ -109,7 +108,9 @@ QStringList image_Management::get_Working_Image_Paths(){
 
     QStringListIterator file_Iterator(file_Name_Paths);
     while(file_Iterator.hasNext()){
-        file_Paths << (wd+file_Iterator.next());
+        QString n = file_Iterator.next();
+        qInfo() << "iterator:" + n;
+        file_Paths << (wd+n);
     }
 
 

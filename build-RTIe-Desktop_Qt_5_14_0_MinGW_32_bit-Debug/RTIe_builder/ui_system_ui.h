@@ -173,6 +173,9 @@ public:
         font.setBold(true);
         font.setWeight(75);
         image_Preview->setFont(font);
+        image_Preview->setFrameShape(QFrame::StyledPanel);
+        image_Preview->setFrameShadow(QFrame::Sunken);
+        image_Preview->setLineWidth(25);
 
         gridLayout_2->addWidget(image_Preview, 0, 0, 1, 1);
 
@@ -287,7 +290,7 @@ public:
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 30));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
