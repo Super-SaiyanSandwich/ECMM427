@@ -19,8 +19,11 @@ public:
     static void start();
     static QListWidget listWidget;
 
-private slots:
+public slots:
     void image_Display();
+
+private slots:
+
 
     void open_Selected_Project();
 
@@ -45,6 +48,10 @@ private slots:
     void on_btn1_2_clicked();
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
+
+    void on_import_btn_clicked();
+
+    void on_delete_Btn_clicked();
 
 private:
     Ui::system_Ui *ui;

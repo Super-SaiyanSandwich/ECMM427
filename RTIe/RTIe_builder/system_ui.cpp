@@ -21,29 +21,8 @@ system_Ui::system_Ui(QWidget *parent) :
     ui(new Ui::system_Ui)
 {
     ui->setupUi(this);
+    image_Display();
 
-    ui->listWidget->setViewMode(QListWidget::IconMode);
-    ui->listWidget->setIconSize(QSize(200,150));
-    ui->listWidget->setResizeMode(QListWidget::Adjust);
-    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
-    QStringListIterator file_Iterator(path_List);
-    QStringList file_Names;
-
-    while (file_Iterator.hasNext())
-    {
-
-        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-        QFile current_Image(path);
-        QFileInfo current_Image_Info(current_Image.fileName());
-        QString file_Name(current_Image_Info.fileName());
-        file_Names.append(file_Name);
-
-        QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString(file_Name));//
-        //QImage result = item->scaled(800, 600)->scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-        item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
-        item->setCheckState(Qt::Unchecked); // AND initialize check state
-        ui->listWidget->addItem(item);
-    }
 }
 
 system_Ui::~system_Ui()
@@ -90,10 +69,25 @@ void system_Ui::image_Display(){
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
-
-    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
     QStringList file_Names;
+
+    while (file_Iterator.hasNext())
+    {
+
+        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
+        QFile current_Image(path);
+        QFileInfo current_Image_Info(current_Image.fileName());
+        QString file_Name(current_Image_Info.fileName());
+        file_Names.append(file_Name);
+
+        QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString(file_Name));//
+        //QImage result = item->scaled(800, 600)->scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
+        item->setCheckState(Qt::Unchecked); // AND initialize check state
+        ui->listWidget->addItem(item);
+    }
 
 }
 
@@ -147,12 +141,7 @@ void system_Ui::on_btn1_2_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void system_Ui::on_Import_Btn_Clicked(){
-    image_Management_Nui::import();
-}
-void system_Ui::on_Delete_Btn_Clicked(){
 
-}
 
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
@@ -165,4 +154,14 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
     ui->image_Preview->clear();
     ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
     ui->image_Preview->update();
+}
+
+void system_Ui::on_import_btn_clicked()
+{
+    image_Management_Nui::import();
+}
+
+void system_Ui::on_delete_Btn_clicked()
+{
+    image_Management_Nui::delete_();
 }

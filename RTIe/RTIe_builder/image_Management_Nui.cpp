@@ -49,12 +49,11 @@ void image_Management_Nui::import(){
 
     QString dir = "/";
 
-    QFileDialog dialog(this, tr("Open File"));
+    QFileDialog dialog;
     dialog.setFileMode(QFileDialog::ExistingFiles);
     //TODO SET NAME FILTER ACCORDING TO STRINGLIST
 
-    QString l = "Images ( *.jpg *.png *.JPG *.PNG)";
-    dialog.setNameFilter(l);//*.tiff *.DNG)"));
+    dialog.setNameFilters(ACCEPTED_FORMATS);//*.tiff *.DNG)"));
 
     QStringList file_Paths;
     QStringList file_Names;
@@ -78,8 +77,8 @@ void image_Management_Nui::import(){
             //qInfo() << "File name:" << file_Name;
 
             //[TODO] ERROR HANDLING : NEED TO CHECK DUPLICATE FILE NAMES
-            QString src_Path = splashScreen::project_Path + "/src/" + file_Name;
-            QString wd_Path = splashScreen::project_Path + "/wd/" + file_Name;
+            QString src_Path = splashScreen::project_Path + "/images/src/" + file_Name;
+            QString wd_Path = splashScreen::project_Path + "/images/wd/" + file_Name;
             //qInfo() << "path to source" << src_Path << "\n";
 
             QFile::copy(current_Image_Path, src_Path);
@@ -91,6 +90,8 @@ void image_Management_Nui::import(){
     //Althought the use of setFileMode : ExistingFiles requires the files to exist in order to execute. So this is an impossibility.
     if (file_Names.isEmpty()){
     }
+
+    system_Ui::image_Display();
 
 
 }
@@ -124,11 +125,11 @@ QStringList image_Management_Nui::get_Working_Image_Paths(){
  *
  *
  */
-void image_Management_Nui::delete_(QList<QListWidgetItem *> image_List){
+void image_Management_Nui::delete_(){//QList<QListWidgetItem *> image_List){
 
-    for (QList<QListWidgetItem *>::iterator d = image_List.begin(); d != image_List.end(); ++d){
+    /**for (QList<QListWidgetItem *>::iterator d = image_List.begin(); d != image_List.end(); ++d){
         qInfo() << "Item Selected:" << typeid(d).name();
-    }
+    }**/
 
     QStringList file_Path_List;
     file_Path_List << "image1.png" << "image2.png"; //TODO: ALLOW SELECTION AND DELETION
@@ -172,7 +173,11 @@ void image_Management_Nui::delete_(QList<QListWidgetItem *> image_List){
             QString info_Text = "Image: \"" + file_Name + "\".\nReason for removal:";
 
             QString removal_Text_File_Header = "--===-- " + file_Name + " removal reason --===--\n";
-            QString reason = removal_Reason.getMultiLineText(this, window_Title, info_Text, "Type reason here", &ok);
+
+            //QInputDialog multi_Line(nullptr_t, window_Title, info_Text, "Type reason here", &ok);
+            //QString reasonTest;
+
+            QString reason = removal_Reason.getMultiLineText(NULL, window_Title, info_Text, "Type reason here", &ok);
             if(ok){
 
                 removed_Files << file_Name;
@@ -181,7 +186,7 @@ void image_Management_Nui::delete_(QList<QListWidgetItem *> image_List){
 
 
                 QString image_Deletion_Reasons_File_Name = "removed_Images_Reasons.txt";
-                QString image_Deletion_Reasons_File_Path = splashScreen::project_Path + + "/images/wd" + image_Deletion_Reasons_File_Name;
+                QString image_Deletion_Reasons_File_Path = splashScreen::project_Path + + "/images/wd/" + image_Deletion_Reasons_File_Name;
                 QFile file(image_Deletion_Reasons_File_Path);
                 if (file.open(QIODevice::ReadWrite)) {
                     QTextStream stream(&file);

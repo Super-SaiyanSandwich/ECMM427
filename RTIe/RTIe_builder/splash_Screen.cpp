@@ -36,12 +36,12 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 //     QString *splashScreen::project_Path = "A Way";
 
      QPushButton *new_Project_Button = new QPushButton("New Project", this);
-     new_Project_Button->setGeometry(135, 130, 80, 30);
+     new_Project_Button->setGeometry(130, 130, 90, 30);
      new_Project_Button->setObjectName("new_Project_Button");
      new_Project_Button->setStyleSheet(button_Main_Style);
 
      QPushButton *open_Project_Button = new QPushButton("Open Existing Project", this);
-     open_Project_Button->setGeometry(115, 175, 120, 30);
+     open_Project_Button->setGeometry(100, 175, 150, 30);
      open_Project_Button->setObjectName("open_Project_Button");
      open_Project_Button->setStyleSheet(button_Main_Style);
 

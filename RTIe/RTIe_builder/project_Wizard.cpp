@@ -59,7 +59,7 @@ void project_Wizard::create_Project(){
     dialog.setOption(QFileDialog::ShowDirsOnly);
 
 
-    QString project_container_Path = dialog.directory().absolutePath();
+    QString project_container_Path = dialog.directory().path();
 
 
     QDir verification_Dir(project_container_Path + "/" + project_Name);
@@ -70,7 +70,7 @@ void project_Wizard::create_Project(){
       //qInfo() << "doesnt exist";
 
       QDir dir(project_container_Path);
-      dir.mkdir(project_Name);
+      dir.mkdir("./"+project_Name);
 
 
       QString project_Path = dir.path() + "/" + project_Name;
@@ -92,6 +92,7 @@ void project_Wizard::create_Project(){
           stream << dir.path() << "/" << project_Name << endl;
       }
       //TODO CREATE DELETE_REASONS_TXT
+      system_Ui::start();
 
     } else {
         //qInfo() << "dir exists FALSE ::" << QString::number(verification_Dir.exists());
@@ -102,13 +103,8 @@ void project_Wizard::create_Project(){
         dir_Exists_Alert.setDefaultButton(QMessageBox::Ok);
         dir_Exists_Alert.exec();
 
-        create_Project();
-
+        create_Project_Wizard();
     }
-
-    system_Ui::start();
-
-
 
 
 }
