@@ -15,12 +15,13 @@ class system_Ui : public QMainWindow
 public:
     explicit system_Ui(QWidget *parent = nullptr);
     ~system_Ui();
+    static void start();
 
 
 private slots:
     void image_Display();
 
-    void open_Homepage();
+    void open_Selected_Project();
 
     void on_btn5_clicked();
 

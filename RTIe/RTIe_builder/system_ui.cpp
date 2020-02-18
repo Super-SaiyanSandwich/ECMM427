@@ -51,7 +51,7 @@ system_Ui::~system_Ui()
     delete ui;
 }
 
-void system_Ui::open_Homepage()//IMPORTANT FUNCTION
+void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 {
 
     QFileDialog dialog(this);
@@ -72,13 +72,17 @@ void system_Ui::open_Homepage()//IMPORTANT FUNCTION
 
     qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
 
-    system_Ui *home = new system_Ui();
-    home->showMaximized();
+    system_Ui::start();
 
 
 
     //QString path = dialog.directory.path();
 
+}
+
+void system_Ui::start(){
+    system_Ui *home = new system_Ui();
+    home->showMaximized();
 }
 
 void system_Ui::image_Display(){
