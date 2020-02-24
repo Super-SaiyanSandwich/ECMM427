@@ -18,7 +18,9 @@ class marble_Detection : public QMainWindow
 public:
     explicit marble_Detection(QWidget *parent = nullptr, QString base_Image = "");
     ~marble_Detection();
+
     bool load_File(const QString &);
+    void set_RGB(int r, int g, int b);
 
 
 private:
@@ -35,7 +37,11 @@ private:
     int b = 0;
     int zoom_Percentage = 100;
 
+    bool invert_Selector = false;
+
     void update_Marble_Marker();
+    void inverted_Marker();
+    QImage applyEffectToImage(QImage src, QGraphicsEffect *effect, int extent = 0);
     void reset_Image_Zoom();
     void image_Zoom(int percent);
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
@@ -62,6 +68,7 @@ private slots:
     void on_test_Button_clicked();
     void add_Item_To_List(const QImage image, const QString filename);
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+    void on_swap_Button_clicked();
 };
 
 #endif // MARBLE_DETECTION_H

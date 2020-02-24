@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1251</width>
-    <height>739</height>
+    <width>1600</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,10 +22,10 @@ font: 75 10pt &quot;MS Shell Dlg 2&quot;;
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>10</y>
-      <width>191</width>
-      <height>461</height>
+      <x>1340</x>
+      <y>0</y>
+      <width>251</width>
+      <height>611</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -68,15 +68,15 @@ QToolBox::tab:selected {
 }*/</string>
        </property>
        <property name="currentIndex">
-        <number>3</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="movement_Page">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>189</width>
-          <height>339</height>
+          <width>249</width>
+          <height>489</height>
          </rect>
         </property>
         <attribute name="label">
@@ -86,9 +86,9 @@ QToolBox::tab:selected {
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>0</y>
-           <width>171</width>
-           <height>311</height>
+           <y>10</y>
+           <width>231</width>
+           <height>471</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -206,8 +206,8 @@ QToolBox::tab:selected {
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>189</width>
-          <height>339</height>
+          <width>249</width>
+          <height>489</height>
          </rect>
         </property>
         <attribute name="label">
@@ -217,9 +217,9 @@ QToolBox::tab:selected {
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>0</y>
-           <width>171</width>
-           <height>341</height>
+           <y>10</y>
+           <width>231</width>
+           <height>471</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -303,8 +303,8 @@ QToolBox::tab:selected {
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>189</width>
-          <height>339</height>
+          <width>249</width>
+          <height>489</height>
          </rect>
         </property>
         <attribute name="label">
@@ -313,10 +313,10 @@ QToolBox::tab:selected {
         <widget class="QWidget" name="verticalLayoutWidget_4">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>196</width>
-           <height>321</height>
+           <x>10</x>
+           <y>10</y>
+           <width>231</width>
+           <height>471</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -594,8 +594,8 @@ QScrollBar::sub-line:horizontal {
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>189</width>
-          <height>339</height>
+          <width>249</width>
+          <height>489</height>
          </rect>
         </property>
         <attribute name="label">
@@ -606,7 +606,7 @@ QScrollBar::sub-line:horizontal {
           <rect>
            <x>10</x>
            <y>0</y>
-           <width>171</width>
+           <width>231</width>
            <height>271</height>
           </rect>
          </property>
@@ -618,7 +618,7 @@ QScrollBar::sub-line:horizontal {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>169</width>
+            <width>229</width>
             <height>269</height>
            </rect>
           </property>
@@ -627,7 +627,7 @@ QScrollBar::sub-line:horizontal {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>171</width>
+             <width>211</width>
              <height>271</height>
             </rect>
            </property>
@@ -661,12 +661,12 @@ QScrollBar::sub-line:horizontal {
           <rect>
            <x>100</x>
            <y>280</y>
-           <width>80</width>
+           <width>131</width>
            <height>22</height>
           </rect>
          </property>
          <property name="text">
-          <string>Test</string>
+          <string>Run Marble Detection</string>
          </property>
         </widget>
        </widget>
@@ -677,8 +677,8 @@ QScrollBar::sub-line:horizontal {
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>475</y>
+      <x>1190</x>
+      <y>600</y>
       <width>81</width>
       <height>20</height>
      </rect>
@@ -703,10 +703,10 @@ QScrollBar::sub-line:horizontal {
    <widget class="QLabel" name="preivew_Label">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>500</y>
-      <width>191</width>
-      <height>191</height>
+      <x>1190</x>
+      <y>620</y>
+      <width>400</width>
+      <height>225</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -730,8 +730,8 @@ QScrollBar::sub-line:horizontal {
      <rect>
       <x>1</x>
       <y>1</y>
-      <width>1044</width>
-      <height>694</height>
+      <width>1171</width>
+      <height>841</height>
      </rect>
     </property>
     <property name="verticalScrollBarPolicy">
@@ -754,8 +754,8 @@ QScrollBar::sub-line:horizontal {
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>1042</width>
-       <height>692</height>
+       <width>1169</width>
+       <height>839</height>
       </rect>
      </property>
      <widget class="QLabel" name="image_Label">
@@ -763,8 +763,8 @@ QScrollBar::sub-line:horizontal {
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1044</width>
-        <height>694</height>
+        <width>1171</width>
+        <height>841</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -788,14 +788,38 @@ QScrollBar::sub-line:horizontal {
      </widget>
     </widget>
    </widget>
+   <widget class="QToolButton" name="swap_Button">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>550</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/noun_swap_99117.png</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1251</width>
-     <height>21</height>
+     <width>1600</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

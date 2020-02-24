@@ -45,7 +45,7 @@ marble_Detection::marble_Detection(QWidget *parent, QString base_Image) : QMainW
 
     this->base_Image = QImage(base_Image);
 
-    splashScreen::project_Path = "F:/Users/Dave/Documents/LearningQT/RTIe/fish_fossil-data-set_2000";
+    //splashScreen::project_Path = "F:/Users/Dave/Documents/LearningQT/RTIe/fish_fossil-data-set_2000";
 
 
     ui->image_Label->setPixmap(QPixmap::fromImage(this->base_Image));
@@ -57,7 +57,7 @@ marble_Detection::marble_Detection(QWidget *parent, QString base_Image) : QMainW
     this->x = 0;
     this->y = 0;
     this->radius = ui->spin_Box_Radius->value();
-    this->update_Marble_Marker();
+    //this->update_Marble_Marker();
 
     this->show();
 
@@ -111,7 +111,14 @@ void marble_Detection::update_Marble_Marker()
     QPixmap target(rad * 2, rad * 2);
 
     paint = new QPainter(&target);
-    paint->fillRect(QRect(0, 0, rad * 2, rad * 2),Qt::gray);
+
+    QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+    blur->setBlurRadius(8);
+
+    QPixmap blur_Pix = QPixmap::fromImage(applyEffectToImage(base_Image, blur));
+
+    paint->drawPixmap(-this->x, -this->y, blur_Pix);
+
     QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
     paint->setClipRegion(mask);
 
@@ -124,6 +131,34 @@ void marble_Detection::update_Marble_Marker()
     ui->preivew_Label->update();
 }
 
+void marble_Detection::inverted_Marker()
+{
+
+
+
+    ui->preivew_Label->clear();
+
+    ui->preivew_Label->update();
+}
+
+
+// From   https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
+QImage marble_Detection::applyEffectToImage(QImage src, QGraphicsEffect *effect, int extent)
+{
+    if(src.isNull()) return QImage();   //No need to do anything else!
+    if(!effect) return src;             //No need to do anything else!
+    QGraphicsScene scene;
+    QGraphicsPixmapItem item;
+    item.setPixmap(QPixmap::fromImage(src));
+    item.setGraphicsEffect(effect);
+    scene.addItem(&item);
+    QImage res(src.size()+QSize(extent*2, extent*2), QImage::Format_ARGB32);
+    res.fill(Qt::transparent);
+    QPainter ptr(&res);
+    scene.render(&ptr, QRectF(), QRectF( -extent, -extent, src.width()+extent*2, src.height()+extent*2 ) );
+    return res;
+}
+
 
 void marble_Detection::load_Image_Icons()
 {
@@ -131,12 +166,9 @@ void marble_Detection::load_Image_Icons()
     ui->listWidget->setIconSize(QSize(100,50));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
-    qInfo() << "Meep";
-
     QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
 
-    qInfo() << "Moop";
 
     QStringList file_Names;
 
@@ -167,11 +199,19 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
     qInfo() << "ITEM BEING ADDED: " << filename;
     QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
     ui->listWidget->addItem(item);
-    qInfo() << "\t-Height:"<< image.height();
-    qInfo() << "\t-Width:"<< image.width();
+    //qInfo() << "\t-Height:"<< image.height();
+    //qInfo() << "\t-Width:"<< image.width();
     this->base_Image = image;
     this->update_Marble_Marker();
     this->set_Maximums();
+}
+
+//TODO:: ADD FUNCTIONALITY FOR SAVING AND LOADING VALUES FROM RTIE FILES
+void marble_Detection::set_RGB(int r, int g, int b)
+{
+    this->r = r;
+    this->g = g;
+    this->b = b;
 }
 
 
@@ -494,4 +534,10 @@ void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->base_Image = QImage(image_Path);
     this->update_Marble_Marker();
+}
+
+void marble_Detection::on_swap_Button_clicked()
+{
+    this->invert_Selector = !this->invert_Selector;
+    update_Marble_Marker();
 }
