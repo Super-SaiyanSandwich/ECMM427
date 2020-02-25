@@ -76,7 +76,7 @@ marble_Detection::~marble_Detection()
 ///
 /// \brief Updates the images displayed on screen by painting over the base image
 ///
-void marble_Detection::update_Marble_Marker()
+void marble_Detection::update_Main_Image()
 {
 
     QPixmap base_Pix = QPixmap::fromImage(this->base_Image);
@@ -106,8 +106,14 @@ void marble_Detection::update_Marble_Marker()
     ui->image_Label->clear();
     ui->image_Label->setPixmap(base_Pix);
     ui->image_Label->update();
+}
 
+void marble_Detection::update_Preview_Image()
+{
+    int rad = this->radius;
 
+    QPixmap base_Pix = QPixmap::fromImage(this->base_Image);
+    QPainter *paint = new QPainter(&base_Pix);
     QPixmap target(rad * 2, rad * 2);
 
     paint = new QPainter(&target);
@@ -125,11 +131,13 @@ void marble_Detection::update_Marble_Marker()
     base_Pix = QPixmap::fromImage(this->base_Image);
     paint->drawPixmap(-this->x, -this->y, base_Pix);
 
+    paint->end();
 
     ui->preivew_Label->clear();
     ui->preivew_Label->setPixmap(target);
     ui->preivew_Label->update();
 }
+
 
 void marble_Detection::inverted_Marker()
 {
@@ -169,9 +177,6 @@ void marble_Detection::load_Image_Icons()
     QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
 
-
-    QStringList file_Names;
-
     while (file_Iterator.hasNext())
     {
         QThread *thread = new QThread();
@@ -182,14 +187,12 @@ void marble_Detection::load_Image_Icons()
         QFile current_Image(path);
         QFileInfo current_Image_Info(current_Image.fileName());
         QString file_Name(current_Image_Info.fileName());
-        file_Names.append(file_Name);
-        //QImage path_Image = QImage(path);
 
         QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
         QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Item_To_List(const QImage &, const QString &)));
 
         ig->setInput(file_Name);
-
+        thread_Count++;
         thread->start();
     }
 }
@@ -201,9 +204,14 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
     ui->listWidget->addItem(item);
     //qInfo() << "\t-Height:"<< image.height();
     //qInfo() << "\t-Width:"<< image.width();
-    this->base_Image = image;
-    this->update_Marble_Marker();
-    this->set_Maximums();
+
+    this->thread_Count--;
+
+    if (thread_Count == 0){
+        this->base_Image = image;
+        this->update_Main_Image();
+        this->set_Maximums();
+    }
 }
 
 //TODO:: ADD FUNCTIONALITY FOR SAVING AND LOADING VALUES FROM RTIE FILES
@@ -260,7 +268,8 @@ void marble_Detection::on_spin_Box_X_valueChanged(int X)
 {
     this->x = X;
     ui->horizontal_Slider_X->setValue(X);
-    this->update_Marble_Marker();
+    this->update_Main_Image();
+    this->update_Preview_Image();
 }
 
 
@@ -268,7 +277,8 @@ void marble_Detection::on_spin_Box_Y_valueChanged(int Y)
 {
     this->y = Y;
     ui->horizontal_Slider_Y->setValue(Y);
-    this->update_Marble_Marker();
+    this->update_Main_Image();
+    this->update_Preview_Image();
 }
 
 void marble_Detection::on_spin_Box_Radius_valueChanged(double radius)
@@ -280,7 +290,8 @@ void marble_Detection::on_spin_Box_Radius_valueChanged(double radius)
     this->y -= int(delta_Radius);
 
     ui->horizontal_Slider_Radius->setValue(radius);
-    this->update_Marble_Marker();
+    this->update_Main_Image();
+    this->update_Preview_Image();
     this->set_Maximums();
 
     ui->spin_Box_X->setValue(this->x);
@@ -293,14 +304,14 @@ void marble_Detection::on_horizontal_Slider_X_valueChanged(int value)
 {
     this->x = value;
     ui->spin_Box_X->setValue(value);
-    this->update_Marble_Marker();
+    this->update_Main_Image();
 }
 
 void marble_Detection::on_horizontal_Slider_Y_valueChanged(int value)
 {
     this->y = value;
     ui->spin_Box_Y->setValue(value);
-    this->update_Marble_Marker();
+    this->update_Main_Image();
 }
 
 void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
@@ -312,7 +323,7 @@ void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
     this->y -= int(delta_Radius);
 
     ui->spin_Box_Radius->setValue(value);
-    this->update_Marble_Marker();
+    this->update_Main_Image();
     this->set_Maximums();
 
     ui->spin_Box_X->setValue(this->x);
@@ -324,19 +335,19 @@ void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
 void marble_Detection::on_horizontal_Scroll_Bar_Red_valueChanged(int value)
 {
     this->r = value;
-    this->update_Marble_Marker();
+    this->update_Main_Image();
 }
 
 void marble_Detection::on_horizontal_Scroll_Bar_Green_valueChanged(int value)
 {
     this->g = value;
-    this->update_Marble_Marker();
+    this->update_Main_Image();
 }
 
 void marble_Detection::on_horizontal_Scroll_Bar_Blue_valueChanged(int value)
 {
     this->b = value;
-    this->update_Marble_Marker();
+    this->update_Main_Image();
 }
 
 void marble_Detection::on_colour_Selector_Button_clicked()
@@ -372,7 +383,7 @@ bool marble_Detection::load_File(const QString &fileName)
     statusBar()->showMessage(message);
 
     this->set_Maximums();
-    this->update_Marble_Marker();
+    this->update_Main_Image();
     this->reset_Image_Zoom();
 
     return true;
@@ -533,11 +544,21 @@ void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->base_Image = QImage(image_Path);
-    this->update_Marble_Marker();
+    this->update_Main_Image();
 }
 
 void marble_Detection::on_swap_Button_clicked()
 {
     this->invert_Selector = !this->invert_Selector;
-    update_Marble_Marker();
+    update_Main_Image();
+}
+
+void marble_Detection::on_horizontal_Slider_X_sliderReleased()
+{
+    this->update_Preview_Image();
+}
+
+void marble_Detection::on_horizontal_Slider_Y_sliderReleased()
+{
+    this->update_Preview_Image();
 }

@@ -32,6 +32,8 @@ private:
     int y;
     double radius;
 
+    int thread_Count = 0;
+
     int r = 0;
     int g = 255;
     int b = 0;
@@ -39,7 +41,8 @@ private:
 
     bool invert_Selector = false;
 
-    void update_Marble_Marker();
+    void update_Main_Image();
+    void update_Preview_Image();
     void inverted_Marker();
     QImage applyEffectToImage(QImage src, QGraphicsEffect *effect, int extent = 0);
     void reset_Image_Zoom();
@@ -69,6 +72,8 @@ private slots:
     void add_Item_To_List(const QImage image, const QString filename);
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
     void on_swap_Button_clicked();
+    void on_horizontal_Slider_X_sliderReleased();
+    void on_horizontal_Slider_Y_sliderReleased();
 };
 
 #endif // MARBLE_DETECTION_H

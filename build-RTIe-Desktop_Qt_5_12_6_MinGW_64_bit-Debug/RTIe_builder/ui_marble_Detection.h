@@ -10,6 +10,7 @@
 #define UI_MARBLE_DETECTION_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDoubleSpinBox>
@@ -90,6 +91,7 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QLabel *image_Label;
+    QToolButton *swap_Button;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -97,7 +99,7 @@ public:
     {
         if (marble_Detection->objectName().isEmpty())
             marble_Detection->setObjectName(QString::fromUtf8("marble_Detection"));
-        marble_Detection->resize(1251, 739);
+        marble_Detection->resize(1600, 900);
         marble_Detection->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
 "font: 75 10pt \"MS Shell Dlg 2\";\n"
 ""));
@@ -105,7 +107,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(1050, 10, 191, 461));
+        verticalLayoutWidget->setGeometry(QRect(1340, 0, 251, 611));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -145,10 +147,10 @@ public:
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QString::fromUtf8("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 189, 339));
+        movement_Page->setGeometry(QRect(0, 0, 249, 489));
         verticalLayoutWidget_2 = new QWidget(movement_Page);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 0, 171, 311));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 231, 471));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -205,10 +207,10 @@ public:
         toolBox->addItem(movement_Page, QString::fromUtf8("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QString::fromUtf8("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 189, 339));
+        scale_Page->setGeometry(QRect(0, 0, 249, 489));
         verticalLayoutWidget_3 = new QWidget(scale_Page);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(10, 0, 171, 341));
+        verticalLayoutWidget_3->setGeometry(QRect(10, 10, 231, 471));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -255,10 +257,10 @@ public:
         toolBox->addItem(scale_Page, QString::fromUtf8("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QString::fromUtf8("tools_Page"));
-        tools_Page->setGeometry(QRect(0, 0, 189, 339));
+        tools_Page->setGeometry(QRect(0, 0, 249, 489));
         verticalLayoutWidget_4 = new QWidget(tools_Page);
         verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
-        verticalLayoutWidget_4->setGeometry(QRect(0, 0, 196, 321));
+        verticalLayoutWidget_4->setGeometry(QRect(10, 10, 231, 471));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_4);
         verticalLayout_4->setSpacing(4);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -479,17 +481,17 @@ public:
         toolBox->addItem(tools_Page, QString::fromUtf8("Tools"));
         images_Page = new QWidget();
         images_Page->setObjectName(QString::fromUtf8("images_Page"));
-        images_Page->setGeometry(QRect(0, 0, 189, 339));
+        images_Page->setGeometry(QRect(0, 0, 249, 489));
         scrollArea_2 = new QScrollArea(images_Page);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
-        scrollArea_2->setGeometry(QRect(10, 0, 171, 271));
+        scrollArea_2->setGeometry(QRect(10, 0, 231, 271));
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 169, 269));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 229, 269));
         listWidget = new QListWidget(scrollAreaWidgetContents_2);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        listWidget->setGeometry(QRect(0, 0, 171, 271));
+        listWidget->setGeometry(QRect(0, 0, 211, 271));
         listWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget->setDefaultDropAction(Qt::IgnoreAction);
         listWidget->setItemAlignment(Qt::AlignLeading);
@@ -499,14 +501,14 @@ public:
         open_Button->setGeometry(QRect(10, 280, 75, 23));
         test_Button = new QPushButton(images_Page);
         test_Button->setObjectName(QString::fromUtf8("test_Button"));
-        test_Button->setGeometry(QRect(100, 280, 80, 22));
+        test_Button->setGeometry(QRect(100, 280, 131, 22));
         toolBox->addItem(images_Page, QString::fromUtf8("Images"));
 
         verticalLayout->addWidget(toolBox);
 
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(1050, 475, 81, 20));
+        label->setGeometry(QRect(1190, 600, 81, 20));
         QFont font1;
         font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
         font1.setPointSize(14);
@@ -518,7 +520,7 @@ public:
         label->setStyleSheet(QString::fromUtf8("font: 75 14pt \"MS Shell Dlg 2\";"));
         preivew_Label = new QLabel(centralwidget);
         preivew_Label->setObjectName(QString::fromUtf8("preivew_Label"));
-        preivew_Label->setGeometry(QRect(1050, 500, 191, 191));
+        preivew_Label->setGeometry(QRect(1190, 620, 400, 225));
         preivew_Label->setFrameShape(QFrame::Panel);
         preivew_Label->setFrameShadow(QFrame::Plain);
         preivew_Label->setLineWidth(1);
@@ -526,7 +528,7 @@ public:
         preivew_Label->setScaledContents(true);
         scrollArea = new QScrollArea(centralwidget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        scrollArea->setGeometry(QRect(1, 1, 1044, 694));
+        scrollArea->setGeometry(QRect(1, 1, 1171, 841));
         scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         scrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
@@ -534,10 +536,10 @@ public:
         scrollArea->setAlignment(Qt::AlignCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1042, 692));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1169, 839));
         image_Label = new QLabel(scrollAreaWidgetContents);
         image_Label->setObjectName(QString::fromUtf8("image_Label"));
-        image_Label->setGeometry(QRect(0, 0, 1044, 694));
+        image_Label->setGeometry(QRect(0, 0, 1171, 841));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -547,10 +549,17 @@ public:
         image_Label->setScaledContents(true);
         image_Label->setAlignment(Qt::AlignCenter);
         scrollArea->setWidget(scrollAreaWidgetContents);
+        swap_Button = new QToolButton(centralwidget);
+        swap_Button->setObjectName(QString::fromUtf8("swap_Button"));
+        swap_Button->setGeometry(QRect(1180, 550, 41, 41));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/noun_swap_99117.png"), QSize(), QIcon::Normal, QIcon::On);
+        swap_Button->setIcon(icon);
+        swap_Button->setIconSize(QSize(40, 40));
         marble_Detection->setCentralWidget(centralwidget);
         menubar = new QMenuBar(marble_Detection);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1251, 21));
+        menubar->setGeometry(QRect(0, 0, 1600, 22));
         marble_Detection->setMenuBar(menubar);
         statusbar = new QStatusBar(marble_Detection);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -558,7 +567,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(3);
+        toolBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);
@@ -590,10 +599,11 @@ public:
         colour_Selector_Button->setText(QApplication::translate("marble_Detection", "...", nullptr));
         toolBox->setItemText(toolBox->indexOf(tools_Page), QApplication::translate("marble_Detection", "Tools", nullptr));
         open_Button->setText(QApplication::translate("marble_Detection", "Open", nullptr));
-        test_Button->setText(QApplication::translate("marble_Detection", "Test", nullptr));
+        test_Button->setText(QApplication::translate("marble_Detection", "Run Marble Detection", nullptr));
         toolBox->setItemText(toolBox->indexOf(images_Page), QApplication::translate("marble_Detection", "Images", nullptr));
         label->setText(QApplication::translate("marble_Detection", "Preview:", nullptr));
         image_Label->setText(QString());
+        swap_Button->setText(QString());
     } // retranslateUi
 
 };
