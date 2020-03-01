@@ -80,6 +80,13 @@ public:
     QScrollBar *horizontal_Scroll_Bar_Blue;
     QToolButton *colour_Selector_Button;
     QSpacerItem *verticalSpacer_5;
+    QFrame *seperator_2;
+    QLabel *label_2;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer_4;
+    QVBoxLayout *verticalLayout_6;
+    QCheckBox *checkBox;
+    QSpacerItem *verticalSpacer_3;
     QWidget *images_Page;
     QScrollArea *scrollArea_2;
     QWidget *scrollAreaWidgetContents_2;
@@ -87,11 +94,15 @@ public:
     QPushButton *open_Button;
     QPushButton *test_Button;
     QLabel *label;
-    QLabel *preivew_Label;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QLabel *image_Label;
     QToolButton *swap_Button;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QLabel *preivew_Label;
+    QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -107,7 +118,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(1340, 0, 251, 611));
+        verticalLayoutWidget->setGeometry(QRect(1330, 0, 251, 611));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -478,6 +489,41 @@ public:
 
         verticalLayout_4->addItem(verticalSpacer_5);
 
+        seperator_2 = new QFrame(verticalLayoutWidget_4);
+        seperator_2->setObjectName(QString::fromUtf8("seperator_2"));
+        seperator_2->setFrameShape(QFrame::HLine);
+        seperator_2->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_4->addWidget(seperator_2);
+
+        label_2 = new QLabel(verticalLayoutWidget_4);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        verticalLayout_4->addWidget(label_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_4);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        checkBox = new QCheckBox(verticalLayoutWidget_4);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+
+        verticalLayout_6->addWidget(checkBox);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_6);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_3);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_4->addItem(verticalSpacer_3);
+
         toolBox->addItem(tools_Page, QString::fromUtf8("Tools"));
         images_Page = new QWidget();
         images_Page->setObjectName(QString::fromUtf8("images_Page"));
@@ -518,14 +564,6 @@ public:
         font1.setKerning(true);
         label->setFont(font1);
         label->setStyleSheet(QString::fromUtf8("font: 75 14pt \"MS Shell Dlg 2\";"));
-        preivew_Label = new QLabel(centralwidget);
-        preivew_Label->setObjectName(QString::fromUtf8("preivew_Label"));
-        preivew_Label->setGeometry(QRect(1190, 620, 400, 225));
-        preivew_Label->setFrameShape(QFrame::Panel);
-        preivew_Label->setFrameShadow(QFrame::Plain);
-        preivew_Label->setLineWidth(1);
-        preivew_Label->setText(QString::fromUtf8(""));
-        preivew_Label->setScaledContents(true);
         scrollArea = new QScrollArea(centralwidget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         scrollArea->setGeometry(QRect(1, 1, 1171, 841));
@@ -556,10 +594,38 @@ public:
         icon.addFile(QString::fromUtf8(":/noun_swap_99117.png"), QSize(), QIcon::Normal, QIcon::On);
         swap_Button->setIcon(icon);
         swap_Button->setIconSize(QSize(40, 40));
+        horizontalLayoutWidget = new QWidget(centralwidget);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(1190, 620, 391, 221));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        preivew_Label = new QLabel(horizontalLayoutWidget);
+        preivew_Label->setObjectName(QString::fromUtf8("preivew_Label"));
+        sizePolicy.setHeightForWidth(preivew_Label->sizePolicy().hasHeightForWidth());
+        preivew_Label->setSizePolicy(sizePolicy);
+        preivew_Label->setMinimumSize(QSize(219, 219));
+        preivew_Label->setMaximumSize(QSize(389, 219));
+        preivew_Label->setFrameShape(QFrame::Panel);
+        preivew_Label->setFrameShadow(QFrame::Plain);
+        preivew_Label->setLineWidth(1);
+        preivew_Label->setText(QString::fromUtf8(""));
+        preivew_Label->setScaledContents(true);
+
+        horizontalLayout->addWidget(preivew_Label);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
         marble_Detection->setCentralWidget(centralwidget);
         menubar = new QMenuBar(marble_Detection);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1600, 22));
+        menubar->setGeometry(QRect(0, 0, 1600, 21));
         marble_Detection->setMenuBar(menubar);
         statusbar = new QStatusBar(marble_Detection);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -567,7 +633,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(0);
+        toolBox->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);
@@ -592,11 +658,13 @@ public:
         zoom_Out_Button->setText(QApplication::translate("marble_Detection", "Zoom Out", nullptr));
         zoom_In_Button->setText(QApplication::translate("marble_Detection", "Zoom In", nullptr));
         zoom_Reset_Button->setText(QApplication::translate("marble_Detection", "Reset", nullptr));
-        colour_Label->setText(QApplication::translate("marble_Detection", "Colour:", nullptr));
+        colour_Label->setText(QApplication::translate("marble_Detection", "Marker Colour:", nullptr));
         label_Red->setText(QApplication::translate("marble_Detection", "   Red:", nullptr));
         label_Green->setText(QApplication::translate("marble_Detection", "   Green:", nullptr));
         label_Blue->setText(QApplication::translate("marble_Detection", "   Blue:", nullptr));
         colour_Selector_Button->setText(QApplication::translate("marble_Detection", "...", nullptr));
+        label_2->setText(QApplication::translate("marble_Detection", "Image Manipulation:", nullptr));
+        checkBox->setText(QApplication::translate("marble_Detection", "Average Images", nullptr));
         toolBox->setItemText(toolBox->indexOf(tools_Page), QApplication::translate("marble_Detection", "Tools", nullptr));
         open_Button->setText(QApplication::translate("marble_Detection", "Open", nullptr));
         test_Button->setText(QApplication::translate("marble_Detection", "Run Marble Detection", nullptr));

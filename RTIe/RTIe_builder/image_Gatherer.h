@@ -5,13 +5,18 @@
 #include <QImage>
 
 typedef struct gathererPrivate{
+
     QString inputFilename;
     QImage image;
-};
+
+} gathererPrivate;
+
 
 class image_Gatherer : public QObject
 {
     Q_OBJECT
+
+
 public:
     image_Gatherer(QObject *parent = 0);
     ~image_Gatherer();
@@ -26,6 +31,7 @@ signals:
 
 private:
     struct gathererPrivate d;
+
 
 };
 

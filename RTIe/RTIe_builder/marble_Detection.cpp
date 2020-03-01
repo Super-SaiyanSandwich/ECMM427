@@ -25,6 +25,7 @@ using namespace std;
 #define SCROLL_AREA_WIDTH 1044.0
 #define CONTRAST_PIVOT_POINT 215
 #define CONTRAST_SCALE 2
+#define BORDER_SCALE_FACTOR 0.1
 
 //|=======================================
 //|
@@ -124,6 +125,7 @@ void marble_Detection::update_Preview_Image()
     QPixmap blur_Pix = QPixmap::fromImage(applyEffectToImage(base_Image, blur));
 
     paint->drawPixmap(-this->x, -this->y, blur_Pix);
+    paint->fillRect(0,0,rad*2,rad*2,QColor(0,0,0,14));
 
     QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
     paint->setClipRegion(mask);
@@ -446,6 +448,17 @@ void marble_Detection::set_Maximums()
     ui->spin_Box_Y->setMaximum(this->base_Image.height() - radius * 2);
 }
 
+int pivot_Colour(int c)
+{
+    c -= CONTRAST_PIVOT_POINT;
+    c *= CONTRAST_SCALE;
+    c += CONTRAST_PIVOT_POINT;
+    c = c > 255 ? 255 : c;
+    c = c < 0 ? 0 : c;
+    return c;
+}
+
+
 void marble_Detection::on_test_Button_clicked()
 {
     QRgb pixel;
@@ -466,33 +479,16 @@ void marble_Detection::on_test_Button_clicked()
             col = QRgb(pixel);
             col.getRgb(&r, &g, &b);
 
-            r -= CONTRAST_PIVOT_POINT;
-            r *= CONTRAST_SCALE;
-            r += CONTRAST_PIVOT_POINT;
-            r = r > 255 ? 255 : r;
-            r = r < 0 ? 0 : r;
-
-            g -= CONTRAST_PIVOT_POINT;
-            g *= CONTRAST_SCALE;
-            g += CONTRAST_PIVOT_POINT;
-            g = g > 255 ? 255 : g;
-            g = g < 0 ? 0 : g;
-
-            b -= CONTRAST_PIVOT_POINT;
-            b *= CONTRAST_SCALE;
-            b += CONTRAST_PIVOT_POINT;
-            b = b > 255 ? 255 : b;
-            b = b < 0 ? 0 : b;
-
+            r = pivot_Colour(r);
+            g = pivot_Colour(g);
+            b = pivot_Colour(b);
 
             if ((r == g) and (g == b) and (b == 255))
             {
                 cluster_Points.emplace_back(x ,y);
             }
 
-
             marble.setPixel(x, y, qRgb(r, g, b));
-
         }
     }
 
@@ -545,6 +541,7 @@ void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->base_Image = QImage(image_Path);
     this->update_Main_Image();
+    ui->check_Box_Spherical->setChecked(false);
 }
 
 void marble_Detection::on_swap_Button_clicked()
@@ -561,4 +558,29 @@ void marble_Detection::on_horizontal_Slider_X_sliderReleased()
 void marble_Detection::on_horizontal_Slider_Y_sliderReleased()
 {
     this->update_Preview_Image();
+}
+
+void marble_Detection::on_checkBox_stateChanged(int arg1)
+{
+    if(arg1 == 0)
+    {
+
+    }
+    else
+    {
+        QPixmap* avg_Image = new QPixmap(base_Image.size());
+        QPainter *paint = new QPainter(avg_Image);
+        const int count = ui->listWidget->count();
+
+        paint->setOpacity(1.0/ count);
+
+        for(int i = 0; i < count; ++i)
+        {
+            QString image_Path = splashScreen::project_Path + "/images/wd/" + ui->listWidget->item(i)->text();
+            paint->drawImage(0,0,QImage(image_Path));
+        }
+
+        this->base_Image = avg_Image->toImage();
+        this->update_Main_Image();
+    }
 }

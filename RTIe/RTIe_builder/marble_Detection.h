@@ -74,6 +74,7 @@ private slots:
     void on_swap_Button_clicked();
     void on_horizontal_Slider_X_sliderReleased();
     void on_horizontal_Slider_Y_sliderReleased();
+    void on_checkBox_stateChanged(int arg1);
 };
 
 #endif // MARBLE_DETECTION_H
