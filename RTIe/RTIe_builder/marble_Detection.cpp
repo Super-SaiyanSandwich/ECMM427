@@ -109,6 +109,9 @@ void marble_Detection::update_Main_Image()
     ui->image_Label->update();
 }
 
+///
+/// \brief Updates the preview image where there is no marker and the focus is what would be selected
+///
 void marble_Detection::update_Preview_Image()
 {
     int rad = this->radius;
@@ -145,14 +148,13 @@ void marble_Detection::inverted_Marker()
 {
 
 
-
     ui->preivew_Label->clear();
 
     ui->preivew_Label->update();
 }
 
 
-// From   https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
+// From::   https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
 QImage marble_Detection::applyEffectToImage(QImage src, QGraphicsEffect *effect, int extent)
 {
     if(src.isNull()) return QImage();   //No need to do anything else!
@@ -216,7 +218,14 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
     }
 }
 
-//TODO:: ADD FUNCTIONALITY FOR SAVING AND LOADING VALUES FROM RTIE FILES
+//### TODO: --/--/-- ###
+//ADD FUNCTIONALITY FOR SAVING AND LOADING VALUES FROM RTIE FILES
+///
+/// \brief Sets colour of selector to desired values for RGB
+/// \param r value of red colour channel
+/// \param g value of green colour channel
+/// \param b value of blue colour channel
+///
 void marble_Detection::set_RGB(int r, int g, int b)
 {
     this->r = r;
@@ -414,7 +423,9 @@ static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMo
         dialog.setDefaultSuffix("jpg");
 }
 
-
+///
+/// \brief Used to trigger necessary steps when loading an image.
+///
 void marble_Detection::on_open_Button_clicked()
 {
     QFileDialog dialog(this, tr("Open File"));
@@ -423,22 +434,33 @@ void marble_Detection::on_open_Button_clicked()
     while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {};
 }
 
+///
+/// \brief Triggered on button click, has main canvas zoom reset
+///
 void marble_Detection::on_zoom_Reset_Button_clicked()
 {
     reset_Image_Zoom();
 }
 
+///
+/// \brief Triggered on button click, has main canvas zoom in
+///
 void marble_Detection::on_zoom_In_Button_clicked()
 {
     image_Zoom(25);
 }
 
+///
+/// \brief Triggered on button click, has main canvas zoom out
+///
 void marble_Detection::on_zoom_Out_Button_clicked()
 {
     image_Zoom(-25);
 }
 
-
+///
+/// \brief Adjusts the maximum X and Y values when changing radius of selector
+///
 void marble_Detection::set_Maximums()
 {
     ui->horizontal_Slider_X->setMaximum(this->base_Image.width() - radius * 2);
@@ -448,6 +470,11 @@ void marble_Detection::set_Maximums()
     ui->spin_Box_Y->setMaximum(this->base_Image.height() - radius * 2);
 }
 
+///
+/// \brief Performs contrast function on single colour
+/// \param c initial value of a pixel colour channel
+/// \return shifted value of pixel colour channel
+///
 int pivot_Colour(int c)
 {
     c -= CONTRAST_PIVOT_POINT;
@@ -458,7 +485,11 @@ int pivot_Colour(int c)
     return c;
 }
 
-
+// ### TODO: 07/04/20 ###
+// Change name of function to more appropriate name.
+///
+/// \brief Performs the contrast process on the currently selected image.
+///
 void marble_Detection::on_test_Button_clicked()
 {
     QRgb pixel;

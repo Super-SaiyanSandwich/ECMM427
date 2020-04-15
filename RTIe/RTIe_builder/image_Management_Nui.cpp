@@ -28,6 +28,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QStringList>
+#include <QProgressDialog>
 
 // Global constant, lists the acceptable image formats
 QStringList ACCEPTED_FORMATS = QStringList()<<"*.jpg" << "*.JPG"<< "*.png"<< "*.PNG";
@@ -68,6 +69,10 @@ void image_Management_Nui::import(){
 
         //Iterator is created to iterate over QStringList
         QStringListIterator file_Iterator(file_Paths);
+        const int COUNT = file_Paths.count();
+
+        QProgressDialog progress("Processing Images...", "Cancel", 0, COUNT);
+        progress.setWindowModality(Qt::WindowModal);
         while (file_Iterator.hasNext()){
 
             //Converts 8Bit file path data into QString per image path
