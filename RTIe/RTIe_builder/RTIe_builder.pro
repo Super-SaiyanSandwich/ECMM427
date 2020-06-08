@@ -34,6 +34,7 @@ HEADERS += \
 
 FORMS += \
     marble_Detection.ui \
+    marble_detection_widget.ui \
     project_Wizard.ui \
     ptm_fitter.ui \
     system_ui.ui
