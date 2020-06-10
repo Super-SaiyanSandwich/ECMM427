@@ -28,7 +28,7 @@ private:
     QLabel *choose_Dialog_Label;
 
     QString project_Name;
-    QString verification_Path;
+    QString verification_Path = ".";
 
 public slots:
     static void create_Project_Wizard();
@@ -37,6 +37,7 @@ private slots:
     void choose_Project_Directory();
     void create_Project();
 
+    void on_project_Name_Line_Edit_textChanged(const QString &arg1);
 };
 
 #endif // project_Wizard_H

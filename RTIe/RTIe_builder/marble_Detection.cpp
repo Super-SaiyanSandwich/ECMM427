@@ -108,6 +108,9 @@ void marble_Detection::update_Main_Image()
     ui->image_Label->update();
 }
 
+///
+/// \brief Updates the preview image where there is no marker and the focus is what would be selected
+///
 void marble_Detection::update_Preview_Image()
 {
     int rad = this->radius;
@@ -144,14 +147,13 @@ void marble_Detection::inverted_Marker()
 {
 
 
-
     ui->preivew_Label->clear();
 
     ui->preivew_Label->update();
 }
 
 
-// From   https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
+// From::   https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
 QImage marble_Detection::applyEffectToImage(QImage src, QGraphicsEffect *effect, int extent)
 {
     if(src.isNull()) return QImage();   //No need to do anything else!
@@ -215,7 +217,14 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
     }
 }
 
-//TODO:: ADD FUNCTIONALITY FOR SAVING AND LOADING VALUES FROM RTIE FILES
+//### TODO: --/--/-- ###
+//ADD FUNCTIONALITY FOR SAVING AND LOADING VALUES FROM RTIE FILES
+///
+/// \brief Sets colour of selector to desired values for RGB
+/// \param r value of red colour channel
+/// \param g value of green colour channel
+/// \param b value of blue colour channel
+///
 void marble_Detection::set_RGB(int r, int g, int b)
 {
     this->r = r;
@@ -413,7 +422,9 @@ static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMo
         dialog.setDefaultSuffix("jpg");
 }
 
-
+///
+/// \brief Used to trigger necessary steps when loading an image.
+///
 void marble_Detection::on_open_Button_clicked()
 {
     QFileDialog dialog(this, tr("Open File"));
@@ -422,22 +433,33 @@ void marble_Detection::on_open_Button_clicked()
     while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {};
 }
 
+///
+/// \brief Triggered on button click, has main canvas zoom reset
+///
 void marble_Detection::on_zoom_Reset_Button_clicked()
 {
     reset_Image_Zoom();
 }
 
+///
+/// \brief Triggered on button click, has main canvas zoom in
+///
 void marble_Detection::on_zoom_In_Button_clicked()
 {
     image_Zoom(25);
 }
 
+///
+/// \brief Triggered on button click, has main canvas zoom out
+///
 void marble_Detection::on_zoom_Out_Button_clicked()
 {
     image_Zoom(-25);
 }
 
-
+///
+/// \brief Adjusts the maximum X and Y values when changing radius of selector
+///
 void marble_Detection::set_Maximums()
 {
     ui->horizontal_Slider_X->setMaximum(this->base_Image.width() - radius * 2);
@@ -447,6 +469,11 @@ void marble_Detection::set_Maximums()
     ui->spin_Box_Y->setMaximum(this->base_Image.height() - radius * 2);
 }
 
+///
+/// \brief Performs contrast function on single colour
+/// \param c initial value of a pixel colour channel
+/// \return shifted value of pixel colour channel
+///
 int pivot_Colour(int c)
 {
     c -= CONTRAST_PIVOT_POINT;
@@ -457,7 +484,11 @@ int pivot_Colour(int c)
     return c;
 }
 
-
+// ### TODO: 07/04/20 ###
+// Change name of function to more appropriate name.
+///
+/// \brief Performs the contrast process on the currently selected image.
+///
 void marble_Detection::on_test_Button_clicked()
 {
     QRgb pixel;
@@ -535,6 +566,10 @@ void marble_Detection::on_test_Button_clicked()
     ui->preivew_Label->setPixmap(base_Pix);
 }
 
+///
+/// \brief When an image is double-clicked in the list of images, that images is selected as the image to use for marble selection
+/// \param item Selected item (item that has been double-clicked)
+///
 void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
@@ -543,43 +578,76 @@ void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     ui->check_Box_Spherical->setChecked(false);
 }
 
+// ### TODO: 06/04/20 ###
+// Implement switching functionality, updating screen layout and where each image is displayed.
+///
+/// \brief Switches view between main image and preveiw image.
+///
 void marble_Detection::on_swap_Button_clicked()
 {
     this->invert_Selector = !this->invert_Selector;
-    update_Main_Image();
+    this->update_Main_Image();
+    this->update_Preview_Image();
 }
 
+///
+/// \brief Preview Image only updated on slider release. This function implements that functionality.
+///
 void marble_Detection::on_horizontal_Slider_X_sliderReleased()
 {
     this->update_Preview_Image();
 }
 
+///
+/// \brief Preview Image only updated on slider release. This function implements that functionality.
+///
 void marble_Detection::on_horizontal_Slider_Y_sliderReleased()
 {
     this->update_Preview_Image();
 }
 
-void marble_Detection::on_checkBox_stateChanged(int arg1)
+// ### TODO: 06/04/20 ###
+// Change name of function and object to something more appropriate
+///
+/// \brief Switches image used in previewer to an average of all the loaded images or back to a single image.
+/// \param arg Used to determine if the checkbox has been set to one of two binary states.
+///
+void marble_Detection::on_checkBox_stateChanged(int arg)
 {
-    if(arg1 == 0)
+    if(arg == 0)
     {
-
+        // ### TODO: 06/04/20 ###
+        // Add functionality to revert to a single image when un-checking the checkbox.
+        // Perhaps the image active before the average was used.
     }
     else
     {
+        // ### BUG: 06/04/20 ###
+        // Cancel currently doesn't work. For some reason when adding the cancel functionality the popup no longer appears.
+        // Will have to experiment more in the future.
+
         QPixmap* avg_Image = new QPixmap(base_Image.size());
         QPainter *paint = new QPainter(avg_Image);
-        const int count = ui->listWidget->count();
+        const int COUNT = ui->listWidget->count();
 
-        paint->setOpacity(1.0/ count);
+        paint->setOpacity(1.0/ COUNT);
 
-        for(int i = 0; i < count; ++i)
+        QProgressDialog progress("Processing Images...", "Cancel", 0, COUNT, this);
+        progress.setWindowModality(Qt::WindowModal);
+
+        for(int i = 0; i < COUNT; ++i)
         {
+            progress.setValue(i);
+
             QString image_Path = splashScreen::project_Path + "/images/wd/" + ui->listWidget->item(i)->text();
             paint->drawImage(0,0,QImage(image_Path));
+
         }
+
+        progress.setValue(COUNT);
 
         this->base_Image = avg_Image->toImage();
         this->update_Main_Image();
+
     }
 }
