@@ -587,6 +587,15 @@ void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 void marble_Detection::on_swap_Button_clicked()
 {
     this->invert_Selector = !this->invert_Selector;
+
+    if (invert_Selector){
+        this->ui->horizontalSpacer_2->changeSize(0,20);
+        this->ui->horizontalSpacer->changeSize(0,20);
+    }else{
+        this->ui->horizontalSpacer_2->changeSize(80,20);
+        this->ui->horizontalSpacer->changeSize(80,20);
+    }
+
     this->update_Main_Image();
     this->update_Preview_Image();
 }

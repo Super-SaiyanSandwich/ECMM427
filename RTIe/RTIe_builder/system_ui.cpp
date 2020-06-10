@@ -42,7 +42,7 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setNameFilter(tr("RTIe Files (*.rtie *.RTIE"));
+    //dialog.setNameFilter(tr("RTIe Files (*.rtie"));
 
     if(dialog.exec()){
         QFile project_File(dialog.selectedFiles().at(0).toLocal8Bit().constData());
@@ -164,7 +164,7 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
  */
 void system_Ui::on_import_btn_clicked()
 {
-    image_Management_Nui::import();
+    image_Management_Nui::import(this);
 
     // We must clear the listWidget in order to prevent populating it with the
     // same items repeatedly
