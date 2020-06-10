@@ -55,7 +55,7 @@
        <number>14</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page1">
        <property name="sizePolicy">
@@ -2062,8 +2062,8 @@ QScrollBar::sub-line:horizontal {
            <rect>
             <x>20</x>
             <y>300</y>
-            <width>158</width>
-            <height>25</height>
+            <width>194</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
