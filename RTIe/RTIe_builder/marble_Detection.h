@@ -25,6 +25,7 @@ public:
 
 private:
     Ui::marble_Detection *ui;
+//    Ui::system_Ui *ui;
     QImage base_Image;
     QLabel *image_Label;
 

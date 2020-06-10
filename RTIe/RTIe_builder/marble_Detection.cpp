@@ -1,8 +1,10 @@
 #include "marble_Detection.h"
 #include "ui_marble_Detection.h"
+#include "ui_system_ui.h"
 #include "image_Management_Nui.h"
 #include "image_Gatherer.h"
 #include "splash_Screen.h"
+#include "system_ui.h"
 
 #include <tuple>
 #include <vector>
@@ -71,9 +73,6 @@ marble_Detection::~marble_Detection()
 }
 
 //////////////////////////////////////////////////////////////////////
-
-
-
 ///
 /// \brief Updates the images displayed on screen by painting over the base image
 ///
@@ -554,7 +553,7 @@ void marble_Detection::on_test_Button_clicked()
     double R2 = pow(radius, 2);
 
     double theta = acos((radius - sum_Y)/ sqrt(C2));
-    theta = (sum_X < radius)? (2 * M_PI) - theta: theta;
+    theta = (sum_X < radius)? (2 * M_PI) - theta:theta;
 
     double phi =  acos(  ( sqrt(R2 - C2) ) / (radius)  );
 
