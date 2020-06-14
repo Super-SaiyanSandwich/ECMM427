@@ -55,7 +55,7 @@ public:
         wizardPage1->setObjectName(QString::fromUtf8("wizardPage1"));
         formLayoutWidget = new QWidget(wizardPage1);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(0, 10, 451, 81));
+        formLayoutWidget->setGeometry(QRect(0, 10, 451, 82));
         gridLayout = new QGridLayout(formLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setHorizontalSpacing(3);
@@ -86,6 +86,9 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush4);
 #endif
         path_Placeholder->setPalette(palette1);
+        path_Placeholder->setFrameShape(QFrame::Box);
+        path_Placeholder->setFrameShadow(QFrame::Plain);
+        path_Placeholder->setLineWidth(1);
 
         gridLayout->addWidget(path_Placeholder, 1, 1, 1, 1);
 

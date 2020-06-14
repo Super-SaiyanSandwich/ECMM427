@@ -159,3 +159,4 @@ void project_Wizard::on_project_Name_Line_Edit_textChanged(const QString &arg1)
     QString chosen_Path = verification_Path + "/" + project_Name;
     ui->path_Placeholder->setText(chosen_Path);
 }
+

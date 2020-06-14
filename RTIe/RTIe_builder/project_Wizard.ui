@@ -69,7 +69,7 @@
       <x>0</x>
       <y>10</y>
       <width>451</width>
-      <height>81</height>
+      <height>82</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -171,6 +171,15 @@
           </colorrole>
          </disabled>
         </palette>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Box</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
        </property>
        <property name="text">
         <string/>
