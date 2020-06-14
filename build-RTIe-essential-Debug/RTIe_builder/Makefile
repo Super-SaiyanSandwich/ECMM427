@@ -195,7 +195,7 @@ TARGET        = RTIeBuilder
 first: all
 ####### Build rules
 
-$(TARGET): ui_marble_Detection.h ui_project_Wizard.h ui_ptm_fitter.h ui_system_ui.h $(OBJECTS)  
+$(TARGET): ui_marble_Detection.h ui_marble_detection_widget.h ui_project_Wizard.h ui_ptm_fitter.h ui_system_ui.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../../RTIe/RTIe_builder/RTIe_builder.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -375,7 +375,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.h ../../RTIe/RTIe_builder/image_Management_Nui.h ../../RTIe/RTIe_builder/marble.h ../../RTIe/RTIe_builder/marble_Detection.h ../../RTIe/RTIe_builder/new_Project.h ../../RTIe/RTIe_builder/new_Project_Settings.h ../../RTIe/RTIe_builder/project_Wizard.h ../../RTIe/RTIe_builder/ptm_fitter.h ../../RTIe/RTIe_builder/splash_Screen.h ../../RTIe/RTIe_builder/system_ui.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.cpp ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../RTIe/RTIe_builder/main.cpp ../../RTIe/RTIe_builder/marble.cpp ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/new_Project_Settings.cpp ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/RTIe_builder/ptm_fitter.cpp ../../RTIe/RTIe_builder/splash_Screen.cpp ../../RTIe/RTIe_builder/system_ui.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/marble_Detection.ui ../../RTIe/RTIe_builder/project_Wizard.ui ../../RTIe/RTIe_builder/ptm_fitter.ui ../../RTIe/RTIe_builder/system_ui.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/marble_Detection.ui ../../RTIe/RTIe_builder/marble_detection_widget.ui ../../RTIe/RTIe_builder/project_Wizard.ui ../../RTIe/RTIe_builder/ptm_fitter.ui ../../RTIe/RTIe_builder/system_ui.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -477,12 +477,16 @@ moc_system_ui.cpp: ../../RTIe/RTIe_builder/system_ui.h \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_marble_Detection.h ui_project_Wizard.h ui_ptm_fitter.h ui_system_ui.h
+compiler_uic_make_all: ui_marble_Detection.h ui_marble_detection_widget.h ui_project_Wizard.h ui_ptm_fitter.h ui_system_ui.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_marble_Detection.h ui_project_Wizard.h ui_ptm_fitter.h ui_system_ui.h
+	-$(DEL_FILE) ui_marble_Detection.h ui_marble_detection_widget.h ui_project_Wizard.h ui_ptm_fitter.h ui_system_ui.h
 ui_marble_Detection.h: ../../RTIe/RTIe_builder/marble_Detection.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../../RTIe/RTIe_builder/marble_Detection.ui -o ui_marble_Detection.h
+
+ui_marble_detection_widget.h: ../../RTIe/RTIe_builder/marble_detection_widget.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../../RTIe/RTIe_builder/marble_detection_widget.ui -o ui_marble_detection_widget.h
 
 ui_project_Wizard.h: ../../RTIe/RTIe_builder/project_Wizard.ui \
 		/usr/lib/qt5/bin/uic
@@ -536,6 +540,7 @@ marble.o: ../../RTIe/RTIe_builder/marble.cpp ../../RTIe/RTIe_builder/marble.h
 
 marble_Detection.o: ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe_builder/marble_Detection.h \
 		ui_marble_Detection.h \
+		ui_system_ui.h \
 		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		../../RTIe/RTIe_builder/image_Gatherer.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
