@@ -10,6 +10,12 @@
     <height>900</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Marble Detection</string>
   </property>
@@ -62,21 +68,102 @@ QToolBox::tab:!selected {
 margin-top: 2px; /* make non-selected tabs look smaller */
 }
 /*
-QToolBox::tab:selected { 
+QToolBox::tab:selected {
     font: italic;
     color: white;
 }*/</string>
        </property>
        <property name="currentIndex">
-        <number>3</number>
+        <number>1</number>
        </property>
+       <widget class="QWidget" name="marble_Page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>249</width>
+          <height>454</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Marbles</string>
+        </attribute>
+        <widget class="QScrollArea" name="scrollArea_3">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>231</width>
+           <height>351</height>
+          </rect>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>229</width>
+            <height>349</height>
+           </rect>
+          </property>
+          <widget class="QListWidget" name="listWidget_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>211</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="defaultDropAction">
+            <enum>Qt::IgnoreAction</enum>
+           </property>
+           <property name="itemAlignment">
+            <set>Qt::AlignLeading</set>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QPushButton" name="add_Marble_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>360</y>
+           <width>101</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Add Marble</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="remove_Marble_Button">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>360</y>
+           <width>111</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Remove Marble</string>
+         </property>
+        </widget>
+       </widget>
        <widget class="QWidget" name="movement_Page">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
           <width>249</width>
-          <height>469</height>
+          <height>454</height>
          </rect>
         </property>
         <attribute name="label">
@@ -207,7 +294,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>249</width>
-          <height>469</height>
+          <height>454</height>
          </rect>
         </property>
         <attribute name="label">
@@ -304,7 +391,7 @@ QToolBox::tab:selected {
           <x>0</x>
           <y>0</y>
           <width>249</width>
-          <height>469</height>
+          <height>454</height>
          </rect>
         </property>
         <attribute name="label">
@@ -650,7 +737,7 @@ QScrollBar::sub-line:horizontal {
           <x>0</x>
           <y>0</y>
           <width>249</width>
-          <height>469</height>
+          <height>454</height>
          </rect>
         </property>
         <attribute name="label">
@@ -847,7 +934,7 @@ QScrollBar::sub-line:horizontal {
      <rect>
       <x>1190</x>
       <y>620</y>
-      <width>391</width>
+      <width>393</width>
       <height>221</height>
      </rect>
     </property>
@@ -857,9 +944,12 @@ QScrollBar::sub-line:horizontal {
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Minimum</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>80</width>
          <height>20</height>
         </size>
        </property>
@@ -868,7 +958,7 @@ QScrollBar::sub-line:horizontal {
      <item>
       <widget class="QLabel" name="preivew_Label">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -907,9 +997,12 @@ QScrollBar::sub-line:horizontal {
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Minimum</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>80</width>
          <height>20</height>
         </size>
        </property>

@@ -11,7 +11,7 @@ class image_Management_Nui: public QMainWindow
     Q_OBJECT
 public:
     image_Management_Nui();
-    static void import();
+    static void import(QWidget* main);
     static QStringList get_Working_Image_Paths();
     static void delete_(QStringList file_Names);
     virtual ~image_Management_Nui();

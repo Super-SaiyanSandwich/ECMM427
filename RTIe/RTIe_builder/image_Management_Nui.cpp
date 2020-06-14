@@ -49,7 +49,7 @@ image_Management_Nui::~image_Management_Nui() {};
  * preserves file names.
  *
  */
-void image_Management_Nui::import(){
+void image_Management_Nui::import(QWidget* main){
 
     //Creates a dialog to choose images to import according to the format filter
     QFileDialog dialog;
@@ -71,10 +71,17 @@ void image_Management_Nui::import(){
         QStringListIterator file_Iterator(file_Paths);
         const int COUNT = file_Paths.count();
 
-        QProgressDialog progress("Processing Images...", "Cancel", 0, COUNT);
+        // ### BUG: 15/4/20 ###
+        // Progress Dialog doesn't appear
+        QProgressDialog progress("Importing Images...", "Cancel", 0, COUNT, main);
         progress.setWindowModality(Qt::WindowModal);
-        while (file_Iterator.hasNext()){
 
+        int prog = 0;
+
+
+        while (file_Iterator.hasNext()){
+            progress.setValue(prog);
+            prog++;
             //Converts 8Bit file path data into QString per image path
             QString current_Image_Path = file_Iterator.next().toLocal8Bit().constData();
 
@@ -92,6 +99,7 @@ void image_Management_Nui::import(){
             QFile::copy(current_Image_Path, src_Path);
             QFile::copy(current_Image_Path, wd_Path);
         }
+        progress.setValue(COUNT);
     }
 
     //ERROR HANDLING
