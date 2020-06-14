@@ -38,6 +38,7 @@ private slots:
     void create_Project();
 
     void on_project_Name_Line_Edit_textChanged(const QString &arg1);
+//    void on_choose_Dialog_clicked();
 };
 
 #endif // project_Wizard_H

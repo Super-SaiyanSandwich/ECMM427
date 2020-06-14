@@ -158,7 +158,7 @@ public:
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QString::fromUtf8("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 249, 489));
+        movement_Page->setGeometry(QRect(0, 0, 249, 469));
         verticalLayoutWidget_2 = new QWidget(movement_Page);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
         verticalLayoutWidget_2->setGeometry(QRect(10, 10, 231, 471));
@@ -218,7 +218,7 @@ public:
         toolBox->addItem(movement_Page, QString::fromUtf8("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QString::fromUtf8("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 249, 489));
+        scale_Page->setGeometry(QRect(0, 0, 249, 469));
         verticalLayoutWidget_3 = new QWidget(scale_Page);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
         verticalLayoutWidget_3->setGeometry(QRect(10, 10, 231, 471));
@@ -268,7 +268,7 @@ public:
         toolBox->addItem(scale_Page, QString::fromUtf8("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QString::fromUtf8("tools_Page"));
-        tools_Page->setGeometry(QRect(0, 0, 249, 489));
+        tools_Page->setGeometry(QRect(0, 0, 249, 469));
         verticalLayoutWidget_4 = new QWidget(tools_Page);
         verticalLayoutWidget_4->setObjectName(QString::fromUtf8("verticalLayoutWidget_4"));
         verticalLayoutWidget_4->setGeometry(QRect(10, 10, 231, 471));
@@ -527,7 +527,7 @@ public:
         toolBox->addItem(tools_Page, QString::fromUtf8("Tools"));
         images_Page = new QWidget();
         images_Page->setObjectName(QString::fromUtf8("images_Page"));
-        images_Page->setGeometry(QRect(0, 0, 249, 489));
+        images_Page->setGeometry(QRect(0, 0, 249, 469));
         scrollArea_2 = new QScrollArea(images_Page);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
         scrollArea_2->setGeometry(QRect(10, 0, 231, 271));
@@ -625,7 +625,7 @@ public:
         marble_Detection->setCentralWidget(centralwidget);
         menubar = new QMenuBar(marble_Detection);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1600, 22));
+        menubar->setGeometry(QRect(0, 0, 1600, 27));
         marble_Detection->setMenuBar(menubar);
         statusbar = new QStatusBar(marble_Detection);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -633,7 +633,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(2);
+        toolBox->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);

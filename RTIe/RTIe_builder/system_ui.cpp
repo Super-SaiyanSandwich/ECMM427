@@ -4,8 +4,9 @@
 #include "ui_system_ui.h"
 #include "marble_Detection.h"
 #include "ptm_fitter.h"
-//#include "crop_image.h"
+#define dumpval(x) qDebug()<<#x<<'='<<x
 
+#include <QTranslator>
 #include <QFileDialog>
 #include <QDebug>
 #include <QPixmap>
@@ -13,6 +14,10 @@
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
+#include <QLabel>
+#include <QLineEdit>
+#include <QObject>
+#include <QTextBrowser>
 
 #include <tuple>
 #include <vector>
@@ -21,12 +26,17 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QComboBox>
 
 #include <QApplication>
 #include <QtWidgets>
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <iostream>
+#include <fstream>
+#include <exception>
+#include <windows.h>
 
 using namespace std;
 
@@ -42,6 +52,7 @@ system_Ui::system_Ui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::system_Ui)
 {
+
     ui->setupUi(this);
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
@@ -59,6 +70,9 @@ system_Ui::~system_Ui()
 {
     delete ui;
 }
+
+
+
 
 void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 {
@@ -669,5 +683,263 @@ void system_Ui::on_remove_Marble_Btn_4_clicked()
 }
 
 //=================================================
+
+
+
+//======================================== PTM FITTER ================================
+/// Runs the selected fitter program on the images in the {@link CropExecuteLayout#lpImagesGrid} by creating a new
+/// LP file for them, cropping them if the crop is selected, and running the fitter using the new LP file. Prints
+/// the output of th e fitter to the {@link CropExecuteLayout#fitterOutputArea}.Deals with all errors that
+/// could occur in this method through the use of an error dialog.
+
+QStringList fitter_Args; // list of all arguments
+QString fitter_Location; // entire command line executablle with the arguments
+
+void system_Ui::on_generate_Btn_clicked()
+{
+    QString ptm_Option = ui->ptm_Luminance->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
+    if(ptm_Option == "RGB"){
+        fitter_Location += " -f 0 ";  // add the selected luminace as an argument
+        fitter_Args += " -f 0 ";
+    }
+    else if(ptm_Option == "LRGB"){
+        fitter_Location += " -f 1 ";
+        fitter_Args += " -f 1 ";
+    }
+
+
+    QString hsh_Option = ui->hsh_Order->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
+    if(ptm_Option == "1"){
+        fitter_Location += "1";  // add the selected luminace as an argument
+        fitter_Args += "1";
+    }
+    else if(ptm_Option == "2"){
+        fitter_Location += "2";
+        fitter_Args += "2";
+    }
+    else if(ptm_Option == "3"){
+        fitter_Location += "3";
+        fitter_Args += "3";
+    }
+
+    if ( fitter_Location != NULL && ptm_Option != "" && ui->ptm_Fitter->isChecked() && fitter_Args.size() == 3){ // make sure that all the necessary arguments are present
+        /* the ptm fitter has command-line args of :
+                <fitter location> -i <lp file location> -o <destination filepath> -f <rgb / lrgb>
+        */
+        try {
+            //run the executable with the command-line arguments
+
+            QProcess *process = new QProcess(this);
+            process->start(fitter_Location);
+            QFile result;
+            QDataStream inputStream{process}, outputStream{&result};
+
+            dumpval(result.open(stdout, QFile::WriteOnly));
+            ui->fitter_Info->setText("Worked Sucessfully");
+            ui->generate_Btn->setDisabled(true);
+
+
+        }catch (exception e){
+            qInfo() << "This is an error message!";
+        }
+    }
+    else if (ui->hsh_Fitter->isChecked() && fitter_Args.size() == 3){
+        /* the hsh has command-line args of :
+                        <fitter location> <lp file location> <HSH order> <destination filepath>
+        */
+
+        ui->fitter_Info->setText("HSH COMING SOON!!!");
+        qInfo()<< "HSH COMING SOON";
+    }
+    else{
+//        ui->fitter_Info->setText("Error Message: Fill all required boxes");
+        /*
+         * A summary is given containing all images that have been confirmed to be
+         * deleted as well as those that have confirmed to be cancelled.
+         */
+        QString summary = "The following fields were empty:\n blah blah.\n Please fill them in and then generate your .ptm file.";
+
+        QMessageBox Error_Summary;
+        Error_Summary.setText("Delete operation summary.");
+        Error_Summary.setInformativeText(summary );
+        Error_Summary.setStandardButtons(QMessageBox::Ok);
+        Error_Summary.setDefaultButton(QMessageBox::Ok);
+        Error_Summary.exec();
+        qInfo()<< "Error Message";
+    }
+
+}
+
+void system_Ui::on_fitter_Location_clicked()
+{
+    QFileDialog dialog(this);
+
+    QString filter_2 = "fitter(*.exe)";     //(ptm or hsh)
+
+
+    fitter_Location = dialog.getOpenFileName(this, tr("Open File"),
+                                                    "",
+                                                    filter_2);
+
+    ui->fitter_Placeholder->setText(fitter_Location);
+
+
+}
+
+void system_Ui::on_output_Location_clicked()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setOption(QFileDialog::ShowDirsOnly);
+    QString output_Filename = "/output.ptm";
+    // Stores the path of the user's choice.
+    chosen_Location = dialog.getExistingDirectory() + output_Filename;
+
+    ui->output_Placeholder->setText(chosen_Location);
+    fitter_Args += " -o " + chosen_Location +" ";
+    fitter_Location += " -o " + chosen_Location +" ";
+
+}
+
+void system_Ui::on_lp_Location_clicked()
+{
+        QFileDialog dialog(this);
+
+        QString filter = "lp(*.lp)";
+
+
+        QString fileName = dialog.getOpenFileName(this, tr("Open File"),
+                                                        "",
+                                                        filter);
+
+        ui->temp->setText(fileName);
+        fitter_Args += " -i " + fileName +" ";
+        fitter_Location += " -i " + fileName +" ";
+
+}
+
+
+
+
+void system_Ui::on_resize_Checkbox_clicked()
+{
+    ui->width_Measurement->setEnabled(true);
+    ui->height_Measurement->setEnabled(true);
+
+//    ui->width_Measurement->setDisabled(true);
+//    ui->height_Measurement->setDisabled(true);
+}
+
+
+
+void system_Ui::on_ptm_Fitter_clicked()
+{
+    ui->Memory_Profile->setDisabled(true);
+    ui->performance_Profile->setDisabled(true);
+    ui->hsh_Order->setDisabled(true);
+
+}
+
+void system_Ui::on_hsh_Fitter_clicked()
+{
+    ui->Memory_Profile->setEnabled(true);
+    ui->performance_Profile->setEnabled(true);
+    ui->hsh_Order->setEnabled(true);
+}
+
+
+
+//===============================================================
+
+//QFile lp_File = NULL;
+//    if(crop_Execute_Layout.isUseCrop()){
+//        //if using crop, crop the files and create the lp file for them
+//        lp_File = crop_And_Create_LP_File();
+
+//    }else if(!crop_Execute_Layout.getImagesFormat().equals("jpg")){
+//        //if not cropping, bu the images aren't jpg, we need to convert them to jpegs for the fitters
+//        //so we'll convert them to jpg and create a new lp file for them
+//        lp_File = convert_Images_And_Create_LP_File();
+
+//    }else{
+//        //otherwise, we can create an lp file straight from the images
+//        lp_File = create_LP_File_JPEG_No_Crop();
+//    }
+
+//Main.showLoadingDialog("Running fitter...");
+
+
+
+//    if(crop_Execute_Layout.ptmSelected()){
+
+
+//    }else if(crop_Execute_Layout.hshSelected()){
+//
+//        fitter_Args += lp_File_Location + " ";
+//        fitter_Args += tostring(crop_Execute_Layout.getHSHOrder()) + " ";
+//        fitter_Args += destinationFileName;
+//    }
+
+//        std::array<char, 128> buffer;
+//        std::string result;
+//        std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(process, "r"), pclose);
+//        if (!pipe) {
+//            throw std::runtime_error("popen() failed!");
+//        }
+//        while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+//            result += buffer.data();
+//        }
+
+
+
+        //reads to feed the output from the fitters to the text area in the crop execute layo
+
+//        // read the output from the commandut
+        //        std::istream stdInput =  new BufferedReader(new
+        //                                                    InputStreamReader(process.getInputStream()));
+
+        //        std::istream stdError = new BufferedReader(new
+        //                InputStreamReader(process.getErrorStream()));
+//        QString s = NULL;
+//        while ((s = stdInput.readLine()) != NULL) {
+//            if(crop_Execute_Layout.ptmSelected() && (!s.startsWith("Processing row"))) {
+//                crop_Execute_Layout.printToFitterOutput(s);
+//            }
+//        }
+
+//        // read any errors from the attempted command
+//        while ((s = stdError.readLine()) != NULL) {
+//            if(!s.matches("\\d+")) {
+//                crop_Execute_Layout.printToFitterOutput(s);
+//            }
+//        }
+
+
+
+//=================== Language ==========================
+
+QStringList system_Ui::findQmFiles()
+{
+    QDir dir(":/translations");
+    QStringList fileNames = dir.entryList(QStringList("*.qm"), QDir::Files,
+                                          QDir::Name);
+    for (QString &fileName : fileNames)
+        fileName = dir.filePath(fileName);
+    return fileNames;
+}
+
+void system_Ui::on_actionEnglish_triggered()
+{
+    const QStringList qmFiles = findQmFiles();
+    for (int i = 0; i < qmFiles.size(); ++i) {
+        const QString &qmlFile = qmFiles.at(i);
+        qInfo()<< qmlFile;
+    }
+}
+
+
+//=======================================================
+
+
 
 

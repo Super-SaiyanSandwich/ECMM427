@@ -68,7 +68,7 @@ QToolBox::tab:!selected {
 margin-top: 2px; /* make non-selected tabs look smaller */
 }
 /*
-QToolBox::tab:selected { 
+QToolBox::tab:selected {
     font: italic;
     color: white;
 }*/</string>
@@ -1017,7 +1017,7 @@ QScrollBar::sub-line:horizontal {
      <x>0</x>
      <y>0</y>
      <width>1600</width>
-     <height>22</height>
+     <height>27</height>
     </rect>
    </property>
   </widget>

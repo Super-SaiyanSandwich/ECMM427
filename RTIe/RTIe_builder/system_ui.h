@@ -4,7 +4,10 @@
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <QLabel>
+#include <QLineEdit>
 #include <QListWidget>
+#include <QFile>
+#include <QComboBox>
 
 namespace Ui {
 class system_Ui;
@@ -22,6 +25,7 @@ public:
     static QListWidget listWidget;
     static QListWidget listWidget_3;
     bool load_File(const QString &);
+    QString chosen_Location;
 
 public slots:
     void image_Display();
@@ -44,32 +48,13 @@ public slots:
     void on_spin_Box_Radius_3_valueChanged(double arg1);
     void on_cancel_btn_clicked();
     void on_crop_btn_clicked();
+    QStringList findQmFiles();
 
 
 private slots:
 
 
     void open_Selected_Project();
-
-//    void on_btn5_clicked();
-
-//    void on_btn2_clicked();
-
-//    void on_btn1_clicked();
-
-//    void on_btn3_clicked();
-
-//    void on_btn2_2_clicked();
-
-//    void on_btn4_clicked();
-
-//    void on_btn3_2_clicked();
-
-//    void on_btn5_2_clicked();
-
-//    void on_btn4_2_clicked();
-
-//    void on_btn1_2_clicked();
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
@@ -78,14 +63,6 @@ private slots:
     void on_delete_Btn_clicked();
 
     void on_marble_Detection_Btn_clicked();
-
-//    void on_export_2_clicked();
-
-//    void on_horizontal_Slider_X_actionTriggered(int action);
-    
-//    void on_spin_Box_Radius_valueChanged(double arg1);
-    
-//    void on_export_3_clicked();
 
     void on_remove_Marble_Btn_clicked();
 
@@ -110,6 +87,25 @@ private slots:
     void on_remove_Marble_Btn_4_clicked();
 
     void on_listWidget_3_itemClicked(QListWidgetItem *item);
+
+    void on_generate_Btn_clicked();
+
+    void on_lp_Location_clicked();
+
+    void on_output_Location_clicked();
+
+    void on_fitter_Location_clicked();
+
+    void on_actionEnglish_triggered();
+
+    void on_resize_Checkbox_clicked();
+
+//    void on_radioButton_clicked();
+
+    void on_ptm_Fitter_clicked();
+
+    void on_hsh_Fitter_clicked();
+
 
 private:
     Ui::system_Ui *ui;
@@ -136,6 +132,7 @@ private:
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
     void set_Maximums();
 
+    QFile lp_File;
     QImage base_Image_2;
     Ui::crop_image *new_ui;
 
