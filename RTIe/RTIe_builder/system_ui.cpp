@@ -61,6 +61,7 @@ system_Ui::system_Ui(QWidget *parent) :
     ui->listWidget_3->setViewMode(QListWidget::IconMode);
     ui->listWidget_3->setResizeMode(QListWidget::Adjust);
     ui->listWidget_3->setIconSize(QSize(100,50));
+//    ui->metadata_Table-> QTableWidget(int rows, int columns, this);
 
     image_Display();
 
@@ -207,14 +208,14 @@ void system_Ui::on_delete_Btn_clicked()
 
 // ===========================Cropped Image Page =========================================================
 
-//new_ui
+
 
 void system_Ui::on_listWidget_3_itemClicked(QListWidgetItem *item)
 {
     QString preview_Image_2 = splashScreen::project_Path+ "/images/wd/" +item->text();
     qInfo() << "Item Selected:" << preview_Image_2;
     this->base_Image_2 = QImage(preview_Image_2);
-    QPixmap pix = QPixmap::fromImage(this->base_Image_2);
+    QPixmap pix = QPixmap::fromImage(this->base_Image_2);//new_ui
     int w = ui->image_Label_2->width();
     int h = ui->image_Label_2->height();
     ui->image_Label_2->clear();
@@ -693,42 +694,40 @@ void system_Ui::on_remove_Marble_Btn_4_clicked()
 /// could occur in this method through the use of an error dialog.
 
 QStringList fitter_Args; // list of all arguments
-QString fitter_Location; // entire command line executablle with the arguments
+QString fitter_Location;
 
 void system_Ui::on_generate_Btn_clicked()
 {
-    QString ptm_Option = ui->ptm_Luminance->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
-    if(ptm_Option == "RGB"){
-        fitter_Location += " -f 0 ";  // add the selected luminace as an argument
+    QString ptm_Option = ui->ptm_Luminance->currentText(); // check t+he current luminance option selected e.g {rgb / lrgb}
+    if(ptm_Option == "RGB"){  // add the selected luminace as an argument
         fitter_Args += " -f 0 ";
     }
     else if(ptm_Option == "LRGB"){
-        fitter_Location += " -f 1 ";
         fitter_Args += " -f 1 ";
     }
 
 
     QString hsh_Option = ui->hsh_Order->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
-    if(ptm_Option == "1"){
-        fitter_Location += "1";  // add the selected luminace as an argument
+    if(ptm_Option == "1"){  // add the selected luminace as an argument
         fitter_Args += "1";
     }
     else if(ptm_Option == "2"){
-        fitter_Location += "2";
         fitter_Args += "2";
     }
     else if(ptm_Option == "3"){
-        fitter_Location += "3";
         fitter_Args += "3";
     }
 
-    if ( fitter_Location != NULL && ptm_Option != "" && ui->ptm_Fitter->isChecked() && fitter_Args.size() == 3){ // make sure that all the necessary arguments are present
+    if (ptm_Option != "" && ui->ptm_Fitter->isChecked() && fitter_Args.size() == 3){ // make sure that all the necessary arguments are present
         /* the ptm fitter has command-line args of :
                 <fitter location> -i <lp file location> -o <destination filepath> -f <rgb / lrgb>
         */
+
+        fitter_Location += fitter_Args.join(" "); // entire command line executablle with the arguments
         try {
             //run the executable with the command-line arguments
-
+            qInfo()<<fitter_Location;
+            qInfo()<<fitter_Args;
             QProcess *process = new QProcess(this);
             process->start(fitter_Location);
             QFile result;
@@ -747,6 +746,9 @@ void system_Ui::on_generate_Btn_clicked()
         /* the hsh has command-line args of :
                         <fitter location> <lp file location> <HSH order> <destination filepath>
         */
+
+        // Clear all the fields.
+
 
         ui->fitter_Info->setText("HSH COMING SOON!!!");
         qInfo()<< "HSH COMING SOON";
@@ -786,21 +788,6 @@ void system_Ui::on_fitter_Location_clicked()
 
 }
 
-void system_Ui::on_output_Location_clicked()
-{
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setOption(QFileDialog::ShowDirsOnly);
-    QString output_Filename = "/output.ptm";
-    // Stores the path of the user's choice.
-    chosen_Location = dialog.getExistingDirectory() + output_Filename;
-
-    ui->output_Placeholder->setText(chosen_Location);
-    fitter_Args += " -o " + chosen_Location +" ";
-    fitter_Location += " -o " + chosen_Location +" ";
-
-}
-
 void system_Ui::on_lp_Location_clicked()
 {
         QFileDialog dialog(this);
@@ -814,10 +801,23 @@ void system_Ui::on_lp_Location_clicked()
 
         ui->temp->setText(fileName);
         fitter_Args += " -i " + fileName +" ";
-        fitter_Location += " -i " + fileName +" ";
 
 }
 
+
+void system_Ui::on_output_Location_clicked()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setOption(QFileDialog::ShowDirsOnly);
+    QString output_Filename = "/output.ptm";
+    // Stores the path of the user's choice.
+    chosen_Location = dialog.getExistingDirectory() + output_Filename;
+
+    ui->output_Placeholder->setText(chosen_Location);
+    fitter_Args += " -o " + chosen_Location +" ";
+
+}
 
 
 
@@ -845,6 +845,9 @@ void system_Ui::on_hsh_Fitter_clicked()
     ui->Memory_Profile->setEnabled(true);
     ui->performance_Profile->setEnabled(true);
     ui->hsh_Order->setEnabled(true);
+    ui->ptm_Luminance->setDisabled(true);
+    ui->fitter_Info->clear();
+    ui->generate_Btn->setEnabled(true);
 }
 
 
@@ -942,4 +945,5 @@ void system_Ui::on_actionEnglish_triggered()
 
 
 
+//==================== Metadata =========================
 
