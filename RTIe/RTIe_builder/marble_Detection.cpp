@@ -1,3 +1,4 @@
+#include "marble.h"
 #include "marble_Detection.h"
 #include "ui_marble_Detection.h"
 #include "ui_system_ui.h"
@@ -11,12 +12,15 @@
 #include <math.h>
 #define _USE_MATH_DEFINES
 
+
 #include <QtWidgets>
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QDebug>
 #include <QThread>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 
 
 using namespace std;
@@ -46,25 +50,34 @@ marble_Detection::marble_Detection(QWidget *parent, QString base_Image) : QMainW
 
     ui->setupUi(this);
 
-    this->base_Image = QImage(base_Image);
+
+    marble_Selection_Screen = new QGraphicsScene(this);
+    ui->marbleGraphicView->setScene(marble_Selection_Screen);
+    marble_Selection_Screen->installEventFilter(this);
+
+
+
+    this->base_Image = marble_Selection_Screen->addPixmap(QPixmap(base_Image));
+    this->base_Image->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
+    this->base_Image->setZValue(-10);
+
 
     //splashScreen::project_Path = "F:/Users/Dave/Documents/LearningQT/RTIe/fish_fossil-data-set_2000";
 
 
-    ui->image_Label->setPixmap(QPixmap::fromImage(this->base_Image));
 
-    //this->image_Label->setPixmap(QPixmap::fromImage(base_Image));
-    //connect(this->findChild<QSpinBox>("spin_Box_X"),SIGNAL(valueChanged(int X)),this,on_spin_Box_X_Value_Changed());
+    this->selected_Marble = new marble();
+    selected_Marble->setParentItem(this->base_Image);
 
+    marble_List.append(selected_Marble);
 
-    this->x = 0;
-    this->y = 0;
-    this->radius = ui->spin_Box_Radius->value();
     //this->update_Marble_Marker();
 
     this->show();
 
     this->load_Image_Icons();
+
+    this->reset_Image_Zoom();
 }
 
 marble_Detection::~marble_Detection()
@@ -78,34 +91,7 @@ marble_Detection::~marble_Detection()
 ///
 void marble_Detection::update_Main_Image()
 {
-
-    QPixmap base_Pix = QPixmap::fromImage(this->base_Image);
-    QPainter *paint = new QPainter(&base_Pix);
-
-    QPen pen;
-
-    pen.setBrush(QColor(r,g,b));
-    pen.setWidth(5);
-
-    int rad = this->radius;
-
-    float scaled_Radius = this->radius * CENTER_SCALE_FACTOR;
-
-    paint->setPen(pen);
-
-    // Cirlce
-    paint->drawEllipse(QPointF(this->x + rad, this->y + rad), rad, rad);
-
-    // Cross
-    paint->drawLine(this->x - scaled_Radius + rad, this->y + rad, this->x + scaled_Radius + rad, this->y + rad);
-    paint->drawLine(this->x + rad, this->y - scaled_Radius + rad, this->x + rad, this->y + scaled_Radius + rad);
-
-    paint->end();
-
-
-    ui->image_Label->clear();
-    ui->image_Label->setPixmap(base_Pix);
-    ui->image_Label->update();
+    ui->marbleGraphicView->update();
 }
 
 ///
@@ -113,33 +99,33 @@ void marble_Detection::update_Main_Image()
 ///
 void marble_Detection::update_Preview_Image()
 {
-    int rad = this->radius;
+//    int rad = this->radius;
 
-    QPixmap base_Pix = QPixmap::fromImage(this->base_Image);
-    QPainter *paint = new QPainter(&base_Pix);
-    QPixmap target(rad * 2, rad * 2);
+//    QPixmap base_Pix = QPixmap::fromImage(this->base_Image);
+//    QPainter *paint = new QPainter(&base_Pix);
+//    QPixmap target(rad * 2, rad * 2);
 
-    paint = new QPainter(&target);
+//    paint = new QPainter(&target);
 
-    QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
-    blur->setBlurRadius(8);
+//    QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+//    blur->setBlurRadius(8);
 
-    QPixmap blur_Pix = QPixmap::fromImage(applyEffectToImage(base_Image, blur));
+//    QPixmap blur_Pix = QPixmap::fromImage(applyEffectToImage(base_Image, blur));
 
-    paint->drawPixmap(-this->x, -this->y, blur_Pix);
-    paint->fillRect(0,0,rad*2,rad*2,QColor(0,0,0,14));
+//    paint->drawPixmap(-this->x, -this->y, blur_Pix);
+//    paint->fillRect(0,0,rad*2,rad*2,QColor(0,0,0,14));
 
-    QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
-    paint->setClipRegion(mask);
+//    QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
+//    paint->setClipRegion(mask);
 
-    base_Pix = QPixmap::fromImage(this->base_Image);
-    paint->drawPixmap(-this->x, -this->y, base_Pix);
+//    base_Pix = QPixmap::fromImage(this->base_Image);
+//    paint->drawPixmap(-this->x, -this->y, base_Pix);
 
-    paint->end();
+//    paint->end();
 
-    ui->preivew_Label->clear();
-    ui->preivew_Label->setPixmap(target);
-    ui->preivew_Label->update();
+//    ui->preivew_Label->clear();
+//    ui->preivew_Label->setPixmap(target);
+//    ui->preivew_Label->update();
 }
 
 
@@ -200,6 +186,24 @@ void marble_Detection::load_Image_Icons()
     }
 }
 
+bool marble_Detection::eventFilter(QObject *object, QEvent *event)
+{
+    if (event->type() == QEvent::GraphicsSceneMouseRelease){
+        ui->spin_Box_X->setValue(int(selected_Marble->x()));
+        ui->spin_Box_Y->setValue(int(selected_Marble->y()));
+
+        ui->horizontal_Slider_X->setValue(int(selected_Marble->x()));
+        ui->horizontal_Slider_Y->setValue(int(selected_Marble->y()));
+    }
+    return QWidget::eventFilter( object, event );
+}
+
+void marble_Detection::showEvent(QShowEvent *ev)
+{
+    QMainWindow::showEvent(ev);
+    this->reset_Image_Zoom();
+}
+
 void marble_Detection::add_Item_To_List(QImage image, QString filename)
 {
     qInfo() << "ITEM BEING ADDED: " << filename;
@@ -211,9 +215,12 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
     this->thread_Count--;
 
     if (thread_Count == 0){
-        this->base_Image = image;
+        this->base_Image->pixmap() = QPixmap::fromImage(image);
+
+
         this->update_Main_Image();
-        this->set_Maximums();
+
+        this->reset_Image_Zoom();
     }
 }
 
@@ -227,23 +234,20 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
 ///
 void marble_Detection::set_RGB(int r, int g, int b)
 {
-    this->r = r;
-    this->g = g;
-    this->b = b;
+    this->selected_Marble->setColour(r,g,b);
 }
 
 
 void marble_Detection::reset_Image_Zoom()
 {
-    zoom_Percentage = 100;
+    ui->marbleGraphicView->resetTransform();
 
-    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image.height();
-    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image.width());
+    int w = ui->marbleGraphicView->viewport()->width();
+    int h = ui->marbleGraphicView->viewport()->height();
 
+    qreal s = fmin(w/float(base_Image->pixmap().width()),h/float(base_Image->pixmap().height()));
 
-    ui->image_Label->resize(this->base_Image.width() * scaler, this->base_Image.height() * scaler);
-
-    return;
+    ui->marbleGraphicView->scale(s, s);
 }
 
 
@@ -252,14 +256,8 @@ void marble_Detection::image_Zoom(int percent)
 {
     zoom_Percentage += percent;
 
-    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image.height();
-    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image.width());
+    ui->marbleGraphicView->scale((100 + percent) / 100.0, (100 + percent) / 100.0);
 
-    ui->image_Label->resize(this->base_Image.width() * scaler * zoom_Percentage / 100, this->base_Image.height() * scaler * zoom_Percentage / 100);
-    //ui->scrollArea->adjustSize();
-
-    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 - percent);
-    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 - percent);
 
     ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
     ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
@@ -276,7 +274,7 @@ void marble_Detection::adjust_Scroll_Bar(QScrollBar *scrollBar, double factor)
 
 void marble_Detection::on_spin_Box_X_valueChanged(int X)
 {
-    this->x = X;
+    this->selected_Marble->setX(X);
     ui->horizontal_Slider_X->setValue(X);
     this->update_Main_Image();
     this->update_Preview_Image();
@@ -285,7 +283,7 @@ void marble_Detection::on_spin_Box_X_valueChanged(int X)
 
 void marble_Detection::on_spin_Box_Y_valueChanged(int Y)
 {
-    this->y = Y;
+    this->selected_Marble->setY(Y);
     ui->horizontal_Slider_Y->setValue(Y);
     this->update_Main_Image();
     this->update_Preview_Image();
@@ -293,83 +291,82 @@ void marble_Detection::on_spin_Box_Y_valueChanged(int Y)
 
 void marble_Detection::on_spin_Box_Radius_valueChanged(double radius)
 {
-    double delta_Radius = radius - this->radius;
+    double delta_Radius = radius - selected_Marble->getRadius();
 
-    this->radius = radius;
-    this->x -= int(delta_Radius);
-    this->y -= int(delta_Radius);
+    this->selected_Marble->setRadius(radius);
+    this->selected_Marble->setPosition(this->selected_Marble->x() - delta_Radius, this->selected_Marble->y() - delta_Radius);
 
-    ui->horizontal_Slider_Radius->setValue(radius);
     this->update_Main_Image();
     this->update_Preview_Image();
     this->set_Maximums();
 
-    ui->spin_Box_X->setValue(this->x);
-    ui->spin_Box_Y->setValue(this->y);
-    ui->horizontal_Slider_X->setValue(this->x);
-    ui->horizontal_Slider_Y->setValue(this->y);
+    ui->spin_Box_X->setValue(this->selected_Marble->x());
+    ui->spin_Box_Y->setValue(this->selected_Marble->y());
+    ui->horizontal_Slider_X->setValue(this->selected_Marble->x());
+    ui->horizontal_Slider_Y->setValue(this->selected_Marble->y());
+
+    ui->horizontal_Slider_Radius->setValue(radius);
 }
 
 void marble_Detection::on_horizontal_Slider_X_valueChanged(int value)
 {
-    this->x = value;
+    this->selected_Marble->setX(value);
     ui->spin_Box_X->setValue(value);
     this->update_Main_Image();
 }
 
 void marble_Detection::on_horizontal_Slider_Y_valueChanged(int value)
 {
-    this->y = value;
+    this->selected_Marble->setY(value);
     ui->spin_Box_Y->setValue(value);
     this->update_Main_Image();
 }
 
-void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int value)
+void marble_Detection::on_horizontal_Slider_Radius_valueChanged(int radius)
 {
-    int delta_Radius = value - this->radius;
+    double delta_Radius = radius - selected_Marble->getRadius();
 
-    this->radius = value;
-    this->x -= int(delta_Radius);
-    this->y -= int(delta_Radius);
+    this->selected_Marble->setRadius(radius);
+    this->selected_Marble->setPosition(this->selected_Marble->x() - delta_Radius, this->selected_Marble->y() - delta_Radius);
 
-    ui->spin_Box_Radius->setValue(value);
     this->update_Main_Image();
+    this->update_Preview_Image();
     this->set_Maximums();
 
-    ui->spin_Box_X->setValue(this->x);
-    ui->spin_Box_Y->setValue(this->y);
-    ui->horizontal_Slider_X->setValue(this->x);
-    ui->horizontal_Slider_Y->setValue(this->y);
+    ui->spin_Box_X->setValue(this->selected_Marble->x());
+    ui->spin_Box_Y->setValue(this->selected_Marble->y());
+    ui->horizontal_Slider_X->setValue(this->selected_Marble->x());
+    ui->horizontal_Slider_Y->setValue(this->selected_Marble->y());
+
+    ui->spin_Box_Radius->setValue(radius);
 }
 
 void marble_Detection::on_horizontal_Scroll_Bar_Red_valueChanged(int value)
 {
-    this->r = value;
+    this->selected_Marble->setR(value);
     this->update_Main_Image();
 }
 
 void marble_Detection::on_horizontal_Scroll_Bar_Green_valueChanged(int value)
 {
-    this->g = value;
+    this->selected_Marble->setG(value);
     this->update_Main_Image();
 }
 
 void marble_Detection::on_horizontal_Scroll_Bar_Blue_valueChanged(int value)
 {
-    this->b = value;
+    this->selected_Marble->setB(value);
     this->update_Main_Image();
 }
 
 void marble_Detection::on_colour_Selector_Button_clicked()
 {
-    QColor new_Colour = QColorDialog::getColor(QColor(r,g,b), this );
-    r = new_Colour.red();
-    g = new_Colour.green();
-    b = new_Colour.blue();
+    QColor new_Colour = QColorDialog::getColor(this->selected_Marble->getColour(), this );
+    this->selected_Marble->setColour(new_Colour);
 
-    ui->horizontal_Scroll_Bar_Red->setValue(r);
-    ui->horizontal_Scroll_Bar_Green->setValue(g);
-    ui->horizontal_Scroll_Bar_Blue->setValue(b);
+    ui->horizontal_Scroll_Bar_Red->setValue(new_Colour.red());
+    ui->horizontal_Scroll_Bar_Green->setValue(new_Colour.green());
+    ui->horizontal_Scroll_Bar_Blue->setValue(new_Colour.blue());
 }
 
 
@@ -384,12 +381,12 @@ bool marble_Detection::load_File(const QString &fileName)
                                  .arg(QDir::toNativeSeparators(fileName), reader.errorString()));
         return false;
     }
-    base_Image = newImage;
+    base_Image->pixmap() = QPixmap::fromImage(newImage);
 
     setWindowFilePath(fileName);
 
     const QString message = tr("Opened \"%1\", %2x%3, Depth: %4")
-        .arg(QDir::toNativeSeparators(fileName)).arg(base_Image.width()).arg(base_Image.height()).arg(base_Image.depth());
+        .arg(QDir::toNativeSeparators(fileName)).arg(base_Image->pixmap().width()).arg(base_Image->pixmap().height()).arg(base_Image->pixmap().depth());
     statusBar()->showMessage(message);
 
     this->set_Maximums();
@@ -446,7 +443,7 @@ void marble_Detection::on_zoom_Reset_Button_clicked()
 ///
 void marble_Detection::on_zoom_In_Button_clicked()
 {
-    image_Zoom(25);
+    image_Zoom(20);
 }
 
 ///
@@ -454,7 +451,7 @@ void marble_Detection::on_zoom_In_Button_clicked()
 ///
 void marble_Detection::on_zoom_Out_Button_clicked()
 {
-    image_Zoom(-25);
+    image_Zoom(-20);
 }
 
 ///
@@ -462,11 +459,7 @@ void marble_Detection::on_zoom_Out_Button_clicked()
 ///
 void marble_Detection::set_Maximums()
 {
-    ui->horizontal_Slider_X->setMaximum(this->base_Image.width() - radius * 2);
-    ui->horizontal_Slider_Y->setMaximum(this->base_Image.height() - radius * 2);
 
-    ui->spin_Box_X->setMaximum(this->base_Image.width() - radius * 2);
-    ui->spin_Box_Y->setMaximum(this->base_Image.height() - radius * 2);
 }
 
 ///
@@ -522,6 +515,7 @@ void marble_Detection::on_test_Button_clicked()
         }
     }
 
+    int radius = this->selected_Marble->getRadius();
     double sum_X = 0;
     double sum_Y = 0;
     int count = 0;
@@ -573,9 +567,9 @@ void marble_Detection::on_test_Button_clicked()
 void marble_Detection::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
-    this->base_Image = QImage(image_Path);
+    this->base_Image->setPixmap(QPixmap::fromImage(QImage(image_Path)));
     this->update_Main_Image();
-    ui->check_Box_Spherical->setChecked(false);
+    this->reset_Image_Zoom();
 }
 
 // ### TODO: 06/04/20 ###
@@ -635,7 +629,7 @@ void marble_Detection::on_checkBox_stateChanged(int arg)
         // Cancel currently doesn't work. For some reason when adding the cancel functionality the popup no longer appears.
         // Will have to experiment more in the future.
 
-        QPixmap* avg_Image = new QPixmap(base_Image.size());
+        QPixmap* avg_Image = new QPixmap(base_Image->pixmap().size());
         QPainter *paint = new QPainter(avg_Image);
         const int COUNT = ui->listWidget->count();
 
@@ -655,7 +649,7 @@ void marble_Detection::on_checkBox_stateChanged(int arg)
 
         progress.setValue(COUNT);
 
-        this->base_Image = avg_Image->toImage();
+        this->base_Image->setPixmap(*avg_Image);
         this->update_Main_Image();
 
     }
