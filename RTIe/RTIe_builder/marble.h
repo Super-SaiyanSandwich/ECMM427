@@ -1,31 +1,38 @@
-#ifndef MARBLE_H
-#define MARBLE_H
+#ifndef MARBLEMARKER_H
+#define MARBLEMARKER_H
 
-#include <QObject>
-#include <QFrame>
+#include <QPainter>
+#include <QGraphicsItem>
 
-class marble : public QObject
+class marble : public QGraphicsItem
 {
-    Q_OBJECT
 public:
-    explicit marble(QObject *parent = nullptr, double radius = 10);
+    marble();
 
-    void draw_Marble();
-    void set_X(int x);
-    void set_Y(int y);
-    void set_Radius(double radius);
-    void set_Colour(int r, int g, int b);
+    QRectF boundingRect() const override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+
+    void setPosition(qreal x, qreal y);
+    void setColour(int r, int g, int b);
+    void setColour(QColor colour);
+    void setR(int r);
+    void setG(int g);
+    void setB(int b);
+    void setRadius(qreal radius);
+    void setSelected(bool selected);
+
+    std::tuple<int, int> getPosition();
+    qreal getRadius();
+    QColor getColour();
+
+
+
+protected:
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 
 private:
-    int x = 0;
-    int y = 0;
-    double radius;
-
-    short int red;
-    short int green;
-    short int blue;
-
-signals:
+    qreal radius;
+    QColor colour;
 
 };
 

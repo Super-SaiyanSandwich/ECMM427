@@ -6,6 +6,9 @@
 #include <QLabel>
 #include <QScrollBar>
 #include <QListWidgetItem>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include "marble.h"
 
 namespace Ui {
 class marble_Detection;
@@ -26,18 +29,18 @@ public:
 private:
     Ui::marble_Detection *ui;
 //    Ui::system_Ui *ui;
-    QImage base_Image;
-    QLabel *image_Label;
 
-    int x;
-    int y;
-    double radius;
+
+    QGraphicsScene *marble_Selection_Screen;
+    QGraphicsPixmapItem *base_Image;
+
+
+    marble *selected_Marble;
+    QList<marble*> marble_List;
+
 
     int thread_Count = 0;
 
-    int r = 0;
-    int g = 255;
-    int b = 0;
     int zoom_Percentage = 100;
 
     bool invert_Selector = false;
@@ -52,7 +55,11 @@ private:
     void set_Maximums();
     void load_Image_Icons();
 
-signals:
+    bool eventFilter(QObject *object, QEvent *event);
+
+protected:
+    void showEvent(QShowEvent *ev);
+
 
 private slots:
     void on_spin_Box_X_valueChanged(int X);

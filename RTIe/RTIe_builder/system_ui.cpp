@@ -36,7 +36,7 @@
 #include <iostream>
 #include <fstream>
 #include <exception>
-#include <windows.h>
+//#include <windows.h>
 
 using namespace std;
 
@@ -623,7 +623,8 @@ void system_Ui::on_test_Button_2_clicked()
 
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    //ui->stackedWidget->setCurrentIndex(1);
+    marble_Detection *md = new marble_Detection(this, ui->listWidget->item(0)->text());
 }
 
 void system_Ui::on_remove_Marble_Btn_clicked()
