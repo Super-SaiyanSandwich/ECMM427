@@ -2,7 +2,6 @@
 #include "ui_project_Wizard.h"
 
 #include "new_Project_Wizard.h"
-//#include "new_Project_Wizard.h"
 #include "splash_Screen.h"
 #include "system_ui.h"
 
@@ -18,6 +17,10 @@
 #include <QGridLayout>
 #include <QWizardPage>
 
+
+
+QString project_Wizard::editor_Name;
+QString project_Wizard::valid;
 project_Wizard::project_Wizard(QWidget *parent) :
     QWizard(parent),
     ui(new Ui::project_Wizard)
@@ -70,7 +73,6 @@ void project_Wizard::create_Project(){
 
 
     QString project_container_Path = verification_Path;//dialog.directory().path();
-
     QDir verification_Dir(project_container_Path + "/" + project_Name);
 
     // Confirms that the user's desired project name doesn't exist,
@@ -103,8 +105,17 @@ void project_Wizard::create_Project(){
       QFile project_RTIE_File(project_Dir.path() + "/" + project_Name + ".rtie");
       if (project_RTIE_File.open(QIODevice::ReadWrite)) {
           QTextStream stream(&project_RTIE_File);
+          QDate date = QDate::currentDate();
+          valid = date.toString();
           stream << dir.path() << "/" << project_Name << endl;
+//          stream << "Owner Name: "  << owner << endl;
+          stream << "Editor Name: "  << editor_Name << endl;
+          stream << "Created on: "  << valid << endl;
+
       }
+
+
+
 
       // Creates and opens the image management window.
       system_Ui::start();
@@ -144,6 +155,8 @@ void project_Wizard::choose_Project_Directory(){
 
     // Project name is retrieved from the QNameLineEdit
     project_Name = ui->project_Name_Line_Edit->text();
+    editor_Name = ui->editor_Name->text();
+    qInfo()<<editor_Name;
 
     // Complete chosen path is then processed, and showed on the
     // project wizard for the user to validate

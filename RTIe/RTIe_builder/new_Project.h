@@ -12,9 +12,10 @@ class new_Project : public QMainWindow
     Q_OBJECT
 public:
     explicit new_Project(QWidget *parent = nullptr);
+    QString project_Name;
+    QString editor_Name;
 
 private:
-    QString project_Name;
     QString project_Location;
 
 signals:
@@ -22,7 +23,7 @@ signals:
 
 public slots:
    static void new_Project_Open_Page();
-   void update_Edit_Boxes(QString project_Location, QString project_Name);
+   void update_Edit_Boxes(QString project_Location, QString project_Name, QString editor_Name);
 
 
 private slots:

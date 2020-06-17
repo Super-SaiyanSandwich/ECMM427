@@ -3,7 +3,7 @@
 #include "splash_Screen.h"
 #include "ui_system_ui.h"
 #include "marble_Detection.h"
-#include "ptm_fitter.h"
+#include "project_Wizard.h"
 #define dumpval(x) qDebug()<<#x<<'='<<x
 
 #include <QTranslator>
@@ -18,6 +18,8 @@
 #include <QLineEdit>
 #include <QObject>
 #include <QTextBrowser>
+#include <QTableWidget>
+#include <QDateTime>
 
 #include <tuple>
 #include <vector>
@@ -61,7 +63,7 @@ system_Ui::system_Ui(QWidget *parent) :
     ui->listWidget_3->setViewMode(QListWidget::IconMode);
     ui->listWidget_3->setResizeMode(QListWidget::Adjust);
     ui->listWidget_3->setIconSize(QSize(100,50));
-//    ui->metadata_Table-> QTableWidget(int rows, int columns, this);
+
 
     image_Display();
 
@@ -143,6 +145,54 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
     ui->image_Preview->clear();
     ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
     ui->image_Preview->update();
+
+    for (int i=0; i<ui->metadata_Table->rowCount(); ++i)
+    {
+        ui->metadata_Table->setItem(i, 0, new QTableWidgetItem("")); // clear value.
+        ui->metadata_Table->update();
+    }
+
+    QStringList pieces = splashScreen::project_Path.split( "/" );
+    QString neededWord = pieces.value( pieces.length() - 1 );
+//    qInfo()<<project_Wizard().editor;
+
+    QString rti_Filename = splashScreen::project_Path + "/"+neededWord+".rtie";
+    QString  editor;
+    QString  date_Created;
+
+    QFile file(rti_Filename);
+
+
+    QStringList line;
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QTextStream stream(&file);
+        while (!stream.atEnd()){
+
+            line.append(stream.readLine()+"\n");
+        }
+        qInfo()<<" ";
+        line.removeAt(0);
+        QString temp1 = line.value(0);
+        QString temp2 = line.value(1);
+        editor = temp1.remove("Editor Name: ");
+        date_Created = temp2.remove("Created on: ");
+        editor = editor.remove("\n");
+        date_Created = date_Created.remove("\n");
+
+    }
+    file.close();
+
+
+    ui->metadata_Table->setItem(0, 0, new QTableWidgetItem(neededWord)); // Project Name
+    ui->metadata_Table->setItem(1, 0, new QTableWidgetItem(item->text())); // Picture Name
+//    ui->metadata_Table->setItem(2, 0, new QTableWidgetItem(item->text())); // Owner's Name
+    ui->metadata_Table->setItem(3, 0, new QTableWidgetItem(editor)); // Editor's Name
+    ui->metadata_Table->setItem(4, 0, new QTableWidgetItem(preview_Image)); // File location
+    ui->metadata_Table->setItem(5, 0, new QTableWidgetItem(date_Created)); // Date Created
+    ui->metadata_Table->setItem(6, 0, new QTableWidgetItem( QString::number(base_Image.width()))); // Image width
+    ui->metadata_Table->setItem(7, 0, new QTableWidgetItem( QString::number(base_Image.height()))); // Image height
+
+
 }
 
 /*
@@ -189,21 +239,6 @@ void system_Ui::on_delete_Btn_clicked()
     system_Ui::image_Display();
 }
 
-
-//void system_Ui::on_export_2_clicked()
-//{
-//    ptm_fitter *t = new ptm_fitter();
-//    t->show();
-//}
-
-
-
-//void system_Ui::on_spin_Box_Radius_valueChanged(double arg1)
-//{
-//    marble_Detection *offset = new marble_Detection();
-//    arg1 = offset->radius;
-//    offset->on_spin_Box_Radius_valueChanged(arg1);
-//}
 
 
 // ===========================Cropped Image Page =========================================================
@@ -619,7 +654,7 @@ void system_Ui::on_test_Button_2_clicked()
 
 
 
-//=================================================
+//==================================== Page change buttons  ===============================
 
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
@@ -684,7 +719,7 @@ void system_Ui::on_remove_Marble_Btn_4_clicked()
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-//=================================================
+//====================================================================================
 
 
 
@@ -742,13 +777,14 @@ void system_Ui::on_generate_Btn_clicked()
         }catch (exception e){
             qInfo() << "This is an error message!";
         }
-    }
+    }//TODO HSH FITTER
     else if (ui->hsh_Fitter->isChecked() && fitter_Args.size() == 3){
         /* the hsh has command-line args of :
                         <fitter location> <lp file location> <HSH order> <destination filepath>
         */
 
         // Clear all the fields.
+
 
 
         ui->fitter_Info->setText("HSH COMING SOON!!!");

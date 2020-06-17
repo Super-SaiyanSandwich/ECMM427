@@ -8,6 +8,7 @@
 #include <QAction>
 #include <QPushButton>
 #include <QLabel>
+#include "system_ui.h"
 
 namespace Ui {
 class project_Wizard;
@@ -20,6 +21,9 @@ class project_Wizard : public QWizard
 public:
     explicit project_Wizard(QWidget *parent = nullptr);
     ~project_Wizard();
+    static QString editor_Name;
+    static QString valid;
+
 
 private:
     Ui::project_Wizard *ui;

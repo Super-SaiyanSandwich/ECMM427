@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_new_Project_Settings_t {
-    QByteArrayData data[8];
-    char stringdata0[122];
+    QByteArrayData data[9];
+    char stringdata0[129];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,15 +36,16 @@ QT_MOC_LITERAL(1, 21, 30), // "new_Project_Settings_Open_Page"
 QT_MOC_LITERAL(2, 52, 0), // ""
 QT_MOC_LITERAL(3, 53, 16), // "project_Location"
 QT_MOC_LITERAL(4, 70, 12), // "project_Name"
-QT_MOC_LITERAL(5, 83, 10), // "close_Page"
-QT_MOC_LITERAL(6, 94, 12), // "back_Trigger"
-QT_MOC_LITERAL(7, 107, 14) // "create_Project"
+QT_MOC_LITERAL(5, 83, 6), // "editor"
+QT_MOC_LITERAL(6, 90, 10), // "close_Page"
+QT_MOC_LITERAL(7, 101, 12), // "back_Trigger"
+QT_MOC_LITERAL(8, 114, 14) // "create_Project"
 
     },
     "new_Project_Settings\0"
     "new_Project_Settings_Open_Page\0\0"
-    "project_Location\0project_Name\0close_Page\0"
-    "back_Trigger\0create_Project"
+    "project_Location\0project_Name\0editor\0"
+    "close_Page\0back_Trigger\0create_Project"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,13 +63,13 @@ static const uint qt_meta_data_new_Project_Settings[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   34,    2, 0x0a /* Public */,
-       5,    0,   39,    2, 0x08 /* Private */,
-       6,    0,   40,    2, 0x08 /* Private */,
-       7,    0,   41,    2, 0x08 /* Private */,
+       1,    3,   34,    2, 0x0a /* Public */,
+       6,    0,   41,    2, 0x08 /* Private */,
+       7,    0,   42,    2, 0x08 /* Private */,
+       8,    0,   43,    2, 0x08 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,    3,    4,    5,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -82,7 +83,7 @@ void new_Project_Settings::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         new_Project_Settings *_t = static_cast<new_Project_Settings *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->new_Project_Settings_Open_Page((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 0: _t->new_Project_Settings_Open_Page((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 1: _t->close_Page(); break;
         case 2: _t->back_Trigger(); break;
         case 3: _t->create_Project(); break;

@@ -75,21 +75,21 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page1;
     QLabel *image_Preview;
-    QListWidget *listWidget;
     QLabel *label_4;
     QLabel *label_7;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_4;
-    QPushButton *import_btn;
-    QPushButton *delete_Btn;
     QWidget *layoutWidget_5;
     QHBoxLayout *horizontalLayout_9;
     QPushButton *image_Management_Btn;
     QPushButton *marble_Detection_Btn;
     QPushButton *remove_Marble_Btn;
     QPushButton *export_Btn;
-    QTextBrowser *textBrowser_2;
-    QTableWidget *tableWidget;
+    QTableWidget *metadata_Table;
+    QSplitter *splitter_3;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_4;
+    QPushButton *import_btn;
+    QPushButton *delete_Btn;
+    QListWidget *listWidget;
     QWidget *page2;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -389,7 +389,7 @@ public:
         page1->setSizePolicy(sizePolicy);
         image_Preview = new QLabel(page1);
         image_Preview->setObjectName(QStringLiteral("image_Preview"));
-        image_Preview->setGeometry(QRect(10, 50, 511, 471));
+        image_Preview->setGeometry(QRect(10, 55, 501, 471));
         QFont font;
         font.setPointSize(48);
         font.setBold(true);
@@ -398,13 +398,9 @@ public:
         image_Preview->setFrameShape(QFrame::StyledPanel);
         image_Preview->setFrameShadow(QFrame::Sunken);
         image_Preview->setLineWidth(5);
-        listWidget = new QListWidget(page1);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(540, 50, 491, 721));
-        listWidget->setLineWidth(5);
         label_4 = new QLabel(page1);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(15, 540, 101, 20));
+        label_4->setGeometry(QRect(10, 533, 78, 19));
         sizePolicy.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy);
         QFont font1;
@@ -415,28 +411,12 @@ public:
         label_4->setFont(font1);
         label_7 = new QLabel(page1);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(15, 30, 81, 20));
+        label_7->setGeometry(QRect(10, 30, 66, 19));
         QFont font2;
         font2.setPointSize(12);
         font2.setBold(true);
         font2.setWeight(75);
         label_7->setFont(font2);
-        layoutWidget = new QWidget(page1);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(560, 20, 194, 30));
-        horizontalLayout_4 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        import_btn = new QPushButton(layoutWidget);
-        import_btn->setObjectName(QStringLiteral("import_btn"));
-
-        horizontalLayout_4->addWidget(import_btn);
-
-        delete_Btn = new QPushButton(layoutWidget);
-        delete_Btn->setObjectName(QStringLiteral("delete_Btn"));
-
-        horizontalLayout_4->addWidget(delete_Btn);
-
         layoutWidget_5 = new QWidget(page1);
         layoutWidget_5->setObjectName(QStringLiteral("layoutWidget_5"));
         layoutWidget_5->setGeometry(QRect(0, 780, 1033, 30));
@@ -466,52 +446,110 @@ public:
 
         horizontalLayout_9->addWidget(export_Btn);
 
-        textBrowser_2 = new QTextBrowser(page1);
-        textBrowser_2->setObjectName(QStringLiteral("textBrowser_2"));
-        textBrowser_2->setGeometry(QRect(15, 570, 241, 191));
-        tableWidget = new QTableWidget(page1);
-        if (tableWidget->columnCount() < 1)
-            tableWidget->setColumnCount(1);
+        metadata_Table = new QTableWidget(page1);
+        if (metadata_Table->columnCount() < 1)
+            metadata_Table->setColumnCount(1);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        if (tableWidget->rowCount() < 7)
-            tableWidget->setRowCount(7);
+        metadata_Table->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        if (metadata_Table->rowCount() < 8)
+            metadata_Table->setRowCount(8);
+        QFont font3;
+        font3.setPointSize(10);
+        font3.setBold(true);
+        font3.setWeight(75);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        __qtablewidgetitem1->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem1->setFont(font3);
+        __qtablewidgetitem1->setBackground(QColor(0, 85, 255));
+        metadata_Table->setVerticalHeaderItem(0, __qtablewidgetitem1);
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        __qtablewidgetitem1->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem1->setForeground(brush);
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        __qtablewidgetitem2->setBackground(QColor(0, 85, 255));
+        __qtablewidgetitem2->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem2->setFont(font3);
+        __qtablewidgetitem2->setBackground(QColor(0, 170, 255));
         __qtablewidgetitem2->setForeground(brush);
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem2);
+        metadata_Table->setVerticalHeaderItem(1, __qtablewidgetitem2);
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        __qtablewidgetitem3->setBackground(QColor(0, 170, 255));
+        __qtablewidgetitem3->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem3->setFont(font3);
+        __qtablewidgetitem3->setBackground(QColor(0, 85, 255));
         __qtablewidgetitem3->setForeground(brush);
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem3);
+        metadata_Table->setVerticalHeaderItem(2, __qtablewidgetitem3);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        __qtablewidgetitem4->setBackground(QColor(0, 85, 255));
+        __qtablewidgetitem4->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem4->setFont(font3);
+        __qtablewidgetitem4->setBackground(QColor(0, 170, 255));
         __qtablewidgetitem4->setForeground(brush);
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem4);
+        metadata_Table->setVerticalHeaderItem(3, __qtablewidgetitem4);
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        __qtablewidgetitem5->setBackground(QColor(0, 170, 255));
+        __qtablewidgetitem5->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem5->setFont(font3);
+        __qtablewidgetitem5->setBackground(QColor(0, 85, 255));
         __qtablewidgetitem5->setForeground(brush);
-        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem5);
+        metadata_Table->setVerticalHeaderItem(4, __qtablewidgetitem5);
         QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        __qtablewidgetitem6->setBackground(QColor(0, 85, 255));
-        tableWidget->setVerticalHeaderItem(5, __qtablewidgetitem6);
+        __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem6->setFont(font3);
+        __qtablewidgetitem6->setBackground(QColor(0, 170, 255));
+        __qtablewidgetitem6->setForeground(brush);
+        metadata_Table->setVerticalHeaderItem(5, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        __qtablewidgetitem7->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem7->setForeground(brush);
-        tableWidget->setVerticalHeaderItem(6, __qtablewidgetitem7);
-        QBrush brush1(QColor(255, 255, 255, 255));
-        brush1.setStyle(Qt::NoBrush);
+        __qtablewidgetitem7->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem7->setFont(font3);
+        __qtablewidgetitem7->setBackground(QColor(0, 85, 255));
+        metadata_Table->setVerticalHeaderItem(6, __qtablewidgetitem7);
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        __qtablewidgetitem8->setForeground(brush1);
-        tableWidget->setItem(0, 0, __qtablewidgetitem8);
-        tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(270, 570, 256, 192));
+        __qtablewidgetitem8->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem8->setFont(font3);
+        __qtablewidgetitem8->setBackground(QColor(0, 170, 255));
+        __qtablewidgetitem8->setForeground(brush);
+        metadata_Table->setVerticalHeaderItem(7, __qtablewidgetitem8);
+        metadata_Table->setObjectName(QStringLiteral("metadata_Table"));
+        metadata_Table->setGeometry(QRect(10, 558, 501, 192));
+        metadata_Table->setFrameShape(QFrame::Panel);
+        metadata_Table->setFrameShadow(QFrame::Plain);
+        metadata_Table->setLineWidth(1);
+        metadata_Table->setDragDropMode(QAbstractItemView::InternalMove);
+        metadata_Table->setAlternatingRowColors(true);
+        metadata_Table->setShowGrid(true);
+        metadata_Table->setGridStyle(Qt::SolidLine);
+        metadata_Table->setSortingEnabled(false);
+        metadata_Table->setWordWrap(true);
+        metadata_Table->setCornerButtonEnabled(true);
+        metadata_Table->horizontalHeader()->setVisible(false);
+        metadata_Table->horizontalHeader()->setCascadingSectionResizes(false);
+        metadata_Table->horizontalHeader()->setDefaultSectionSize(410);
+        metadata_Table->horizontalHeader()->setHighlightSections(true);
+        metadata_Table->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
+        metadata_Table->verticalHeader()->setHighlightSections(true);
+        metadata_Table->verticalHeader()->setMinimumSectionSize(10);
+        metadata_Table->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
+        metadata_Table->verticalHeader()->setStretchLastSection(false);
+        splitter_3 = new QSplitter(page1);
+        splitter_3->setObjectName(QStringLiteral("splitter_3"));
+        splitter_3->setGeometry(QRect(540, 20, 481, 731));
+        splitter_3->setOrientation(Qt::Vertical);
+        layoutWidget = new QWidget(splitter_3);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        horizontalLayout_4 = new QHBoxLayout(layoutWidget);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        import_btn = new QPushButton(layoutWidget);
+        import_btn->setObjectName(QStringLiteral("import_btn"));
+
+        horizontalLayout_4->addWidget(import_btn);
+
+        delete_Btn = new QPushButton(layoutWidget);
+        delete_Btn->setObjectName(QStringLiteral("delete_Btn"));
+
+        horizontalLayout_4->addWidget(delete_Btn);
+
+        splitter_3->addWidget(layoutWidget);
+        listWidget = new QListWidget(splitter_3);
+        listWidget->setObjectName(QStringLiteral("listWidget"));
+        listWidget->setLineWidth(5);
+        splitter_3->addWidget(listWidget);
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
         page2->setObjectName(QStringLiteral("page2"));
@@ -551,13 +589,13 @@ public:
         sizePolicy3.setHeightForWidth(toolBox->sizePolicy().hasHeightForWidth());
         toolBox->setSizePolicy(sizePolicy3);
         toolBox->setMinimumSize(QSize(500, 300));
-        QFont font3;
-        font3.setFamily(QStringLiteral("MS Shell Dlg 2"));
-        font3.setPointSize(10);
-        font3.setBold(false);
-        font3.setItalic(false);
-        font3.setWeight(50);
-        toolBox->setFont(font3);
+        QFont font4;
+        font4.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font4.setPointSize(10);
+        font4.setBold(false);
+        font4.setItalic(false);
+        font4.setWeight(50);
+        toolBox->setFont(font4);
         toolBox->setStyleSheet(QLatin1String("QToolBox::tab {\n"
 "background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E1E1E1, stop: 0.4 #DDDDDD, stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
 "border: 2px solid #C4C4C3;\n"
@@ -579,13 +617,13 @@ public:
 "margin-top: 2px; /* make non-selected tabs look smaller */\n"
 "}\n"
 "/*\n"
-"QToolBox::tab:selected { \n"
+"QToolBox::tab:selected {\n"
 "    font: italic;\n"
 "    color: white;\n"
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QStringLiteral("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 100, 30));
+        movement_Page->setGeometry(QRect(0, 0, 500, 180));
         spin_Box_X = new QSpinBox(movement_Page);
         spin_Box_X->setObjectName(QStringLiteral("spin_Box_X"));
         spin_Box_X->setGeometry(QRect(10, 37, 52, 20));
@@ -602,7 +640,7 @@ public:
         label_Y->setObjectName(QStringLiteral("label_Y"));
         label_Y->setEnabled(true);
         label_Y->setGeometry(QRect(10, 91, 80, 21));
-        label_Y->setFont(font3);
+        label_Y->setFont(font4);
         label_Y->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
         spin_Box_Y = new QSpinBox(movement_Page);
         spin_Box_Y->setObjectName(QStringLiteral("spin_Box_Y"));
@@ -618,12 +656,12 @@ public:
         label_X = new QLabel(movement_Page);
         label_X->setObjectName(QStringLiteral("label_X"));
         label_X->setGeometry(QRect(10, 10, 80, 21));
-        label_X->setFont(font3);
+        label_X->setFont(font4);
         label_X->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
         toolBox->addItem(movement_Page, QStringLiteral("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QStringLiteral("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 114, 123));
+        scale_Page->setGeometry(QRect(0, 0, 500, 180));
         gridLayout_11 = new QGridLayout(scale_Page);
         gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
         verticalLayout_3 = new QVBoxLayout();
@@ -858,7 +896,7 @@ public:
         toolBox->addItem(tools_Page, QStringLiteral("Tools"));
         images_Page = new QWidget();
         images_Page->setObjectName(QStringLiteral("images_Page"));
-        images_Page->setGeometry(QRect(0, 0, 100, 30));
+        images_Page->setGeometry(QRect(0, 0, 500, 180));
         scrollArea_2 = new QScrollArea(images_Page);
         scrollArea_2->setObjectName(QStringLiteral("scrollArea_2"));
         scrollArea_2->setGeometry(QRect(9, 9, 471, 301));
@@ -870,6 +908,7 @@ public:
         listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
         listWidget_2->setGeometry(QRect(0, 0, 471, 301));
         listWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        listWidget_2->setDefaultDropAction(Qt::IgnoreAction);
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
         open_Button = new QPushButton(images_Page);
         open_Button->setObjectName(QStringLiteral("open_Button"));
@@ -888,14 +927,14 @@ public:
         label = new QLabel(page2);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(580, 440, 88, 28));
-        QFont font4;
-        font4.setFamily(QStringLiteral("MS Shell Dlg 2"));
-        font4.setPointSize(14);
-        font4.setBold(false);
-        font4.setItalic(false);
-        font4.setWeight(9);
-        font4.setKerning(true);
-        label->setFont(font4);
+        QFont font5;
+        font5.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font5.setPointSize(14);
+        font5.setBold(false);
+        font5.setItalic(false);
+        font5.setWeight(9);
+        font5.setKerning(true);
+        label->setFont(font5);
         label->setStyleSheet(QStringLiteral("font: 75 14pt \"MS Shell Dlg 2\";"));
         layoutWidget_4 = new QWidget(page2);
         layoutWidget_4->setObjectName(QStringLiteral("layoutWidget_4"));
@@ -986,22 +1025,22 @@ public:
 "margin-top: 2px; /* make non-selected tabs look smaller */\n"
 "}\n"
 "/*\n"
-"QToolBox::tab:selected { \n"
+"QToolBox::tab:selected {\n"
 "    font: italic;\n"
 "    color: white;\n"
 "}*/"));
         movement_Page_2 = new QWidget();
         movement_Page_2->setObjectName(QStringLiteral("movement_Page_2"));
-        movement_Page_2->setGeometry(QRect(0, 0, 100, 30));
+        movement_Page_2->setGeometry(QRect(0, 0, 360, 353));
         label_Y_2 = new QLabel(movement_Page_2);
         label_Y_2->setObjectName(QStringLiteral("label_Y_2"));
         label_Y_2->setEnabled(true);
         label_Y_2->setGeometry(QRect(9, 206, 80, 21));
         sizePolicy3.setHeightForWidth(label_Y_2->sizePolicy().hasHeightForWidth());
         label_Y_2->setSizePolicy(sizePolicy3);
-        QFont font5;
-        font5.setPointSize(10);
-        label_Y_2->setFont(font5);
+        QFont font6;
+        font6.setPointSize(10);
+        label_Y_2->setFont(font6);
         label_Y_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
         spin_Box_X_2 = new QSpinBox(movement_Page_2);
         spin_Box_X_2->setObjectName(QStringLiteral("spin_Box_X_2"));
@@ -1018,7 +1057,7 @@ public:
         label_X_2->setGeometry(QRect(9, 38, 80, 21));
         sizePolicy3.setHeightForWidth(label_X_2->sizePolicy().hasHeightForWidth());
         label_X_2->setSizePolicy(sizePolicy3);
-        label_X_2->setFont(font5);
+        label_X_2->setFont(font6);
         label_X_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
         horizontal_Slider_Y_2 = new QSlider(movement_Page_2);
         horizontal_Slider_Y_2->setObjectName(QStringLiteral("horizontal_Slider_Y_2"));
@@ -1037,7 +1076,7 @@ public:
         toolBox_2->addItem(movement_Page_2, QStringLiteral("Position"));
         scale_Page_2 = new QWidget();
         scale_Page_2->setObjectName(QStringLiteral("scale_Page_2"));
-        scale_Page_2->setGeometry(QRect(0, 0, 96, 214));
+        scale_Page_2->setGeometry(QRect(0, 0, 360, 353));
         gridLayout_5 = new QGridLayout(scale_Page_2);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         check_Box_Spherical_2 = new QCheckBox(scale_Page_2);
@@ -1066,12 +1105,12 @@ public:
 
         radius_Label_3 = new QLabel(scale_Page_2);
         radius_Label_3->setObjectName(QStringLiteral("radius_Label_3"));
-        QFont font6;
-        font6.setFamily(QStringLiteral("Segoe Script"));
-        font6.setPointSize(12);
-        font6.setBold(true);
-        font6.setWeight(75);
-        radius_Label_3->setFont(font6);
+        QFont font7;
+        font7.setFamily(QStringLiteral("Segoe Script"));
+        font7.setPointSize(12);
+        font7.setBold(true);
+        font7.setWeight(75);
+        radius_Label_3->setFont(font7);
         radius_Label_3->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
         gridLayout_5->addWidget(radius_Label_3, 3, 0, 1, 1);
@@ -1103,7 +1142,7 @@ public:
 
         radius_Label_2 = new QLabel(scale_Page_2);
         radius_Label_2->setObjectName(QStringLiteral("radius_Label_2"));
-        radius_Label_2->setFont(font6);
+        radius_Label_2->setFont(font7);
         radius_Label_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
         gridLayout_5->addWidget(radius_Label_2, 0, 0, 1, 1);
@@ -1111,18 +1150,18 @@ public:
         toolBox_2->addItem(scale_Page_2, QStringLiteral("Scale"));
         tools_Page_2 = new QWidget();
         tools_Page_2->setObjectName(QStringLiteral("tools_Page_2"));
-        tools_Page_2->setGeometry(QRect(0, 0, 100, 30));
+        tools_Page_2->setGeometry(QRect(0, 0, 360, 353));
         zoom_Label_2 = new QLabel(tools_Page_2);
         zoom_Label_2->setObjectName(QStringLiteral("zoom_Label_2"));
         zoom_Label_2->setGeometry(QRect(100, 0, 71, 16));
         sizePolicy.setHeightForWidth(zoom_Label_2->sizePolicy().hasHeightForWidth());
         zoom_Label_2->setSizePolicy(sizePolicy);
-        QFont font7;
-        font7.setFamily(QStringLiteral("Segoe Script"));
-        font7.setPointSize(11);
-        font7.setBold(true);
-        font7.setWeight(75);
-        zoom_Label_2->setFont(font7);
+        QFont font8;
+        font8.setFamily(QStringLiteral("Segoe Script"));
+        font8.setPointSize(11);
+        font8.setBold(true);
+        font8.setWeight(75);
+        zoom_Label_2->setFont(font8);
         seperator_3 = new QFrame(tools_Page_2);
         seperator_3->setObjectName(QStringLiteral("seperator_3"));
         seperator_3->setGeometry(QRect(0, 102, 321, 16));
@@ -1140,7 +1179,7 @@ public:
         colour_Label_2->setGeometry(QRect(120, 120, 81, 16));
         sizePolicy.setHeightForWidth(colour_Label_2->sizePolicy().hasHeightForWidth());
         colour_Label_2->setSizePolicy(sizePolicy);
-        colour_Label_2->setFont(font7);
+        colour_Label_2->setFont(font8);
         zoom_Out_Button_2 = new QPushButton(tools_Page_2);
         zoom_Out_Button_2->setObjectName(QStringLiteral("zoom_Out_Button_2"));
         zoom_Out_Button_2->setGeometry(QRect(20, 30, 131, 31));
@@ -1431,7 +1470,7 @@ public:
         label_3->setObjectName(QStringLiteral("label_3"));
         sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy);
-        label_3->setFont(font6);
+        label_3->setFont(font7);
         splitter->addWidget(label_3);
         preivew_Label_2 = new QLabel(splitter);
         preivew_Label_2->setObjectName(QStringLiteral("preivew_Label_2"));
@@ -1483,15 +1522,15 @@ public:
         label_16 = new QLabel(page4);
         label_16->setObjectName(QStringLiteral("label_16"));
         label_16->setGeometry(QRect(20, 470, 211, 41));
-        QFont font8;
-        font8.setFamily(QStringLiteral("MS Shell Dlg 2"));
-        font8.setPointSize(12);
-        font8.setBold(true);
-        font8.setItalic(false);
-        font8.setWeight(75);
-        font8.setStrikeOut(false);
-        font8.setKerning(true);
-        label_16->setFont(font8);
+        QFont font9;
+        font9.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font9.setPointSize(12);
+        font9.setBold(true);
+        font9.setItalic(false);
+        font9.setWeight(75);
+        font9.setStrikeOut(false);
+        font9.setKerning(true);
+        label_16->setFont(font9);
         image_Label_3 = new QLabel(page4);
         image_Label_3->setObjectName(QStringLiteral("image_Label_3"));
         image_Label_3->setGeometry(QRect(20, 50, 591, 411));
@@ -1506,7 +1545,7 @@ public:
         label_18 = new QLabel(page4);
         label_18->setObjectName(QStringLiteral("label_18"));
         label_18->setGeometry(QRect(20, 10, 211, 41));
-        label_18->setFont(font8);
+        label_18->setFont(font9);
         layoutWidget3 = new QWidget(page4);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
         layoutWidget3->setGeometry(QRect(760, 700, 261, 41));
@@ -1537,7 +1576,7 @@ public:
         splitter_2->addWidget(fitter_Info);
         layoutWidget_11 = new QWidget(page4);
         layoutWidget_11->setObjectName(QStringLiteral("layoutWidget_11"));
-        layoutWidget_11->setGeometry(QRect(30, 650, 251, 101));
+        layoutWidget_11->setGeometry(QRect(30, 650, 251, 110));
         gridLayout_6 = new QGridLayout(layoutWidget_11);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
@@ -1662,24 +1701,24 @@ public:
         QPalette palette;
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush2(QColor(0, 0, 0, 128));
-        brush2.setStyle(Qt::SolidPattern);
+        QBrush brush1(QColor(0, 0, 0, 128));
+        brush1.setStyle(Qt::SolidPattern);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush2);
+        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
 #endif
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
 #endif
-        QBrush brush3(QColor(255, 255, 255, 127));
+        QBrush brush2(QColor(255, 255, 255, 127));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        QBrush brush3(QColor(231, 231, 231, 128));
         brush3.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush4(QColor(231, 231, 231, 128));
-        brush4.setStyle(Qt::SolidPattern);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush4);
+        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
 #endif
         temp->setPalette(palette);
         temp->setFrameShape(QFrame::Box);
@@ -1716,17 +1755,17 @@ public:
         palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Active, QPalette::Text, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
 #endif
         palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
 #endif
-        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush2);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
 #endif
         fitter_Placeholder->setPalette(palette1);
         fitter_Placeholder->setAutoFillBackground(false);
@@ -1760,17 +1799,17 @@ public:
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Active, QPalette::Text, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Active, QPalette::PlaceholderText, brush2);
+        palette2.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
 #endif
         palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Inactive, QPalette::Text, brush);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush2);
+        palette2.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
 #endif
-        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush2);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush4);
+        palette2.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
 #endif
         output_Placeholder->setPalette(palette2);
         output_Placeholder->setFrameShape(QFrame::Box);
@@ -1880,7 +1919,7 @@ public:
 
         stackedWidget->setCurrentIndex(0);
         toolBox->setCurrentIndex(2);
-        toolBox_2->setCurrentIndex(3);
+        toolBox_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(system_Ui);
@@ -1946,51 +1985,30 @@ public:
         image_Preview->setText(QString());
         label_4->setText(QApplication::translate("system_Ui", "Metadata", Q_NULLPTR));
         label_7->setText(QApplication::translate("system_Ui", "Preview", Q_NULLPTR));
-        import_btn->setText(QApplication::translate("system_Ui", "Import", Q_NULLPTR));
-        delete_Btn->setText(QApplication::translate("system_Ui", "Delete", Q_NULLPTR));
         image_Management_Btn->setText(QApplication::translate("system_Ui", "Image Management", Q_NULLPTR));
         marble_Detection_Btn->setText(QApplication::translate("system_Ui", "Marble Detection", Q_NULLPTR));
         remove_Marble_Btn->setText(QApplication::translate("system_Ui", "Remove Marble", Q_NULLPTR));
         export_Btn->setText(QApplication::translate("system_Ui", "Export", Q_NULLPTR));
-        textBrowser_2->setHtml(QApplication::translate("system_Ui", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic; text-decoration: underline;\">Example Image:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Name:  The Monalisa</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Owner: RTI Gro"
-                        "up</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Edited by: Carr and Louise</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Date Edited: 29/05/2020</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Location: &quot;C:\\Users\\Desktop\\project&quot;</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; font-style:italic;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-r"
-                        "ight:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic; text-decoration: underline;\">Image Properties:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Pixels: 124x456</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Width (cm): 123</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-weight:600; font-style:italic;\">* Height (cm): 34</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; "
-                        "font-weight:600; font-style:italic;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; font-weight:600; font-style:italic;\"><br /></p></body></html>", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("system_Ui", "Name", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->verticalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("system_Ui", "Owner", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->verticalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("system_Ui", "Location", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->verticalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("system_Ui", "Date Created", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->verticalHeaderItem(4);
+        QTableWidgetItem *___qtablewidgetitem = metadata_Table->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("system_Ui", "Value", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem1 = metadata_Table->verticalHeaderItem(0);
+        ___qtablewidgetitem1->setText(QApplication::translate("system_Ui", "Project Name", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem2 = metadata_Table->verticalHeaderItem(1);
+        ___qtablewidgetitem2->setText(QApplication::translate("system_Ui", "Image Name", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem3 = metadata_Table->verticalHeaderItem(2);
+        ___qtablewidgetitem3->setText(QApplication::translate("system_Ui", "Owner", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem4 = metadata_Table->verticalHeaderItem(3);
         ___qtablewidgetitem4->setText(QApplication::translate("system_Ui", "Edited by", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->verticalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("system_Ui", "Width (cm)", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->verticalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QApplication::translate("system_Ui", "Height (cm)", Q_NULLPTR));
-
-        const bool __sortingEnabled = tableWidget->isSortingEnabled();
-        tableWidget->setSortingEnabled(false);
-        tableWidget->setSortingEnabled(__sortingEnabled);
-
+        QTableWidgetItem *___qtablewidgetitem5 = metadata_Table->verticalHeaderItem(4);
+        ___qtablewidgetitem5->setText(QApplication::translate("system_Ui", "Location", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem6 = metadata_Table->verticalHeaderItem(5);
+        ___qtablewidgetitem6->setText(QApplication::translate("system_Ui", "Date Created", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem7 = metadata_Table->verticalHeaderItem(6);
+        ___qtablewidgetitem7->setText(QApplication::translate("system_Ui", "Width (cm)", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem8 = metadata_Table->verticalHeaderItem(7);
+        ___qtablewidgetitem8->setText(QApplication::translate("system_Ui", "Height (cm)", Q_NULLPTR));
+        import_btn->setText(QApplication::translate("system_Ui", "Import", Q_NULLPTR));
+        delete_Btn->setText(QApplication::translate("system_Ui", "Delete", Q_NULLPTR));
         image_Label->setText(QString());
 #ifndef QT_NO_TOOLTIP
         spin_Box_X->setToolTip(QApplication::translate("system_Ui", "X Value of Sphere", Q_NULLPTR));
