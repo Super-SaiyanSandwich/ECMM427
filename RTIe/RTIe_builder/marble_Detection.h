@@ -1,4 +1,4 @@
-#ifndef MARBLE_DETECTION_H
+﻿#ifndef MARBLE_DETECTION_H
 #define MARBLE_DETECTION_H
 
 #include <QMainWindow>
@@ -49,11 +49,12 @@ private:
     void update_Preview_Image();
     void inverted_Marker();
     QImage applyEffectToImage(QImage src, QGraphicsEffect *effect, int extent = 0);
+    QPixmap applyEffectToImage(QPixmap src, QGraphicsEffect *effect, int extent = 0);
     void reset_Image_Zoom();
     void image_Zoom(int percent);
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
     void set_Maximums();
-    void load_Image_Icons();
+    QString load_Image_Icons();
 
     bool eventFilter(QObject *object, QEvent *event);
 
@@ -83,6 +84,9 @@ private slots:
     void on_horizontal_Slider_X_sliderReleased();
     void on_horizontal_Slider_Y_sliderReleased();
     void on_checkBox_stateChanged(int arg1);
+    void on_listWidget_2_itemDoubleClicked(QListWidgetItem *item);
+    void on_add_Marble_Button_clicked();
+    void on_remove_Marble_Button_clicked();
 };
 
 #endif // MARBLE_DETECTION_H

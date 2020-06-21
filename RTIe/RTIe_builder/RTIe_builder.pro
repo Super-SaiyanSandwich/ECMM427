@@ -11,6 +11,7 @@ SOURCES += \
     main.cpp \
     marble.cpp \
     marble_Detection.cpp \
+    marble_List_Item.cpp \
     new_Project.cpp \
     new_Project_Settings.cpp \
     project_Wizard.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     image_Management_Nui.h \
     marble.h \
     marble_Detection.h \
+    marble_List_Item.h \
     new_Project.h \
     new_Project_Settings.h \
     project_Wizard.h \

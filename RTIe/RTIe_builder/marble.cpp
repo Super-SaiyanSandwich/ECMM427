@@ -85,6 +85,11 @@ void marble::setSelected(bool selected)
     }
 }
 
+std::tuple<int, int> marble::getPosition()
+{
+    return std::make_tuple( this->x(), this->y());
+}
+
 qreal marble::getRadius()
 {
     return this->radius;

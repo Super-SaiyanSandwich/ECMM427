@@ -71,13 +71,17 @@ marble_Detection::marble_Detection(QWidget *parent, QString base_Image) : QMainW
 
     marble_List.append(selected_Marble);
 
+    QListWidgetItem *list_Icon = new QListWidgetItem("Marble 1");
+    ui->listWidget_2->addItem(list_Icon);
+    ui->listWidget_2->setIconSize(QSize(60,60));
+
     //this->update_Marble_Marker();
 
     this->show();
 
-    this->load_Image_Icons();
+//    this->load_Image_Icons();
 
-    this->reset_Image_Zoom();
+//    this->reset_Image_Zoom();
 }
 
 marble_Detection::~marble_Detection()
@@ -99,33 +103,53 @@ void marble_Detection::update_Main_Image()
 ///
 void marble_Detection::update_Preview_Image()
 {
-//    int rad = this->radius;
+    bool blur = false;
+    int rad = this->selected_Marble->getRadius();
 
-//    QPixmap base_Pix = QPixmap::fromImage(this->base_Image);
-//    QPainter *paint = new QPainter(&base_Pix);
-//    QPixmap target(rad * 2, rad * 2);
+    QPixmap base_Pix = this->base_Image->pixmap();
+    QPainter *paint = new QPainter(&base_Pix);
+    QPixmap target(rad * 2, rad * 2);
 
-//    paint = new QPainter(&target);
+    paint = new QPainter(&target);
+    tuple<int, int> pos = this->selected_Marble->getPosition();
 
-//    QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
-//    blur->setBlurRadius(8);
+    if (blur){
+        QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+        blur->setBlurRadius(8);
 
-//    QPixmap blur_Pix = QPixmap::fromImage(applyEffectToImage(base_Image, blur));
+        QPixmap blur_Pix = (applyEffectToImage(base_Pix, blur));
 
-//    paint->drawPixmap(-this->x, -this->y, blur_Pix);
-//    paint->fillRect(0,0,rad*2,rad*2,QColor(0,0,0,14));
 
-//    QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
-//    paint->setClipRegion(mask);
+        paint->drawPixmap(-get<0>(pos), -get<1>(pos), blur_Pix);
+        paint->fillRect(0,0,rad*2,rad*2,QColor(0,0,0,14));
+    }
+    else{
+        paint->fillRect(QRect(0,0,rad*2,rad*2),QBrush(Qt::gray));
+    }
 
-//    base_Pix = QPixmap::fromImage(this->base_Image);
-//    paint->drawPixmap(-this->x, -this->y, base_Pix);
 
-//    paint->end();
+    QRegion mask(QRect(0, 0, rad * 2, rad * 2), QRegion::Ellipse);
+    paint->setClipRegion(mask);
 
-//    ui->preivew_Label->clear();
-//    ui->preivew_Label->setPixmap(target);
-//    ui->preivew_Label->update();
+    //base_Pix = QPixmap::fromImage(this->base_Image);
+    paint->drawPixmap(-get<0>(pos), -get<1>(pos), base_Pix);
+
+
+    ui->preivew_Label->clear();
+    ui->preivew_Label->setPixmap(target);
+    ui->preivew_Label->update();
+
+    int brush_Size = int(rad / 6.0);
+    QPen ellipseBrush = QPen(selected_Marble->getColour());
+    ellipseBrush.setWidth(brush_Size);
+
+    paint->setPen(ellipseBrush);
+
+    paint->drawEllipse(brush_Size / 2, brush_Size / 2, (rad * 2) - (brush_Size), (rad * 2) - (brush_Size));
+
+    ui->listWidget_2->item(marble_List.indexOf(selected_Marble))->setIcon(QIcon(target));
+
+    paint->end();
 }
 
 
@@ -156,8 +180,24 @@ QImage marble_Detection::applyEffectToImage(QImage src, QGraphicsEffect *effect,
     return res;
 }
 
+QPixmap marble_Detection::applyEffectToImage(QPixmap src, QGraphicsEffect *effect, int extent)
+{
+    if(src.isNull()) return QPixmap();   //No need to do anything else!
+    if(!effect) return src;             //No need to do anything else!
+    QGraphicsScene scene;
+    QGraphicsPixmapItem item;
+    item.setPixmap(src);
+    item.setGraphicsEffect(effect);
+    scene.addItem(&item);
+    QImage res(src.size()+QSize(extent*2, extent*2), QImage::Format_ARGB32);
+    res.fill(Qt::transparent);
+    QPainter ptr(&res);
+    scene.render(&ptr, QRectF(), QRectF( -extent, -extent, src.width()+extent*2, src.height()+extent*2 ) );
+    return QPixmap::fromImage(res);
+}
 
-void marble_Detection::load_Image_Icons()
+
+QString marble_Detection::load_Image_Icons()
 {
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(100,50));
@@ -184,6 +224,7 @@ void marble_Detection::load_Image_Icons()
         thread_Count++;
         thread->start();
     }
+    return  file_Iterator.previous().toLocal8Bit().constData();
 }
 
 bool marble_Detection::eventFilter(QObject *object, QEvent *event)
@@ -201,7 +242,12 @@ bool marble_Detection::eventFilter(QObject *object, QEvent *event)
 void marble_Detection::showEvent(QShowEvent *ev)
 {
     QMainWindow::showEvent(ev);
+
+    this->base_Image->setPixmap(QPixmap::fromImage(QImage(this->load_Image_Icons())));
+
     this->reset_Image_Zoom();
+    this->update_Preview_Image();
+    this->set_Maximums();
 }
 
 void marble_Detection::add_Item_To_List(QImage image, QString filename)
@@ -216,10 +262,7 @@ void marble_Detection::add_Item_To_List(QImage image, QString filename)
 
     if (thread_Count == 0){
         this->base_Image->pixmap() = QPixmap::fromImage(image);
-
-
         this->update_Main_Image();
-
         this->reset_Image_Zoom();
     }
 }
@@ -459,7 +502,8 @@ void marble_Detection::on_zoom_Out_Button_clicked()
 ///
 void marble_Detection::set_Maximums()
 {
-
+    ui->horizontal_Slider_X->setMaximum(this->base_Image->pixmap().width() - (selected_Marble->getRadius() * 2));
+    ui->horizontal_Slider_Y->setMaximum(this->base_Image->pixmap().width() - (selected_Marble->getRadius() * 2));
 }
 
 ///
@@ -488,6 +532,7 @@ void marble_Detection::on_test_Button_clicked()
     QColor col;
     int r, g, b;
 
+    qInfo()<<"Beginning Test"<<endl;
     statusBar()->showMessage(QString("Beginning Light Spot Detection"));
 
     vector<tuple<int,int>> cluster_Points;
@@ -653,4 +698,56 @@ void marble_Detection::on_checkBox_stateChanged(int arg)
         this->update_Main_Image();
 
     }
+}
+
+void marble_Detection::on_listWidget_2_itemDoubleClicked(QListWidgetItem *item)
+{
+    qInfo() <<  marble_List.indexOf(selected_Marble);
+    int pos = ui->listWidget_2->row(item);
+
+    selected_Marble->setSelected(false);
+    selected_Marble = marble_List.at(pos);
+    selected_Marble->setSelected(true);
+    qInfo() <<  marble_List.indexOf(selected_Marble);
+}
+
+void marble_Detection::on_add_Marble_Button_clicked()
+{
+    marble *new_Marble = new marble();
+    this->marble_Selection_Screen->addItem(new_Marble);
+    marble_List.append(new_Marble);
+    selected_Marble->setSelected(false);
+    selected_Marble = new_Marble;
+    selected_Marble->setSelected(true);
+    selected_Marble->setParentItem(base_Image);
+
+    QListWidgetItem *list_Icon = new QListWidgetItem("Marble 1");
+    ui->listWidget_2->addItem(list_Icon);
+
+    //qInfo() << "1" ;
+
+    this->update_Preview_Image();
+
+    //qInfo() << "2";
+
+    this->set_Maximums();
+
+    //qInfo() << "3";
+
+    QColor marble_Colour = this->selected_Marble->getColour();
+
+    ui->horizontal_Scroll_Bar_Red->setValue(marble_Colour.red());
+    ui->horizontal_Scroll_Bar_Green->setValue(marble_Colour.green());
+    ui->horizontal_Scroll_Bar_Blue->setValue(marble_Colour.blue());
+
+    ui->spin_Box_X->setValue(int(selected_Marble->x()));
+    ui->spin_Box_Y->setValue(int(selected_Marble->y()));
+
+    ui->horizontal_Slider_X->setValue(int(selected_Marble->x()));
+    ui->horizontal_Slider_Y->setValue(int(selected_Marble->y()));
+}
+
+void marble_Detection::on_remove_Marble_Button_clicked()
+{
+
 }

@@ -55,6 +55,7 @@ SOURCES       = ../../RTIe/RTIe_builder/image_Gatherer.cpp \
 		../../RTIe/RTIe_builder/main.cpp \
 		../../RTIe/RTIe_builder/marble.cpp \
 		../../RTIe/RTIe_builder/marble_Detection.cpp \
+		../../RTIe/RTIe_builder/marble_List_Item.cpp \
 		../../RTIe/RTIe_builder/new_Project.cpp \
 		../../RTIe/RTIe_builder/new_Project_Settings.cpp \
 		../../RTIe/RTIe_builder/project_Wizard.cpp \
@@ -75,6 +76,7 @@ OBJECTS       = image_Gatherer.o \
 		main.o \
 		marble.o \
 		marble_Detection.o \
+		marble_List_Item.o \
 		new_Project.o \
 		new_Project_Settings.o \
 		project_Wizard.o \
@@ -169,6 +171,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		../../RTIe/RTIe_builder/marble.h \
 		../../RTIe/RTIe_builder/marble_Detection.h \
+		../../RTIe/RTIe_builder/marble_List_Item.h \
 		../../RTIe/RTIe_builder/new_Project.h \
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
@@ -179,6 +182,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../../RTIe/RTIe_builder/main.cpp \
 		../../RTIe/RTIe_builder/marble.cpp \
 		../../RTIe/RTIe_builder/marble_Detection.cpp \
+		../../RTIe/RTIe_builder/marble_List_Item.cpp \
 		../../RTIe/RTIe_builder/new_Project.cpp \
 		../../RTIe/RTIe_builder/new_Project_Settings.cpp \
 		../../RTIe/RTIe_builder/project_Wizard.cpp \
@@ -371,8 +375,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/test.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.h ../../RTIe/RTIe_builder/image_Management_Nui.h ../../RTIe/RTIe_builder/marble.h ../../RTIe/RTIe_builder/marble_Detection.h ../../RTIe/RTIe_builder/new_Project.h ../../RTIe/RTIe_builder/new_Project_Settings.h ../../RTIe/RTIe_builder/project_Wizard.h ../../RTIe/RTIe_builder/ptm_fitter.h ../../RTIe/RTIe_builder/splash_Screen.h ../../RTIe/RTIe_builder/system_ui.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.cpp ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../RTIe/RTIe_builder/main.cpp ../../RTIe/RTIe_builder/marble.cpp ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/new_Project_Settings.cpp ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/RTIe_builder/ptm_fitter.cpp ../../RTIe/RTIe_builder/splash_Screen.cpp ../../RTIe/RTIe_builder/system_ui.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.h ../../RTIe/RTIe_builder/image_Management_Nui.h ../../RTIe/RTIe_builder/marble.h ../../RTIe/RTIe_builder/marble_Detection.h ../../RTIe/RTIe_builder/marble_List_Item.h ../../RTIe/RTIe_builder/new_Project.h ../../RTIe/RTIe_builder/new_Project_Settings.h ../../RTIe/RTIe_builder/project_Wizard.h ../../RTIe/RTIe_builder/ptm_fitter.h ../../RTIe/RTIe_builder/splash_Screen.h ../../RTIe/RTIe_builder/system_ui.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.cpp ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../RTIe/RTIe_builder/main.cpp ../../RTIe/RTIe_builder/marble.cpp ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe_builder/marble_List_Item.cpp ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/new_Project_Settings.cpp ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/RTIe_builder/ptm_fitter.cpp ../../RTIe/RTIe_builder/splash_Screen.cpp ../../RTIe/RTIe_builder/system_ui.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/marble_Detection.ui ../../RTIe/RTIe_builder/project_Wizard.ui ../../RTIe/RTIe_builder/ptm_fitter.ui ../../RTIe/RTIe_builder/system_ui.ui $(DISTDIR)/
 
 
@@ -540,6 +544,10 @@ marble_Detection.o: ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe
 		../../RTIe/RTIe_builder/project_Wizard.h \
 		../../RTIe/RTIe_builder/system_ui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o marble_Detection.o ../../RTIe/RTIe_builder/marble_Detection.cpp
+
+marble_List_Item.o: ../../RTIe/RTIe_builder/marble_List_Item.cpp ../../RTIe/RTIe_builder/marble_List_Item.h \
+		../../RTIe/RTIe_builder/marble.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o marble_List_Item.o ../../RTIe/RTIe_builder/marble_List_Item.cpp
 
 new_Project.o: ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/new_Project.h \
 		../../RTIe/RTIe_builder/new_Project_Settings.h

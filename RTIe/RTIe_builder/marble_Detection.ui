@@ -35,7 +35,7 @@ font: 75 10pt &quot;MS Shell Dlg 2&quot;;
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>1040</x>
@@ -162,7 +162,7 @@ QToolBox::tab:selected {
 }*/</string>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="marble_Page">
             <property name="geometry">
@@ -182,7 +182,7 @@ QToolBox::tab:selected {
                <x>10</x>
                <y>0</y>
                <width>231</width>
-               <height>351</height>
+               <height>411</height>
               </rect>
              </property>
              <property name="widgetResizable">
@@ -194,7 +194,7 @@ QToolBox::tab:selected {
                 <x>0</x>
                 <y>0</y>
                 <width>229</width>
-                <height>349</height>
+                <height>409</height>
                </rect>
               </property>
               <widget class="QListWidget" name="listWidget_2">
@@ -202,8 +202,8 @@ QToolBox::tab:selected {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>211</width>
-                 <height>351</height>
+                 <width>231</width>
+                 <height>411</height>
                 </rect>
                </property>
                <property name="editTriggers">
@@ -222,7 +222,7 @@ QToolBox::tab:selected {
              <property name="geometry">
               <rect>
                <x>10</x>
-               <y>360</y>
+               <y>420</y>
                <width>101</width>
                <height>25</height>
               </rect>
@@ -232,10 +232,13 @@ QToolBox::tab:selected {
              </property>
             </widget>
             <widget class="QPushButton" name="remove_Marble_Button">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="geometry">
               <rect>
                <x>130</x>
-               <y>360</y>
+               <y>420</y>
                <width>111</width>
                <height>25</height>
               </rect>
