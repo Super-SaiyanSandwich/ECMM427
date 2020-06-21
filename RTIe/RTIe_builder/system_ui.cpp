@@ -3,7 +3,7 @@
 #include "splash_Screen.h"
 #include "ui_system_ui.h"
 #include "marble_Detection.h"
-#include "ptm_fitter.h"
+#include "project_Wizard.h"
 #define dumpval(x) qDebug()<<#x<<'='<<x
 
 #include <QTranslator>
@@ -18,6 +18,8 @@
 #include <QLineEdit>
 #include <QObject>
 #include <QTextBrowser>
+#include <QTableWidget>
+#include <QDateTime>
 
 #include <tuple>
 #include <vector>
@@ -61,6 +63,7 @@ system_Ui::system_Ui(QWidget *parent) :
     ui->listWidget_3->setViewMode(QListWidget::IconMode);
     ui->listWidget_3->setResizeMode(QListWidget::Adjust);
     ui->listWidget_3->setIconSize(QSize(100,50));
+
 
     image_Display();
 
@@ -142,6 +145,54 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
     ui->image_Preview->clear();
     ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
     ui->image_Preview->update();
+
+    for (int i=0; i<ui->metadata_Table->rowCount(); ++i)
+    {
+        ui->metadata_Table->setItem(i, 0, new QTableWidgetItem("")); // clear value.
+        ui->metadata_Table->update();
+    }
+
+    QStringList pieces = splashScreen::project_Path.split( "/" );
+    QString neededWord = pieces.value( pieces.length() - 1 );
+//    qInfo()<<project_Wizard().editor;
+
+    QString rti_Filename = splashScreen::project_Path + "/"+neededWord+".rtie";
+    QString  editor;
+    QString  date_Created;
+
+    QFile file(rti_Filename);
+
+
+    QStringList line;
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QTextStream stream(&file);
+        while (!stream.atEnd()){
+
+            line.append(stream.readLine()+"\n");
+        }
+        qInfo()<<" ";
+        line.removeAt(0);
+        QString temp1 = line.value(0);
+        QString temp2 = line.value(1);
+        editor = temp1.remove("Editor Name: ");
+        date_Created = temp2.remove("Created on: ");
+        editor = editor.remove("\n");
+        date_Created = date_Created.remove("\n");
+
+    }
+    file.close();
+
+
+    ui->metadata_Table->setItem(0, 0, new QTableWidgetItem(neededWord)); // Project Name
+    ui->metadata_Table->setItem(1, 0, new QTableWidgetItem(item->text())); // Picture Name
+//    ui->metadata_Table->setItem(2, 0, new QTableWidgetItem(item->text())); // Owner's Name
+    ui->metadata_Table->setItem(3, 0, new QTableWidgetItem(editor)); // Editor's Name
+    ui->metadata_Table->setItem(4, 0, new QTableWidgetItem(preview_Image)); // File location
+    ui->metadata_Table->setItem(5, 0, new QTableWidgetItem(date_Created)); // Date Created
+    ui->metadata_Table->setItem(6, 0, new QTableWidgetItem( QString::number(base_Image.width()))); // Image width
+    ui->metadata_Table->setItem(7, 0, new QTableWidgetItem( QString::number(base_Image.height()))); // Image height
+
+
 }
 
 /*
@@ -189,32 +240,17 @@ void system_Ui::on_delete_Btn_clicked()
 }
 
 
-//void system_Ui::on_export_2_clicked()
-//{
-//    ptm_fitter *t = new ptm_fitter();
-//    t->show();
-//}
-
-
-
-//void system_Ui::on_spin_Box_Radius_valueChanged(double arg1)
-//{
-//    marble_Detection *offset = new marble_Detection();
-//    arg1 = offset->radius;
-//    offset->on_spin_Box_Radius_valueChanged(arg1);
-//}
-
 
 // ===========================Cropped Image Page =========================================================
 
-//new_ui
+
 
 void system_Ui::on_listWidget_3_itemClicked(QListWidgetItem *item)
 {
     QString preview_Image_2 = splashScreen::project_Path+ "/images/wd/" +item->text();
     qInfo() << "Item Selected:" << preview_Image_2;
     this->base_Image_2 = QImage(preview_Image_2);
-    QPixmap pix = QPixmap::fromImage(this->base_Image_2);
+    QPixmap pix = QPixmap::fromImage(this->base_Image_2);//new_ui
     int w = ui->image_Label_2->width();
     int h = ui->image_Label_2->height();
     ui->image_Label_2->clear();
@@ -618,7 +654,7 @@ void system_Ui::on_test_Button_2_clicked()
 
 
 
-//=================================================
+//==================================== Page change buttons  ===============================
 
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
@@ -683,7 +719,7 @@ void system_Ui::on_remove_Marble_Btn_4_clicked()
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-//=================================================
+//====================================================================================
 
 
 
@@ -694,42 +730,40 @@ void system_Ui::on_remove_Marble_Btn_4_clicked()
 /// could occur in this method through the use of an error dialog.
 
 QStringList fitter_Args; // list of all arguments
-QString fitter_Location; // entire command line executablle with the arguments
+QString fitter_Location;
 
 void system_Ui::on_generate_Btn_clicked()
 {
-    QString ptm_Option = ui->ptm_Luminance->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
-    if(ptm_Option == "RGB"){
-        fitter_Location += " -f 0 ";  // add the selected luminace as an argument
+    QString ptm_Option = ui->ptm_Luminance->currentText(); // check t+he current luminance option selected e.g {rgb / lrgb}
+    if(ptm_Option == "RGB"){  // add the selected luminace as an argument
         fitter_Args += " -f 0 ";
     }
     else if(ptm_Option == "LRGB"){
-        fitter_Location += " -f 1 ";
         fitter_Args += " -f 1 ";
     }
 
 
     QString hsh_Option = ui->hsh_Order->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
-    if(ptm_Option == "1"){
-        fitter_Location += "1";  // add the selected luminace as an argument
+    if(ptm_Option == "1"){  // add the selected luminace as an argument
         fitter_Args += "1";
     }
     else if(ptm_Option == "2"){
-        fitter_Location += "2";
         fitter_Args += "2";
     }
     else if(ptm_Option == "3"){
-        fitter_Location += "3";
         fitter_Args += "3";
     }
 
-    if ( fitter_Location != NULL && ptm_Option != "" && ui->ptm_Fitter->isChecked() && fitter_Args.size() == 3){ // make sure that all the necessary arguments are present
+    if (ptm_Option != "" && ui->ptm_Fitter->isChecked() && fitter_Args.size() == 3){ // make sure that all the necessary arguments are present
         /* the ptm fitter has command-line args of :
                 <fitter location> -i <lp file location> -o <destination filepath> -f <rgb / lrgb>
         */
+
+        fitter_Location += fitter_Args.join(" "); // entire command line executablle with the arguments
         try {
             //run the executable with the command-line arguments
-
+            qInfo()<<fitter_Location;
+            qInfo()<<fitter_Args;
             QProcess *process = new QProcess(this);
             process->start(fitter_Location);
             QFile result;
@@ -743,11 +777,15 @@ void system_Ui::on_generate_Btn_clicked()
         }catch (exception e){
             qInfo() << "This is an error message!";
         }
-    }
+    }//TODO HSH FITTER
     else if (ui->hsh_Fitter->isChecked() && fitter_Args.size() == 3){
         /* the hsh has command-line args of :
                         <fitter location> <lp file location> <HSH order> <destination filepath>
         */
+
+        // Clear all the fields.
+
+
 
         ui->fitter_Info->setText("HSH COMING SOON!!!");
         qInfo()<< "HSH COMING SOON";
@@ -787,21 +825,6 @@ void system_Ui::on_fitter_Location_clicked()
 
 }
 
-void system_Ui::on_output_Location_clicked()
-{
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setOption(QFileDialog::ShowDirsOnly);
-    QString output_Filename = "/output.ptm";
-    // Stores the path of the user's choice.
-    chosen_Location = dialog.getExistingDirectory() + output_Filename;
-
-    ui->output_Placeholder->setText(chosen_Location);
-    fitter_Args += " -o " + chosen_Location +" ";
-    fitter_Location += " -o " + chosen_Location +" ";
-
-}
-
 void system_Ui::on_lp_Location_clicked()
 {
         QFileDialog dialog(this);
@@ -815,10 +838,23 @@ void system_Ui::on_lp_Location_clicked()
 
         ui->temp->setText(fileName);
         fitter_Args += " -i " + fileName +" ";
-        fitter_Location += " -i " + fileName +" ";
 
 }
 
+
+void system_Ui::on_output_Location_clicked()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setOption(QFileDialog::ShowDirsOnly);
+    QString output_Filename = "/output.ptm";
+    // Stores the path of the user's choice.
+    chosen_Location = dialog.getExistingDirectory() + output_Filename;
+
+    ui->output_Placeholder->setText(chosen_Location);
+    fitter_Args += " -o " + chosen_Location +" ";
+
+}
 
 
 
@@ -846,6 +882,9 @@ void system_Ui::on_hsh_Fitter_clicked()
     ui->Memory_Profile->setEnabled(true);
     ui->performance_Profile->setEnabled(true);
     ui->hsh_Order->setEnabled(true);
+    ui->ptm_Luminance->setDisabled(true);
+    ui->fitter_Info->clear();
+    ui->generate_Btn->setEnabled(true);
 }
 
 
@@ -943,4 +982,5 @@ void system_Ui::on_actionEnglish_triggered()
 
 
 
+//==================== Metadata =========================
 

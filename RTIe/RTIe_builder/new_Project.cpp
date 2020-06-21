@@ -96,6 +96,8 @@ void new_Project::next_Page()
 {
     project_Location = this->findChild<QLineEdit *>("project_Location", Qt::FindDirectChildrenOnly)->text();
     project_Name = this->findChild<QLineEdit *>("project_Name", Qt::FindDirectChildrenOnly)->text();
+    editor_Name = this->findChild<QLineEdit *>("editor_Name", Qt::FindDirectChildrenOnly)->text();
+
 
     if (project_Location == "")
     {
@@ -107,19 +109,27 @@ void new_Project::next_Page()
         QMessageBox errorBox;
         errorBox.setText("There is no name set for the project");
         errorBox.exec();
-    } else {
-        new_Project_Settings::new_Project_Settings_Open_Page(project_Location, project_Name);
+    }  else if (editor_Name == "")
+    {
+        QMessageBox errorBox;
+        errorBox.setText("There is no editor name set for the project");
+        errorBox.exec();}
+    else {
+        new_Project_Settings::new_Project_Settings_Open_Page(project_Location, project_Name,editor_Name);
         this->close();
+
     }
 }
 
-void new_Project::update_Edit_Boxes(QString project_Location, QString project_Name)
+void new_Project::update_Edit_Boxes(QString project_Location, QString project_Name, QString editor_Name)
 {
     this->project_Name = project_Name;
     this->project_Location = project_Location;
+    this->editor_Name = editor_Name;
 
     this->findChild<QLineEdit *>("project_Location", Qt::FindDirectChildrenOnly)->setText(this->project_Location);
     this->findChild<QLineEdit *>("project_Name", Qt::FindDirectChildrenOnly)->setText(this->project_Name);
+    this->findChild<QLineEdit *>("editor_Name", Qt::FindDirectChildrenOnly)->setText(this->editor_Name);
 }
 
 

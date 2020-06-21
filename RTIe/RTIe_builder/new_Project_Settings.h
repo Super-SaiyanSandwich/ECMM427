@@ -9,6 +9,7 @@ class new_Project_Settings : public QMainWindow
 public:
     explicit new_Project_Settings(QWidget *parent = nullptr);
     QString project_Location;
+    QString editor;
 
 private:
 
@@ -17,7 +18,7 @@ private:
 signals:
 
 public slots:
-   static void new_Project_Settings_Open_Page(QString project_Location, QString project_Name);
+   static void new_Project_Settings_Open_Page(QString project_Location, QString project_Name,QString editor);
 
 
 private slots:

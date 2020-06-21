@@ -15,7 +15,6 @@ SOURCES += \
     new_Project.cpp \
     new_Project_Settings.cpp \
     project_Wizard.cpp \
-    ptm_fitter.cpp \
     splash_Screen.cpp \
     system_ui.cpp
 
@@ -32,14 +31,12 @@ HEADERS += \
     new_Project.h \
     new_Project_Settings.h \
     project_Wizard.h \
-    ptm_fitter.h \
     splash_Screen.h \
     system_ui.h
 
 FORMS += \
     marble_Detection.ui \
     project_Wizard.ui \
-    ptm_fitter.ui \
     system_ui.ui
 
 

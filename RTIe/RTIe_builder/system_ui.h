@@ -26,6 +26,7 @@ public:
     static QListWidget listWidget_3;
     bool load_File(const QString &);
     QString chosen_Location;
+    QString project;
 
 public slots:
     void image_Display();
