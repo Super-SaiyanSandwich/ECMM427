@@ -350,7 +350,7 @@ void system_Ui::update_Crop_Preview_Image()
 
     paint->drawRect(brush_Size / 2, brush_Size / 2, (h * 2) - (brush_Size), (w * 2) - (brush_Size));
 
-    ui->listWidget_2->item(cropped_Area_List.indexOf(selected_Area))->setIcon(QIcon(target));
+    //ui->listWidget_2->item(cropped_Area_List.indexOf(selected_Area))->setIcon(QIcon(target));
 
     paint->end();
 }

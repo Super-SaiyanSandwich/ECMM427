@@ -34,6 +34,10 @@ private:
     QGraphicsScene *marble_Selection_Screen;
     QGraphicsPixmapItem *base_Image;
 
+//    QGraphicsScene *marble_Preview_Screen;
+//    QGraphicsPixmapItem *preview_Image;
+//    QGraphicsPixmapItem *backgroudn_Preview_Image;
+
 
     marble *selected_Marble;
     QList<marble*> marble_List;
