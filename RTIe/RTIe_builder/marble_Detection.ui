@@ -162,15 +162,15 @@ QToolBox::tab:selected {
 }*/</string>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="marble_Page">
             <property name="geometry">
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>255</width>
-              <height>453</height>
+              <width>264</width>
+              <height>458</height>
              </rect>
             </property>
             <attribute name="label">
@@ -253,8 +253,8 @@ QToolBox::tab:selected {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>255</width>
-              <height>453</height>
+              <width>264</width>
+              <height>458</height>
              </rect>
             </property>
             <attribute name="label">
@@ -384,8 +384,8 @@ QToolBox::tab:selected {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>255</width>
-              <height>453</height>
+              <width>264</width>
+              <height>458</height>
              </rect>
             </property>
             <attribute name="label">
@@ -481,8 +481,8 @@ QToolBox::tab:selected {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>255</width>
-              <height>453</height>
+              <width>264</width>
+              <height>458</height>
              </rect>
             </property>
             <attribute name="label">
@@ -827,8 +827,8 @@ QScrollBar::sub-line:horizontal {
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>255</width>
-              <height>453</height>
+              <width>264</width>
+              <height>458</height>
              </rect>
             </property>
             <attribute name="label">

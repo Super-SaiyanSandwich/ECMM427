@@ -38,7 +38,11 @@
 #include <iostream>
 #include <fstream>
 #include <exception>
-//#include <windows.h>
+
+#include <QThread>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
+
 
 using namespace std;
 
@@ -50,7 +54,7 @@ using namespace std;
 #define CONTRAST_SCALE 3
 
 
-system_Ui::system_Ui(QWidget *parent) :
+system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     QMainWindow(parent),
     ui(new Ui::system_Ui)
 {
@@ -60,9 +64,34 @@ system_Ui::system_Ui(QWidget *parent) :
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
-    ui->listWidget_3->setViewMode(QListWidget::IconMode);
-    ui->listWidget_3->setResizeMode(QListWidget::Adjust);
-    ui->listWidget_3->setIconSize(QSize(100,50));
+
+    crop_Selection_Screen = new QGraphicsScene(this);
+    ui->image_Graphics_View->setScene(crop_Selection_Screen);
+    crop_Selection_Screen->installEventFilter(this);
+
+
+
+    this->base_Image_2 = crop_Selection_Screen->addPixmap(QPixmap(base_Image_2));
+    this->base_Image_2->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
+    this->base_Image_2->setZValue(-10);
+
+
+    //splashScreen::project_Path = "F:/Users/Dave/Documents/LearningQT/RTIe/fish_fossil-data-set_2000";
+
+
+
+    this->selected_Area = new cropped_Area();
+    selected_Area->setParentItem(this->base_Image_2);
+
+    cropped_Area_List.append(selected_Area);
+
+    QListWidgetItem *list_Icon = new QListWidgetItem("Area of Interest");
+    ui->listWidget_3->addItem(list_Icon);
+    ui->listWidget_3->setIconSize(QSize(60,60));
+
+//    ui->listWidget_3->setViewMode(QListWidget::IconMode);
+//    ui->listWidget_3->setResizeMode(QListWidget::Adjust);
+//    ui->listWidget_3->setIconSize(QSize(100,50));
 
 
     image_Display();
@@ -73,9 +102,6 @@ system_Ui::~system_Ui()
 {
     delete ui;
 }
-
-
-
 
 void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 {
@@ -132,7 +158,6 @@ void system_Ui::image_Display(){
 
 
 }
-
 
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
@@ -241,21 +266,113 @@ void system_Ui::on_delete_Btn_clicked()
 
 
 
+
 // ===========================Cropped Image Page =========================================================
 
+// From::   https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
+QImage system_Ui::apply_Effect_To_Image(QImage src, QGraphicsEffect *effect, int extent)
+{
+    if(src.isNull()) return QImage();   //No need to do anything else!
+    if(!effect) return src;             //No need to do anything else!
+    QGraphicsScene scene;
+    QGraphicsPixmapItem item;
+    item.setPixmap(QPixmap::fromImage(src));
+    item.setGraphicsEffect(effect);
+    scene.addItem(&item);
+    QImage res(src.size()+QSize(extent*2, extent*2), QImage::Format_ARGB32);
+    res.fill(Qt::transparent);
+    QPainter ptr(&res);
+    scene.render(&ptr, QRectF(), QRectF( -extent, -extent, src.width()+extent*2, src.height()+extent*2 ) );
+    return res;
+}
 
+QPixmap system_Ui::apply_Effect_To_Image(QPixmap src, QGraphicsEffect *effect, int extent)
+{
+    if(src.isNull()) return QPixmap();   //No need to do anything else!
+    if(!effect) return src;             //No need to do anything else!
+    QGraphicsScene scene;
+    QGraphicsPixmapItem item;
+    item.setPixmap(src);
+    item.setGraphicsEffect(effect);
+    scene.addItem(&item);
+    QImage res(src.size()+QSize(extent*2, extent*2), QImage::Format_ARGB32);
+    res.fill(Qt::transparent);
+    QPainter ptr(&res);
+    scene.render(&ptr, QRectF(), QRectF( -extent, -extent, src.width()+extent*2, src.height()+extent*2 ) );
+    return QPixmap::fromImage(res);
+}
+
+void system_Ui::update_Main_Cropped_Image()
+{
+    ui->image_Graphics_View->update();
+}
+
+void system_Ui::update_Crop_Preview_Image()
+{
+    bool blur = false;
+    int h = this->selected_Area->get_Height();
+    int w = this->selected_Area->get_Width();
+
+    QPixmap base_Pix = this->base_Image_2->pixmap();
+    QPainter *paint = new QPainter(&base_Pix);
+    QPixmap target(h * 2, w * 2);
+
+    paint = new QPainter(&target);
+    tuple<int, int> pos = this->selected_Area->get_Position();
+
+    if (blur){
+        QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+        blur->setBlurRadius(8);
+
+        QPixmap blur_Pix = (apply_Effect_To_Image(base_Pix, blur));
+
+
+        paint->drawPixmap(-get<0>(pos), -get<1>(pos), blur_Pix);
+        paint->fillRect(0,0,h*2,w*2,QColor(0,0,0,14));
+    }
+    else{
+        paint->fillRect(QRect(0,0,h*2,w*2),QBrush(Qt::gray));
+    }
+
+
+    QRegion mask(QRect(0, 0, h * 2, w * 2), QRegion::Ellipse);
+    paint->setClipRegion(mask);
+
+    paint->drawPixmap(-get<0>(pos), -get<1>(pos), base_Pix);
+
+
+    ui->preivew_Label_2->clear();
+    ui->preivew_Label_2->setPixmap(target);
+    ui->preivew_Label_2->update();
+
+    int brush_Size = int(h+w / 6.0);
+    QPen rect_Brush = QPen(selected_Area->get_Colour());
+    rect_Brush.setWidth(brush_Size);
+
+    paint->setPen(rect_Brush);
+
+    paint->drawRect(brush_Size / 2, brush_Size / 2, (h * 2) - (brush_Size), (w * 2) - (brush_Size));
+
+    ui->listWidget_2->item(cropped_Area_List.indexOf(selected_Area))->setIcon(QIcon(target));
+
+    paint->end();
+}
+
+void system_Ui::inverted_Marker()
+{
+
+
+    ui->preivew_Label->clear();
+
+    ui->preivew_Label->update();
+}
 
 void system_Ui::on_listWidget_3_itemClicked(QListWidgetItem *item)
 {
-    QString preview_Image_2 = splashScreen::project_Path+ "/images/wd/" +item->text();
-    qInfo() << "Item Selected:" << preview_Image_2;
-    this->base_Image_2 = QImage(preview_Image_2);
-    QPixmap pix = QPixmap::fromImage(this->base_Image_2);//new_ui
-    int w = ui->image_Label_2->width();
-    int h = ui->image_Label_2->height();
-    ui->image_Label_2->clear();
-    ui->image_Label_2->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-    ui->image_Label_2->update();
+    QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
+    this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(image_Path)));
+    this->update_Main_Cropped_Image();
+    this->reset_Image_Zoom();;
 }
 
 void system_Ui::on_crop_btn_clicked()
@@ -270,100 +387,115 @@ void system_Ui::on_crop_btn_clicked()
     crop.save(image_Path);
 }
 
-
-
 void system_Ui::on_cancel_btn_clicked()
 {
     QApplication::exit();
 }
 
-
 /// \brief Updates the images displayed on screen by painting over the base image
 
-void system_Ui::update_Marble_Marker()
+//void system_Ui::update_Crop_Marker()
+//{
+//    //qInfo() << "TWtatat";
+//    QPixmap base_Pix = QPixmap::fromImage(this->base_Image_2);
+//    QPainter *paint = new QPainter(&base_Pix);
+
+//    QPen pen;
+
+//    pen.setBrush(QColor(r,g,b));
+//    pen.setWidth(5);
+
+//    int h = this->height;
+//    int w = this->width;
+
+//    paint->setPen(pen);
+
+//    // Rectangle
+//    paint->drawRect(this->x, this->y, h, w+5);
+
+//    paint->end();
+
+
+//    ui->image_Graphics_View->clear();
+//    ui->image_Graphics_View->setPixmap(base_Pix);
+//    ui->image_Graphics_View->update();
+
+//    QPixmap target(h, w + 5);
+
+//    paint = new QPainter(&target);
+
+
+//    base_Pix = QPixmap::fromImage(this->base_Image_2);
+//    paint->drawPixmap(-this->x, -this->y, base_Pix);
+
+
+//    ui->preivew_Label_2->clear();
+//    ui->preivew_Label_2->setPixmap(target);
+//    ui->preivew_Label_2->update();
+//}
+
+void system_Ui::image_Crop_Zoom(int percent)
 {
-    //qInfo() << "TWtatat";
-    QPixmap base_Pix = QPixmap::fromImage(this->base_Image_2);
-    QPainter *paint = new QPainter(&base_Pix);
+    zoom_Percentage += percent;
 
-    QPen pen;
-
-    pen.setBrush(QColor(r,g,b));
-    pen.setWidth(5);
-
-    int h = this->height;
-    int w = this->width;
-
-    paint->setPen(pen);
-
-    // Rectangle
-    paint->drawRect(this->x, this->y, h, w+5);
-
-    paint->end();
+    ui->image_Graphics_View->scale((100 + percent) / 100.0, (100 + percent) / 100.0);
 
 
-    ui->image_Label_2->clear();
-    ui->image_Label_2->setPixmap(base_Pix);
-    ui->image_Label_2->update();
+    ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
+    ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
+}
 
-    QPixmap target(h, w + 5);
-
-    paint = new QPainter(&target);
-
-
-    base_Pix = QPixmap::fromImage(this->base_Image_2);
-    paint->drawPixmap(-this->x, -this->y, base_Pix);
-
-
-    ui->preivew_Label_2->clear();
-    ui->preivew_Label_2->setPixmap(target);
-    ui->preivew_Label_2->update();
+void system_Ui::set_RGB(int r, int g, int b)
+{
+    this->selected_Area->set_Colour(r,g,b);
 }
 
 void system_Ui::reset_Image_Zoom()
 {
-    zoom_Percentage = 100;
+    ui->image_Graphics_View->resetTransform();
 
-    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image_2.height();
-    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image_2.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image_2.width());
+    int w = ui->image_Graphics_View->viewport()->width();
+    int h = ui->image_Graphics_View->viewport()->height();
 
+    qreal s = fmin(w/float(base_Image_2->pixmap().width()),h/float(base_Image_2->pixmap().height()));
 
-    ui->image_Label_2->resize(this->base_Image_2.width() * scaler, this->base_Image_2.height() * scaler);
+    ui->image_Graphics_View->scale(s, s);
 
-    return;
 }
 
-void system_Ui::image_Zoom_In(int percent)
-{
-    zoom_Percentage += percent;
 
-    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image_2.height();
-    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image_2.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image_2.width());
+//void system_Ui::image_Zoom_In(int percent)
+//{
+//    zoom_Percentage += percent;
 
-    ui->image_Label_2->resize(this->base_Image_2.width() * scaler * zoom_Percentage / 100, this->base_Image_2.height() * scaler * zoom_Percentage / 100);
-    //ui->scrollArea->adjustSize();
+//    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image_2.height();
+//    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image_2.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image_2.width());
 
-    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 + percent);
-    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 + percent);
+//    ui->image_Graphics_View->resize(this->base_Image_2.width() * scaler * zoom_Percentage / 100, this->base_Image_2.height() * scaler * zoom_Percentage / 100);
+//    //ui->scrollArea->adjustSize();
 
-    ui->zoom_In_Button_2->setEnabled(zoom_Percentage < 300);
-}
+//    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 + percent);
+//    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 + percent);
 
-void system_Ui::image_Zoom_Out(int percent)
-{
-    zoom_Percentage -= percent;
+//    ui->zoom_In_Button_2->setEnabled(zoom_Percentage < 300);
+//}
 
-    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image_2.height();
-    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image_2.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image_2.width());
+//void system_Ui::image_Zoom_Out(int percent)
+//{
+//    zoom_Percentage -= percent;
 
-    ui->image_Label_2->resize(this->base_Image_2.width() * scaler * zoom_Percentage / 100, this->base_Image_2.height() * scaler * zoom_Percentage / 100);
+//    float scaler =  SCROLL_AREA_HEIGHT / this->base_Image_2.height();
+//    scaler = scaler < (SCROLL_AREA_WIDTH / this->base_Image_2.width()) ? scaler : (SCROLL_AREA_WIDTH / this->base_Image_2.width());
+
+//    ui->image_Graphics_View->resize(this->base_Image_2.width() * scaler * zoom_Percentage / 100, this->base_Image_2.height() * scaler * zoom_Percentage / 100);
 
 
-    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 - percent);
-    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 - percent);
+//    adjust_Scroll_Bar(ui->scrollArea->horizontalScrollBar(), 100 - percent);
+//    adjust_Scroll_Bar(ui->scrollArea->verticalScrollBar(), 100 - percent);
 
-    ui->zoom_Out_Button_2->setEnabled(zoom_Percentage > 33);
-}
+//    ui->zoom_Out_Button_2->setEnabled(zoom_Percentage > 33);
+//}
+
 
 void system_Ui::adjust_Scroll_Bar(QScrollBar *scrollBar, double factor)
 {
@@ -374,166 +506,278 @@ void system_Ui::adjust_Scroll_Bar(QScrollBar *scrollBar, double factor)
 
 void system_Ui::on_spin_Box_X_2_valueChanged(int X)
 {
-    qInfo() << "X Value Changed";
-    this->x = X;
+    this->selected_Area->setX(X);
     ui->horizontal_Slider_X_2->setValue(X);
-    this->update_Marble_Marker();
+    this->update_Main_Cropped_Image();
+    this->update_Crop_Preview_Image();
+
+//    qInfo() << "X Value Changed";
+//    this->x = X;
+//    ui->->setValue(X);
+//    this->update_Crop_Marker();
 }
 
 void system_Ui::on_spin_Box_Y_2_valueChanged(int Y)
 {
-    this->y = Y;
+    this->selected_Area->setY(Y);
     ui->horizontal_Slider_Y_2->setValue(Y);
-    this->update_Marble_Marker();
+    this->update_Main_Cropped_Image();
+    this->update_Crop_Preview_Image();
+
+//    this->y = Y;
+//    ui->horizontal_Slider_Y_2->setValue(Y);
+//    this->update_Crop_Marker();
 }
 
-void system_Ui::on_spin_Box_Radius_2_valueChanged(double height)
+void system_Ui::on_spin_Box_Height_valueChanged(double height)
 {
-    this->height = height;
+//    this->height = height;
 
-    ui->horizontal_Slider_Radius_2->setValue(height);
-    this->update_Marble_Marker();
+//    ui->horizontal_Slider_Radius_2->setValue(height);
+//    this->update_Crop_Marker();
 
-    ui->spin_Box_Y_2->setMaximum(base_Image_2.height() - height);
-    ui->horizontal_Slider_Y_2->setMaximum(base_Image_2.height() - height);
+//    ui->spin_Box_Y_2->setMaximum(base_Image_2.height() - height);
+//    ui->horizontal_Slider_Y_2->setMaximum(base_Image_2.height() - height);
 
-    ui->spin_Box_X_2->setValue(this->x);
-    ui->spin_Box_Y_2->setValue(this->y);
-    ui->horizontal_Slider_X_2->setValue(this->x);
-    ui->horizontal_Slider_Y_2->setValue(this->y);
+//    ui->spin_Box_X_2->setValue(this->x);
+//    ui->spin_Box_Y_2->setValue(this->y);
+//    ui->horizontal_Slider_X_2->setValue(this->x);
+//    ui->horizontal_Slider_Y_2->setValue(this->y);
+
+
+    double delta_heigth = height - selected_Area->get_Height();
+
+    this->selected_Area->set_Height(height);
+    this->selected_Area->set_Position(this->selected_Area->x() - delta_heigth, this->selected_Area->y() - delta_heigth);
+
+    this->update_Main_Cropped_Image();
+    this->update_Crop_Preview_Image();
+    this->set_Crop_Maximums();
+
+    ui->spin_Box_X->setValue(this->selected_Area->x());
+    ui->spin_Box_Y->setValue(this->selected_Area->y());
+    ui->horizontal_Slider_X->setValue(this->selected_Area->x());
+    ui->horizontal_Slider_Y->setValue(this->selected_Area->y());
+
+//    ui->horizontal_Slider_Radius->setValue(height);
 }
 
-void system_Ui::on_spin_Box_Radius_3_valueChanged(double width)
+void system_Ui::on_spin_Box_Width_valueChanged(double width)
 {
 
-    this->width = width;
+//    this->width = width;
 
-    ui->horizontal_Slider_Radius_3->setValue(width);
-    this->update_Marble_Marker();
+//    ui->horizontal_Slider_Radius_3->setValue(width);
+//    this->update_Crop_Marker();
 
-    ui->spin_Box_X_2->setMaximum(base_Image_2.width() - 0.5*width);
-    ui->horizontal_Slider_X_2->setMaximum(base_Image_2.width() - 0.5*width);
+//    ui->spin_Box_X_2->setMaximum(base_Image_2.width() - 0.5*width);
+//    ui->horizontal_Slider_X_2->setMaximum(base_Image_2.width() - 0.5*width);
 
-    ui->spin_Box_X_2->setValue(this->x);
-    ui->spin_Box_Y_2->setValue(this->y);
-    ui->horizontal_Slider_X_2->setValue(this->x);
-    ui->horizontal_Slider_Y_2->setValue(this->y);
+//    ui->spin_Box_X_2->setValue(this->x);
+//    ui->spin_Box_Y_2->setValue(this->y);
+//    ui->horizontal_Slider_X_2->setValue(this->x);
+//    ui->horizontal_Slider_Y_2->setValue(this->y);
+
+    double delta_width = width - selected_Area->get_Width();
+
+    this->selected_Area->set_Width(width);
+    this->selected_Area->set_Position(this->selected_Area->x() - delta_width, this->selected_Area->y() - delta_width);
+
+    this->update_Main_Cropped_Image();
+    this->update_Crop_Preview_Image();
+    this->set_Crop_Maximums();
+
+    ui->spin_Box_X->setValue(this->selected_Area->x());
+    ui->spin_Box_Y->setValue(this->selected_Area->y());
+    ui->horizontal_Slider_X->setValue(this->selected_Area->x());
+    ui->horizontal_Slider_Y->setValue(this->selected_Area->y());
+
+//    ui->horizontal_Slider_Radius->setValue(height);
 }
 
 void system_Ui::on_horizontal_Slider_X_2_valueChanged(int value)
 {
-    this->x = value;
-    ui->spin_Box_X_2->setValue(value);
-    this->update_Marble_Marker();
+    this->selected_Area->setX(value);
+    ui->spin_Box_X->setValue(value);
+    this->update_Main_Cropped_Image();
 }
 
 void system_Ui::on_horizontal_Slider_Y_2_valueChanged(int value)
 {
-    this->y = value;
+    this->selected_Area->setY(value);
     ui->spin_Box_Y_2->setValue(value);
-    this->update_Marble_Marker();
+    this->update_Main_Cropped_Image();
 }
 
-void system_Ui::on_horizontal_Slider_Radius_2_valueChanged(int value)
+void system_Ui::on_horizontal_Slider_Height_valueChanged(int value)
 {
 
 
-    this->height = value;
+//    this->height = value;
 
-    ui->spin_Box_Radius_2->setValue(value);
-    this->update_Marble_Marker();
+//    ui->spin_Box_Radius_2->setValue(value);
+//    this->update_Crop_Marker();
 
-    ui->spin_Box_Y_2->setMaximum(base_Image_2.height() - height);
-    ui->horizontal_Slider_Y_2->setMaximum(base_Image_2.height() - height);
+//    ui->spin_Box_Y_2->setMaximum(base_Image_2.height() - height);
+//    ui->horizontal_Slider_Y_2->setMaximum(base_Image_2.height() - height);
 
-    ui->spin_Box_X_2->setValue(this->x);
-    ui->spin_Box_Y_2->setValue(this->y);
-    ui->horizontal_Slider_X_2->setValue(this->x);
-    ui->horizontal_Slider_Y_2->setValue(this->y);
+//    ui->spin_Box_X_2->setValue(this->x);
+//    ui->spin_Box_Y_2->setValue(this->y);
+//    ui->horizontal_Slider_X_2->setValue(this->x);
+//    ui->horizontal_Slider_Y_2->setValue(this->y);
+
+    double delta_Height = value - selected_Area->get_Height();
+
+    this->selected_Area->set_Height(value);
+    this->selected_Area->set_Position(this->selected_Area->x() - delta_Height, this->selected_Area->y() - delta_Height);
+
+    this->update_Main_Cropped_Image();
+    this->update_Crop_Preview_Image();
+    this->set_Crop_Maximums();
+
+    ui->spin_Box_X_2->setValue(this->selected_Area->x());
+    ui->spin_Box_Y_2->setValue(this->selected_Area->y());
+    ui->horizontal_Slider_X_2->setValue(this->selected_Area->x());
+    ui->horizontal_Slider_Y_2->setValue(this->selected_Area->y());
+
+    ui->spin_Box_Height->setValue(value);
+
+
 }
 
-void system_Ui::on_horizontal_Slider_Radius_3_valueChanged(int value)
+void system_Ui::on_horizontal_Slider_Width_valueChanged(int value)
 {
 
-    this->width = value;
+//    this->width = width;
 
 
-    ui->spin_Box_Radius_3->setValue(value);
-    this->update_Marble_Marker();
+//    ui->spin_Box_Radius_3->setValue(value);
+//    this->update_Crop_Marker();
 
-    ui->spin_Box_X_2->setMaximum(base_Image_2.width() - 0.5*width);
-    ui->horizontal_Slider_X_2->setMaximum(base_Image_2.width() - 0.5*width);
+//    ui->spin_Box_X_2->setMaximum(base_Image_2.width() - 0.5*width);
+//    ui->horizontal_Slider_X_2->setMaximum(base_Image_2.width() - 0.5*width);
 
-    ui->spin_Box_X_2->setValue(this->x);
-    ui->spin_Box_Y_2->setValue(this->y);
-    ui->horizontal_Slider_X_2->setValue(this->x);
-    ui->horizontal_Slider_Y_2->setValue(this->y);
+//    ui->spin_Box_X_2->setValue(this->x);
+//    ui->spin_Box_Y_2->setValue(this->y);
+//    ui->horizontal_Slider_X_2->setValue(this->x);
+//    ui->horizontal_Slider_Y_2->setValue(this->y);
+
+
+    double delta_Width = value - selected_Area->get_Width();
+
+    this->selected_Area->set_Width(value);
+    this->selected_Area->set_Position(this->selected_Area->x() - delta_Width, this->selected_Area->y() - delta_Width);
+
+    this->update_Main_Cropped_Image();
+    this->update_Crop_Preview_Image();
+    this->set_Crop_Maximums();
+
+    ui->spin_Box_X_2->setValue(this->selected_Area->x());
+    ui->spin_Box_Y_2->setValue(this->selected_Area->y());
+    ui->horizontal_Slider_X_2->setValue(this->selected_Area->x());
+    ui->horizontal_Slider_Y_2->setValue(this->selected_Area->y());
+
+    ui->spin_Box_Width->setValue(value);
 }
 
 void system_Ui::on_horizontal_Scroll_Bar_Red_2_valueChanged(int value)
 {
-    this->r = value;
-    this->update_Marble_Marker();
+    this->selected_Area->set_R(value);
+    this->update_Main_Cropped_Image();
 }
 
 void system_Ui::on_horizontal_Scroll_Bar_Green_2_valueChanged(int value)
 {
-    this->g = value;
-    this->update_Marble_Marker();
+    this->selected_Area->set_G(value);
+    this->update_Main_Cropped_Image();
 }
 
 void system_Ui::on_horizontal_Scroll_Bar_Blue_2_valueChanged(int value)
 {
-    this->b = value;
-    this->update_Marble_Marker();
+    this->selected_Area->set_B(value);
+    this->update_Main_Cropped_Image();
 }
 
 void system_Ui::on_colour_Selector_Button_2_clicked()
 {
-    QColor new_Colour = QColorDialog::getColor(QColor(r,g,b), this );
-    r = new_Colour.red();
-    g = new_Colour.green();
-    b = new_Colour.blue();
+    QColor new_Colour = QColorDialog::getColor(this->selected_Area->get_Colour(), this );
+    this->selected_Area->set_Colour(new_Colour);
 
-    ui->horizontal_Scroll_Bar_Red_2->setValue(r);
-    ui->horizontal_Scroll_Bar_Green_2->setValue(g);
-    ui->horizontal_Scroll_Bar_Blue_2->setValue(b);
+    ui->horizontal_Scroll_Bar_Red_2->setValue(new_Colour.red());
+    ui->horizontal_Scroll_Bar_Green_2->setValue(new_Colour.green());
+    ui->horizontal_Scroll_Bar_Blue_2->setValue(new_Colour.blue());
 }
 
-bool system_Ui::load_File(const QString &fileName)
+bool system_Ui::load_Cropping_File(const QString &file_Name)
 {
-    QImageReader reader(fileName);
+//    QImageReader reader(fileName);
+//    reader.setAutoTransform(true);
+//    const QImage newImage = reader.read();
+//    if (newImage.isNull()) {
+//        QMessageBox::information(this, QGuiApplication::applicationDisplayName(),
+//                                 tr("Cannot load %1: %2")
+//                                 .arg(QDir::toNativeSeparators(fileName), reader.errorString()));
+//        return false;
+//    }
+//    base_Image_2 = newImage;
+
+//    setWindowFilePath(fileName);
+
+//    const QString message = tr("Opened \"%1\", %2x%3, Depth: %4")
+//        .arg(QDir::toNativeSeparators(fileName)).arg(base_Image_2.width()).arg(base_Image_2.height()).arg(base_Image_2.depth());
+//    statusBar()->showMessage(message);
+
+//    this->set_Maximums();
+//    this->update_Crop_Marker();
+//    this->reset_Image_Zoom();
+
+//    return true;
+
+    QImageReader reader(file_Name);
     reader.setAutoTransform(true);
-    const QImage newImage = reader.read();
-    if (newImage.isNull()) {
+    const QImage new_Image_2 = reader.read();
+    qInfo()<<new_Image_2;
+    if (new_Image_2.isNull()) {
         QMessageBox::information(this, QGuiApplication::applicationDisplayName(),
                                  tr("Cannot load %1: %2")
-                                 .arg(QDir::toNativeSeparators(fileName), reader.errorString()));
+                                 .arg(QDir::toNativeSeparators(file_Name), reader.errorString()));
         return false;
     }
-    base_Image_2 = newImage;
+    base_Image_2->pixmap() = QPixmap::fromImage(new_Image_2);
 
-    setWindowFilePath(fileName);
+    setWindowFilePath(file_Name);
 
     const QString message = tr("Opened \"%1\", %2x%3, Depth: %4")
-        .arg(QDir::toNativeSeparators(fileName)).arg(base_Image_2.width()).arg(base_Image_2.height()).arg(base_Image_2.depth());
+        .arg(QDir::toNativeSeparators(file_Name)).arg(base_Image_2->pixmap().width()).arg(base_Image_2->pixmap().height()).arg(base_Image_2->pixmap().depth());
     statusBar()->showMessage(message);
 
-    this->set_Maximums();
-    this->update_Marble_Marker();
+    this->set_Crop_Maximums();
+    this->update_Main_Cropped_Image();
     this->reset_Image_Zoom();
 
     return true;
 }
 
-static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
+void system_Ui::image_Zoom(int percent)
 {
-    static bool firstDialog = true;
+    zoom_Percentage += percent;
 
-    if (firstDialog) {
-        firstDialog = false;
-        const QStringList picturesLocations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
-        dialog.setDirectory(picturesLocations.isEmpty() ? QDir::currentPath() : picturesLocations.last());
+    ui->image_Graphics_View->scale((100 + percent) / 100.0, (100 + percent) / 100.0);
+
+
+    ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
+    ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
+}
+
+
+static void initialize_Image_File_Dialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
+{
+    static bool first_Dialog = true;
+
+    if (first_Dialog) {
+        first_Dialog = false;
+        const QStringList pictures_Locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+        dialog.setDirectory(pictures_Locations.isEmpty() ? QDir::currentPath() : pictures_Locations.last());
     }
 
     QStringList mimeTypeFilters;
@@ -551,9 +795,9 @@ static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMo
 void system_Ui::on_open_Button_2_clicked()
 {
     QFileDialog dialog(this, tr("Open File"));
-    initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
+    initialize_Image_File_Dialog(dialog, QFileDialog::AcceptOpen);
 
-    while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {};
+    while (dialog.exec() == QDialog::Accepted && !load_Cropping_File(dialog.selectedFiles().first())) {};
 }
 
 void system_Ui::on_zoom_Reset_Button_2_clicked()
@@ -563,23 +807,27 @@ void system_Ui::on_zoom_Reset_Button_2_clicked()
 
 void system_Ui::on_zoom_In_Button_2_clicked()
 {
-    image_Zoom_In(25);
+    image_Zoom(20);
 }
 
 void system_Ui::on_zoom_Out_Button_2_clicked()
 {
-    image_Zoom_Out(25);
+    image_Zoom(-20);
 }
 
-void system_Ui::set_Maximums()
+void system_Ui::set_Crop_Maximums()
 {
-    double center = ((0.5 *width) + (0.5*height));
-    ui->horizontal_Slider_X_2->setMaximum(this->x - center * 2);
-    ui->horizontal_Slider_Y_2->setMaximum(this->y - center * 2);
+    double center = ((0.5 *selected_Area->get_Width()) + (0.5*selected_Area->get_Height()));
+//    ui->horizontal_Slider_X_2->setMaximum(this->x - center * 2);
+//    ui->horizontal_Slider_Y_2->setMaximum(this->y - center * 2);
 
-    ui->spin_Box_X_2->setMaximum(this->x - center * 2);
-    ui->spin_Box_Y_2->setMaximum(this->y - center * 2);
+//    ui->spin_Box_X_2->setMaximum(this->x - center * 2);
+//    ui->spin_Box_Y_2->setMaximum(this->y - center * 2);
+
+    ui->horizontal_Slider_X_2->setMaximum(this->selected_Area->x() - (center * 2)); // check this OVER!!
+    ui->horizontal_Slider_Y_2->setMaximum(this->selected_Area->y() - (center * 2));
 }
+
 
 void system_Ui::on_test_Button_2_clicked()
 {
@@ -650,9 +898,15 @@ void system_Ui::on_test_Button_2_clicked()
     ui->preivew_Label_2->setPixmap(base_Pix);
 }
 
+void system_Ui::on_horizontal_Slider_X_2_sliderReleased()
+{
+    this->update_Crop_Preview_Image();
+}
 
-
-
+void system_Ui::on_horizontal_Slider_Y_2_sliderReleased()
+{
+    this->update_Crop_Preview_Image();
+}
 
 //==================================== Page change buttons  ===============================
 
@@ -723,7 +977,7 @@ void system_Ui::on_remove_Marble_Btn_4_clicked()
 
 
 
-//======================================== PTM FITTER ================================
+//======================================== FITTERS PAGE ================================
 /// Runs the selected fitter program on the images in the {@link CropExecuteLayout#lpImagesGrid} by creating a new
 /// LP file for them, cropping them if the crop is selected, and running the fitter using the new LP file. Prints
 /// the output of th e fitter to the {@link CropExecuteLayout#fitterOutputArea}.Deals with all errors that

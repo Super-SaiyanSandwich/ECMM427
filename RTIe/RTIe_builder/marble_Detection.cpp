@@ -441,7 +441,6 @@ bool marble_Detection::load_File(const QString &fileName)
     return true;
 }
 
-
 static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
 {
     static bool firstDialog = true;
