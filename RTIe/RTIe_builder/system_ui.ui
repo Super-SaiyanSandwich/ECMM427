@@ -55,7 +55,7 @@
        <number>14</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page1">
        <property name="sizePolicy">
@@ -528,7 +528,7 @@
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="page2">
+      <widget class="QWidget" name="marblePage">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -625,7 +625,7 @@
           <x>524</x>
           <y>46</y>
           <width>500</width>
-          <height>300</height>
+          <height>341</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -677,7 +677,7 @@ QToolBox::tab:selected {
 }*/</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="movement_Page">
          <property name="geometry">
@@ -685,7 +685,7 @@ QToolBox::tab:selected {
            <x>0</x>
            <y>0</y>
            <width>500</width>
-           <height>180</height>
+           <height>217</height>
           </rect>
          </property>
          <attribute name="label">
@@ -715,7 +715,7 @@ QToolBox::tab:selected {
            <rect>
             <x>10</x>
             <y>63</y>
-            <width>84</width>
+            <width>451</width>
             <height>22</height>
            </rect>
           </property>
@@ -781,7 +781,7 @@ QToolBox::tab:selected {
            <rect>
             <x>10</x>
             <y>144</y>
-            <width>84</width>
+            <width>441</width>
             <height>22</height>
            </rect>
           </property>
@@ -827,7 +827,7 @@ QToolBox::tab:selected {
            <x>0</x>
            <y>0</y>
            <width>500</width>
-           <height>180</height>
+           <height>217</height>
           </rect>
          </property>
          <attribute name="label">
@@ -918,7 +918,7 @@ QToolBox::tab:selected {
            <x>0</x>
            <y>0</y>
            <width>500</width>
-           <height>180</height>
+           <height>217</height>
           </rect>
          </property>
          <attribute name="label">
@@ -1277,7 +1277,7 @@ QScrollBar::sub-line:horizontal {
            <x>0</x>
            <y>0</y>
            <width>500</width>
-           <height>180</height>
+           <height>217</height>
           </rect>
          </property>
          <attribute name="label">
@@ -1506,47 +1506,6 @@ QScrollBar::sub-line:horizontal {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <widget class="QScrollArea" name="scrollArea_4">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>9</y>
-          <width>600</width>
-          <height>600</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>600</width>
-          <height>600</height>
-         </size>
-        </property>
-        <property name="sizeAdjustPolicy">
-         <enum>QAbstractScrollArea::AdjustToContents</enum>
-        </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents_4">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>598</width>
-           <height>598</height>
-          </rect>
-         </property>
-        </widget>
-       </widget>
        <widget class="QToolBox" name="toolBox_2">
         <property name="geometry">
          <rect>
@@ -1603,7 +1562,7 @@ QToolBox::tab:selected {
            <x>0</x>
            <y>0</y>
            <width>360</width>
-           <height>353</height>
+           <height>337</height>
           </rect>
          </property>
          <attribute name="label">
@@ -1706,7 +1665,7 @@ QToolBox::tab:selected {
            <rect>
             <x>9</x>
             <y>317</y>
-            <width>84</width>
+            <width>291</width>
             <height>22</height>
            </rect>
           </property>
@@ -1731,7 +1690,7 @@ QToolBox::tab:selected {
            <rect>
             <x>9</x>
             <y>149</y>
-            <width>84</width>
+            <width>291</width>
             <height>22</height>
            </rect>
           </property>
@@ -1752,7 +1711,7 @@ QToolBox::tab:selected {
            <x>0</x>
            <y>0</y>
            <width>360</width>
-           <height>353</height>
+           <height>337</height>
           </rect>
          </property>
          <attribute name="label">
@@ -1770,7 +1729,7 @@ QToolBox::tab:selected {
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QSlider" name="horizontal_Slider_Radius_2">
+           <widget class="QSlider" name="horizontal_Slider_Width">
             <property name="minimum">
              <number>25</number>
             </property>
@@ -1786,7 +1745,7 @@ QToolBox::tab:selected {
            </widget>
           </item>
           <item row="4" column="0">
-           <widget class="QDoubleSpinBox" name="spin_Box_Radius_3">
+           <widget class="QDoubleSpinBox" name="spin_Box_Height">
             <property name="toolTip">
              <string>Selecter for Radius of Sphere</string>
             </property>
@@ -1823,7 +1782,7 @@ QToolBox::tab:selected {
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QDoubleSpinBox" name="spin_Box_Radius_2">
+           <widget class="QDoubleSpinBox" name="spin_Box_Width">
             <property name="toolTip">
              <string>Selecter for Radius of Sphere</string>
             </property>
@@ -1842,7 +1801,7 @@ QToolBox::tab:selected {
            </widget>
           </item>
           <item row="5" column="0">
-           <widget class="QSlider" name="horizontal_Slider_Radius_3">
+           <widget class="QSlider" name="horizontal_Slider_Height">
             <property name="minimum">
              <number>25</number>
             </property>
@@ -1890,7 +1849,7 @@ QToolBox::tab:selected {
            <x>0</x>
            <y>0</y>
            <width>360</width>
-           <height>353</height>
+           <height>337</height>
           </rect>
          </property>
          <attribute name="label">
@@ -2304,7 +2263,7 @@ QScrollBar::sub-line:horizontal {
            <x>0</x>
            <y>0</y>
            <width>360</width>
-           <height>353</height>
+           <height>337</height>
           </rect>
          </property>
          <attribute name="label">
@@ -2426,101 +2385,6 @@ QScrollBar::sub-line:horizontal {
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>602</width>
-          <height>664</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="0" column="0">
-          <widget class="QLabel" name="image_Label_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>600</width>
-             <height>600</height>
-            </size>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::Panel</enum>
-           </property>
-           <property name="lineWidth">
-            <number>5</number>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QCheckBox" name="check_Box_Spherical_4">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Apply to all Images.</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QPushButton" name="cancel_btn">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Cancel</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="crop_btn">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>Crop</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
        <widget class="QSplitter" name="splitter">
         <property name="geometry">
          <rect>
@@ -2583,6 +2447,67 @@ QScrollBar::sub-line:horizontal {
          <property name="scaledContents">
           <bool>true</bool>
          </property>
+        </widget>
+       </widget>
+       <widget class="QSplitter" name="splitter_5">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>40</y>
+          <width>611</width>
+          <height>711</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QGraphicsView" name="image_Graphics_View"/>
+        <widget class="QCheckBox" name="check_Box_Spherical_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Apply to all Images.</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QSplitter" name="splitter_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QPushButton" name="crop_btn">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Crop</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="cancel_btn">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Cancel</string>
+          </property>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -2791,8 +2716,8 @@ QScrollBar::sub-line:horizontal {
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </widget>
@@ -3560,7 +3485,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1058</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

@@ -50,7 +50,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../RTIe/RTIe_builder/image_Gatherer.cpp \
+SOURCES       = ../../RTIe/RTIe_builder/cropped_area.cpp \
+		../../RTIe/RTIe_builder/image_Gatherer.cpp \
 		../../RTIe/RTIe_builder/image_Management_Nui.cpp \
 		../../RTIe/RTIe_builder/main.cpp \
 		../../RTIe/RTIe_builder/marble.cpp \
@@ -69,7 +70,8 @@ SOURCES       = ../../RTIe/RTIe_builder/image_Gatherer.cpp \
 		moc_project_Wizard.cpp \
 		moc_splash_Screen.cpp \
 		moc_system_ui.cpp
-OBJECTS       = image_Gatherer.o \
+OBJECTS       = cropped_area.o \
+		image_Gatherer.o \
 		image_Management_Nui.o \
 		main.o \
 		marble.o \
@@ -163,7 +165,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../../RTIe/RTIe_builder/RTIe_builder.pro ../../RTIe/RTIe_builder/image_Gatherer.h \
+		../../RTIe/RTIe_builder/RTIe_builder.pro ../../RTIe/RTIe_builder/cropped_area.h \
+		../../RTIe/RTIe_builder/image_Gatherer.h \
 		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		../../RTIe/RTIe_builder/marble.h \
 		../../RTIe/RTIe_builder/marble_Detection.h \
@@ -172,7 +175,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
-		../../RTIe/RTIe_builder/system_ui.h ../../RTIe/RTIe_builder/image_Gatherer.cpp \
+		../../RTIe/RTIe_builder/system_ui.h ../../RTIe/RTIe_builder/cropped_area.cpp \
+		../../RTIe/RTIe_builder/image_Gatherer.cpp \
 		../../RTIe/RTIe_builder/image_Management_Nui.cpp \
 		../../RTIe/RTIe_builder/main.cpp \
 		../../RTIe/RTIe_builder/marble.cpp \
@@ -369,8 +373,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/test.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.h ../../RTIe/RTIe_builder/image_Management_Nui.h ../../RTIe/RTIe_builder/marble.h ../../RTIe/RTIe_builder/marble_Detection.h ../../RTIe/RTIe_builder/marble_List_Item.h ../../RTIe/RTIe_builder/new_Project.h ../../RTIe/RTIe_builder/new_Project_Settings.h ../../RTIe/RTIe_builder/project_Wizard.h ../../RTIe/RTIe_builder/splash_Screen.h ../../RTIe/RTIe_builder/system_ui.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/image_Gatherer.cpp ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../RTIe/RTIe_builder/main.cpp ../../RTIe/RTIe_builder/marble.cpp ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe_builder/marble_List_Item.cpp ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/new_Project_Settings.cpp ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/RTIe_builder/splash_Screen.cpp ../../RTIe/RTIe_builder/system_ui.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/cropped_area.h ../../RTIe/RTIe_builder/image_Gatherer.h ../../RTIe/RTIe_builder/image_Management_Nui.h ../../RTIe/RTIe_builder/marble.h ../../RTIe/RTIe_builder/marble_Detection.h ../../RTIe/RTIe_builder/marble_List_Item.h ../../RTIe/RTIe_builder/new_Project.h ../../RTIe/RTIe_builder/new_Project_Settings.h ../../RTIe/RTIe_builder/project_Wizard.h ../../RTIe/RTIe_builder/splash_Screen.h ../../RTIe/RTIe_builder/system_ui.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/cropped_area.cpp ../../RTIe/RTIe_builder/image_Gatherer.cpp ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../RTIe/RTIe_builder/main.cpp ../../RTIe/RTIe_builder/marble.cpp ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe_builder/marble_List_Item.cpp ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/new_Project_Settings.cpp ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/RTIe_builder/splash_Screen.cpp ../../RTIe/RTIe_builder/system_ui.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../RTIe/RTIe_builder/marble_Detection.ui ../../RTIe/RTIe_builder/project_Wizard.ui ../../RTIe/RTIe_builder/system_ui.ui $(DISTDIR)/
 
 
@@ -444,6 +448,7 @@ moc_new_Project_Settings.cpp: ../../RTIe/RTIe_builder/new_Project_Settings.h \
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sandwich/Documents/ECMM427/ECMM427/RTIe/RTIe_builder -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../RTIe/RTIe_builder/new_Project_Settings.h -o moc_new_Project_Settings.cpp
 
 moc_project_Wizard.cpp: ../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -453,12 +458,14 @@ moc_splash_Screen.cpp: ../../RTIe/RTIe_builder/new_Project.h \
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
 		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sandwich/Documents/ECMM427/ECMM427/RTIe/RTIe_builder -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../RTIe/RTIe_builder/splash_Screen.h -o moc_splash_Screen.cpp
 
-moc_system_ui.cpp: ../../RTIe/RTIe_builder/system_ui.h \
+moc_system_ui.cpp: ../../RTIe/RTIe_builder/cropped_area.h \
+		../../RTIe/RTIe_builder/system_ui.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/sandwich/Documents/ECMM427/ECMM427/RTIe/RTIe_builder -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../RTIe/RTIe_builder/system_ui.h -o moc_system_ui.cpp
@@ -490,12 +497,16 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
+cropped_area.o: ../../RTIe/RTIe_builder/cropped_area.cpp ../../RTIe/RTIe_builder/cropped_area.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cropped_area.o ../../RTIe/RTIe_builder/cropped_area.cpp
+
 image_Gatherer.o: ../../RTIe/RTIe_builder/image_Gatherer.cpp ../../RTIe/RTIe_builder/image_Gatherer.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
 		../../RTIe/RTIe_builder/new_Project.h \
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
-		../../RTIe/RTIe_builder/system_ui.h
+		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image_Gatherer.o ../../RTIe/RTIe_builder/image_Gatherer.cpp
 
 image_Management_Nui.o: ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../RTIe/RTIe_builder/image_Management_Nui.h \
@@ -503,7 +514,8 @@ image_Management_Nui.o: ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../R
 		../../RTIe/RTIe_builder/splash_Screen.h \
 		../../RTIe/RTIe_builder/new_Project.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
-		../../RTIe/RTIe_builder/system_ui.h
+		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image_Management_Nui.o ../../RTIe/RTIe_builder/image_Management_Nui.cpp
 
 main.o: ../../RTIe/RTIe_builder/main.cpp ../../RTIe/RTIe_builder/splash_Screen.h \
@@ -511,6 +523,7 @@ main.o: ../../RTIe/RTIe_builder/main.cpp ../../RTIe/RTIe_builder/splash_Screen.h
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
 		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h \
 		../../RTIe/RTIe_builder/image_Management.h \
 		../../RTIe/RTIe_builder/new_Project_Wizard.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../RTIe/RTIe_builder/main.cpp
@@ -528,7 +541,8 @@ marble_Detection.o: ../../RTIe/RTIe_builder/marble_Detection.cpp ../../RTIe/RTIe
 		../../RTIe/RTIe_builder/new_Project.h \
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
-		../../RTIe/RTIe_builder/system_ui.h
+		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o marble_Detection.o ../../RTIe/RTIe_builder/marble_Detection.cpp
 
 marble_List_Item.o: ../../RTIe/RTIe_builder/marble_List_Item.cpp ../../RTIe/RTIe_builder/marble_List_Item.h \
@@ -541,11 +555,13 @@ new_Project.o: ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/n
 
 new_Project_Settings.o: ../../RTIe/RTIe_builder/new_Project_Settings.cpp ../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/new_Project.h \
-		../../RTIe/RTIe_builder/system_ui.h
+		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o new_Project_Settings.o ../../RTIe/RTIe_builder/new_Project_Settings.cpp
 
 project_Wizard.o: ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/RTIe_builder/project_Wizard.h \
 		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h \
 		ui_project_Wizard.h \
 		../../RTIe/RTIe_builder/new_Project_Wizard.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
@@ -558,11 +574,13 @@ splash_Screen.o: ../../RTIe/RTIe_builder/splash_Screen.cpp ../../RTIe/RTIe_build
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
 		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h \
 		../../RTIe/RTIe_builder/marble_Detection.h \
 		../../RTIe/RTIe_builder/marble.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o splash_Screen.o ../../RTIe/RTIe_builder/splash_Screen.cpp
 
 system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h \
 		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
 		../../RTIe/RTIe_builder/new_Project.h \
