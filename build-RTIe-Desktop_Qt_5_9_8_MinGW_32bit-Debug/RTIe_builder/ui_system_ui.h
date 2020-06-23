@@ -85,9 +85,8 @@ public:
     QPushButton *remove_Marble_Btn;
     QPushButton *export_Btn;
     QTableWidget *metadata_Table;
+    QSplitter *splitter_7;
     QSplitter *splitter_3;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_4;
     QPushButton *import_btn;
     QPushButton *delete_Btn;
     QListWidget *listWidget;
@@ -180,8 +179,8 @@ public:
     QWidget *images_Page_2;
     QScrollArea *scrollArea_3;
     QWidget *scrollAreaWidgetContents_3;
-    QListWidget *listWidget_3;
-    QWidget *layoutWidget1;
+    QListWidget *work_Images;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *open_Button_2;
     QPushButton *test_Button_2;
@@ -194,6 +193,7 @@ public:
     QSplitter *splitter;
     QLabel *label_3;
     QLabel *preivew_Label_2;
+    QSplitter *splitter_6;
     QSplitter *splitter_5;
     QGraphicsView *image_Graphics_View;
     QCheckBox *check_Box_Spherical_4;
@@ -210,7 +210,7 @@ public:
     QLabel *label_16;
     QLabel *image_Label_3;
     QLabel *label_18;
-    QWidget *layoutWidget2;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *generate_Btn;
     QPushButton *pushButton_4;
@@ -237,21 +237,21 @@ public:
     QHBoxLayout *horizontalLayout_16;
     QLabel *label_27;
     QComboBox *hsh_Order;
-    QWidget *layoutWidget3;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_3;
     QRadioButton *ptm_Fitter;
     QRadioButton *hsh_Fitter;
-    QWidget *layoutWidget4;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_26;
     QLabel *temp;
     QPushButton *lp_Location;
-    QWidget *layoutWidget5;
+    QWidget *layoutWidget4;
     QHBoxLayout *horizontalLayout_11;
     QLabel *label_15;
     QLabel *fitter_Placeholder;
     QPushButton *fitter_Location;
-    QWidget *layoutWidget6;
+    QWidget *layoutWidget5;
     QHBoxLayout *horizontalLayout_13;
     QLabel *label_20;
     QLabel *output_Placeholder;
@@ -524,30 +524,24 @@ public:
         metadata_Table->verticalHeader()->setMinimumSectionSize(10);
         metadata_Table->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
         metadata_Table->verticalHeader()->setStretchLastSection(false);
-        splitter_3 = new QSplitter(page1);
+        splitter_7 = new QSplitter(page1);
+        splitter_7->setObjectName(QStringLiteral("splitter_7"));
+        splitter_7->setGeometry(QRect(540, 21, 481, 731));
+        splitter_7->setOrientation(Qt::Vertical);
+        splitter_3 = new QSplitter(splitter_7);
         splitter_3->setObjectName(QStringLiteral("splitter_3"));
-        splitter_3->setGeometry(QRect(540, 20, 481, 731));
-        splitter_3->setOrientation(Qt::Vertical);
-        layoutWidget = new QWidget(splitter_3);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        horizontalLayout_4 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        import_btn = new QPushButton(layoutWidget);
+        splitter_3->setOrientation(Qt::Horizontal);
+        import_btn = new QPushButton(splitter_3);
         import_btn->setObjectName(QStringLiteral("import_btn"));
-
-        horizontalLayout_4->addWidget(import_btn);
-
-        delete_Btn = new QPushButton(layoutWidget);
+        splitter_3->addWidget(import_btn);
+        delete_Btn = new QPushButton(splitter_3);
         delete_Btn->setObjectName(QStringLiteral("delete_Btn"));
-
-        horizontalLayout_4->addWidget(delete_Btn);
-
-        splitter_3->addWidget(layoutWidget);
-        listWidget = new QListWidget(splitter_3);
+        splitter_3->addWidget(delete_Btn);
+        splitter_7->addWidget(splitter_3);
+        listWidget = new QListWidget(splitter_7);
         listWidget->setObjectName(QStringLiteral("listWidget"));
         listWidget->setLineWidth(5);
-        splitter_3->addWidget(listWidget);
+        splitter_7->addWidget(listWidget);
         stackedWidget->addWidget(page1);
         page2 = new QWidget();
         page2->setObjectName(QStringLiteral("page2"));
@@ -1349,23 +1343,23 @@ public:
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
         scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 349, 279));
-        listWidget_3 = new QListWidget(scrollAreaWidgetContents_3);
-        listWidget_3->setObjectName(QStringLiteral("listWidget_3"));
-        listWidget_3->setGeometry(QRect(0, 0, 351, 281));
-        listWidget_3->setLineWidth(5);
+        work_Images = new QListWidget(scrollAreaWidgetContents_3);
+        work_Images->setObjectName(QStringLiteral("work_Images"));
+        work_Images->setGeometry(QRect(0, 0, 351, 281));
+        work_Images->setLineWidth(5);
         scrollArea_3->setWidget(scrollAreaWidgetContents_3);
-        layoutWidget1 = new QWidget(images_Page_2);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(20, 300, 194, 30));
-        horizontalLayout = new QHBoxLayout(layoutWidget1);
+        layoutWidget = new QWidget(images_Page_2);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 300, 194, 30));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        open_Button_2 = new QPushButton(layoutWidget1);
+        open_Button_2 = new QPushButton(layoutWidget);
         open_Button_2->setObjectName(QStringLiteral("open_Button_2"));
 
         horizontalLayout->addWidget(open_Button_2);
 
-        test_Button_2 = new QPushButton(layoutWidget1);
+        test_Button_2 = new QPushButton(layoutWidget);
         test_Button_2->setObjectName(QStringLiteral("test_Button_2"));
 
         horizontalLayout->addWidget(test_Button_2);
@@ -1423,9 +1417,12 @@ public:
         preivew_Label_2->setText(QStringLiteral(""));
         preivew_Label_2->setScaledContents(true);
         splitter->addWidget(preivew_Label_2);
-        splitter_5 = new QSplitter(page3);
+        splitter_6 = new QSplitter(page3);
+        splitter_6->setObjectName(QStringLiteral("splitter_6"));
+        splitter_6->setGeometry(QRect(10, 10, 611, 751));
+        splitter_6->setOrientation(Qt::Vertical);
+        splitter_5 = new QSplitter(splitter_6);
         splitter_5->setObjectName(QStringLiteral("splitter_5"));
-        splitter_5->setGeometry(QRect(0, 40, 611, 711));
         splitter_5->setOrientation(Qt::Vertical);
         image_Graphics_View = new QGraphicsView(splitter_5);
         image_Graphics_View->setObjectName(QStringLiteral("image_Graphics_View"));
@@ -1436,7 +1433,8 @@ public:
         check_Box_Spherical_4->setSizePolicy(sizePolicy);
         check_Box_Spherical_4->setChecked(true);
         splitter_5->addWidget(check_Box_Spherical_4);
-        splitter_4 = new QSplitter(splitter_5);
+        splitter_6->addWidget(splitter_5);
+        splitter_4 = new QSplitter(splitter_6);
         splitter_4->setObjectName(QStringLiteral("splitter_4"));
         splitter_4->setOrientation(Qt::Horizontal);
         crop_btn = new QPushButton(splitter_4);
@@ -1450,7 +1448,7 @@ public:
         cancel_btn->setSizePolicy(sizePolicy);
         cancel_btn->setMinimumSize(QSize(0, 0));
         splitter_4->addWidget(cancel_btn);
-        splitter_5->addWidget(splitter_4);
+        splitter_6->addWidget(splitter_4);
         stackedWidget->addWidget(page3);
         page4 = new QWidget();
         page4->setObjectName(QStringLiteral("page4"));
@@ -1513,18 +1511,18 @@ public:
         label_18->setObjectName(QStringLiteral("label_18"));
         label_18->setGeometry(QRect(20, 10, 211, 41));
         label_18->setFont(font9);
-        layoutWidget2 = new QWidget(page4);
-        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(760, 700, 261, 41));
-        horizontalLayout_5 = new QHBoxLayout(layoutWidget2);
+        layoutWidget1 = new QWidget(page4);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(760, 700, 261, 41));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        generate_Btn = new QPushButton(layoutWidget2);
+        generate_Btn = new QPushButton(layoutWidget1);
         generate_Btn->setObjectName(QStringLiteral("generate_Btn"));
 
         horizontalLayout_5->addWidget(generate_Btn);
 
-        pushButton_4 = new QPushButton(layoutWidget2);
+        pushButton_4 = new QPushButton(layoutWidget1);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
         pushButton_4->setEnabled(true);
 
@@ -1628,13 +1626,13 @@ public:
 
         horizontalLayout_16->addWidget(hsh_Order);
 
-        layoutWidget3 = new QWidget(page4);
-        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(200, 480, 271, 31));
-        horizontalLayout_3 = new QHBoxLayout(layoutWidget3);
+        layoutWidget2 = new QWidget(page4);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(200, 480, 271, 31));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        ptm_Fitter = new QRadioButton(layoutWidget3);
+        ptm_Fitter = new QRadioButton(layoutWidget2);
         ptm_Fitter->setObjectName(QStringLiteral("ptm_Fitter"));
         ptm_Fitter->setEnabled(true);
         ptm_Fitter->setCheckable(true);
@@ -1643,23 +1641,23 @@ public:
 
         horizontalLayout_3->addWidget(ptm_Fitter);
 
-        hsh_Fitter = new QRadioButton(layoutWidget3);
+        hsh_Fitter = new QRadioButton(layoutWidget2);
         hsh_Fitter->setObjectName(QStringLiteral("hsh_Fitter"));
 
         horizontalLayout_3->addWidget(hsh_Fitter);
 
-        layoutWidget4 = new QWidget(page4);
-        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(30, 530, 551, 30));
-        horizontalLayout_6 = new QHBoxLayout(layoutWidget4);
+        layoutWidget3 = new QWidget(page4);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(30, 530, 551, 30));
+        horizontalLayout_6 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
         horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        label_26 = new QLabel(layoutWidget4);
+        label_26 = new QLabel(layoutWidget3);
         label_26->setObjectName(QStringLiteral("label_26"));
 
         horizontalLayout_6->addWidget(label_26);
 
-        temp = new QLabel(layoutWidget4);
+        temp = new QLabel(layoutWidget3);
         temp->setObjectName(QStringLiteral("temp"));
         temp->setEnabled(true);
         sizePolicy4.setHeightForWidth(temp->sizePolicy().hasHeightForWidth());
@@ -1697,23 +1695,23 @@ public:
 
         horizontalLayout_6->addWidget(temp);
 
-        lp_Location = new QPushButton(layoutWidget4);
+        lp_Location = new QPushButton(layoutWidget3);
         lp_Location->setObjectName(QStringLiteral("lp_Location"));
 
         horizontalLayout_6->addWidget(lp_Location);
 
-        layoutWidget5 = new QWidget(page4);
-        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
-        layoutWidget5->setGeometry(QRect(30, 560, 551, 30));
-        horizontalLayout_11 = new QHBoxLayout(layoutWidget5);
+        layoutWidget4 = new QWidget(page4);
+        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(30, 560, 551, 30));
+        horizontalLayout_11 = new QHBoxLayout(layoutWidget4);
         horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
         horizontalLayout_11->setContentsMargins(0, 0, 0, 0);
-        label_15 = new QLabel(layoutWidget5);
+        label_15 = new QLabel(layoutWidget4);
         label_15->setObjectName(QStringLiteral("label_15"));
 
         horizontalLayout_11->addWidget(label_15);
 
-        fitter_Placeholder = new QLabel(layoutWidget5);
+        fitter_Placeholder = new QLabel(layoutWidget4);
         fitter_Placeholder->setObjectName(QStringLiteral("fitter_Placeholder"));
         sizePolicy4.setHeightForWidth(fitter_Placeholder->sizePolicy().hasHeightForWidth());
         fitter_Placeholder->setSizePolicy(sizePolicy4);
@@ -1743,23 +1741,23 @@ public:
 
         horizontalLayout_11->addWidget(fitter_Placeholder);
 
-        fitter_Location = new QPushButton(layoutWidget5);
+        fitter_Location = new QPushButton(layoutWidget4);
         fitter_Location->setObjectName(QStringLiteral("fitter_Location"));
 
         horizontalLayout_11->addWidget(fitter_Location);
 
-        layoutWidget6 = new QWidget(page4);
-        layoutWidget6->setObjectName(QStringLiteral("layoutWidget6"));
-        layoutWidget6->setGeometry(QRect(30, 590, 551, 30));
-        horizontalLayout_13 = new QHBoxLayout(layoutWidget6);
+        layoutWidget5 = new QWidget(page4);
+        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
+        layoutWidget5->setGeometry(QRect(30, 590, 551, 30));
+        horizontalLayout_13 = new QHBoxLayout(layoutWidget5);
         horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
         horizontalLayout_13->setContentsMargins(0, 0, 0, 0);
-        label_20 = new QLabel(layoutWidget6);
+        label_20 = new QLabel(layoutWidget5);
         label_20->setObjectName(QStringLiteral("label_20"));
 
         horizontalLayout_13->addWidget(label_20);
 
-        output_Placeholder = new QLabel(layoutWidget6);
+        output_Placeholder = new QLabel(layoutWidget5);
         output_Placeholder->setObjectName(QStringLiteral("output_Placeholder"));
         output_Placeholder->setMinimumSize(QSize(300, 0));
         QPalette palette2;
@@ -1785,7 +1783,7 @@ public:
 
         horizontalLayout_13->addWidget(output_Placeholder);
 
-        output_Location = new QPushButton(layoutWidget6);
+        output_Location = new QPushButton(layoutWidget5);
         output_Location->setObjectName(QStringLiteral("output_Location"));
 
         horizontalLayout_13->addWidget(output_Location);
@@ -1886,7 +1884,7 @@ public:
 
         stackedWidget->setCurrentIndex(2);
         toolBox->setCurrentIndex(1);
-        toolBox_2->setCurrentIndex(1);
+        toolBox_2->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(system_Ui);

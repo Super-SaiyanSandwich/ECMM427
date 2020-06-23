@@ -621,7 +621,7 @@ public:
         scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 229, 269));
         listWidget = new QListWidget(scrollAreaWidgetContents_2);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(0, 0, 211, 271));
+        listWidget->setGeometry(QRect(0, 0, 231, 271));
         listWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget->setDefaultDropAction(Qt::IgnoreAction);
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
@@ -682,7 +682,7 @@ public:
 
         retranslateUi(marble_Detection);
 
-        toolBox->setCurrentIndex(1);
+        toolBox->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(marble_Detection);

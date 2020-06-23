@@ -162,7 +162,7 @@ QToolBox::tab:selected {
 }*/</string>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>4</number>
            </property>
            <widget class="QWidget" name="marble_Page">
             <property name="geometry">
@@ -860,7 +860,7 @@ QScrollBar::sub-line:horizontal {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>211</width>
+                 <width>231</width>
                  <height>271</height>
                 </rect>
                </property>

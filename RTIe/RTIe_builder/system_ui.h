@@ -94,7 +94,7 @@ private slots:
 
     void on_remove_Marble_Btn_4_clicked();
 
-    void on_listWidget_3_itemClicked(QListWidgetItem *item);
+    void on_work_Images_itemClicked(QListWidgetItem *item);
 
     void on_generate_Btn_clicked();
 
@@ -117,11 +117,13 @@ private slots:
     void on_horizontal_Slider_X_2_sliderReleased();
 
 
+
+
 private:
     //=========================== Crop Image Page ===============================================================
     Ui::system_Ui *ui;
 
-
+    void on_check_Box_Spherical_4_stateChanged(int arg);
     cropped_Area *selected_Area;
     QList<cropped_Area*> cropped_Area_List;
 
@@ -129,6 +131,7 @@ private:
     QGraphicsPixmapItem *base_Image_2;
 
     QLabel *image_Label_2;
+    void showEvent(QShowEvent *ev);
 
 //    int x;
 //    int y;
@@ -142,8 +145,10 @@ private:
     int thread_Count = 0;
     int zoom_Percentage = 100;
 
-//    void update_Crop_Marker();
-    void reset_Image_Zoom();
+    void on_checkBox_stateChanged(int arg);
+    void add_Crop_Item_To_List(const QImage image, const QString filename);
+    QString load_Crop_Image_Icons();
+    void reset_Crop_Image_Zoom();
     void image_Zoom(int percent);
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
     void set_Crop_Maximums();

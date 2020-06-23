@@ -4,6 +4,7 @@
 #include "ui_system_ui.h"
 #include "marble_Detection.h"
 #include "project_Wizard.h"
+#include "image_Gatherer.h"
 #define dumpval(x) qDebug()<<#x<<'='<<x
 
 #include <QTranslator>
@@ -11,7 +12,6 @@
 #include <QDebug>
 #include <QPixmap>
 #include <QListWidgetItem>
-#include <QDebug>
 #include <QFile>
 #include <QFileDialog>
 #include <QLabel>
@@ -76,22 +76,19 @@ system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     this->base_Image_2->setZValue(-10);
 
 
-    //splashScreen::project_Path = "F:/Users/Dave/Documents/LearningQT/RTIe/fish_fossil-data-set_2000";
-
-
 
     this->selected_Area = new cropped_Area();
     selected_Area->setParentItem(this->base_Image_2);
 
     cropped_Area_List.append(selected_Area);
 
-    QListWidgetItem *list_Icon = new QListWidgetItem("Area of Interest");
-    ui->listWidget_3->addItem(list_Icon);
-    ui->listWidget_3->setIconSize(QSize(60,60));
+    QListWidgetItem *list_Icon = new QListWidgetItem();
+    ui->work_Images->addItem(list_Icon);
+    ui->work_Images->setIconSize(QSize(60,60));
 
-//    ui->listWidget_3->setViewMode(QListWidget::IconMode);
-//    ui->listWidget_3->setResizeMode(QListWidget::Adjust);
-//    ui->listWidget_3->setIconSize(QSize(100,50));
+//    ui->work_Images->setViewMode(QListWidget::IconMode);
+//    ui->work_Images->setResizeMode(QListWidget::Adjust);
+//    ui->work_Images->setIconSize(QSize(100,50));
 
 
     image_Display();
@@ -153,7 +150,7 @@ void system_Ui::image_Display(){
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
         item->setCheckState(Qt::Unchecked); // AND initialize check state
         ui->listWidget->addItem(item);
-        ui->listWidget_3->addItem(item);
+        ui->work_Images->addItem(item);
     }
 
 
@@ -230,7 +227,7 @@ void system_Ui::on_import_btn_clicked()
     // We must clear the listWidget in order to prevent populating it with the
     // same items repeatedly
     ui->listWidget->clear();
-    ui->listWidget_3->clear();
+    ui->work_Images->clear();
     system_Ui::image_Display();
 }
 
@@ -260,7 +257,7 @@ void system_Ui::on_delete_Btn_clicked()
     // We must clear the listWidget in order to prevent populating it with the
     // same items repeatedly
     ui->listWidget->clear();
-    ui->listWidget_3->clear();
+    ui->work_Images->clear();
     system_Ui::image_Display();
 }
 
@@ -362,17 +359,17 @@ void system_Ui::inverted_Marker()
 {
 
 
-    ui->preivew_Label->clear();
+    ui->preivew_Label_2->clear();
 
-    ui->preivew_Label->update();
+    ui->preivew_Label_2->update();
 }
 
-void system_Ui::on_listWidget_3_itemClicked(QListWidgetItem *item)
+void system_Ui::on_work_Images_itemClicked(QListWidgetItem *item)
 {
-    QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
-    this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(image_Path)));
+    QString image_Path_2 = splashScreen::project_Path+ "/images/wd/" +item->text();
+    this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(image_Path_2)));
     this->update_Main_Cropped_Image();
-    this->reset_Image_Zoom();;
+    this->reset_Crop_Image_Zoom();;
 }
 
 void system_Ui::on_crop_btn_clicked()
@@ -441,8 +438,8 @@ void system_Ui::image_Crop_Zoom(int percent)
     ui->image_Graphics_View->scale((100 + percent) / 100.0, (100 + percent) / 100.0);
 
 
-    ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
-    ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
+    ui->zoom_In_Button_2->setEnabled(zoom_Percentage < 300);
+    ui->zoom_Out_Button_2->setEnabled(zoom_Percentage > 33);
 }
 
 void system_Ui::set_RGB(int r, int g, int b)
@@ -450,7 +447,7 @@ void system_Ui::set_RGB(int r, int g, int b)
     this->selected_Area->set_Colour(r,g,b);
 }
 
-void system_Ui::reset_Image_Zoom()
+void system_Ui::reset_Crop_Image_Zoom()
 {
     ui->image_Graphics_View->resetTransform();
 
@@ -554,10 +551,10 @@ void system_Ui::on_spin_Box_Height_valueChanged(double height)
     this->update_Crop_Preview_Image();
     this->set_Crop_Maximums();
 
-    ui->spin_Box_X->setValue(this->selected_Area->x());
-    ui->spin_Box_Y->setValue(this->selected_Area->y());
-    ui->horizontal_Slider_X->setValue(this->selected_Area->x());
-    ui->horizontal_Slider_Y->setValue(this->selected_Area->y());
+    ui->spin_Box_X_2->setValue(this->selected_Area->x());
+    ui->spin_Box_Y_2->setValue(this->selected_Area->y());
+    ui->horizontal_Slider_X_2->setValue(this->selected_Area->x());
+    ui->horizontal_Slider_Y_2->setValue(this->selected_Area->y());
 
 //    ui->horizontal_Slider_Radius->setValue(height);
 }
@@ -587,10 +584,10 @@ void system_Ui::on_spin_Box_Width_valueChanged(double width)
     this->update_Crop_Preview_Image();
     this->set_Crop_Maximums();
 
-    ui->spin_Box_X->setValue(this->selected_Area->x());
-    ui->spin_Box_Y->setValue(this->selected_Area->y());
-    ui->horizontal_Slider_X->setValue(this->selected_Area->x());
-    ui->horizontal_Slider_Y->setValue(this->selected_Area->y());
+    ui->spin_Box_X_2->setValue(this->selected_Area->x());
+    ui->spin_Box_Y_2->setValue(this->selected_Area->y());
+    ui->horizontal_Slider_X_2->setValue(this->selected_Area->x());
+    ui->horizontal_Slider_Y_2->setValue(this->selected_Area->y());
 
 //    ui->horizontal_Slider_Radius->setValue(height);
 }
@@ -598,7 +595,7 @@ void system_Ui::on_spin_Box_Width_valueChanged(double width)
 void system_Ui::on_horizontal_Slider_X_2_valueChanged(int value)
 {
     this->selected_Area->setX(value);
-    ui->spin_Box_X->setValue(value);
+    ui->spin_Box_X_2->setValue(value);
     this->update_Main_Cropped_Image();
 }
 
@@ -729,7 +726,7 @@ bool system_Ui::load_Cropping_File(const QString &file_Name)
 
 //    this->set_Maximums();
 //    this->update_Crop_Marker();
-//    this->reset_Image_Zoom();
+//    this->reset_Crop_Image_Zoom();
 
 //    return true;
 
@@ -753,7 +750,7 @@ bool system_Ui::load_Cropping_File(const QString &file_Name)
 
     this->set_Crop_Maximums();
     this->update_Main_Cropped_Image();
-    this->reset_Image_Zoom();
+    this->reset_Crop_Image_Zoom();
 
     return true;
 }
@@ -765,10 +762,9 @@ void system_Ui::image_Zoom(int percent)
     ui->image_Graphics_View->scale((100 + percent) / 100.0, (100 + percent) / 100.0);
 
 
-    ui->zoom_In_Button->setEnabled(zoom_Percentage < 300);
-    ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
+    ui->zoom_In_Button_2->setEnabled(zoom_Percentage < 300);
+    ui->zoom_Out_Button_2->setEnabled(zoom_Percentage > 33);
 }
-
 
 static void initialize_Image_File_Dialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
 {
@@ -802,7 +798,7 @@ void system_Ui::on_open_Button_2_clicked()
 
 void system_Ui::on_zoom_Reset_Button_2_clicked()
 {
-    reset_Image_Zoom();
+    reset_Crop_Image_Zoom();
 }
 
 void system_Ui::on_zoom_In_Button_2_clicked()
@@ -827,7 +823,6 @@ void system_Ui::set_Crop_Maximums()
     ui->horizontal_Slider_X_2->setMaximum(this->selected_Area->x() - (center * 2)); // check this OVER!!
     ui->horizontal_Slider_Y_2->setMaximum(this->selected_Area->y() - (center * 2));
 }
-
 
 void system_Ui::on_test_Button_2_clicked()
 {
@@ -908,12 +903,111 @@ void system_Ui::on_horizontal_Slider_Y_2_sliderReleased()
     this->update_Crop_Preview_Image();
 }
 
+QString system_Ui::load_Crop_Image_Icons()
+{
+    ui->work_Images->setViewMode(QListWidget::IconMode);
+    ui->work_Images->setIconSize(QSize(100,50));
+    ui->work_Images->setResizeMode(QListWidget::Adjust);
+
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
+    QStringListIterator file_Iterator(path_List);
+
+    while (file_Iterator.hasNext())
+    {
+        QThread *thread = new QThread();
+        image_Gatherer *ig = new image_Gatherer();
+        ig->moveToThread( thread );
+
+        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
+        QFile current_Image(path);
+        QFileInfo current_Image_Info(current_Image.fileName());
+        QString file_Name(current_Image_Info.fileName());
+
+        QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
+        QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Crop_Item_To_List(const QImage &, const QString &)));
+
+        ig->setInput(file_Name);
+        thread_Count++;
+        thread->start();
+    }
+    return  file_Iterator.previous().toLocal8Bit().constData();
+}
+
+void system_Ui::add_Crop_Item_To_List(QImage image, QString filename)
+{
+    qInfo() << "ITEM BEING ADDED: " << filename;
+    QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
+    ui->work_Images->addItem(item);
+    //qInfo() << "\t-Height:"<< image.height();
+    //qInfo() << "\t-Width:"<< image.width();
+
+    this->thread_Count--;
+
+    if (thread_Count == 0){
+        this->base_Image_2->pixmap() = QPixmap::fromImage(image);
+        this->update_Main_Cropped_Image();
+        this->reset_Crop_Image_Zoom();
+    }
+}
+
+void system_Ui::showEvent(QShowEvent *ev)
+{
+    QMainWindow::showEvent(ev);
+
+    this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
+
+    this->reset_Crop_Image_Zoom();
+    this->update_Crop_Preview_Image();
+    this->set_Crop_Maximums();
+}
+
+void system_Ui::on_check_Box_Spherical_4_stateChanged(int arg)
+{
+    if(arg == 0)
+    {
+        // ### TODO: 06/04/20 ###
+        // Add functionality to revert to a single image when un-checking the checkbox.
+        // Perhaps the image active before the average was used.
+    }
+    else
+    {
+        // ### BUG: 06/04/20 ###
+        // Cancel currently doesn't work. For some reason when adding the cancel functionality the popup no longer appears.
+        // Will have to experiment more in the future.
+
+        QPixmap* avg_Image = new QPixmap(base_Image_2->pixmap().size());
+        QPainter *paint = new QPainter(avg_Image);
+        const int COUNT = ui->work_Images->count();
+
+        paint->setOpacity(1.0/ COUNT);
+
+        QProgressDialog progress("Processing Images...", "Cancel", 0, COUNT, this);
+        progress.setWindowModality(Qt::WindowModal);
+
+        for(int i = 0; i < COUNT; ++i)
+        {
+            progress.setValue(i);
+
+            QString image_Path = splashScreen::project_Path + "/images/wd/" + ui->work_Images->item(i)->text();
+            paint->drawImage(0,0,QImage(image_Path));
+
+        }
+
+        progress.setValue(COUNT);
+
+        this->base_Image_2->setPixmap(*avg_Image);
+        this->update_Main_Cropped_Image();
+
+    }
+}
+
+
 //==================================== Page change buttons  ===============================
 
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
     //ui->stackedWidget->setCurrentIndex(1);
-    marble_Detection *md = new marble_Detection(this, ui->listWidget->item(0)->text());
+    marble_Detection *md = new marble_Detection(this, ui->work_Images->item(0)->text());
 }
 
 void system_Ui::on_remove_Marble_Btn_clicked()
@@ -1237,4 +1331,5 @@ void system_Ui::on_actionEnglish_triggered()
 
 
 //==================== Metadata =========================
+
 
