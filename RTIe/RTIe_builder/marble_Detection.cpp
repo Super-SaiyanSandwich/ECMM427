@@ -56,10 +56,24 @@ marble_Detection::marble_Detection(QWidget *parent, QString base_Image) : QMainW
     marble_Selection_Screen->installEventFilter(this);
 
 
-
     this->base_Image = marble_Selection_Screen->addPixmap(QPixmap(base_Image));
     this->base_Image->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
     this->base_Image->setZValue(-10);
+
+
+//    marble_Preview_Screen = new QGraphicsScene(this);
+
+//    this->preview_Image = marble_Preview_Screen->addPixmap((QPixmap(base_Image)));
+//    this->preview_Image->setZValue(5);
+
+//    this->backgroudn_Preview_Image = marble_Preview_Screen->addPixmap((QPixmap(base_Image)));
+//    this->backgroudn_Preview_Image->setZValue(-5);
+
+//    QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
+//    blur->setBlurRadius(8);
+
+//    this->backgroudn_Preview_Image->setGraphicsEffect(blur);
+
 
 
     //splashScreen::project_Path = "F:/Users/Dave/Documents/LearningQT/RTIe/fish_fossil-data-set_2000";
