@@ -90,7 +90,7 @@ public:
     QPushButton *import_btn;
     QPushButton *delete_Btn;
     QListWidget *listWidget;
-    QWidget *page2;
+    QWidget *marblePage;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QLabel *image_Label;
@@ -543,11 +543,11 @@ public:
         listWidget->setLineWidth(5);
         splitter_7->addWidget(listWidget);
         stackedWidget->addWidget(page1);
-        page2 = new QWidget();
-        page2->setObjectName(QStringLiteral("page2"));
-        sizePolicy.setHeightForWidth(page2->sizePolicy().hasHeightForWidth());
-        page2->setSizePolicy(sizePolicy);
-        scrollArea = new QScrollArea(page2);
+        marblePage = new QWidget();
+        marblePage->setObjectName(QStringLiteral("marblePage"));
+        sizePolicy.setHeightForWidth(marblePage->sizePolicy().hasHeightForWidth());
+        marblePage->setSizePolicy(sizePolicy);
+        scrollArea = new QScrollArea(marblePage);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setGeometry(QRect(9, 41, 491, 661));
         sizePolicy.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
@@ -572,7 +572,7 @@ public:
         image_Label->setScaledContents(true);
         image_Label->setAlignment(Qt::AlignCenter);
         scrollArea->setWidget(scrollAreaWidgetContents);
-        toolBox = new QToolBox(page2);
+        toolBox = new QToolBox(marblePage);
         toolBox->setObjectName(QStringLiteral("toolBox"));
         toolBox->setGeometry(QRect(524, 46, 500, 341));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -615,7 +615,7 @@ public:
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QStringLiteral("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 500, 221));
+        movement_Page->setGeometry(QRect(0, 0, 100, 30));
         spin_Box_X = new QSpinBox(movement_Page);
         spin_Box_X->setObjectName(QStringLiteral("spin_Box_X"));
         spin_Box_X->setGeometry(QRect(10, 37, 52, 20));
@@ -704,7 +704,7 @@ public:
         toolBox->addItem(scale_Page, QStringLiteral("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QStringLiteral("tools_Page"));
-        tools_Page->setGeometry(QRect(0, 0, 500, 221));
+        tools_Page->setGeometry(QRect(0, 0, 100, 30));
         zoom_Label = new QLabel(tools_Page);
         zoom_Label->setObjectName(QStringLiteral("zoom_Label"));
         zoom_Label->setGeometry(QRect(11, 11, 37, 16));
@@ -888,7 +888,7 @@ public:
         toolBox->addItem(tools_Page, QStringLiteral("Tools"));
         images_Page = new QWidget();
         images_Page->setObjectName(QStringLiteral("images_Page"));
-        images_Page->setGeometry(QRect(0, 0, 500, 221));
+        images_Page->setGeometry(QRect(0, 0, 100, 30));
         scrollArea_2 = new QScrollArea(images_Page);
         scrollArea_2->setObjectName(QStringLiteral("scrollArea_2"));
         scrollArea_2->setGeometry(QRect(9, 9, 471, 301));
@@ -909,14 +909,14 @@ public:
         test_Button->setObjectName(QStringLiteral("test_Button"));
         test_Button->setGeometry(QRect(220, 380, 133, 28));
         toolBox->addItem(images_Page, QStringLiteral("Images"));
-        swap_Button = new QToolButton(page2);
+        swap_Button = new QToolButton(marblePage);
         swap_Button->setObjectName(QStringLiteral("swap_Button"));
         swap_Button->setGeometry(QRect(530, 430, 47, 46));
         QIcon icon12;
         icon12.addFile(QStringLiteral(":/noun_swap_99117.png"), QSize(), QIcon::Normal, QIcon::On);
         swap_Button->setIcon(icon12);
         swap_Button->setIconSize(QSize(40, 40));
-        label = new QLabel(page2);
+        label = new QLabel(marblePage);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(580, 440, 88, 28));
         QFont font5;
@@ -928,7 +928,7 @@ public:
         font5.setKerning(true);
         label->setFont(font5);
         label->setStyleSheet(QStringLiteral("font: 75 14pt \"MS Shell Dlg 2\";"));
-        layoutWidget_4 = new QWidget(page2);
+        layoutWidget_4 = new QWidget(marblePage);
         layoutWidget_4->setObjectName(QStringLiteral("layoutWidget_4"));
         layoutWidget_4->setGeometry(QRect(0, 780, 1033, 30));
         horizontalLayout_8 = new QHBoxLayout(layoutWidget_4);
@@ -958,7 +958,7 @@ public:
 
         horizontalLayout_8->addWidget(export_Btn_2);
 
-        preivew_Label = new QLabel(page2);
+        preivew_Label = new QLabel(marblePage);
         preivew_Label->setObjectName(QStringLiteral("preivew_Label"));
         preivew_Label->setGeometry(QRect(524, 482, 500, 219));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -973,7 +973,7 @@ public:
         preivew_Label->setLineWidth(5);
         preivew_Label->setText(QStringLiteral(""));
         preivew_Label->setScaledContents(true);
-        stackedWidget->addWidget(page2);
+        stackedWidget->addWidget(marblePage);
         page3 = new QWidget();
         page3->setObjectName(QStringLiteral("page3"));
         sizePolicy.setHeightForWidth(page3->sizePolicy().hasHeightForWidth());
@@ -1426,6 +1426,8 @@ public:
         splitter_5->setOrientation(Qt::Vertical);
         image_Graphics_View = new QGraphicsView(splitter_5);
         image_Graphics_View->setObjectName(QStringLiteral("image_Graphics_View"));
+        image_Graphics_View->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        image_Graphics_View->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         splitter_5->addWidget(image_Graphics_View);
         check_Box_Spherical_4 = new QCheckBox(splitter_5);
         check_Box_Spherical_4->setObjectName(QStringLiteral("check_Box_Spherical_4"));

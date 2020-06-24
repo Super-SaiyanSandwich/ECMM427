@@ -166,7 +166,6 @@ void marble_Detection::update_Preview_Image()
     paint->end();
 }
 
-
 void marble_Detection::inverted_Marker()
 {
 
@@ -209,7 +208,6 @@ QPixmap marble_Detection::applyEffectToImage(QPixmap src, QGraphicsEffect *effec
     scene.render(&ptr, QRectF(), QRectF( -extent, -extent, src.width()+extent*2, src.height()+extent*2 ) );
     return QPixmap::fromImage(res);
 }
-
 
 QString marble_Detection::load_Image_Icons()
 {
@@ -296,7 +294,6 @@ void marble_Detection::set_RGB(int r, int g, int b)
     this->selected_Marble->setColour(r,g,b);
 }
 
-
 void marble_Detection::reset_Image_Zoom()
 {
     ui->marbleGraphicView->resetTransform();
@@ -309,8 +306,6 @@ void marble_Detection::reset_Image_Zoom()
     ui->marbleGraphicView->scale(s, s);
 }
 
-
-
 void marble_Detection::image_Zoom(int percent)
 {
     zoom_Percentage += percent;
@@ -322,14 +317,12 @@ void marble_Detection::image_Zoom(int percent)
     ui->zoom_Out_Button->setEnabled(zoom_Percentage > 33);
 }
 
-
 void marble_Detection::adjust_Scroll_Bar(QScrollBar *scrollBar, double factor)
 {
     factor = factor / 100.0;
     scrollBar->setValue(int(factor * scrollBar->value()
                             + ((factor - 1) * scrollBar->pageStep()/2)));
 }
-
 
 void marble_Detection::on_spin_Box_X_valueChanged(int X)
 {
@@ -338,7 +331,6 @@ void marble_Detection::on_spin_Box_X_valueChanged(int X)
     this->update_Main_Image();
     this->update_Preview_Image();
 }
-
 
 void marble_Detection::on_spin_Box_Y_valueChanged(int Y)
 {
@@ -427,7 +419,6 @@ void marble_Detection::on_colour_Selector_Button_clicked()
     ui->horizontal_Scroll_Bar_Green->setValue(new_Colour.green());
     ui->horizontal_Scroll_Bar_Blue->setValue(new_Colour.blue());
 }
-
 
 bool marble_Detection::load_File(const QString &fileName)
 {

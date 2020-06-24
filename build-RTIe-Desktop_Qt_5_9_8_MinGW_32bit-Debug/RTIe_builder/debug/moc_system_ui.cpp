@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_system_Ui_t {
     QByteArrayData data[58];
-    char stringdata0[1462];
+    char stringdata0[1468];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -78,17 +78,17 @@ QT_MOC_LITERAL(43, 1033, 23), // "on_export_Btn_3_clicked"
 QT_MOC_LITERAL(44, 1057, 33), // "on_image_Management_Btn_4_cli..."
 QT_MOC_LITERAL(45, 1091, 33), // "on_marble_Detection_Btn_4_cli..."
 QT_MOC_LITERAL(46, 1125, 30), // "on_remove_Marble_Btn_4_clicked"
-QT_MOC_LITERAL(47, 1156, 26), // "on_work_Images_itemClicked"
-QT_MOC_LITERAL(48, 1183, 23), // "on_generate_Btn_clicked"
-QT_MOC_LITERAL(49, 1207, 22), // "on_lp_Location_clicked"
-QT_MOC_LITERAL(50, 1230, 26), // "on_output_Location_clicked"
-QT_MOC_LITERAL(51, 1257, 26), // "on_fitter_Location_clicked"
-QT_MOC_LITERAL(52, 1284, 26), // "on_actionEnglish_triggered"
-QT_MOC_LITERAL(53, 1311, 26), // "on_resize_Checkbox_clicked"
-QT_MOC_LITERAL(54, 1338, 21), // "on_ptm_Fitter_clicked"
-QT_MOC_LITERAL(55, 1360, 21), // "on_hsh_Fitter_clicked"
-QT_MOC_LITERAL(56, 1382, 39), // "on_horizontal_Slider_Y_2_slid..."
-QT_MOC_LITERAL(57, 1422, 39) // "on_horizontal_Slider_X_2_slid..."
+QT_MOC_LITERAL(47, 1156, 32), // "on_work_Images_itemDoubleClicked"
+QT_MOC_LITERAL(48, 1189, 23), // "on_generate_Btn_clicked"
+QT_MOC_LITERAL(49, 1213, 22), // "on_lp_Location_clicked"
+QT_MOC_LITERAL(50, 1236, 26), // "on_output_Location_clicked"
+QT_MOC_LITERAL(51, 1263, 26), // "on_fitter_Location_clicked"
+QT_MOC_LITERAL(52, 1290, 26), // "on_actionEnglish_triggered"
+QT_MOC_LITERAL(53, 1317, 26), // "on_resize_Checkbox_clicked"
+QT_MOC_LITERAL(54, 1344, 21), // "on_ptm_Fitter_clicked"
+QT_MOC_LITERAL(55, 1366, 21), // "on_hsh_Fitter_clicked"
+QT_MOC_LITERAL(56, 1388, 39), // "on_horizontal_Slider_Y_2_slid..."
+QT_MOC_LITERAL(57, 1428, 39) // "on_horizontal_Slider_X_2_slid..."
 
     },
     "system_Ui\0image_Display\0\0"
@@ -125,7 +125,7 @@ QT_MOC_LITERAL(57, 1422, 39) // "on_horizontal_Slider_X_2_slid..."
     "on_image_Management_Btn_4_clicked\0"
     "on_marble_Detection_Btn_4_clicked\0"
     "on_remove_Marble_Btn_4_clicked\0"
-    "on_work_Images_itemClicked\0"
+    "on_work_Images_itemDoubleClicked\0"
     "on_generate_Btn_clicked\0on_lp_Location_clicked\0"
     "on_output_Location_clicked\0"
     "on_fitter_Location_clicked\0"
@@ -297,7 +297,7 @@ void system_Ui::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 34: _t->on_image_Management_Btn_4_clicked(); break;
         case 35: _t->on_marble_Detection_Btn_4_clicked(); break;
         case 36: _t->on_remove_Marble_Btn_4_clicked(); break;
-        case 37: _t->on_work_Images_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 37: _t->on_work_Images_itemDoubleClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         case 38: _t->on_generate_Btn_clicked(); break;
         case 39: _t->on_lp_Location_clicked(); break;
         case 40: _t->on_output_Location_clicked(); break;

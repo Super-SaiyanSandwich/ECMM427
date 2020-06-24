@@ -8,31 +8,27 @@
 
 cropped_Area::cropped_Area()
 {
-    height = 50.0;
-    width = 50.0;
+    height = 100.0;
+    width = 100.0;
     setFlag(ItemIsMovable, true);
-    colour = Qt::green;
+    colour = Qt::blue;
 }
 
 QRectF cropped_Area::boundingRect() const
 {
-    return QRectF(0,0, (2 * width)- 10, (2 * height)- 10);
+    return QRectF(0,0, width,height);
+//    return QRectF(0,0, (2 * width)- 10, (2 * height)- 10);
 }
 
 void cropped_Area::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 
     QPen pen(colour);
-    pen.setWidth(10);
+    pen.setWidth(5);
 
     // Rectangle
     painter->setPen(pen);
     painter->drawRect(5, 5, height, width+5);
-
-    painter->drawLine((1 - CENTER_SCALE_FACTOR) * height, width, (1 + CENTER_SCALE_FACTOR) * height, width);
-    painter->drawLine(height, (1 - CENTER_SCALE_FACTOR) * width, height,  (1 + CENTER_SCALE_FACTOR) * width);
-
-
 
 }
 
@@ -75,6 +71,7 @@ void cropped_Area::set_Height(qreal height)
     this->height = height;
     this->update();
 }
+
 void cropped_Area::set_Width(qreal width)
 {
     this->width = width;
@@ -111,7 +108,6 @@ QColor cropped_Area::get_Colour()
 {
     return this->colour;
 }
-
 
 void cropped_Area::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {

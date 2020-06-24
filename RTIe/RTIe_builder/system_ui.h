@@ -94,7 +94,7 @@ private slots:
 
     void on_remove_Marble_Btn_4_clicked();
 
-    void on_work_Images_itemClicked(QListWidgetItem *item);
+    void on_work_Images_itemDoubleClicked(QListWidgetItem *item);
 
     void on_generate_Btn_clicked();
 
@@ -144,7 +144,7 @@ private:
 
     int thread_Count = 0;
     int zoom_Percentage = 100;
-
+    bool eventFilter(QObject *object, QEvent *event);
     void on_checkBox_stateChanged(int arg);
     void add_Crop_Item_To_List(const QImage image, const QString filename);
     QString load_Crop_Image_Icons();
