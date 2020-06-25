@@ -1,6 +1,8 @@
 #include <QApplication>
 #include <QPushButton>
 #include <QLabel>
+#include <QStyle>
+#include <QDesktopWidget>
 
 #include "splash_Screen.h"
 #include "image_Management.h"
@@ -9,7 +11,7 @@
 
 int main(int argc, char **argv)
 {
-    QApplication app (argc, argv);
+    QApplication* app = new QApplication(argc, argv);
     QString project_Path;
     //PREVIEW SPLASH SCREEN & PROJECT WIZARD
     splashScreen splashScreen;
@@ -20,5 +22,6 @@ int main(int argc, char **argv)
     //image_Management img;
     //img.show();
 
-    return app.exec();
+
+    return app->exec();
 }

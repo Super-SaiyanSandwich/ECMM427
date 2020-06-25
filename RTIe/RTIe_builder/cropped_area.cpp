@@ -3,6 +3,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsWidget>
 #include <QGraphicsScene>
+#include <math.h>
 
 #define CENTER_SCALE_FACTOR 0.3
 
@@ -22,13 +23,15 @@ QRectF cropped_Area::boundingRect() const
 
 void cropped_Area::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    int penWidth = 10;
 
     QPen pen(colour);
-    pen.setWidth(5);
+    pen.setWidth(penWidth);
 
+    int buffer = ceil(penWidth / 2.0) + 1;
     // Rectangle
     painter->setPen(pen);
-    painter->drawRect(5, 5, height, width+5);
+    painter->drawRect(buffer, buffer, width - buffer, height - buffer);
 
 }
 
