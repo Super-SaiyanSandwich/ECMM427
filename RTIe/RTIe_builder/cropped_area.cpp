@@ -17,13 +17,13 @@ cropped_Area::cropped_Area()
 
 QRectF cropped_Area::boundingRect() const
 {
-    return QRectF(0,0, width,height);
+    return QRectF(0,0, width-7,height-7);
 //    return QRectF(0,0, (2 * width)- 10, (2 * height)- 10);
 }
 
 void cropped_Area::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    int penWidth = 10;
+    int penWidth = 7; //set width of rect
 
     QPen pen(colour);
     pen.setWidth(penWidth);

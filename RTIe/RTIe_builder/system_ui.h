@@ -50,7 +50,6 @@ public slots:
     void on_zoom_Reset_Button_2_clicked();
     void on_zoom_In_Button_2_clicked();
     void on_zoom_Out_Button_2_clicked();
-    void on_test_Button_2_clicked();
     void on_horizontal_Slider_Height_valueChanged(int height);
     void on_cancel_btn_clicked();
     void on_crop_btn_clicked();
@@ -115,7 +114,8 @@ private slots:
     void on_hsh_Fitter_clicked();
     void on_horizontal_Slider_Y_2_sliderReleased();
     void on_horizontal_Slider_X_2_sliderReleased();
-
+    void add_Crop_Item_To_List(const QImage image, const QString filename);
+    void reload_Preview();
 
 
 
@@ -146,7 +146,7 @@ private:
     int zoom_Percentage = 100;
     bool eventFilter(QObject *object, QEvent *event);
     void on_checkBox_stateChanged(int arg);
-    void add_Crop_Item_To_List(const QImage image, const QString filename);
+
     QString load_Crop_Image_Icons();
     void reset_Crop_Image_Zoom();
     void image_Zoom(int percent);
@@ -155,7 +155,7 @@ private:
     void on_spin_Box_Width_valueChanged(double arg1);
     void on_spin_Box_Height_valueChanged(double arg1);
     QString load_Image_Icons();
-    void inverted_Marker();
+
     QPixmap apply_Effect_To_Image(QPixmap src, QGraphicsEffect *effect,int extent = 0);
     QImage apply_Effect_To_Image(QImage src, QGraphicsEffect *effect,int extent = 0);
 
