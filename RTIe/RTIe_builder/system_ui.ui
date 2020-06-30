@@ -55,7 +55,7 @@
        <number>14</number>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page1">
        <property name="sizePolicy">
@@ -749,7 +749,7 @@ QToolBox::tab:selected {
 }*/</string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="movement_Page">
          <property name="geometry">
@@ -1704,7 +1704,7 @@ QToolBox::tab:selected {
 }*/</string>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="movement_Page_2">
          <property name="geometry">
@@ -2866,10 +2866,10 @@ QScrollBar::sub-line:horizontal {
        <widget class="QLabel" name="label_16">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>470</y>
+          <x>30</x>
+          <y>510</y>
           <width>211</width>
-          <height>41</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -3353,8 +3353,8 @@ p, li { white-space: pre-wrap; }
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>200</x>
-          <y>480</y>
+          <x>180</x>
+          <y>510</y>
           <width>271</width>
           <height>31</height>
          </rect>
@@ -3410,7 +3410,7 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>530</y>
+          <y>550</y>
           <width>551</width>
           <height>30</height>
          </rect>
@@ -3585,7 +3585,7 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>560</y>
+          <y>580</y>
           <width>551</width>
           <height>30</height>
          </rect>
@@ -3754,7 +3754,7 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>590</y>
+          <y>610</y>
           <width>551</width>
           <height>30</height>
          </rect>
@@ -3969,6 +3969,53 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
+       <widget class="QWidget" name="layoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>470</y>
+          <width>581</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QPushButton" name="previous_Image_Btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>&lt; Prev</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="next_Image_Btn">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Next &gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="page5">
        <property name="sizePolicy">
@@ -4073,6 +4120,13 @@ p, li { white-space: pre-wrap; }
      <string>Help</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew_Project"/>
+   </widget>
+   <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
    <addaction name="menuLanguage"/>
@@ -4259,6 +4313,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionHindi">
    <property name="text">
     <string>Hindi</string>
+   </property>
+  </action>
+  <action name="actionNew_Project">
+   <property name="text">
+    <string>New Project</string>
    </property>
   </action>
  </widget>

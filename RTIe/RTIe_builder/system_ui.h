@@ -11,6 +11,13 @@
 #include <QGraphicsPixmapItem>
 #include <QComboBox>
 
+#include <QBasicTimer>
+#include <QList>
+#include <QImage>
+#include <QDir>
+#include <QPainter>
+#include <QPaintEvent>
+
 #include "cropped_area.h"
 
 namespace Ui {
@@ -33,6 +40,10 @@ public:
     QString project;
     QImage base_Image;
     void set_RGB(int r, int g, int b);
+
+    int current_Slide = 0;
+
+
 
 public slots:
 
@@ -57,6 +68,8 @@ public slots:
     QStringList findQmFiles();
     void image_Crop_Zoom(int percent);
 
+signals:
+    void inputReceived();
 
 private slots:
 
@@ -118,6 +131,12 @@ private slots:
     void reload_Preview();
 
 
+    QStringList get_File_List();
+
+    void on_previous_Image_Btn_clicked();
+
+    void on_next_Image_Btn_clicked();
+
 
 private:
     //=========================== Crop Image Page ===============================================================
@@ -132,15 +151,6 @@ private:
 
     QLabel *image_Label_2;
     void showEvent(QShowEvent *ev);
-
-//    int x;
-//    int y;
-//    double height;
-//    double width;
-
-//    int r = 0;
-//    int g = 0;
-//    int b = 0;
 
     int thread_Count = 0;
     int zoom_Percentage = 100;
@@ -162,7 +172,8 @@ private:
     void update_Main_Cropped_Image();
 
     QFile lp_File;
-//    Ui::crop_image *new_ui;
+
+
 
 };
 

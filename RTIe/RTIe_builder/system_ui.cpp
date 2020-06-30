@@ -45,6 +45,13 @@
 #include <fstream>
 #include <exception>
 
+#include <QBasicTimer>
+#include <QList>
+#include <QImage>
+#include <QDir>
+#include <QPainter>
+#include <QPaintEvent>
+
 #include <QThread>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
@@ -71,6 +78,8 @@ system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
+    setMouseTracking(false);
+
 
     crop_Selection_Screen = new QGraphicsScene(this);
     ui->image_Graphics_View->setScene(crop_Selection_Screen);
@@ -96,6 +105,7 @@ system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     ui->work_Images->setViewMode(QListWidget::IconMode);
     ui->work_Images->setResizeMode(QListWidget::Adjust);
 
+    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(0))));
 
 
     image_Display();
@@ -125,7 +135,7 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     }
 
-    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
+//    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
 
     system_Ui::start();
 
@@ -165,7 +175,7 @@ void system_Ui::image_Display(){
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
-    qInfo() << "Item Selected:" << preview_Image;
+//    qInfo() << "Item Selected:" << preview_Image;
     this->base_Image = QImage(preview_Image);
     QPixmap pix = QPixmap::fromImage(this->base_Image);
     int w = ui->image_Preview->width();
@@ -198,7 +208,7 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
 
             line.append(stream.readLine()+"\n");
         }
-        qInfo()<<" ";
+//        qInfo()<<" ";
         line.removeAt(0);
         QString temp1 = line.value(0);
         QString temp2 = line.value(1);
@@ -508,7 +518,7 @@ void system_Ui::on_horizontal_Slider_Height_valueChanged(int value)
 
     ui->spin_Box_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
     ui->horizontal_Slider_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
-//    this->set_Crop_Maximums();
+    this->set_Crop_Maximums();
 
     ui->spin_Box_X_2->setValue(this->selected_Area->x());
     ui->spin_Box_Y_2->setValue(this->selected_Area->y());
@@ -530,7 +540,7 @@ void system_Ui::on_horizontal_Slider_Width_valueChanged(int value)
 
     ui->spin_Box_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width()));
     ui->horizontal_Slider_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width()));
-//    this->set_Crop_Maximums();
+    this->set_Crop_Maximums();
 
     ui->spin_Box_X_2->setValue(this->selected_Area->x());
     ui->spin_Box_Y_2->setValue(this->selected_Area->y());
@@ -573,7 +583,7 @@ bool system_Ui::load_Cropping_File(const QString &fileName)
     QImageReader reader(fileName);
     reader.setAutoTransform(true);
     const QImage new_Image_2 = reader.read();
-    qInfo()<<new_Image_2;
+//    qInfo()<<new_Image_2;
     if (new_Image_2.isNull()) {
         QMessageBox::information(this, QGuiApplication::applicationDisplayName(),
                                  tr("Cannot load %1: %2")
@@ -707,7 +717,7 @@ QString system_Ui::load_Crop_Image_Icons()
 
 void system_Ui::add_Crop_Item_To_List(QImage image, QString filename)
 {
-    qInfo() << "ITEM BEING ADDED: " << filename;
+//    qInfo() << "ITEM BEING ADDED: " << filename;
     QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
     ui->work_Images->addItem(item);
 
@@ -731,6 +741,11 @@ void system_Ui::showEvent(QShowEvent *ev)
     this->reset_Crop_Image_Zoom();
     this->update_Crop_Preview_Image();
     this->set_Crop_Maximums();
+
+    Q_UNUSED(ev);
+#ifndef QT_NO_CURSOR
+    setCursor(Qt::BlankCursor);
+#endif
 }
 
 void system_Ui::on_check_Box_Spherical_4_stateChanged(int arg)
@@ -791,7 +806,7 @@ bool system_Ui::eventFilter(QObject *object, QEvent *event)
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
     //ui->stackedWidget->setCurrentIndex(1);
-    marble_Detection *md = new marble_Detection(this, ui->work_Images->item(0)->text());
+    /*marble_Detection *md = new*/ marble_Detection(this, ui->work_Images->item(0)->text());
 }
 
 void system_Ui::on_remove_Marble_Btn_clicked()
@@ -928,11 +943,11 @@ void system_Ui::on_generate_Btn_clicked()
          * A summary is given containing all images that have been confirmed to be
          * deleted as well as those that have confirmed to be cancelled.
          */
-        QString summary = "The following fields were empty:\n blah blah.\n Please fill them in and then generate your .ptm file.";
+        QString summary = "The following fields were empty:\n blah blah.\n Please fill them in and then generate your .ptm or .hsh file";
 
         QMessageBox Error_Summary;
-        Error_Summary.setText("Delete operation summary.");
-        Error_Summary.setInformativeText(summary );
+        Error_Summary.setText("Fitter Error");
+        Error_Summary.setInformativeText(summary);
         Error_Summary.setStandardButtons(QMessageBox::Ok);
         Error_Summary.setDefaultButton(QMessageBox::Ok);
         Error_Summary.exec();
@@ -1015,6 +1030,50 @@ void system_Ui::on_hsh_Fitter_clicked()
     ui->generate_Btn->setEnabled(true);
 }
 
+
+
+QStringList system_Ui:: get_File_List()
+{
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
+    QStringListIterator file_Iterator(path_List);
+    QStringList file_Names;
+    while (file_Iterator.hasNext())
+    {
+
+        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
+        QString file_Name(path);
+        file_Names.append(file_Name);
+    }
+
+    return file_Names;
+}
+
+
+void system_Ui::on_previous_Image_Btn_clicked()
+{
+    QStringList image_Paths = get_File_List();
+    ui->image_Label_3->clear();
+    current_Slide--;
+
+    if (current_Slide <= 0)
+        current_Slide = image_Paths.size()-1;
+
+
+
+    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(current_Slide))));
+    ui->image_Label_3->update();
+}
+
+void system_Ui::on_next_Image_Btn_clicked()
+{
+    QStringList image_Paths = get_File_List();
+    ui->image_Label_3->clear();
+    current_Slide++;
+    if (current_Slide >= image_Paths.size())
+      current_Slide = 0;
+    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(current_Slide))));
+    ui->image_Label_3->update();
+}
 
 
 //===============================================================
@@ -1111,5 +1170,8 @@ void system_Ui::on_actionEnglish_triggered()
 
 
 //==================== Metadata =========================
+
+
+
 
 

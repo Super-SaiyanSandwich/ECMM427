@@ -71,6 +71,7 @@ public:
     QAction *actionGerman_2;
     QAction *actionMandarin;
     QAction *actionHindi;
+    QAction *actionNew_Project;
     QWidget *centralwidget;
     QGridLayout *gridLayout_2;
     QStackedWidget *stackedWidget;
@@ -255,6 +256,10 @@ public:
     QHBoxLayout *horizontalLayout_31;
     QLabel *label_38;
     QComboBox *ptm_Luminance;
+    QWidget *layoutWidget_2;
+    QHBoxLayout *horizontalLayout_12;
+    QPushButton *previous_Image_Btn;
+    QPushButton *next_Image_Btn;
     QWidget *page5;
     QGridLayout *gridLayout_3;
     QLabel *label_6;
@@ -265,6 +270,7 @@ public:
     QMenu *menuView;
     QMenu *menuLanguage;
     QMenu *menuHelp;
+    QMenu *menuFile;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *system_Ui)
@@ -355,6 +361,8 @@ public:
         actionMandarin->setObjectName(QStringLiteral("actionMandarin"));
         actionHindi = new QAction(system_Ui);
         actionHindi->setObjectName(QStringLiteral("actionHindi"));
+        actionNew_Project = new QAction(system_Ui);
+        actionNew_Project->setObjectName(QStringLiteral("actionNew_Project"));
         centralwidget = new QWidget(system_Ui);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
@@ -925,7 +933,6 @@ public:
         listWidget_2->setGeometry(QRect(0, 0, 471, 301));
         listWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget_2->setDefaultDropAction(Qt::IgnoreAction);
-
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
         open_Button = new QPushButton(images_Page);
         open_Button->setObjectName(QStringLiteral("open_Button"));
@@ -1404,7 +1411,6 @@ public:
         work_Images->setGeometry(QRect(10, 10, 331, 261));
         work_Images->setEditTriggers(QAbstractItemView::NoEditTriggers);
         work_Images->setDefaultDropAction(Qt::IgnoreAction);
-
         scrollArea_3->setWidget(scrollAreaWidgetContents_3);
         open_Button_2 = new QPushButton(images_Page_2);
         open_Button_2->setObjectName(QStringLiteral("open_Button_2"));
@@ -1557,7 +1563,7 @@ public:
 
         label_16 = new QLabel(page4);
         label_16->setObjectName(QStringLiteral("label_16"));
-        label_16->setGeometry(QRect(20, 470, 211, 41));
+        label_16->setGeometry(QRect(30, 510, 211, 31));
         sizePolicy3.setHeightForWidth(label_16->sizePolicy().hasHeightForWidth());
         label_16->setSizePolicy(sizePolicy3);
         QFont font9;
@@ -1747,7 +1753,7 @@ public:
 
         layoutWidget1 = new QWidget(page4);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(200, 480, 271, 31));
+        layoutWidget1->setGeometry(QRect(180, 510, 271, 31));
         sizePolicy3.setHeightForWidth(layoutWidget1->sizePolicy().hasHeightForWidth());
         layoutWidget1->setSizePolicy(sizePolicy3);
         horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
@@ -1773,7 +1779,7 @@ public:
 
         layoutWidget2 = new QWidget(page4);
         layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(30, 530, 551, 30));
+        layoutWidget2->setGeometry(QRect(30, 550, 551, 30));
         sizePolicy3.setHeightForWidth(layoutWidget2->sizePolicy().hasHeightForWidth());
         layoutWidget2->setSizePolicy(sizePolicy3);
         horizontalLayout_6 = new QHBoxLayout(layoutWidget2);
@@ -1833,7 +1839,7 @@ public:
 
         layoutWidget3 = new QWidget(page4);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(30, 560, 551, 30));
+        layoutWidget3->setGeometry(QRect(30, 580, 551, 30));
         sizePolicy3.setHeightForWidth(layoutWidget3->sizePolicy().hasHeightForWidth());
         layoutWidget3->setSizePolicy(sizePolicy3);
         horizontalLayout_11 = new QHBoxLayout(layoutWidget3);
@@ -1885,7 +1891,7 @@ public:
 
         layoutWidget4 = new QWidget(page4);
         layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(30, 590, 551, 30));
+        layoutWidget4->setGeometry(QRect(30, 610, 551, 30));
         sizePolicy3.setHeightForWidth(layoutWidget4->sizePolicy().hasHeightForWidth());
         layoutWidget4->setSizePolicy(sizePolicy3);
         horizontalLayout_13 = new QHBoxLayout(layoutWidget4);
@@ -1955,6 +1961,29 @@ public:
 
         horizontalLayout_31->addWidget(ptm_Luminance);
 
+        layoutWidget_2 = new QWidget(page4);
+        layoutWidget_2->setObjectName(QStringLiteral("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(20, 470, 581, 25));
+        sizePolicy3.setHeightForWidth(layoutWidget_2->sizePolicy().hasHeightForWidth());
+        layoutWidget_2->setSizePolicy(sizePolicy3);
+        horizontalLayout_12 = new QHBoxLayout(layoutWidget_2);
+        horizontalLayout_12->setObjectName(QStringLiteral("horizontalLayout_12"));
+        horizontalLayout_12->setContentsMargins(0, 0, 0, 0);
+        previous_Image_Btn = new QPushButton(layoutWidget_2);
+        previous_Image_Btn->setObjectName(QStringLiteral("previous_Image_Btn"));
+        sizePolicy3.setHeightForWidth(previous_Image_Btn->sizePolicy().hasHeightForWidth());
+        previous_Image_Btn->setSizePolicy(sizePolicy3);
+
+        horizontalLayout_12->addWidget(previous_Image_Btn);
+
+        next_Image_Btn = new QPushButton(layoutWidget_2);
+        next_Image_Btn->setObjectName(QStringLiteral("next_Image_Btn"));
+        next_Image_Btn->setEnabled(true);
+        sizePolicy3.setHeightForWidth(next_Image_Btn->sizePolicy().hasHeightForWidth());
+        next_Image_Btn->setSizePolicy(sizePolicy3);
+
+        horizontalLayout_12->addWidget(next_Image_Btn);
+
         stackedWidget->addWidget(page4);
         page5 = new QWidget();
         page5->setObjectName(QStringLiteral("page5"));
@@ -1964,23 +1993,29 @@ public:
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         label_6 = new QLabel(page5);
         label_6->setObjectName(QStringLiteral("label_6"));
-        sizePolicy3.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy5);
         label_6->setFont(font);
 
         gridLayout_3->addWidget(label_6, 0, 0, 1, 1);
 
         btn4_2 = new QPushButton(page5);
         btn4_2->setObjectName(QStringLiteral("btn4_2"));
-        sizePolicy3.setHeightForWidth(btn4_2->sizePolicy().hasHeightForWidth());
-        btn4_2->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy6(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(btn4_2->sizePolicy().hasHeightForWidth());
+        btn4_2->setSizePolicy(sizePolicy6);
 
         gridLayout_3->addWidget(btn4_2, 1, 1, 1, 1);
 
         btn1_2 = new QPushButton(page5);
         btn1_2->setObjectName(QStringLiteral("btn1_2"));
-        sizePolicy3.setHeightForWidth(btn1_2->sizePolicy().hasHeightForWidth());
-        btn1_2->setSizePolicy(sizePolicy3);
+        sizePolicy6.setHeightForWidth(btn1_2->sizePolicy().hasHeightForWidth());
+        btn1_2->setSizePolicy(sizePolicy6);
 
         gridLayout_3->addWidget(btn1_2, 1, 2, 1, 1);
 
@@ -2000,11 +2035,14 @@ public:
         menuLanguage->setObjectName(QStringLiteral("menuLanguage"));
         menuHelp = new QMenu(menubar);
         menuHelp->setObjectName(QStringLiteral("menuHelp"));
+        menuFile = new QMenu(menubar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
         system_Ui->setMenuBar(menubar);
         statusbar = new QStatusBar(system_Ui);
         statusbar->setObjectName(QStringLiteral("statusbar"));
         system_Ui->setStatusBar(statusbar);
 
+        menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuEdit->menuAction());
         menubar->addAction(menuView->menuAction());
         menubar->addAction(menuLanguage->menuAction());
@@ -2023,12 +2061,13 @@ public:
         menuLanguage->addAction(actionKorean);
         menuLanguage->addAction(actionMandarin);
         menuLanguage->addAction(actionHindi);
+        menuFile->addAction(actionNew_Project);
 
         retranslateUi(system_Ui);
 
-        stackedWidget->setCurrentIndex(4);
-        toolBox->setCurrentIndex(1);
-        toolBox_2->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
+        toolBox->setCurrentIndex(3);
+        toolBox_2->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(system_Ui);
@@ -2091,6 +2130,7 @@ public:
         actionGerman_2->setText(QApplication::translate("system_Ui", "German", Q_NULLPTR));
         actionMandarin->setText(QApplication::translate("system_Ui", "Mandarin", Q_NULLPTR));
         actionHindi->setText(QApplication::translate("system_Ui", "Hindi", Q_NULLPTR));
+        actionNew_Project->setText(QApplication::translate("system_Ui", "New Project", Q_NULLPTR));
         image_Preview->setText(QString());
         label_4->setText(QApplication::translate("system_Ui", "Metadata", Q_NULLPTR));
         label_7->setText(QApplication::translate("system_Ui", "Preview", Q_NULLPTR));
@@ -2251,6 +2291,8 @@ public:
          << QApplication::translate("system_Ui", "RGB", Q_NULLPTR)
          << QApplication::translate("system_Ui", "LRGB", Q_NULLPTR)
         );
+        previous_Image_Btn->setText(QApplication::translate("system_Ui", "< Prev", Q_NULLPTR));
+        next_Image_Btn->setText(QApplication::translate("system_Ui", "Next >", Q_NULLPTR));
         label_6->setText(QApplication::translate("system_Ui", "PAGE 5", Q_NULLPTR));
         btn4_2->setText(QApplication::translate("system_Ui", "< Prev", Q_NULLPTR));
         btn1_2->setText(QApplication::translate("system_Ui", "Next >", Q_NULLPTR));
@@ -2258,6 +2300,7 @@ public:
         menuView->setTitle(QApplication::translate("system_Ui", "View", Q_NULLPTR));
         menuLanguage->setTitle(QApplication::translate("system_Ui", "Language", Q_NULLPTR));
         menuHelp->setTitle(QApplication::translate("system_Ui", "Help", Q_NULLPTR));
+        menuFile->setTitle(QApplication::translate("system_Ui", "File", Q_NULLPTR));
     } // retranslateUi
 
 };
