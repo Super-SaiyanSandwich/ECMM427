@@ -5,6 +5,7 @@
 #include "marble_Detection.h"
 #include "project_Wizard.h"
 #include "image_Gatherer.h"
+#include "splash_Screen.h"
 #define dumpval(x) qDebug()<<#x<<'='<<x
 
 #include <QTranslator>
@@ -44,6 +45,13 @@
 #include <fstream>
 #include <exception>
 
+#include <QBasicTimer>
+#include <QList>
+#include <QImage>
+#include <QDir>
+#include <QPainter>
+#include <QPaintEvent>
+
 #include <QThread>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
@@ -70,6 +78,8 @@ system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
+    setMouseTracking(false);
+
 
     crop_Selection_Screen = new QGraphicsScene(this);
     ui->image_Graphics_View->setScene(crop_Selection_Screen);
@@ -92,9 +102,10 @@ system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     ui->work_Images->addItem(list_Icon);
     ui->work_Images->setIconSize(QSize(60,60));
 
-//    ui->work_Images->setViewMode(QListWidget::IconMode);
-//    ui->work_Images->setResizeMode(QListWidget::Adjust);
-//    ui->work_Images->setIconSize(QSize(100,50));
+    ui->work_Images->setViewMode(QListWidget::IconMode);
+    ui->work_Images->setResizeMode(QListWidget::Adjust);
+
+    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(0))));
 
 
     image_Display();
@@ -111,7 +122,6 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFile);
-    //dialog.setNameFilter(tr("RTIe Files (*.rtie"));
 
     if(dialog.exec()){
         QFile project_File(dialog.selectedFiles().at(0).toLocal8Bit().constData());
@@ -125,7 +135,7 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     }
 
-    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
+//    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
 
     system_Ui::start();
 
@@ -165,7 +175,7 @@ void system_Ui::image_Display(){
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
-    qInfo() << "Item Selected:" << preview_Image;
+//    qInfo() << "Item Selected:" << preview_Image;
     this->base_Image = QImage(preview_Image);
     QPixmap pix = QPixmap::fromImage(this->base_Image);
     int w = ui->image_Preview->width();
@@ -198,7 +208,7 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
 
             line.append(stream.readLine()+"\n");
         }
-        qInfo()<<" ";
+//        qInfo()<<" ";
         line.removeAt(0);
         QString temp1 = line.value(0);
         QString temp2 = line.value(1);
@@ -318,7 +328,7 @@ void system_Ui::update_Crop_Preview_Image()
 
     QPixmap base_Pix = this->base_Image_2->pixmap();
     QPainter *paint = new QPainter(&base_Pix);
-    QPixmap target(h, w+5);
+    QPixmap target(h, w);
 
     paint = new QPainter(&target);
     tuple<int, int> pos = this->selected_Area->get_Position();
@@ -341,7 +351,7 @@ void system_Ui::update_Crop_Preview_Image()
     paint->end();
 }
 
-void system_Ui::inverted_Marker()
+void system_Ui::reload_Preview()
 {
     ui->preivew_Label_2->clear();
 
@@ -352,6 +362,7 @@ void system_Ui::on_work_Images_itemDoubleClicked(QListWidgetItem *item)
 {
     QString image_Path_2 = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(image_Path_2)));
+    this->reload_Preview();
     this->update_Main_Cropped_Image();
     this->reset_Crop_Image_Zoom();;
 }
@@ -368,9 +379,24 @@ void system_Ui::on_crop_btn_clicked()
     crop.save(image_Path);
 }
 
+/// \brief RESET THE X,Y,HEIGHT,WIDTH AND THE PREVIEW OF THE CROPPING BOX
 void system_Ui::on_cancel_btn_clicked()
 {
-    QApplication::exit();
+    this->reload_Preview();
+    selected_Area->set_Width(100);
+    selected_Area->set_Height(100);
+    selected_Area->set_Position(0,0);
+
+    ui->horizontal_Slider_X_2->setValue(0);
+    ui->horizontal_Slider_Y_2->setValue(0);
+    ui->horizontal_Slider_Height->setValue(100);
+    ui->horizontal_Slider_Width->setValue(100);
+
+
+    ui->spin_Box_X_2->setValue(0);
+    ui->spin_Box_Y_2->setValue(0);
+    ui->spin_Box_Height->setValue(100);
+    ui->spin_Box_Width->setValue(100);
 }
 
 /// \brief Updates the images displayed on screen by painting over the base image
@@ -429,68 +455,43 @@ void system_Ui::on_spin_Box_Y_2_valueChanged(int Y)
 
 void system_Ui::on_spin_Box_Height_valueChanged(double value)
 {
-//    this->height = height;
-
-//    ui->horizontal_Slider_Radius_2->setValue(height);
-//    this->update_Crop_Marker();
-
-//    ui->spin_Box_Y_2->setMaximum(base_Image_2.height() - height);
-//    ui->horizontal_Slider_Y_2->setMaximum(base_Image_2.height() - height);
-
-//    ui->spin_Box_X_2->setValue(this->x);
-//    ui->spin_Box_Y_2->setValue(this->y);
-//    ui->horizontal_Slider_X_2->setValue(this->x);
-//    ui->horizontal_Slider_Y_2->setValue(this->y);
-
-
-    double delta_heigth = value - selected_Area->get_Height();
+//    double delta_heigth = value - selected_Area->get_Height();
 
     this->selected_Area->set_Height(value);
-    this->selected_Area->set_Position(this->selected_Area->x() - delta_heigth, this->selected_Area->y() - delta_heigth);
+    this->selected_Area->set_Position(this->selected_Area->x() , this->selected_Area->y());// - delta_heigth);
 
     this->update_Main_Cropped_Image();
     this->update_Crop_Preview_Image();
-    this->set_Crop_Maximums();
+
+    ui->spin_Box_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
+    ui->horizontal_Slider_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
 
     ui->spin_Box_X_2->setValue(this->selected_Area->x());
     ui->spin_Box_Y_2->setValue(this->selected_Area->y());
     ui->horizontal_Slider_X_2->setValue(this->selected_Area->x());
     ui->horizontal_Slider_Y_2->setValue(this->selected_Area->y());
 
-//    ui->horizontal_Slider_Radius->setValue(height);
 }
 
 void system_Ui::on_spin_Box_Width_valueChanged(double value)
 {
 
-//    this->width = width;
-
-//    ui->horizontal_Slider_Radius_3->setValue(width);
-//    this->update_Crop_Marker();
-
-//    ui->spin_Box_X_2->setMaximum(base_Image_2.width() - 0.5*width);
-//    ui->horizontal_Slider_X_2->setMaximum(base_Image_2.width() - 0.5*width);
-
-//    ui->spin_Box_X_2->setValue(this->x);
-//    ui->spin_Box_Y_2->setValue(this->y);
-//    ui->horizontal_Slider_X_2->setValue(this->x);
-//    ui->horizontal_Slider_Y_2->setValue(this->y);
-
-    double delta_width = value - selected_Area->get_Width();
+//    double delta_width = value - selected_Area->get_Width();
 
     this->selected_Area->set_Width(value);
-    this->selected_Area->set_Position(this->selected_Area->x() - delta_width, this->selected_Area->y() - delta_width);
+    this->selected_Area->set_Position(this->selected_Area->x(), this->selected_Area->y());// - delta_width);
 
     this->update_Main_Cropped_Image();
     this->update_Crop_Preview_Image();
-    this->set_Crop_Maximums();
+
+    ui->spin_Box_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width()));
+    ui->horizontal_Slider_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width()));
 
     ui->spin_Box_X_2->setValue(this->selected_Area->x());
     ui->spin_Box_Y_2->setValue(this->selected_Area->y());
     ui->horizontal_Slider_X_2->setValue(this->selected_Area->x());
     ui->horizontal_Slider_Y_2->setValue(this->selected_Area->y());
 
-//    ui->horizontal_Slider_Radius->setValue(height);
 }
 
 void system_Ui::on_horizontal_Slider_X_2_valueChanged(int value)
@@ -509,29 +510,14 @@ void system_Ui::on_horizontal_Slider_Y_2_valueChanged(int value)
 
 void system_Ui::on_horizontal_Slider_Height_valueChanged(int value)
 {
-
-
-//    this->height = value;
-
-//    ui->spin_Box_Radius_2->setValue(value);
-//    this->update_Crop_Marker();
-
-//    ui->spin_Box_Y_2->setMaximum(base_Image_2.height() - height);
-//    ui->horizontal_Slider_Y_2->setMaximum(base_Image_2.height() - height);
-
-//    ui->spin_Box_X_2->setValue(this->x);
-//    ui->spin_Box_Y_2->setValue(this->y);
-//    ui->horizontal_Slider_X_2->setValue(this->x);
-//    ui->horizontal_Slider_Y_2->setValue(this->y);
-
-//    double delta_Height = value - selected_Area->get_Height();
-//     double delta_Height = selected_Area->get_Height() - value;
-
     this->selected_Area->set_Height(value);
     this->selected_Area->set_Position(this->selected_Area->x(), this->selected_Area->y());
 
     this->update_Main_Cropped_Image();
     this->update_Crop_Preview_Image();
+
+    ui->spin_Box_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
+    ui->horizontal_Slider_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
     this->set_Crop_Maximums();
 
     ui->spin_Box_X_2->setValue(this->selected_Area->x());
@@ -546,16 +532,14 @@ void system_Ui::on_horizontal_Slider_Height_valueChanged(int value)
 
 void system_Ui::on_horizontal_Slider_Width_valueChanged(int value)
 {
-
-//    double delta_Width = selected_Area->get_Width()- value;
-    //double delta_Width = value -  selected_Area->get_Width() ;
-
     this->selected_Area->set_Width(value);
-//    this->selected_Area->set_Position(this->selected_Area->x() - delta_Width, this->selected_Area->y() - delta_Width);
-     this->selected_Area->set_Position(this->selected_Area->x(), this->selected_Area->y());
+    this->selected_Area->set_Position(this->selected_Area->x(), this->selected_Area->y());
 
     this->update_Main_Cropped_Image();
     this->update_Crop_Preview_Image();
+
+    ui->spin_Box_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width()));
+    ui->horizontal_Slider_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width()));
     this->set_Crop_Maximums();
 
     ui->spin_Box_X_2->setValue(this->selected_Area->x());
@@ -599,7 +583,7 @@ bool system_Ui::load_Cropping_File(const QString &fileName)
     QImageReader reader(fileName);
     reader.setAutoTransform(true);
     const QImage new_Image_2 = reader.read();
-    qInfo()<<new_Image_2;
+//    qInfo()<<new_Image_2;
     if (new_Image_2.isNull()) {
         QMessageBox::information(this, QGuiApplication::applicationDisplayName(),
                                  tr("Cannot load %1: %2")
@@ -679,78 +663,16 @@ void system_Ui::on_zoom_Out_Button_2_clicked()
 
 void system_Ui::set_Crop_Maximums()
 {
-    double center = ((0.5 *selected_Area->get_Width()) + (0.5*selected_Area->get_Height()));
-    ui->horizontal_Slider_X_2->setMaximum(this->base_Image_2->pixmap().width() - (center * 2)); // check this OVER!!
-    ui->horizontal_Slider_Y_2->setMaximum(this->base_Image_2->pixmap().width() - (center * 2));
-}
+//    double center = ((0.5 * selected_Area->get_Width())+
+//                     (0.5 * selected_Area->get_Height()));
+//    ui->horizontal_Slider_X_2->setMaximum(selected_Area->x()- (center) * 2);
+//    ui->horizontal_Slider_Y_2->setMaximum(selected_Area->y()- (center) * 2);
 
-void system_Ui::on_test_Button_2_clicked()
-{
-    QRgb pixel;
-    QColor col;
-    int r, g, b;
+    ui->horizontal_Slider_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width())); // check this OVER!!
+    ui->horizontal_Slider_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
 
-    vector<tuple<int,int>> cluster_Points;
-
-    QImage cropped_image = ui->preivew_Label_2->pixmap()->toImage();
-
-
-    for(int x = 0; x < cropped_image.width(); x++)
-    {
-        for (int y = 0; y < cropped_image.height(); y++) {
-            pixel  = cropped_image.pixel(x,y);
-            col = QRgb(pixel);
-            col.getRgb(&r, &g, &b);
-
-            r -= CONTRAST_PIVOT_POINT;
-            r *= CONTRAST_SCALE;
-            r += CONTRAST_PIVOT_POINT;
-            r = r > 255 ? 255 : r;
-            r = r < 0 ? 0 : r;
-
-            g -= CONTRAST_PIVOT_POINT;
-            g *= CONTRAST_SCALE;
-            g += CONTRAST_PIVOT_POINT;
-            g = g > 255 ? 255 : g;
-            g = g < 0 ? 0 : g;
-
-            b -= CONTRAST_PIVOT_POINT;
-            b *= CONTRAST_SCALE;
-            b += CONTRAST_PIVOT_POINT;
-            b = b > 255 ? 255 : b;
-            b = b < 0 ? 0 : b;
-
-
-            if ((r == g) and (g == b) and (b == 255))
-            {
-                cluster_Points.emplace_back(x ,y);
-            }
-
-
-            cropped_image.setPixel(x, y, qRgb(r, g, b));
-
-        }
-    }
-
-    double sum_X = 0;
-    double sum_Y = 0;
-    int count = 0;
-
-    for (tuple<int, int> p : cluster_Points)
-    {
-        sum_X += get<0>(p);
-        sum_Y += get<1>(p);
-        count++;
-    }
-    sum_X /= count;
-    sum_Y /= count;
-
-    sum_X = int(sum_X);
-    sum_Y = int(sum_Y);
-
-
-    QPixmap base_Pix = QPixmap::fromImage(cropped_image);
-    ui->preivew_Label_2->setPixmap(base_Pix);
+    ui->spin_Box_X_2->setMaximum(this->base_Image_2->pixmap().width() - (selected_Area->get_Width()));
+    ui->spin_Box_Y_2->setMaximum(this->base_Image_2->pixmap().height() - (selected_Area->get_Height()));
 }
 
 void system_Ui::on_horizontal_Slider_X_2_sliderReleased()
@@ -775,18 +697,18 @@ QString system_Ui::load_Crop_Image_Icons()
     while (file_Iterator.hasNext())
     {
         QThread *thread = new QThread();
-        image_Gatherer *igs = new image_Gatherer();
-        igs->moveToThread( thread );
+        image_Gatherer *ig = new image_Gatherer();
+        ig->moveToThread( thread );
 
         QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
         QFile current_Image(path);
         QFileInfo current_Image_Info(current_Image.fileName());
         QString file_Name(current_Image_Info.fileName());
 
-        QObject::connect( thread, SIGNAL(started()), igs, SLOT(start()) );
-        QObject::connect( igs, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Crop_Item_To_List(const QImage &, const QString &)));
+        QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
+        QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Crop_Item_To_List(const QImage &, const QString &)));
 
-        igs->setInput(file_Name);
+        ig->setInput(file_Name);
         thread_Count++;
         thread->start();
     }
@@ -795,7 +717,7 @@ QString system_Ui::load_Crop_Image_Icons()
 
 void system_Ui::add_Crop_Item_To_List(QImage image, QString filename)
 {
-    qInfo() << "ITEM BEING ADDED: " << filename;
+//    qInfo() << "ITEM BEING ADDED: " << filename;
     QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
     ui->work_Images->addItem(item);
 
@@ -819,6 +741,11 @@ void system_Ui::showEvent(QShowEvent *ev)
     this->reset_Crop_Image_Zoom();
     this->update_Crop_Preview_Image();
     this->set_Crop_Maximums();
+
+    Q_UNUSED(ev);
+#ifndef QT_NO_CURSOR
+    setCursor(Qt::BlankCursor);
+#endif
 }
 
 void system_Ui::on_check_Box_Spherical_4_stateChanged(int arg)
@@ -879,7 +806,7 @@ bool system_Ui::eventFilter(QObject *object, QEvent *event)
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
     //ui->stackedWidget->setCurrentIndex(1);
-    marble_Detection *md = new marble_Detection(this, ui->work_Images->item(0)->text());
+    /*marble_Detection *md = new*/ marble_Detection(this, ui->work_Images->item(0)->text());
 }
 
 void system_Ui::on_remove_Marble_Btn_clicked()
@@ -1016,11 +943,11 @@ void system_Ui::on_generate_Btn_clicked()
          * A summary is given containing all images that have been confirmed to be
          * deleted as well as those that have confirmed to be cancelled.
          */
-        QString summary = "The following fields were empty:\n blah blah.\n Please fill them in and then generate your .ptm file.";
+        QString summary = "The following fields were empty:\n blah blah.\n Please fill them in and then generate your .ptm or .hsh file";
 
         QMessageBox Error_Summary;
-        Error_Summary.setText("Delete operation summary.");
-        Error_Summary.setInformativeText(summary );
+        Error_Summary.setText("Fitter Error");
+        Error_Summary.setInformativeText(summary);
         Error_Summary.setStandardButtons(QMessageBox::Ok);
         Error_Summary.setDefaultButton(QMessageBox::Ok);
         Error_Summary.exec();
@@ -1103,6 +1030,50 @@ void system_Ui::on_hsh_Fitter_clicked()
     ui->generate_Btn->setEnabled(true);
 }
 
+
+
+QStringList system_Ui:: get_File_List()
+{
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
+    QStringListIterator file_Iterator(path_List);
+    QStringList file_Names;
+    while (file_Iterator.hasNext())
+    {
+
+        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
+        QString file_Name(path);
+        file_Names.append(file_Name);
+    }
+
+    return file_Names;
+}
+
+
+void system_Ui::on_previous_Image_Btn_clicked()
+{
+    QStringList image_Paths = get_File_List();
+    ui->image_Label_3->clear();
+    current_Slide--;
+
+    if (current_Slide <= 0)
+        current_Slide = image_Paths.size()-1;
+
+
+
+    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(current_Slide))));
+    ui->image_Label_3->update();
+}
+
+void system_Ui::on_next_Image_Btn_clicked()
+{
+    QStringList image_Paths = get_File_List();
+    ui->image_Label_3->clear();
+    current_Slide++;
+    if (current_Slide >= image_Paths.size())
+      current_Slide = 0;
+    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(current_Slide))));
+    ui->image_Label_3->update();
+}
 
 
 //===============================================================
@@ -1199,5 +1170,8 @@ void system_Ui::on_actionEnglish_triggered()
 
 
 //==================== Metadata =========================
+
+
+
 
 

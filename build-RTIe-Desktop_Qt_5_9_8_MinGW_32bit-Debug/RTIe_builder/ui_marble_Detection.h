@@ -43,7 +43,6 @@ public:
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout_4;
     QGraphicsView *marbleGraphicView;
-    QWidget *layoutWidget;
     QWidget *sidebarContainerWidget;
     QHBoxLayout *horizontalLayout;
     QFrame *line_2;

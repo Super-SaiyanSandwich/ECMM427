@@ -264,12 +264,9 @@ void marble_Detection::showEvent(QShowEvent *ev)
 
 void marble_Detection::add_Item_To_List(QImage image, QString filename)
 {
-    qInfo() << "ITEM BEING ADDED: " << filename;
+    qInfo() << "ITEM BEING ADDED FOR MARBLE: " << filename;
     QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
     ui->listWidget->addItem(item);
-    //qInfo() << "\t-Height:"<< image.height();
-    //qInfo() << "\t-Width:"<< image.width();
-
     this->thread_Count--;
 
     if (thread_Count == 0){
