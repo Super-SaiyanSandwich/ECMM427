@@ -166,8 +166,8 @@ private:
     void on_spin_Box_Height_valueChanged(double arg1);
     QString load_Image_Icons();
 
-    QPixmap apply_Effect_To_Image(QPixmap src, QGraphicsEffect *effect,int extent = 0);
-    QImage apply_Effect_To_Image(QImage src, QGraphicsEffect *effect,int extent = 0);
+    QPixmap apply_Effect_To_Pixmap(QPixmap src, QGraphicsEffect *effect,int extent = 0);
+    QImage apply_Effect_To_Pixmap(QImage src, QGraphicsEffect *effect,int extent = 0);
 
     void update_Main_Cropped_Image();
 

@@ -284,7 +284,7 @@ void system_Ui::on_delete_Btn_clicked()
 
 
 // From::  https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
-QImage system_Ui::apply_Effect_To_Image(QImage src, QGraphicsEffect *effect, int extent)
+QImage system_Ui::apply_Effect_To_Pixmap(QImage src, QGraphicsEffect *effect, int extent)
 {
     if(src.isNull()) return QImage();   //No need to do anything else!
     if(!effect) return src;             //No need to do anything else!
@@ -300,7 +300,7 @@ QImage system_Ui::apply_Effect_To_Image(QImage src, QGraphicsEffect *effect, int
     return res;
 }
 
-QPixmap system_Ui::apply_Effect_To_Image(QPixmap src, QGraphicsEffect *effect, int extent)
+QPixmap system_Ui::apply_Effect_To_Pixmap(QPixmap src, QGraphicsEffect *effect, int extent)
 {
     if(src.isNull()) return QPixmap();   //No need to do anything else!
     if(!effect) return src;             //No need to do anything else!
@@ -744,7 +744,7 @@ void system_Ui::showEvent(QShowEvent *ev)
 
     Q_UNUSED(ev);
 #ifndef QT_NO_CURSOR
-    setCursor(Qt::BlankCursor);
+   // setCursor(Qt::BlankCursor);
 #endif
 }
 
