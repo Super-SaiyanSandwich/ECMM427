@@ -21,8 +21,8 @@ class project_Wizard : public QWizard
 public:
     explicit project_Wizard(QWidget *parent = nullptr);
     ~project_Wizard();
-    static QString editor_Name;
-    static QString valid;
+   static QString valid;
+   QString editor;    //  This stays here !!
 
 
 private:
@@ -42,7 +42,6 @@ private slots:
     void create_Project();
 
     void on_project_Name_Line_Edit_textChanged(const QString &arg1);
-//    void on_choose_Dialog_clicked();
 };
 
 #endif // project_Wizard_H

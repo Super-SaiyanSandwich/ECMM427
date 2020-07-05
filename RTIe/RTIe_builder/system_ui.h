@@ -19,6 +19,7 @@
 #include <QPaintEvent>
 
 #include "cropped_area.h"
+#include "marble_Detection.h"
 
 namespace Ui {
 class system_Ui;
@@ -65,7 +66,7 @@ public slots:
     void on_cancel_btn_clicked();
     void on_crop_btn_clicked();
     void update_Crop_Preview_Image();
-    QStringList findQmFiles();
+//    QStringList findQmFiles();
     void image_Crop_Zoom(int percent);
 
 signals:
@@ -116,7 +117,7 @@ private slots:
 
     void on_fitter_Location_clicked();
 
-    void on_actionEnglish_triggered();
+//    void on_actionEnglish_triggered();
 
     void on_resize_Checkbox_clicked();
 
@@ -129,7 +130,7 @@ private slots:
     void on_horizontal_Slider_X_2_sliderReleased();
     void add_Crop_Item_To_List(const QImage image, const QString filename);
     void reload_Preview();
-
+    QString error_Message(bool);
 
     QStringList get_File_List();
 
@@ -138,7 +139,12 @@ private slots:
     void on_next_Image_Btn_clicked();
 
 
+
+    void on_cancel_fitter_Btn_clicked();
+
 private:
+//    marble_Detection marbles;
+
     //=========================== Crop Image Page ===============================================================
     Ui::system_Ui *ui;
 

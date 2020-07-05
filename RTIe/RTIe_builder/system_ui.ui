@@ -55,7 +55,7 @@
        <number>14</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page1">
        <property name="sizePolicy">
@@ -482,7 +482,7 @@
         </row>
         <row>
          <property name="text">
-          <string>Width (cm)</string>
+          <string>Width </string>
          </property>
          <property name="font">
           <font>
@@ -504,7 +504,7 @@
         </row>
         <row>
          <property name="text">
-          <string>Height (cm)</string>
+          <string>Height </string>
          </property>
          <property name="font">
           <font>
@@ -756,8 +756,8 @@ QToolBox::tab:selected {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>500</width>
-           <height>221</height>
+           <width>100</width>
+           <height>30</height>
           </rect>
          </property>
          <attribute name="label">
@@ -898,8 +898,8 @@ QToolBox::tab:selected {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>500</width>
-           <height>221</height>
+           <width>114</width>
+           <height>163</height>
           </rect>
          </property>
          <attribute name="label">
@@ -1025,8 +1025,8 @@ QToolBox::tab:selected {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>500</width>
-           <height>221</height>
+           <width>100</width>
+           <height>30</height>
           </rect>
          </property>
          <attribute name="label">
@@ -1711,8 +1711,8 @@ QToolBox::tab:selected {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>360</width>
-           <height>353</height>
+           <width>100</width>
+           <height>30</height>
           </rect>
          </property>
          <attribute name="label">
@@ -1860,8 +1860,8 @@ QToolBox::tab:selected {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>360</width>
-           <height>353</height>
+           <width>102</width>
+           <height>214</height>
           </rect>
          </property>
          <attribute name="label">
@@ -2049,8 +2049,8 @@ QToolBox::tab:selected {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>360</width>
-           <height>353</height>
+           <width>100</width>
+           <height>30</height>
           </rect>
          </property>
          <attribute name="label">
@@ -2936,10 +2936,10 @@ QScrollBar::sub-line:horizontal {
        <widget class="QLabel" name="label_18">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>10</y>
-          <width>211</width>
-          <height>41</height>
+          <x>21</x>
+          <y>11</y>
+          <width>77</width>
+          <height>19</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -2960,7 +2960,7 @@ QScrollBar::sub-line:horizontal {
          </font>
         </property>
         <property name="text">
-         <string>Preview</string>
+         <string>Preview :</string>
         </property>
        </widget>
        <widget class="QWidget" name="layoutWidget">
@@ -2981,6 +2981,9 @@ QScrollBar::sub-line:horizontal {
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="QPushButton" name="generate_Btn">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>
@@ -2993,7 +2996,7 @@ QScrollBar::sub-line:horizontal {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="cancel_fitter_Btn">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -3167,128 +3170,6 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="layoutWidget_14">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>680</y>
-          <width>211</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_17">
-         <item>
-          <widget class="QLabel" name="label_28">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Performance Profile:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="performance_Profile">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <item>
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>3</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget_15">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>710</y>
-          <width>211</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_18">
-         <item>
-          <widget class="QLabel" name="label_29">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Memory Profile:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="Memory_Profile">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <item>
-            <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>3</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QWidget" name="layoutWidget_13">
         <property name="geometry">
          <rect>
@@ -3320,6 +3201,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QComboBox" name="hsh_Order">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>
@@ -3333,17 +3217,17 @@ p, li { white-space: pre-wrap; }
            </item>
            <item>
             <property name="text">
-             <string>1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
              <string>2</string>
             </property>
            </item>
            <item>
             <property name="text">
              <string>3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4</string>
             </property>
            </item>
           </widget>
@@ -3401,6 +3285,9 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="text">
             <string>HSH</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -3917,7 +3804,7 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>370</x>
-          <y>740</y>
+          <y>680</y>
           <width>211</width>
           <height>31</height>
          </rect>
@@ -3944,6 +3831,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QComboBox" name="ptm_Luminance">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>
@@ -4016,6 +3906,28 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
+       <widget class="QLabel" name="image_Name">
+        <property name="geometry">
+         <rect>
+          <x>105</x>
+          <y>11</y>
+          <width>381</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Black</family>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="page5">
        <property name="sizePolicy">
@@ -4024,54 +3936,7 @@ p, li { white-space: pre-wrap; }
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>48</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>PAGE 5</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="btn4_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>&lt; Prev</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="btn1_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Next &gt;</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <layout class="QGridLayout" name="gridLayout_3"/>
       </widget>
      </widget>
     </item>
@@ -4098,23 +3963,6 @@ p, li { white-space: pre-wrap; }
     <addaction name="action_Paste"/>
     <addaction name="action_Clear"/>
    </widget>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>View</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuLanguage">
-    <property name="title">
-     <string>Language</string>
-    </property>
-    <addaction name="actionEnglish"/>
-    <addaction name="actionFrench"/>
-    <addaction name="actionGerman"/>
-    <addaction name="actionGerman_2"/>
-    <addaction name="actionKorean"/>
-    <addaction name="actionMandarin"/>
-    <addaction name="actionHindi"/>
-   </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
@@ -4128,8 +3976,6 @@ p, li { white-space: pre-wrap; }
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuView"/>
-   <addaction name="menuLanguage"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
