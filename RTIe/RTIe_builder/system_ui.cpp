@@ -734,9 +734,9 @@ void system_Ui::showEvent(QShowEvent *ev)
 {
     QMainWindow::showEvent(ev);
 
-    this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
-    ui->horizontal_Slider_Width->setMaximum(this->base_Image_2->pixmap().width());
-    ui->horizontal_Slider_Height->setMaximum(this->base_Image_2->pixmap().height());
+    //this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
+    //ui->horizontal_Slider_Width->setMaximum(this->base_Image_2->pixmap().width());
+    //ui->horizontal_Slider_Height->setMaximum(this->base_Image_2->pixmap().height());
 
     this->reset_Crop_Image_Zoom();
     this->update_Crop_Preview_Image();
@@ -805,8 +805,8 @@ bool system_Ui::eventFilter(QObject *object, QEvent *event)
 
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex(1);
-    /*marble_Detection *md = new*/ marble_Detection(this, ui->work_Images->item(0)->text());
+    ui->stackedWidget->setCurrentIndex(1);
+    //*marble_Detection *md = new*/ marble_Detection(this, ui->work_Images->item(0)->text());
 }
 
 void system_Ui::on_remove_Marble_Btn_clicked()

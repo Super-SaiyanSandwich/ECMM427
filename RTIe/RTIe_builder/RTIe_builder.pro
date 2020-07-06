@@ -13,6 +13,7 @@ SOURCES += \
     marble.cpp \
     marble_Detection.cpp \
     marble_List_Item.cpp \
+    marble_widget.cpp \
     new_Project.cpp \
     new_Project_Settings.cpp \
     project_Wizard.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     marble.h \
     marble_Detection.h \
     marble_List_Item.h \
+    marble_widget.h \
     new_Project.h \
     new_Project_Settings.h \
     project_Wizard.h \
@@ -38,6 +40,7 @@ HEADERS += \
 
 FORMS += \
     marble_Detection.ui \
+    marble_widget.ui \
     project_Wizard.ui \
     system_ui.ui
 

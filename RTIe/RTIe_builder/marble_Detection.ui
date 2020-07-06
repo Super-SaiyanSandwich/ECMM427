@@ -176,7 +176,7 @@ QToolBox::tab:selected {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>249</width>
+                <width>296</width>
                 <height>488</height>
                </rect>
               </property>
@@ -196,7 +196,7 @@ QToolBox::tab:selected {
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>227</width>
+                      <width>274</width>
                       <height>433</height>
                      </rect>
                     </property>
@@ -791,7 +791,7 @@ QScrollBar::sub-line:horizontal {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>249</width>
+                <width>294</width>
                 <height>488</height>
                </rect>
               </property>
@@ -809,7 +809,7 @@ QScrollBar::sub-line:horizontal {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>229</width>
+                    <width>274</width>
                     <height>406</height>
                    </rect>
                   </property>
