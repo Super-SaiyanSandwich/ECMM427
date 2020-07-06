@@ -1945,7 +1945,14 @@ public:
         progress_Bar->setValue(0);
         status = new QLabel(page4);
         status->setObjectName(QStringLiteral("status"));
-        status->setGeometry(QRect(746, 680, 111, 20));
+        status->setGeometry(QRect(746, 680, 151, 20));
+        QFont font11;
+        font11.setFamily(QStringLiteral("MS Sans Serif"));
+        font11.setPointSize(12);
+        font11.setBold(true);
+        font11.setItalic(true);
+        font11.setWeight(75);
+        status->setFont(font11);
         stackedWidget->addWidget(page4);
         page5 = new QWidget();
         page5->setObjectName(QStringLiteral("page5"));

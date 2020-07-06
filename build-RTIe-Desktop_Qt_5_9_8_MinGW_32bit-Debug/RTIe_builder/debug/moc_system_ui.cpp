@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_system_Ui_t {
-    QByteArrayData data[68];
-    char stringdata0[1602];
+    QByteArrayData data[66];
+    char stringdata0[1590];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -96,9 +96,7 @@ QT_MOC_LITERAL(61, 1484, 13), // "get_File_List"
 QT_MOC_LITERAL(62, 1498, 29), // "on_previous_Image_Btn_clicked"
 QT_MOC_LITERAL(63, 1528, 25), // "on_next_Image_Btn_clicked"
 QT_MOC_LITERAL(64, 1554, 28), // "on_cancel_fitter_Btn_clicked"
-QT_MOC_LITERAL(65, 1583, 6), // "result"
-QT_MOC_LITERAL(66, 1590, 8), // "QProcess"
-QT_MOC_LITERAL(67, 1599, 2) // "op"
+QT_MOC_LITERAL(65, 1583, 6) // "result"
 
     },
     "system_Ui\0inputReceived\0\0image_Display\0"
@@ -146,8 +144,7 @@ QT_MOC_LITERAL(67, 1599, 2) // "op"
     "reload_Preview\0error_Message\0get_File_List\0"
     "on_previous_Image_Btn_clicked\0"
     "on_next_Image_Btn_clicked\0"
-    "on_cancel_fitter_Btn_clicked\0result\0"
-    "QProcess\0op"
+    "on_cancel_fitter_Btn_clicked\0result"
 };
 #undef QT_MOC_LITERAL
 
@@ -220,7 +217,7 @@ static const uint qt_meta_data_system_Ui[] = {
       62,    0,  364,    2, 0x08 /* Private */,
       63,    0,  365,    2, 0x08 /* Private */,
       64,    0,  366,    2, 0x08 /* Private */,
-      65,    1,  367,    2, 0x08 /* Private */,
+      65,    0,  367,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -278,7 +275,7 @@ static const uint qt_meta_data_system_Ui[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 66,   67,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -344,7 +341,7 @@ void system_Ui::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 50: _t->on_previous_Image_Btn_clicked(); break;
         case 51: _t->on_next_Image_Btn_clicked(); break;
         case 52: _t->on_cancel_fitter_Btn_clicked(); break;
-        case 53: _t->result((*reinterpret_cast< QProcess(*)>(_a[1]))); break;
+        case 53: _t->result(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

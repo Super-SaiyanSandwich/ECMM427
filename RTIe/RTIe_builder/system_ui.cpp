@@ -901,7 +901,7 @@ void system_Ui::on_generate_Btn_clicked()
             /* the ptm fitter has command-line args of :
                     <fitter location> -i <lp file location> -o <destination filepath> -f <rgb / lrgb>
             */
-            ui->status->setText("Running...");
+            ui->status->setText("Loading...");
             ui->generate_Btn->setDisabled(true);
             fitter_Location += fitter_Args.join(" ");   // entire command line executable with the arguments
 
@@ -1122,6 +1122,7 @@ QString system_Ui:: error_Message(bool hsh)
 void system_Ui::on_cancel_fitter_Btn_clicked()
 {
     ui->progress_Bar->reset();
+    ui->status->setText("");
     ui->fitter_Info->clear();
     ui->temp->clear();
     ui->fitter_Placeholder->clear();
