@@ -28,6 +28,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
@@ -209,7 +210,7 @@ public:
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *generate_Btn;
-    QPushButton *pushButton_4;
+    QPushButton *cancel_fitter_Btn;
     QSplitter *splitter_2;
     QLabel *label_14;
     QTextBrowser *fitter_Info;
@@ -221,14 +222,6 @@ public:
     QCheckBox *resize_Checkbox;
     QLineEdit *width_Measurement;
     QLineEdit *height_Measurement;
-    QWidget *layoutWidget_14;
-    QHBoxLayout *horizontalLayout_17;
-    QLabel *label_28;
-    QComboBox *performance_Profile;
-    QWidget *layoutWidget_15;
-    QHBoxLayout *horizontalLayout_18;
-    QLabel *label_29;
-    QComboBox *Memory_Profile;
     QWidget *layoutWidget_13;
     QHBoxLayout *horizontalLayout_16;
     QLabel *label_27;
@@ -260,15 +253,13 @@ public:
     QHBoxLayout *horizontalLayout_12;
     QPushButton *previous_Image_Btn;
     QPushButton *next_Image_Btn;
+    QLabel *image_Name;
+    QProgressBar *progress_Bar;
+    QLabel *status;
     QWidget *page5;
     QGridLayout *gridLayout_3;
-    QLabel *label_6;
-    QPushButton *btn4_2;
-    QPushButton *btn1_2;
     QMenuBar *menubar;
     QMenu *menuEdit;
-    QMenu *menuView;
-    QMenu *menuLanguage;
     QMenu *menuHelp;
     QMenu *menuFile;
     QStatusBar *statusbar;
@@ -468,8 +459,8 @@ public:
             metadata_Table->setColumnCount(1);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         metadata_Table->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        if (metadata_Table->rowCount() < 8)
-            metadata_Table->setRowCount(8);
+        if (metadata_Table->rowCount() < 7)
+            metadata_Table->setRowCount(7);
         QFont font3;
         font3.setPointSize(10);
         font3.setBold(true);
@@ -509,19 +500,13 @@ public:
         __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
         __qtablewidgetitem6->setFont(font3);
         __qtablewidgetitem6->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem6->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(5, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
         __qtablewidgetitem7->setTextAlignment(Qt::AlignCenter);
         __qtablewidgetitem7->setFont(font3);
         __qtablewidgetitem7->setBackground(QColor(0, 85, 255));
+        __qtablewidgetitem7->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(6, __qtablewidgetitem7);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        __qtablewidgetitem8->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem8->setFont(font3);
-        __qtablewidgetitem8->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem8->setForeground(brush);
-        metadata_Table->setVerticalHeaderItem(7, __qtablewidgetitem8);
         metadata_Table->setObjectName(QStringLiteral("metadata_Table"));
         metadata_Table->setGeometry(QRect(10, 558, 501, 192));
         sizePolicy3.setHeightForWidth(metadata_Table->sizePolicy().hasHeightForWidth());
@@ -637,7 +622,7 @@ public:
 "}*/"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QStringLiteral("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 500, 221));
+        movement_Page->setGeometry(QRect(0, 0, 100, 30));
         spin_Box_X = new QSpinBox(movement_Page);
         spin_Box_X->setObjectName(QStringLiteral("spin_Box_X"));
         spin_Box_X->setGeometry(QRect(10, 37, 52, 20));
@@ -675,7 +660,7 @@ public:
         toolBox->addItem(movement_Page, QStringLiteral("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QStringLiteral("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 500, 221));
+        scale_Page->setGeometry(QRect(0, 0, 114, 163));
         gridLayout_11 = new QGridLayout(scale_Page);
         gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
         verticalLayout_3 = new QVBoxLayout();
@@ -736,7 +721,7 @@ public:
         toolBox->addItem(scale_Page, QStringLiteral("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QStringLiteral("tools_Page"));
-        tools_Page->setGeometry(QRect(0, 0, 500, 221));
+        tools_Page->setGeometry(QRect(0, 0, 100, 30));
         zoom_Label = new QLabel(tools_Page);
         zoom_Label->setObjectName(QStringLiteral("zoom_Label"));
         zoom_Label->setGeometry(QRect(11, 11, 37, 16));
@@ -1053,7 +1038,7 @@ public:
 "}*/"));
         movement_Page_2 = new QWidget();
         movement_Page_2->setObjectName(QStringLiteral("movement_Page_2"));
-        movement_Page_2->setGeometry(QRect(0, 0, 360, 353));
+        movement_Page_2->setGeometry(QRect(0, 0, 100, 30));
         label_Y_2 = new QLabel(movement_Page_2);
         label_Y_2->setObjectName(QStringLiteral("label_Y_2"));
         label_Y_2->setEnabled(true);
@@ -1101,7 +1086,7 @@ public:
         toolBox_2->addItem(movement_Page_2, QStringLiteral("Position"));
         scale_Page_2 = new QWidget();
         scale_Page_2->setObjectName(QStringLiteral("scale_Page_2"));
-        scale_Page_2->setGeometry(QRect(0, 0, 360, 353));
+        scale_Page_2->setGeometry(QRect(0, 0, 102, 214));
         gridLayout_5 = new QGridLayout(scale_Page_2);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         check_Box_Spherical_2 = new QCheckBox(scale_Page_2);
@@ -1192,7 +1177,7 @@ public:
         toolBox_2->addItem(scale_Page_2, QStringLiteral("Scale"));
         tools_Page_2 = new QWidget();
         tools_Page_2->setObjectName(QStringLiteral("tools_Page_2"));
-        tools_Page_2->setGeometry(QRect(0, 0, 360, 353));
+        tools_Page_2->setGeometry(QRect(0, 0, 100, 30));
         zoom_Label_2 = new QLabel(tools_Page_2);
         zoom_Label_2->setObjectName(QStringLiteral("zoom_Label_2"));
         zoom_Label_2->setGeometry(QRect(100, 0, 71, 16));
@@ -1588,13 +1573,13 @@ public:
         image_Label_3->setAlignment(Qt::AlignCenter);
         label_18 = new QLabel(page4);
         label_18->setObjectName(QStringLiteral("label_18"));
-        label_18->setGeometry(QRect(20, 10, 211, 41));
+        label_18->setGeometry(QRect(21, 11, 77, 19));
         sizePolicy3.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
         label_18->setSizePolicy(sizePolicy3);
         label_18->setFont(font9);
         layoutWidget = new QWidget(page4);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(760, 700, 261, 41));
+        layoutWidget->setGeometry(QRect(760, 720, 261, 41));
         sizePolicy3.setHeightForWidth(layoutWidget->sizePolicy().hasHeightForWidth());
         layoutWidget->setSizePolicy(sizePolicy3);
         horizontalLayout_5 = new QHBoxLayout(layoutWidget);
@@ -1602,18 +1587,19 @@ public:
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
         generate_Btn = new QPushButton(layoutWidget);
         generate_Btn->setObjectName(QStringLiteral("generate_Btn"));
+        generate_Btn->setEnabled(true);
         sizePolicy3.setHeightForWidth(generate_Btn->sizePolicy().hasHeightForWidth());
         generate_Btn->setSizePolicy(sizePolicy3);
 
         horizontalLayout_5->addWidget(generate_Btn);
 
-        pushButton_4 = new QPushButton(layoutWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setEnabled(true);
-        sizePolicy3.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
-        pushButton_4->setSizePolicy(sizePolicy3);
+        cancel_fitter_Btn = new QPushButton(layoutWidget);
+        cancel_fitter_Btn->setObjectName(QStringLiteral("cancel_fitter_Btn"));
+        cancel_fitter_Btn->setEnabled(true);
+        sizePolicy3.setHeightForWidth(cancel_fitter_Btn->sizePolicy().hasHeightForWidth());
+        cancel_fitter_Btn->setSizePolicy(sizePolicy3);
 
-        horizontalLayout_5->addWidget(pushButton_4);
+        horizontalLayout_5->addWidget(cancel_fitter_Btn);
 
         splitter_2 = new QSplitter(page4);
         splitter_2->setObjectName(QStringLiteral("splitter_2"));
@@ -1685,50 +1671,6 @@ public:
 
         gridLayout_6->addWidget(height_Measurement, 3, 1, 1, 1);
 
-        layoutWidget_14 = new QWidget(page4);
-        layoutWidget_14->setObjectName(QStringLiteral("layoutWidget_14"));
-        layoutWidget_14->setGeometry(QRect(370, 680, 211, 31));
-        sizePolicy3.setHeightForWidth(layoutWidget_14->sizePolicy().hasHeightForWidth());
-        layoutWidget_14->setSizePolicy(sizePolicy3);
-        horizontalLayout_17 = new QHBoxLayout(layoutWidget_14);
-        horizontalLayout_17->setObjectName(QStringLiteral("horizontalLayout_17"));
-        horizontalLayout_17->setContentsMargins(0, 0, 0, 0);
-        label_28 = new QLabel(layoutWidget_14);
-        label_28->setObjectName(QStringLiteral("label_28"));
-        sizePolicy3.setHeightForWidth(label_28->sizePolicy().hasHeightForWidth());
-        label_28->setSizePolicy(sizePolicy3);
-
-        horizontalLayout_17->addWidget(label_28);
-
-        performance_Profile = new QComboBox(layoutWidget_14);
-        performance_Profile->setObjectName(QStringLiteral("performance_Profile"));
-        sizePolicy3.setHeightForWidth(performance_Profile->sizePolicy().hasHeightForWidth());
-        performance_Profile->setSizePolicy(sizePolicy3);
-
-        horizontalLayout_17->addWidget(performance_Profile);
-
-        layoutWidget_15 = new QWidget(page4);
-        layoutWidget_15->setObjectName(QStringLiteral("layoutWidget_15"));
-        layoutWidget_15->setGeometry(QRect(370, 710, 211, 31));
-        sizePolicy3.setHeightForWidth(layoutWidget_15->sizePolicy().hasHeightForWidth());
-        layoutWidget_15->setSizePolicy(sizePolicy3);
-        horizontalLayout_18 = new QHBoxLayout(layoutWidget_15);
-        horizontalLayout_18->setObjectName(QStringLiteral("horizontalLayout_18"));
-        horizontalLayout_18->setContentsMargins(0, 0, 0, 0);
-        label_29 = new QLabel(layoutWidget_15);
-        label_29->setObjectName(QStringLiteral("label_29"));
-        sizePolicy3.setHeightForWidth(label_29->sizePolicy().hasHeightForWidth());
-        label_29->setSizePolicy(sizePolicy3);
-
-        horizontalLayout_18->addWidget(label_29);
-
-        Memory_Profile = new QComboBox(layoutWidget_15);
-        Memory_Profile->setObjectName(QStringLiteral("Memory_Profile"));
-        sizePolicy3.setHeightForWidth(Memory_Profile->sizePolicy().hasHeightForWidth());
-        Memory_Profile->setSizePolicy(sizePolicy3);
-
-        horizontalLayout_18->addWidget(Memory_Profile);
-
         layoutWidget_13 = new QWidget(page4);
         layoutWidget_13->setObjectName(QStringLiteral("layoutWidget_13"));
         layoutWidget_13->setGeometry(QRect(370, 650, 211, 31));
@@ -1746,6 +1688,7 @@ public:
 
         hsh_Order = new QComboBox(layoutWidget_13);
         hsh_Order->setObjectName(QStringLiteral("hsh_Order"));
+        hsh_Order->setEnabled(true);
         sizePolicy3.setHeightForWidth(hsh_Order->sizePolicy().hasHeightForWidth());
         hsh_Order->setSizePolicy(sizePolicy3);
 
@@ -1774,6 +1717,7 @@ public:
         hsh_Fitter->setObjectName(QStringLiteral("hsh_Fitter"));
         sizePolicy3.setHeightForWidth(hsh_Fitter->sizePolicy().hasHeightForWidth());
         hsh_Fitter->setSizePolicy(sizePolicy3);
+        hsh_Fitter->setChecked(true);
 
         horizontalLayout_3->addWidget(hsh_Fitter);
 
@@ -1941,7 +1885,7 @@ public:
 
         layoutWidget_26 = new QWidget(page4);
         layoutWidget_26->setObjectName(QStringLiteral("layoutWidget_26"));
-        layoutWidget_26->setGeometry(QRect(370, 740, 211, 31));
+        layoutWidget_26->setGeometry(QRect(370, 680, 211, 31));
         sizePolicy3.setHeightForWidth(layoutWidget_26->sizePolicy().hasHeightForWidth());
         layoutWidget_26->setSizePolicy(sizePolicy3);
         horizontalLayout_31 = new QHBoxLayout(layoutWidget_26);
@@ -1956,6 +1900,7 @@ public:
 
         ptm_Luminance = new QComboBox(layoutWidget_26);
         ptm_Luminance->setObjectName(QStringLiteral("ptm_Luminance"));
+        ptm_Luminance->setEnabled(false);
         sizePolicy3.setHeightForWidth(ptm_Luminance->sizePolicy().hasHeightForWidth());
         ptm_Luminance->setSizePolicy(sizePolicy3);
 
@@ -1984,6 +1929,30 @@ public:
 
         horizontalLayout_12->addWidget(next_Image_Btn);
 
+        image_Name = new QLabel(page4);
+        image_Name->setObjectName(QStringLiteral("image_Name"));
+        image_Name->setGeometry(QRect(105, 11, 381, 20));
+        QFont font10;
+        font10.setFamily(QStringLiteral("Arial Black"));
+        font10.setPointSize(10);
+        font10.setBold(true);
+        font10.setItalic(true);
+        font10.setWeight(75);
+        image_Name->setFont(font10);
+        progress_Bar = new QProgressBar(page4);
+        progress_Bar->setObjectName(QStringLiteral("progress_Bar"));
+        progress_Bar->setGeometry(QRect(630, 640, 401, 31));
+        progress_Bar->setValue(0);
+        status = new QLabel(page4);
+        status->setObjectName(QStringLiteral("status"));
+        status->setGeometry(QRect(746, 680, 151, 20));
+        QFont font11;
+        font11.setFamily(QStringLiteral("MS Sans Serif"));
+        font11.setPointSize(12);
+        font11.setBold(true);
+        font11.setItalic(true);
+        font11.setWeight(75);
+        status->setFont(font11);
         stackedWidget->addWidget(page4);
         page5 = new QWidget();
         page5->setObjectName(QStringLiteral("page5"));
@@ -1991,37 +1960,9 @@ public:
         page5->setSizePolicy(sizePolicy);
         gridLayout_3 = new QGridLayout(page5);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        label_6 = new QLabel(page5);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy5);
-        label_6->setFont(font);
-
-        gridLayout_3->addWidget(label_6, 0, 0, 1, 1);
-
-        btn4_2 = new QPushButton(page5);
-        btn4_2->setObjectName(QStringLiteral("btn4_2"));
-        QSizePolicy sizePolicy6(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(btn4_2->sizePolicy().hasHeightForWidth());
-        btn4_2->setSizePolicy(sizePolicy6);
-
-        gridLayout_3->addWidget(btn4_2, 1, 1, 1, 1);
-
-        btn1_2 = new QPushButton(page5);
-        btn1_2->setObjectName(QStringLiteral("btn1_2"));
-        sizePolicy6.setHeightForWidth(btn1_2->sizePolicy().hasHeightForWidth());
-        btn1_2->setSizePolicy(sizePolicy6);
-
-        gridLayout_3->addWidget(btn1_2, 1, 2, 1, 1);
-
         stackedWidget->addWidget(page5);
 
-        gridLayout_2->addWidget(stackedWidget, 0, 1, 1, 1);
+        gridLayout_2->addWidget(stackedWidget, 0, 0, 1, 1);
 
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
@@ -2029,10 +1970,6 @@ public:
         menubar->setGeometry(QRect(0, 0, 1058, 21));
         menuEdit = new QMenu(menubar);
         menuEdit->setObjectName(QStringLiteral("menuEdit"));
-        menuView = new QMenu(menubar);
-        menuView->setObjectName(QStringLiteral("menuView"));
-        menuLanguage = new QMenu(menubar);
-        menuLanguage->setObjectName(QStringLiteral("menuLanguage"));
         menuHelp = new QMenu(menubar);
         menuHelp->setObjectName(QStringLiteral("menuHelp"));
         menuFile = new QMenu(menubar);
@@ -2044,8 +1981,6 @@ public:
 
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuEdit->menuAction());
-        menubar->addAction(menuView->menuAction());
-        menubar->addAction(menuLanguage->menuAction());
         menubar->addAction(menuHelp->menuAction());
         menuEdit->addAction(action_Undo);
         menuEdit->addAction(action_Redo);
@@ -2054,18 +1989,11 @@ public:
         menuEdit->addAction(action_Copy);
         menuEdit->addAction(action_Paste);
         menuEdit->addAction(action_Clear);
-        menuLanguage->addAction(actionEnglish);
-        menuLanguage->addAction(actionFrench);
-        menuLanguage->addAction(actionGerman);
-        menuLanguage->addAction(actionGerman_2);
-        menuLanguage->addAction(actionKorean);
-        menuLanguage->addAction(actionMandarin);
-        menuLanguage->addAction(actionHindi);
         menuFile->addAction(actionNew_Project);
 
         retranslateUi(system_Ui);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(3);
         toolBox->setCurrentIndex(3);
         toolBox_2->setCurrentIndex(3);
 
@@ -2145,17 +2073,15 @@ public:
         QTableWidgetItem *___qtablewidgetitem2 = metadata_Table->verticalHeaderItem(1);
         ___qtablewidgetitem2->setText(QApplication::translate("system_Ui", "Image Name", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem3 = metadata_Table->verticalHeaderItem(2);
-        ___qtablewidgetitem3->setText(QApplication::translate("system_Ui", "Owner", Q_NULLPTR));
+        ___qtablewidgetitem3->setText(QApplication::translate("system_Ui", "Edited by", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem4 = metadata_Table->verticalHeaderItem(3);
-        ___qtablewidgetitem4->setText(QApplication::translate("system_Ui", "Edited by", Q_NULLPTR));
+        ___qtablewidgetitem4->setText(QApplication::translate("system_Ui", "Location", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem5 = metadata_Table->verticalHeaderItem(4);
-        ___qtablewidgetitem5->setText(QApplication::translate("system_Ui", "Location", Q_NULLPTR));
+        ___qtablewidgetitem5->setText(QApplication::translate("system_Ui", "Date Created", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem6 = metadata_Table->verticalHeaderItem(5);
-        ___qtablewidgetitem6->setText(QApplication::translate("system_Ui", "Date Created", Q_NULLPTR));
+        ___qtablewidgetitem6->setText(QApplication::translate("system_Ui", "Width ", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem7 = metadata_Table->verticalHeaderItem(6);
-        ___qtablewidgetitem7->setText(QApplication::translate("system_Ui", "Width (cm)", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem8 = metadata_Table->verticalHeaderItem(7);
-        ___qtablewidgetitem8->setText(QApplication::translate("system_Ui", "Height (cm)", Q_NULLPTR));
+        ___qtablewidgetitem7->setText(QApplication::translate("system_Ui", "Height ", Q_NULLPTR));
         import_btn->setText(QApplication::translate("system_Ui", "Import", Q_NULLPTR));
         delete_Btn->setText(QApplication::translate("system_Ui", "Delete", Q_NULLPTR));
         image_Label->setText(QString());
@@ -2234,9 +2160,9 @@ public:
         export_Btn_4->setText(QApplication::translate("system_Ui", "Export", Q_NULLPTR));
         label_16->setText(QApplication::translate("system_Ui", "CHOOSE FITTER", Q_NULLPTR));
         image_Label_3->setText(QString());
-        label_18->setText(QApplication::translate("system_Ui", "Preview", Q_NULLPTR));
+        label_18->setText(QApplication::translate("system_Ui", "Preview :", Q_NULLPTR));
         generate_Btn->setText(QApplication::translate("system_Ui", "Generate", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("system_Ui", "Cancel", Q_NULLPTR));
+        cancel_fitter_Btn->setText(QApplication::translate("system_Ui", "Cancel", Q_NULLPTR));
         label_14->setText(QApplication::translate("system_Ui", "Fitter Information", Q_NULLPTR));
         fitter_Info->setHtml(QApplication::translate("system_Ui", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -2249,29 +2175,13 @@ public:
         resize_Checkbox->setText(QApplication::translate("system_Ui", "resize", Q_NULLPTR));
         width_Measurement->setText(QApplication::translate("system_Ui", "123", Q_NULLPTR));
         height_Measurement->setText(QApplication::translate("system_Ui", "567", Q_NULLPTR));
-        label_28->setText(QApplication::translate("system_Ui", "Performance Profile:", Q_NULLPTR));
-        performance_Profile->clear();
-        performance_Profile->insertItems(0, QStringList()
-         << QString()
-         << QApplication::translate("system_Ui", "1", Q_NULLPTR)
-         << QApplication::translate("system_Ui", "2", Q_NULLPTR)
-         << QApplication::translate("system_Ui", "3", Q_NULLPTR)
-        );
-        label_29->setText(QApplication::translate("system_Ui", "Memory Profile:", Q_NULLPTR));
-        Memory_Profile->clear();
-        Memory_Profile->insertItems(0, QStringList()
-         << QString()
-         << QApplication::translate("system_Ui", "1", Q_NULLPTR)
-         << QApplication::translate("system_Ui", "2", Q_NULLPTR)
-         << QApplication::translate("system_Ui", "3", Q_NULLPTR)
-        );
         label_27->setText(QApplication::translate("system_Ui", "HSH Order:", Q_NULLPTR));
         hsh_Order->clear();
         hsh_Order->insertItems(0, QStringList()
          << QString()
-         << QApplication::translate("system_Ui", "1", Q_NULLPTR)
          << QApplication::translate("system_Ui", "2", Q_NULLPTR)
          << QApplication::translate("system_Ui", "3", Q_NULLPTR)
+         << QApplication::translate("system_Ui", "4", Q_NULLPTR)
         );
         ptm_Fitter->setText(QApplication::translate("system_Ui", "PTM", Q_NULLPTR));
         hsh_Fitter->setText(QApplication::translate("system_Ui", "HSH", Q_NULLPTR));
@@ -2293,12 +2203,9 @@ public:
         );
         previous_Image_Btn->setText(QApplication::translate("system_Ui", "< Prev", Q_NULLPTR));
         next_Image_Btn->setText(QApplication::translate("system_Ui", "Next >", Q_NULLPTR));
-        label_6->setText(QApplication::translate("system_Ui", "PAGE 5", Q_NULLPTR));
-        btn4_2->setText(QApplication::translate("system_Ui", "< Prev", Q_NULLPTR));
-        btn1_2->setText(QApplication::translate("system_Ui", "Next >", Q_NULLPTR));
+        image_Name->setText(QString());
+        status->setText(QString());
         menuEdit->setTitle(QApplication::translate("system_Ui", "Edit", Q_NULLPTR));
-        menuView->setTitle(QApplication::translate("system_Ui", "View", Q_NULLPTR));
-        menuLanguage->setTitle(QApplication::translate("system_Ui", "Language", Q_NULLPTR));
         menuHelp->setTitle(QApplication::translate("system_Ui", "Help", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("system_Ui", "File", Q_NULLPTR));
     } // retranslateUi

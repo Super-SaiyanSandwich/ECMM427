@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_new_Project_t {
     QByteArrayData data[10];
-    char stringdata0[137];
+    char stringdata0[132];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,15 +37,15 @@ QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 17), // "update_Edit_Boxes"
 QT_MOC_LITERAL(4, 53, 16), // "project_Location"
 QT_MOC_LITERAL(5, 70, 12), // "project_Name"
-QT_MOC_LITERAL(6, 83, 11), // "editor_Name"
-QT_MOC_LITERAL(7, 95, 10), // "close_Page"
-QT_MOC_LITERAL(8, 106, 20), // "open_Location_Select"
-QT_MOC_LITERAL(9, 127, 9) // "next_Page"
+QT_MOC_LITERAL(6, 83, 6), // "editor"
+QT_MOC_LITERAL(7, 90, 10), // "close_Page"
+QT_MOC_LITERAL(8, 101, 20), // "open_Location_Select"
+QT_MOC_LITERAL(9, 122, 9) // "next_Page"
 
     },
     "new_Project\0new_Project_Open_Page\0\0"
     "update_Edit_Boxes\0project_Location\0"
-    "project_Name\0editor_Name\0close_Page\0"
+    "project_Name\0editor\0close_Page\0"
     "open_Location_Select\0next_Page"
 };
 #undef QT_MOC_LITERAL

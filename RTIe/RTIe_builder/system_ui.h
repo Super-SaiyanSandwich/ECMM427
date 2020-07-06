@@ -17,8 +17,10 @@
 #include <QDir>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QProgressBar>
 
 #include "cropped_area.h"
+#include "marble_Detection.h"
 
 namespace Ui {
 class system_Ui;
@@ -43,6 +45,26 @@ public:
 
     int current_Slide = 0;
 
+    QStringList fitter_Args; // list of all arguments
+    QString lp_Path;
+    QString output_Path;
+    QString fitter_Location;
+    QString std_Output;
+    QString std_Error;
+
+    QString empty_LP;
+    QString empty_Fitter;
+    QString empty_Output;
+    QString empty_Order;
+    QString summary;
+    QString fitter;
+    bool dropdown_Option;
+
+
+
+
+
+
 
 
 public slots:
@@ -65,8 +87,9 @@ public slots:
     void on_cancel_btn_clicked();
     void on_crop_btn_clicked();
     void update_Crop_Preview_Image();
-    QStringList findQmFiles();
+//    QStringList findQmFiles();
     void image_Crop_Zoom(int percent);
+
 
 signals:
     void inputReceived();
@@ -116,20 +139,21 @@ private slots:
 
     void on_fitter_Location_clicked();
 
-    void on_actionEnglish_triggered();
-
     void on_resize_Checkbox_clicked();
-
-//    void on_radioButton_clicked();
 
     void on_ptm_Fitter_clicked();
 
     void on_hsh_Fitter_clicked();
+
     void on_horizontal_Slider_Y_2_sliderReleased();
+
     void on_horizontal_Slider_X_2_sliderReleased();
+
     void add_Crop_Item_To_List(const QImage image, const QString filename);
+
     void reload_Preview();
 
+    QString error_Message(bool);
 
     QStringList get_File_List();
 
@@ -137,10 +161,16 @@ private slots:
 
     void on_next_Image_Btn_clicked();
 
+    void on_cancel_fitter_Btn_clicked();
+
+    void result();
 
 private:
+//    marble_Detection marbles;
+
     //=========================== Crop Image Page ===============================================================
     Ui::system_Ui *ui;
+
 
     void on_check_Box_Spherical_4_stateChanged(int arg);
     cropped_Area *selected_Area;

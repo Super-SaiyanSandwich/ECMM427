@@ -19,7 +19,7 @@
 
 
 
-QString project_Wizard::editor_Name;
+
 QString project_Wizard::valid;
 project_Wizard::project_Wizard(QWidget *parent) :
     QWizard(parent),
@@ -109,7 +109,7 @@ void project_Wizard::create_Project(){
           valid = date.toString();
           stream << dir.path() << "/" << project_Name << endl;
 //          stream << "Owner Name: "  << owner << endl;
-          stream << "Editor Name: "  << editor_Name << endl;
+          stream << "Editor Name: "  << editor << endl;
           stream << "Created on: "  << valid << endl;
 
       }
@@ -155,8 +155,8 @@ void project_Wizard::choose_Project_Directory(){
 
     // Project name is retrieved from the QNameLineEdit
     project_Name = ui->project_Name_Line_Edit->text();
-    editor_Name = ui->editor_Name->text();
-    qInfo()<<editor_Name;
+    editor = ui->editor_Name->text();
+    qInfo()<<editor;
 
     // Complete chosen path is then processed, and showed on the
     // project wizard for the user to validate
