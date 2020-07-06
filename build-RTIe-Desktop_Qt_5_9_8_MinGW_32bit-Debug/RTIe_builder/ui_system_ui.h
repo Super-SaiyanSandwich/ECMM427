@@ -28,6 +28,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
@@ -253,6 +254,8 @@ public:
     QPushButton *previous_Image_Btn;
     QPushButton *next_Image_Btn;
     QLabel *image_Name;
+    QProgressBar *progress_Bar;
+    QLabel *status;
     QWidget *page5;
     QGridLayout *gridLayout_3;
     QMenuBar *menubar;
@@ -456,8 +459,8 @@ public:
             metadata_Table->setColumnCount(1);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         metadata_Table->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        if (metadata_Table->rowCount() < 8)
-            metadata_Table->setRowCount(8);
+        if (metadata_Table->rowCount() < 7)
+            metadata_Table->setRowCount(7);
         QFont font3;
         font3.setPointSize(10);
         font3.setBold(true);
@@ -497,19 +500,13 @@ public:
         __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
         __qtablewidgetitem6->setFont(font3);
         __qtablewidgetitem6->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem6->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(5, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
         __qtablewidgetitem7->setTextAlignment(Qt::AlignCenter);
         __qtablewidgetitem7->setFont(font3);
         __qtablewidgetitem7->setBackground(QColor(0, 85, 255));
+        __qtablewidgetitem7->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(6, __qtablewidgetitem7);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        __qtablewidgetitem8->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem8->setFont(font3);
-        __qtablewidgetitem8->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem8->setForeground(brush);
-        metadata_Table->setVerticalHeaderItem(7, __qtablewidgetitem8);
         metadata_Table->setObjectName(QStringLiteral("metadata_Table"));
         metadata_Table->setGeometry(QRect(10, 558, 501, 192));
         sizePolicy3.setHeightForWidth(metadata_Table->sizePolicy().hasHeightForWidth());
@@ -921,7 +918,6 @@ public:
         listWidget_2->setGeometry(QRect(0, 0, 471, 301));
         listWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget_2->setDefaultDropAction(Qt::IgnoreAction);
-        listWidget_2->setItemAlignment(Qt::AlignLeading);
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
         open_Button = new QPushButton(images_Page);
         open_Button->setObjectName(QStringLiteral("open_Button"));
@@ -1400,7 +1396,6 @@ public:
         work_Images->setGeometry(QRect(10, 10, 331, 261));
         work_Images->setEditTriggers(QAbstractItemView::NoEditTriggers);
         work_Images->setDefaultDropAction(Qt::IgnoreAction);
-        work_Images->setItemAlignment(Qt::AlignLeading);
         scrollArea_3->setWidget(scrollAreaWidgetContents_3);
         open_Button_2 = new QPushButton(images_Page_2);
         open_Button_2->setObjectName(QStringLiteral("open_Button_2"));
@@ -1584,7 +1579,7 @@ public:
         label_18->setFont(font9);
         layoutWidget = new QWidget(page4);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(760, 700, 261, 41));
+        layoutWidget->setGeometry(QRect(760, 720, 261, 41));
         sizePolicy3.setHeightForWidth(layoutWidget->sizePolicy().hasHeightForWidth());
         layoutWidget->setSizePolicy(sizePolicy3);
         horizontalLayout_5 = new QHBoxLayout(layoutWidget);
@@ -1944,6 +1939,13 @@ public:
         font10.setItalic(true);
         font10.setWeight(75);
         image_Name->setFont(font10);
+        progress_Bar = new QProgressBar(page4);
+        progress_Bar->setObjectName(QStringLiteral("progress_Bar"));
+        progress_Bar->setGeometry(QRect(630, 640, 401, 31));
+        progress_Bar->setValue(0);
+        status = new QLabel(page4);
+        status->setObjectName(QStringLiteral("status"));
+        status->setGeometry(QRect(746, 680, 111, 20));
         stackedWidget->addWidget(page4);
         page5 = new QWidget();
         page5->setObjectName(QStringLiteral("page5"));
@@ -1953,7 +1955,7 @@ public:
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         stackedWidget->addWidget(page5);
 
-        gridLayout_2->addWidget(stackedWidget, 0, 1, 1, 1);
+        gridLayout_2->addWidget(stackedWidget, 0, 0, 1, 1);
 
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
@@ -2064,17 +2066,15 @@ public:
         QTableWidgetItem *___qtablewidgetitem2 = metadata_Table->verticalHeaderItem(1);
         ___qtablewidgetitem2->setText(QApplication::translate("system_Ui", "Image Name", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem3 = metadata_Table->verticalHeaderItem(2);
-        ___qtablewidgetitem3->setText(QApplication::translate("system_Ui", "Owner", Q_NULLPTR));
+        ___qtablewidgetitem3->setText(QApplication::translate("system_Ui", "Edited by", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem4 = metadata_Table->verticalHeaderItem(3);
-        ___qtablewidgetitem4->setText(QApplication::translate("system_Ui", "Edited by", Q_NULLPTR));
+        ___qtablewidgetitem4->setText(QApplication::translate("system_Ui", "Location", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem5 = metadata_Table->verticalHeaderItem(4);
-        ___qtablewidgetitem5->setText(QApplication::translate("system_Ui", "Location", Q_NULLPTR));
+        ___qtablewidgetitem5->setText(QApplication::translate("system_Ui", "Date Created", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem6 = metadata_Table->verticalHeaderItem(5);
-        ___qtablewidgetitem6->setText(QApplication::translate("system_Ui", "Date Created", Q_NULLPTR));
+        ___qtablewidgetitem6->setText(QApplication::translate("system_Ui", "Width ", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem7 = metadata_Table->verticalHeaderItem(6);
-        ___qtablewidgetitem7->setText(QApplication::translate("system_Ui", "Width ", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem8 = metadata_Table->verticalHeaderItem(7);
-        ___qtablewidgetitem8->setText(QApplication::translate("system_Ui", "Height ", Q_NULLPTR));
+        ___qtablewidgetitem7->setText(QApplication::translate("system_Ui", "Height ", Q_NULLPTR));
         import_btn->setText(QApplication::translate("system_Ui", "Import", Q_NULLPTR));
         delete_Btn->setText(QApplication::translate("system_Ui", "Delete", Q_NULLPTR));
         image_Label->setText(QString());
@@ -2197,6 +2197,7 @@ public:
         previous_Image_Btn->setText(QApplication::translate("system_Ui", "< Prev", Q_NULLPTR));
         next_Image_Btn->setText(QApplication::translate("system_Ui", "Next >", Q_NULLPTR));
         image_Name->setText(QString());
+        status->setText(QString());
         menuEdit->setTitle(QApplication::translate("system_Ui", "Edit", Q_NULLPTR));
         menuHelp->setTitle(QApplication::translate("system_Ui", "Help", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("system_Ui", "File", Q_NULLPTR));

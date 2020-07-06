@@ -262,7 +262,6 @@ public:
         listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
         listWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget_2->setDefaultDropAction(Qt::IgnoreAction);
-        listWidget_2->setItemAlignment(Qt::AlignLeading);
 
         verticalLayout_7->addWidget(listWidget_2);
 
@@ -675,7 +674,6 @@ public:
         listWidget->setObjectName(QStringLiteral("listWidget"));
         listWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget->setDefaultDropAction(Qt::IgnoreAction);
-        listWidget->setItemAlignment(Qt::AlignLeading);
 
         verticalLayout_10->addWidget(listWidget);
 

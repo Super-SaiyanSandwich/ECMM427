@@ -37,7 +37,7 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="enabled">
        <bool>true</bool>
@@ -358,37 +358,6 @@
         </row>
         <row>
          <property name="text">
-          <string>Owner</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="textAlignment">
-          <set>AlignCenter</set>
-         </property>
-         <property name="background">
-          <color>
-           <red>0</red>
-           <green>85</green>
-           <blue>255</blue>
-          </color>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-           </color>
-          </brush>
-         </property>
-        </row>
-        <row>
-         <property name="text">
           <string>Edited by</string>
          </property>
          <property name="font">
@@ -404,7 +373,7 @@
          <property name="background">
           <color>
            <red>0</red>
-           <green>170</green>
+           <green>85</green>
            <blue>255</blue>
           </color>
          </property>
@@ -435,7 +404,7 @@
          <property name="background">
           <color>
            <red>0</red>
-           <green>85</green>
+           <green>170</green>
            <blue>255</blue>
           </color>
          </property>
@@ -466,7 +435,7 @@
          <property name="background">
           <color>
            <red>0</red>
-           <green>170</green>
+           <green>85</green>
            <blue>255</blue>
           </color>
          </property>
@@ -497,7 +466,7 @@
          <property name="background">
           <color>
            <red>0</red>
-           <green>85</green>
+           <green>170</green>
            <blue>255</blue>
           </color>
          </property>
@@ -519,7 +488,7 @@
          <property name="background">
           <color>
            <red>0</red>
-           <green>170</green>
+           <green>85</green>
            <blue>255</blue>
           </color>
          </property>
@@ -2967,7 +2936,7 @@ QScrollBar::sub-line:horizontal {
         <property name="geometry">
          <rect>
           <x>760</x>
-          <y>700</y>
+          <y>720</y>
           <width>261</width>
           <height>41</height>
          </rect>
@@ -3923,6 +3892,32 @@ p, li { white-space: pre-wrap; }
           <italic>true</italic>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QProgressBar" name="progress_Bar">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>640</y>
+          <width>401</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="status">
+        <property name="geometry">
+         <rect>
+          <x>746</x>
+          <y>680</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
         </property>
         <property name="text">
          <string/>

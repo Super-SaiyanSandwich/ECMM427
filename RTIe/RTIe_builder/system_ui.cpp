@@ -21,6 +21,8 @@
 #include <QTextBrowser>
 #include <QTableWidget>
 #include <QDateTime>
+#include <QProcess>
+#include <QProgressBar>
 
 #include <tuple>
 #include <vector>
@@ -78,17 +80,20 @@ system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
-    setMouseTracking(false);
-
-
     crop_Selection_Screen = new QGraphicsScene(this);
     ui->image_Graphics_View->setScene(crop_Selection_Screen);
+//    int w = ui->image_Graphics_View->viewport()->width();
+//    int h = ui->image_Graphics_View->viewport()->height();
+
+////    qreal s = fmin(w/float(base_Image_2->pixmap().width()),h/float(base_Image_2->pixmap().height()));
+
+//    ui->image_Graphics_View->scale(h, w);
     crop_Selection_Screen->installEventFilter(this);
 
 
 
     this->base_Image_2 = crop_Selection_Screen->addPixmap(QPixmap(base_Image_2));
-    this->base_Image_2->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
+//    this->base_Image_2->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
     this->base_Image_2->setZValue(-10);
 
 
@@ -103,7 +108,7 @@ system_Ui::system_Ui(QWidget *parent, QString base_Image_2) :
     ui->work_Images->setIconSize(QSize(60,60));
 
     ui->work_Images->setViewMode(QListWidget::IconMode);
-//    ui->work_Images->setResizeMode(QListWidget::Adjust);
+    ui->work_Images->setResizeMode(QListWidget::Adjust);
 
     ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(0))));
 
@@ -223,12 +228,11 @@ void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the s
 
     ui->metadata_Table->setItem(0, 0, new QTableWidgetItem(neededWord)); // Project Name
     ui->metadata_Table->setItem(1, 0, new QTableWidgetItem(item->text())); // Picture Name
-//    ui->metadata_Table->setItem(2, 0, new QTableWidgetItem(item->text())); // Owner's Name
-    ui->metadata_Table->setItem(3, 0, new QTableWidgetItem(editor)); // Editor's Name
-    ui->metadata_Table->setItem(4, 0, new QTableWidgetItem(preview_Image)); // File location
-    ui->metadata_Table->setItem(5, 0, new QTableWidgetItem(date_Created)); // Date Created
-    ui->metadata_Table->setItem(6, 0, new QTableWidgetItem( QString::number(base_Image.width()))); // Image width
-    ui->metadata_Table->setItem(7, 0, new QTableWidgetItem( QString::number(base_Image.height()))); // Image height
+    ui->metadata_Table->setItem(2, 0, new QTableWidgetItem(editor)); // Editor's Name
+    ui->metadata_Table->setItem(3, 0, new QTableWidgetItem(preview_Image)); // File location
+    ui->metadata_Table->setItem(4, 0, new QTableWidgetItem(date_Created)); // Date Created
+    ui->metadata_Table->setItem(5, 0, new QTableWidgetItem( QString::number(base_Image.width()))); // Image width
+    ui->metadata_Table->setItem(6, 0, new QTableWidgetItem( QString::number(base_Image.height()))); // Image height
 
 
 }
@@ -346,15 +350,18 @@ void system_Ui::update_Crop_Preview_Image()
 
     paint->setPen(rect_Brush);
 
-    paint->drawRect(selected_Area->x(), selected_Area->y(), h,w+5); //(brush_Size / 2, brush_Size / 2, (h * 2) - (brush_Size), (w * 2) - (brush_Size));
+    paint->drawRect(selected_Area->x(), selected_Area->y(), h,w+brush_Size); //(brush_Size / 2, brush_Size / 2, (h * 2) - (brush_Size), (w * 2) - (brush_Size));
 
     paint->end();
 }
 
 void system_Ui::reload_Preview()
-{
-    ui->preivew_Label_2->clear();
+{   int h = this->selected_Area->get_Height();
+    int w = this->selected_Area->get_Width();
+    QPixmap target(h, w);
 
+    ui->preivew_Label_2->clear();
+    ui->preivew_Label_2->setPixmap(target);
     ui->preivew_Label_2->update();
 }
 
@@ -362,9 +369,10 @@ void system_Ui::on_work_Images_itemDoubleClicked(QListWidgetItem *item)
 {
     QString image_Path_2 = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(image_Path_2)));
-    this->reload_Preview();
+
     this->update_Main_Cropped_Image();
-    this->reset_Crop_Image_Zoom();;
+    this->reset_Crop_Image_Zoom();
+    this->reload_Preview();
 }
 
 void system_Ui::on_crop_btn_clicked()
@@ -865,35 +873,20 @@ void system_Ui::on_remove_Marble_Btn_4_clicked()
 }
 
 
-
-//====================================================================================
-
-
-
 //======================================== FITTERS PAGE ================================
 /// Runs the selected fitter program on the images in the {@link CropExecuteLayout#lpImagesGrid} by creating a new
 /// LP file for them, cropping them if the crop is selected, and running the fitter using the new LP file. Prints
 /// the output of th e fitter to the {@link CropExecuteLayout#fitterOutputArea}.Deals with all errors that
 /// could occur in this method through the use of an error dialog.
 
-QStringList fitter_Args; // list of all arguments
-QString lp_Path;
-QString output_Path;
-QString fitter_Location;
-QString std_Output;
-QString std_Error;
 
-QString empty_LP;
-QString empty_Fitter;
-QString empty_Output;
-QString empty_Order;
-QString summary;
-QString fitter;
 
 void system_Ui::on_generate_Btn_clicked()
 {
      QString ptm_Option = ui->ptm_Luminance->currentText(); // check t+he current luminance option selected e.g {rgb / lrgb}
      QString hsh_Option = ui->hsh_Order->currentText();
+
+
     if(ui->ptm_Fitter->isChecked()){
 
 
@@ -904,44 +897,43 @@ void system_Ui::on_generate_Btn_clicked()
             fitter_Args += " -f 1 ";
         }
 
-        if(ptm_Option == "1"){  // add the selected luminace as an argument
-            fitter_Args += "1";
-        }
-        else if(ptm_Option == "2"){
-            fitter_Args += "2";
-        }
-        else if(ptm_Option == "3"){
-            fitter_Args += "3";
-        }
-
-        if (ptm_Option != "" && fitter_Args.size() == 3){ // make sure that all the necessary arguments are present
+        if (ptm_Option != "" && fitter_Args.size() == 3 && ui->temp->text() != "" && ui->fitter_Placeholder->text() != "" && ui->output_Placeholder->text()!=""){ // make sure that all the necessary arguments are present
             /* the ptm fitter has command-line args of :
                     <fitter location> -i <lp file location> -o <destination filepath> -f <rgb / lrgb>
             */
-
+            ui->status->setText("Running...");
+            ui->generate_Btn->setDisabled(true);
             fitter_Location += fitter_Args.join(" ");   // entire command line executable with the arguments
+
+
             try {
                 //run the executable with the command-line arguments
-                qInfo()<<fitter_Location;
-                qInfo()<<fitter_Args;
                 QProcess *process = new QProcess(this);
-                process->start(fitter_Location);
-                process->start(fitter_Location);
-                process->waitForFinished(-1); // will wait forever until finished
 
-                std_Output = process->readAllStandardOutput();
-                std_Error = process->readAllStandardError();
-                ui->fitter_Info->setText("Worked Sucessfully");
-                ui->fitter_Info->setText("------------------");
-                ui->fitter_Info->setText(std_Output);
-                ui->generate_Btn->setDisabled(true);
+                ui->progress_Bar->setMaximum(100);
+                ui->progress_Bar->setMinimum(0);
+
+                connect (process, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
+                process->start(fitter_Location);
+
+
+                if (process->waitForFinished(-1)){
+                    // will wait forever until finished
+                    ui->progress_Bar->setValue(100);
+                    ui->status->setText("Finished...");
+
+                    std_Output = process->readAllStandardOutput();
+                    std_Error = process->readAllStandardError();
+                    ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);;
+                    ui->generate_Btn->setDisabled(true);
+                }
+
 
 
             }catch (exception e){
 
-                ui->fitter_Info->setText("Failed to Work");
-                ui->fitter_Info->setText("------------------");
-                ui->fitter_Info->setText(std_Error);
+                ui->fitter_Info->setText("Failed to Work\n------------------\n"+std_Error);
+
             }
         }
         else{
@@ -966,7 +958,8 @@ void system_Ui::on_generate_Btn_clicked()
 
         QString hsh_Option = ui->hsh_Order->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
 
-        if ( lp_Path != "" && output_Path != "" && hsh_Option != "" ){
+        if ( lp_Path != "" && output_Path != "" && hsh_Option != ""){
+            //&& ui->temp->text() !="" && ui->fitter_Placeholder->text() !="" && ui->output_Placeholder->text()!="" && ui->hsh_Order->currentText() != ""
             /* the hsh has command-line args of :
                             <fitter location> <lp file location> <HSH order> <destination filepath>
             */
@@ -977,23 +970,30 @@ void system_Ui::on_generate_Btn_clicked()
             try {
                 //run the executable with the command-line arguments
                 qInfo()<<fitter_Location;
-//                qInfo()<<fitter_Args;
-                QProcess *process = new QProcess(this);
-                process->start(fitter_Location);
-                process->waitForFinished(-1); // will wait forever until finished
+
+            QProcess *process = new QProcess(this);
+            ui->progress_Bar->reset();
+            ui->progress_Bar->setMaximum(100);
+            ui->progress_Bar->setMinimum(0);
+
+            connect (process, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
+            process->start(fitter_Location);
+
+            if (process->waitForFinished(-1)){
+                // will wait forever until finished
+                ui->progress_Bar->setValue(100);
+                ui->status->setText("Finished...");
 
                 std_Output = process->readAllStandardOutput();
                 std_Error = process->readAllStandardError();
-                ui->fitter_Info->setText("Worked Sucessfully");
-                ui->fitter_Info->setText("------------------");
-                ui->fitter_Info->setText(std_Output);
+                ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);;
                 ui->generate_Btn->setDisabled(true);
+            }
+
 
 
             }catch (exception e){
-                ui->fitter_Info->setText("Failed to Work");
-                ui->fitter_Info->setText("------------------");
-                ui->fitter_Info->setText(std_Error);
+                ui->fitter_Info->setText("Failed to Work\n------------------\n"+std_Error);
 
             }
 
@@ -1018,43 +1018,56 @@ void system_Ui::on_generate_Btn_clicked()
 
 }
 
+void system_Ui::result()
+{
+//    while(-1){
+//       QString t = process->readLine();
+//       if( t.isEmpty() ) break;
+      ui->progress_Bar->setValue( ui->progress_Bar->value()+1);
+//   }
+}
 
-QString system_Ui:: error_Message(bool hsh){
+QString system_Ui:: error_Message(bool hsh)
+{
     empty_LP = "Light Position directory";
     empty_Fitter = "Fitter directory";
     empty_Output = "Output file directory";
     if (hsh){
+        dropdown_Option = ui->hsh_Order->currentText() == "" ;
         empty_Order = "Hsh Order";
         fitter = ".hsh";
+
     }
     else {
+        dropdown_Option = ui->ptm_Luminance->currentText() == "" ;
         empty_Order = "PTM Luminance";
         fitter = ".ptm";
+
     }
 
 
-    if (ui->temp->text() =="" && ui->fitter_Placeholder->text() =="" && ui->output_Placeholder->text()=="" && ui->hsh_Order->currentText() == ""){
-        summary = "The following fields were empty: \n - " +  empty_LP + "\n - " + empty_Fitter + "\n - " + empty_Output  + "\n - " + empty_Order +"\nPlease fill them in and then generate your "+ fitter +" file";
+    if (ui->temp->text() =="" && ui->fitter_Placeholder->text() =="" && ui->output_Placeholder->text()=="" && dropdown_Option){
+        summary = "The following fields were empty: \n - " +  empty_LP + "\n - " + empty_Fitter + "\n - " + empty_Output  + "\n - " + empty_Order +"\nPlease fill them in and then generate your output"+ fitter +" file";
     }
 
-    else if (ui->temp->text() =="" && ui->fitter_Placeholder->text() =="" && ui->hsh_Order->currentText() == "" ){
-        summary = "The following fields were empty:\n - " +  empty_LP + "\n - " + empty_Fitter  + "\n - " + empty_Order + "\n Please fill them in and then generate your "+ fitter +" file";
+    else if (ui->temp->text() =="" && ui->fitter_Placeholder->text() =="" && dropdown_Option ){
+        summary = "The following fields were empty:\n - " +  empty_LP + "\n - " + empty_Fitter  + "\n - " + empty_Order + "\n Please fill them in and then generate your output"+ fitter +" file";
     }
 
     else if (ui->temp->text() =="" && ui->fitter_Placeholder->text() =="" && ui->output_Placeholder->text() == "" ){
-        summary = "The following fields were empty:\n - " +  empty_LP + "\n - " + empty_Fitter  + "\n - " + empty_Output + "\n Please fill them in and then generate your "+ fitter +" file";
+        summary = "The following fields were empty:\n - " +  empty_LP + "\n - " + empty_Fitter  + "\n - " + empty_Output + "\n Please fill them in and then generate your output"+ fitter +" file";
     }
 
-    else if (ui->temp->text() ==""  && ui->output_Placeholder->text()=="" && ui->hsh_Order->currentText() == ""){
-        summary = "The following fields were empty: \n - " +  empty_LP + "\n - " + empty_Output  + "\n - " + empty_Order + "\nPlease fill them in and then generate your "+ fitter +" file";
+    else if (ui->temp->text() ==""  && ui->output_Placeholder->text()=="" && dropdown_Option){
+        summary = "The following fields were empty: \n - " +  empty_LP + "\n - " + empty_Output  + "\n - " + empty_Order + "\nPlease fill them in and then generate your output"+ fitter +" file";
     }
 
-    else if ( ui->fitter_Placeholder->text() =="" && ui->output_Placeholder->text()=="" && ui->hsh_Order->currentText() == ""){
-        summary = "The following fields were empty: \n - " +  empty_Fitter + "\n - " + empty_Output  + "\n - " + empty_Order + "\nPlease fill them in and then generate your "+ fitter +" file";
+    else if ( ui->fitter_Placeholder->text() =="" && ui->output_Placeholder->text()=="" && dropdown_Option){
+        summary = "The following fields were empty: \n - " +  empty_Fitter + "\n - " + empty_Output  + "\n - " + empty_Order + "\nPlease fill them in and then generate your output"+ fitter +" file";
     }
 
     else if ( ui->fitter_Placeholder->text() =="" && ui->output_Placeholder->text()=="" && ui->temp->text() == ""){
-        summary = "The following fields were empty: \n - " + empty_LP  + "\n - " + empty_Fitter   + "\n - " + empty_Output  + "\nPlease fill them in and then generate your "+ fitter +" file";
+        summary = "The following fields were empty: \n - " + empty_LP  + "\n - " + empty_Fitter   + "\n - " + empty_Output  + "\nPlease fill them in and then generate your output"+ fitter +" file";
     }
 
 
@@ -1063,7 +1076,7 @@ QString system_Ui:: error_Message(bool hsh){
         summary = "The following fields were empty:\n - " +  empty_LP + "\n - " + empty_Fitter  + "\n Please fill them in and then generate your "+ fitter +" file";
     }
 
-    else if (ui->temp->text() ==""  && ui->hsh_Order->currentText() == ""){
+    else if (ui->temp->text() ==""  && dropdown_Option){
         summary = "The following fields were empty: \n - " +  empty_LP + "\n - " + empty_Order + "\nPlease fill them in and then generate your "+ fitter +" file";
     }
 
@@ -1077,12 +1090,12 @@ QString system_Ui:: error_Message(bool hsh){
     }
 
 
-    else if ( ui->fitter_Placeholder->text() =="" && ui->hsh_Order->currentText() == ""){
+    else if ( ui->fitter_Placeholder->text() =="" && dropdown_Option){
         summary = "The following fields were empty: \n - " + empty_Fitter + "\n - " + empty_Order +"\nPlease fill them in and then generate your "+ fitter +" file";
     }
 
 
-    else if ( ui->output_Placeholder->text()=="" && ui->hsh_Order->currentText() == ""){
+    else if ( ui->output_Placeholder->text()=="" && dropdown_Option){
         summary = "The following fields were empty: \n - " + empty_Output  + "\n - " + empty_Order  + "\nPlease fill them in and then generate your "+ fitter +" file";
     }
 
@@ -1099,16 +1112,16 @@ QString system_Ui:: error_Message(bool hsh){
     else if (ui->output_Placeholder->text()==""){
         summary = "The following fields were empty: \n - " +  empty_Output + "\nPlease fill them in and then generate your "+ fitter +" file";
     }
-    else if (ui->hsh_Order->currentText() == ""){
+    else if (dropdown_Option){
         summary = "The following fields were empty: \n - " +  empty_Order + "\nPlease fill them in and then generate your "+ fitter +" file";
     }
 
     return summary;
 }
 
-
 void system_Ui::on_cancel_fitter_Btn_clicked()
 {
+    ui->progress_Bar->reset();
     ui->fitter_Info->clear();
     ui->temp->clear();
     ui->fitter_Placeholder->clear();
@@ -1117,14 +1130,11 @@ void system_Ui::on_cancel_fitter_Btn_clicked()
     ui->ptm_Fitter->setChecked(false);
     ui->hsh_Fitter->setChecked(false);
     //********************************
-//    ui->Memory_Profile->setDisabled(true);
-//    ui->performance_Profile->setDisabled(true);
     ui->hsh_Order->setDisabled(true);
     ui->ptm_Luminance->setDisabled(true);
+    ui->generate_Btn->setEnabled(true);
 
 }
-
-
 
 void system_Ui::on_fitter_Location_clicked()
 {
@@ -1192,24 +1202,34 @@ void system_Ui::on_resize_Checkbox_clicked()
 
 void system_Ui::on_ptm_Fitter_clicked()
 {
-//    ui->Memory_Profile->setDisabled(true);
-//    ui->performance_Profile->setDisabled(true);
     ui->hsh_Order->setDisabled(true);
     ui->ptm_Luminance->setEnabled(true);
+    ui->generate_Btn->setEnabled(true);
+    //*********************************
+    ui->fitter_Info->clear();
+    ui->temp->clear();
+    ui->fitter_Placeholder->clear();
+    ui->output_Placeholder->clear();
+    ui->hsh_Order->setCurrentText("");
+    ui->ptm_Luminance->setCurrentText("");
 
 }
 
 void system_Ui::on_hsh_Fitter_clicked()
 {
-//    ui->Memory_Profile->setEnabled(true);
-//    ui->performance_Profile->setEnabled(true);
     ui->hsh_Order->setEnabled(true);
     ui->ptm_Luminance->setDisabled(true);
     ui->fitter_Info->clear();
     ui->generate_Btn->setEnabled(true);
+
+    //***********************************
+    ui->fitter_Info->clear();
+    ui->temp->clear();
+    ui->fitter_Placeholder->clear();
+    ui->output_Placeholder->clear();
+    ui->hsh_Order->setCurrentText("");
+    ui->ptm_Luminance->setCurrentText("");
 }
-
-
 
 QStringList system_Ui:: get_File_List()
 {
@@ -1226,7 +1246,6 @@ QStringList system_Ui:: get_File_List()
 
     return file_Names;
 }
-
 
 void system_Ui::on_previous_Image_Btn_clicked()
 {
@@ -1271,9 +1290,6 @@ void system_Ui::on_next_Image_Btn_clicked()
     QString neededWord = pieces.value( pieces.length() - 1 );
     ui->image_Name->setText(neededWord);
 }
-
-//===============================================================
-
 
 //==================== Metadata =========================
 
