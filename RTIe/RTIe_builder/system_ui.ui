@@ -61,7 +61,7 @@
        <number>14</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="import_Page">
        <property name="sizePolicy">
@@ -769,8 +769,8 @@ QToolBox::tab:selected {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>86</width>
-                    <height>160</height>
+                    <width>360</width>
+                    <height>394</height>
                    </rect>
                   </property>
                   <attribute name="label">
@@ -884,8 +884,8 @@ QToolBox::tab:selected {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>120</width>
-                    <height>204</height>
+                    <width>360</width>
+                    <height>394</height>
                    </rect>
                   </property>
                   <attribute name="label">
@@ -1073,8 +1073,8 @@ QToolBox::tab:selected {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>98</width>
-                    <height>276</height>
+                    <width>360</width>
+                    <height>394</height>
                    </rect>
                   </property>
                   <attribute name="label">
@@ -1412,7 +1412,7 @@ QScrollBar::sub-line:horizontal {
                     <x>0</x>
                     <y>0</y>
                     <width>360</width>
-                    <height>317</height>
+                    <height>394</height>
                    </rect>
                   </property>
                   <attribute name="label">
@@ -1430,7 +1430,7 @@ QScrollBar::sub-line:horizontal {
                         <x>0</x>
                         <y>0</y>
                         <width>340</width>
-                        <height>266</height>
+                        <height>345</height>
                        </rect>
                       </property>
                       <layout class="QGridLayout" name="gridLayout_2">
@@ -1667,6 +1667,24 @@ QScrollBar::sub-line:horizontal {
              </widget>
             </item>
             <item>
+             <widget class="QLabel" name="image_Name">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <italic>true</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="image_Label_3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1869,6 +1887,14 @@ QScrollBar::sub-line:horizontal {
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>9</pointsize>
+                          <weight>75</weight>
+                          <italic>false</italic>
+                          <bold>true</bold>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>L.P. File Location:</string>
                         </property>
@@ -2030,6 +2056,13 @@ QScrollBar::sub-line:horizontal {
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>9</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>FITTER Location:</string>
                         </property>
@@ -2184,6 +2217,13 @@ QScrollBar::sub-line:horizontal {
                           <horstretch>0</horstretch>
                           <verstretch>0</verstretch>
                          </sizepolicy>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>9</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
                         </property>
                         <property name="text">
                          <string>Destination Location:</string>
@@ -2460,6 +2500,13 @@ QScrollBar::sub-line:horizontal {
                             <verstretch>0</verstretch>
                            </sizepolicy>
                           </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>9</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>HSH Order:</string>
                           </property>
@@ -2467,100 +2514,6 @@ QScrollBar::sub-line:horizontal {
                         </item>
                         <item>
                          <widget class="QComboBox" name="hsh_Order">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string/>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>1</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>2</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="performance_Layout">
-                        <item>
-                         <widget class="QLabel" name="label_28">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="text">
-                           <string>Performance Profile:</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QComboBox" name="performance_Profile">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string/>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>1</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>2</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="memory_Layout">
-                        <item>
-                         <widget class="QLabel" name="label_29">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="text">
-                           <string>Memory Profile:</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QComboBox" name="Memory_Profile">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                             <horstretch>0</horstretch>
@@ -2600,6 +2553,13 @@ QScrollBar::sub-line:horizontal {
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>9</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
                           </property>
                           <property name="text">
                            <string>PTM (luminance):</string>
@@ -2709,10 +2669,35 @@ QScrollBar::sub-line:horizontal {
                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="progress_Bar">
+              <property name="value">
+               <number>0</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="status">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <italic>true</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
              </widget>
             </item>
             <item>
@@ -2769,7 +2754,7 @@ p, li { white-space: pre-wrap; }
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_4">
+               <widget class="QPushButton" name="cancel_fitter_Btn">
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
@@ -2966,7 +2951,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>1072</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuEdit">
