@@ -20,7 +20,6 @@
 #include <QProgressBar>
 
 #include "cropped_area.h"
-#include "marble_Detection.h"
 
 namespace Ui {
 class system_Ui;
