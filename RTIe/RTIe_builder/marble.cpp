@@ -6,6 +6,7 @@
 
 
 #define CENTER_SCALE_FACTOR 0.3
+#define PEN_WIDTH 10
 
 marble::marble(){
     radius = 100.0;
@@ -15,7 +16,7 @@ marble::marble(){
 
 QRectF marble::boundingRect() const
 {
-    return QRectF(0,0, (2 * radius), (2 * radius));
+    return QRectF(-PEN_WIDTH,-PEN_WIDTH, (2 * radius) + PEN_WIDTH + 2, (2 * radius) + PEN_WIDTH + 2);
 }
 
 void marble::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -25,10 +26,10 @@ void marble::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     pen.setWidth(10);
 
     painter->setPen(pen);
-    painter->drawEllipse(QRectF(5, 5, (2 * radius) - 10, (2 * radius) - 10));
+    painter->drawEllipse(QRectF(-PEN_WIDTH / 2, -(PEN_WIDTH / 2), (2 * radius) + (PEN_WIDTH / 2), (2 * radius) + (PEN_WIDTH / 2)));
 
-    painter->drawLine((1 - CENTER_SCALE_FACTOR) * radius, radius, (1 + CENTER_SCALE_FACTOR) * radius, radius);
-    painter->drawLine(radius, (1 - CENTER_SCALE_FACTOR) * radius, radius,  (1 + CENTER_SCALE_FACTOR) * radius);
+    painter->drawLine(((1 - CENTER_SCALE_FACTOR) * radius) -(PEN_WIDTH / 2), radius -(PEN_WIDTH / 2), ((1 + CENTER_SCALE_FACTOR) * radius) -(PEN_WIDTH / 2), radius -(PEN_WIDTH / 2));
+    painter->drawLine(radius -(PEN_WIDTH / 2), ((1 - CENTER_SCALE_FACTOR) * radius) -(PEN_WIDTH / 2), radius -(PEN_WIDTH / 2),  ((1 + CENTER_SCALE_FACTOR) * radius) -(PEN_WIDTH / 2));
 
 
 

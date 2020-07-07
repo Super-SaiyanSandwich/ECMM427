@@ -173,9 +173,9 @@ void system_Ui::image_Display(){
         ui->listWidget->addItem(item);
         ui->work_Images->addItem(item);
     }
-
-
 }
+
+
 
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
@@ -776,7 +776,7 @@ void system_Ui::on_check_Box_Spherical_4_stateChanged(int arg)
 
         paint->setOpacity(1.0/ COUNT);
 
-        QProgressDialog progress("Processing Images...", "Cancel", 0, COUNT, this);
+        QProgressDialog progress("Processing Images...", "Close", 0, COUNT, this);
         progress.setWindowModality(Qt::WindowModal);
 
         for(int i = 0; i < COUNT; ++i)

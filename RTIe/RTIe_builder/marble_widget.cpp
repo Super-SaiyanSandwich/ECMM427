@@ -72,7 +72,7 @@ marble_Widget::~marble_Widget()
 
 //////////////////////////////////////////////////////////////////////
 ///
-/// \brief Updates the images displayed on screen by painting over the base image
+/// \brief Updates the images displayed on screen originally done by painting over the base image
 ///
 void marble_Widget::update_Main_Image()
 {
@@ -643,9 +643,9 @@ void marble_Widget::on_checkBox_stateChanged(int arg)
 {
     if(arg == 0)
     {
-        // ### TODO: 06/04/20 ###
-        // Add functionality to revert to a single image when un-checking the checkbox.
-        // Perhaps the image active before the average was used.
+        QString image_Path = splashScreen::project_Path + "/images/wd/" + ui->listWidget->selectedItems()[0]->text();
+
+        this->base_Image->setPixmap(QPixmap::fromImage(QImage(image_Path)));
     }
     else
     {
@@ -660,7 +660,7 @@ void marble_Widget::on_checkBox_stateChanged(int arg)
         paint->setOpacity(1.0/ COUNT);
 
         QProgressDialog progress("Processing Images...", "Cancel", 0, COUNT, this);
-        progress.setWindowModality(Qt::WindowModal);
+        //progress.setWindowModality(Qt::WindowModal);
 
         for(int i = 0; i < COUNT; ++i)
         {
