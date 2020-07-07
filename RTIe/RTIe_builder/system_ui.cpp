@@ -147,12 +147,14 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
 }
 
-void system_Ui::start(){
+void system_Ui::start()
+{
     system_Ui *home = new system_Ui();
     home->showMaximized();
 }
 
-void system_Ui::image_Display(){
+void system_Ui::image_Display()
+{
 
     QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
@@ -179,8 +181,9 @@ void system_Ui::image_Display(){
 
 void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
 {
+    qInfo() << "Hello World!" ;
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
-//    qInfo() << "Item Selected:" << preview_Image;
+    qInfo() << "Item Selected:" << preview_Image;
     this->base_Image = QImage(preview_Image);
     QPixmap pix = QPixmap::fromImage(this->base_Image);
     int w = ui->image_Preview->width();

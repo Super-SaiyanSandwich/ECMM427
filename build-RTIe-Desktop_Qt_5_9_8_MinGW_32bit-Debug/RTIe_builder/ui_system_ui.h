@@ -1105,6 +1105,7 @@ public:
         work_Images->setEditTriggers(QAbstractItemView::NoEditTriggers);
         work_Images->setDefaultDropAction(Qt::IgnoreAction);
 
+
         gridLayout_2->addWidget(work_Images, 0, 0, 1, 1);
 
         scrollArea_3->setWidget(scrollAreaWidgetContents_3);
@@ -1255,6 +1256,7 @@ public:
         sizePolicy.setHeightForWidth(image_Label_3->sizePolicy().hasHeightForWidth());
         image_Label_3->setSizePolicy(sizePolicy);
         image_Label_3->setMinimumSize(QSize(300, 300));
+        image_Label_3->setMaximumSize(QSize(600, 600));
         image_Label_3->setFrameShape(QFrame::Box);
         image_Label_3->setFrameShadow(QFrame::Plain);
         image_Label_3->setLineWidth(5);
@@ -1633,6 +1635,7 @@ public:
 
         verticalLayout_17 = new QVBoxLayout();
         verticalLayout_17->setObjectName(QStringLiteral("verticalLayout_17"));
+        verticalLayout_17->setSizeConstraint(QLayout::SetMaximumSize);
         splitter_2 = new QSplitter(page4);
         splitter_2->setObjectName(QStringLiteral("splitter_2"));
         sizePolicy4.setHeightForWidth(splitter_2->sizePolicy().hasHeightForWidth());
@@ -1648,7 +1651,8 @@ public:
         fitter_Info->setObjectName(QStringLiteral("fitter_Info"));
         sizePolicy5.setHeightForWidth(fitter_Info->sizePolicy().hasHeightForWidth());
         fitter_Info->setSizePolicy(sizePolicy5);
-        fitter_Info->setMinimumSize(QSize(0, 500));
+        fitter_Info->setMinimumSize(QSize(300, 500));
+        fitter_Info->setMaximumSize(QSize(600, 16777215));
         splitter_2->addWidget(fitter_Info);
 
         verticalLayout_17->addWidget(splitter_2);
@@ -1831,7 +1835,7 @@ public:
 
         retranslateUi(system_Ui);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
         toolBox_2->setCurrentIndex(3);
 
 
