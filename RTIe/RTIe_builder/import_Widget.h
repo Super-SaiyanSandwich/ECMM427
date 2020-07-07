@@ -1,6 +1,7 @@
 #ifndef IMPORT_WIDGET_H
 #define IMPORT_WIDGET_H
 
+#include <QGraphicsPixmapItem>
 #include <QListWidgetItem>
 #include <QWidget>
 
@@ -17,6 +18,8 @@ public:
     ~import_Widget();
 
 private:
+    QGraphicsPixmapItem *preview_Item;
+
     Ui::import_Widget *ui;
     void image_Display();
 

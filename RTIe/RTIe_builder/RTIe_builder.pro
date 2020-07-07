@@ -6,6 +6,7 @@ QT = core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
+    crop_Widget.cpp \
     cropped_area.cpp \
     image_Gatherer.cpp \
     image_Management_Nui.cpp \
@@ -26,6 +27,7 @@ RESOURCES += \
     test.qrc
 
 HEADERS += \
+    crop_Widget.h \
     cropped_area.h \
     image_Gatherer.h \
     image_Management_Nui.h \
@@ -41,6 +43,7 @@ HEADERS += \
     system_ui.h
 
 FORMS += \
+    crop_Widget.ui \
     import_Widget.ui \
     marble_Detection.ui \
     marble_widget.ui \

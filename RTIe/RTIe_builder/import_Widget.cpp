@@ -14,6 +14,11 @@ import_Widget::import_Widget(QWidget *parent) :
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
+
+    QGraphicsScene *scene = new QGraphicsScene(this);
+    ui->graphicsView->setScene(scene);
+
+    this->preview_Item = scene->addPixmap(QPixmap(0,0));
 }
 
 import_Widget::~import_Widget()
@@ -54,12 +59,12 @@ void import_Widget::showEvent(QShowEvent *ev)
 void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
-    QPixmap pix = QPixmap::fromImage(QImage(preview_Image));
-    int w = ui->image_Preview->width();
-    int h = ui->image_Preview->height();
-    ui->image_Preview->clear();
-    ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-    ui->image_Preview->update();
+    this->preview_Item->setPixmap( QPixmap::fromImage(QImage(preview_Image)) );
+//    int w = ui->image_Preview->width();
+//    int h = ui->image_Preview->height();
+//    ui->image_Preview->clear();
+//    ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+//    ui->image_Preview->update();
 
     for (int i=0; i<ui->metadata_Table->rowCount(); ++i)
     {
@@ -102,8 +107,8 @@ void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
     ui->metadata_Table->setItem(2, 0, new QTableWidgetItem(editor)); // Editor's Name
     ui->metadata_Table->setItem(3, 0, new QTableWidgetItem(preview_Image)); // File location
     ui->metadata_Table->setItem(4, 0, new QTableWidgetItem(date_Created)); // Date Created
-    ui->metadata_Table->setItem(5, 0, new QTableWidgetItem( QString::number(pix.width()))); // Image width
-    ui->metadata_Table->setItem(6, 0, new QTableWidgetItem( QString::number(pix.height()))); // Image height
+    ui->metadata_Table->setItem(5, 0, new QTableWidgetItem( QString::number(this->preview_Item->pixmap().width()))); // Image width
+    ui->metadata_Table->setItem(6, 0, new QTableWidgetItem( QString::number(this->preview_Item->pixmap().height()))); // Image height
 }
 
 void import_Widget::on_import_btn_clicked()
