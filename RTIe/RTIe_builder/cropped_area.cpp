@@ -6,32 +6,33 @@
 #include <math.h>
 
 #define CENTER_SCALE_FACTOR 0.3
+#define PEN_WIDTH 10
 
 cropped_Area::cropped_Area()
 {
-    height = 100.0;
-    width = 100.0;
+    height = 300.0;
+    width = 300.0;
     setFlag(ItemIsMovable, true);
     colour = Qt::blue;
 }
 
 QRectF cropped_Area::boundingRect() const
 {
-    return QRectF(0,0, width-7,height-7);
+    return QRectF(-((PEN_WIDTH + 1)/ 2), -((PEN_WIDTH + 1)/ 2), width + PEN_WIDTH,height + PEN_WIDTH);
 //    return QRectF(0,0, (2 * width)- 10, (2 * height)- 10);
 }
 
 void cropped_Area::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    int penWidth = 7; //set width of rect
 
     QPen pen(colour);
-    pen.setWidth(penWidth);
+    pen.setWidth(PEN_WIDTH);
+    pen.setStyle(Qt::DashLine);
 
-    int buffer = ceil(penWidth / 2.0) + 1;
+
     // Rectangle
     painter->setPen(pen);
-    painter->drawRect(buffer, buffer, width - buffer, height - buffer);
+    painter->drawRect(0, 0, width, height);
 
 }
 
@@ -71,13 +72,17 @@ void cropped_Area::set_B(int b)
 
 void cropped_Area::set_Height(qreal height)
 {
+    qreal dheight = this->height - height;
     this->height = height;
+    this->setY(this->y() + (dheight / 2));
     this->update();
 }
 
 void cropped_Area::set_Width(qreal width)
 {
+    qreal dwidth = this->width - width;
     this->width = width;
+    this->setX(this->x() + (dwidth / 2));
     this->update();
 }
 

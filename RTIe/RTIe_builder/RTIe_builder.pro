@@ -13,7 +13,6 @@ SOURCES += \
     import_Widget.cpp \
     main.cpp \
     marble.cpp \
-    marble_Detection.cpp \
     marble_List_Item.cpp \
     marble_widget.cpp \
     new_Project.cpp \
@@ -33,7 +32,6 @@ HEADERS += \
     image_Management_Nui.h \
     import_Widget.h \
     marble.h \
-    marble_Detection.h \
     marble_List_Item.h \
     marble_widget.h \
     new_Project.h \
@@ -45,7 +43,6 @@ HEADERS += \
 FORMS += \
     crop_Widget.ui \
     import_Widget.ui \
-    marble_Detection.ui \
     marble_widget.ui \
     project_Wizard.ui \
     system_ui.ui

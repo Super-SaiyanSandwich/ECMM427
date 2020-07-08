@@ -17,11 +17,25 @@
 
 using namespace std;
 
-crop_Widget::crop_Widget(QWidget *parent) :
+crop_Widget::crop_Widget(QWidget *parent, QString base_String) :
     QWidget(parent),
     ui(new Ui::crop_Widget)
 {
     ui->setupUi(this);
+
+    QGraphicsScene* crop_Selection_Screen = new QGraphicsScene(this);
+    ui->image_Graphics_View->setScene(crop_Selection_Screen);
+    crop_Selection_Screen->installEventFilter(this);
+
+
+    this->base_Image = crop_Selection_Screen->addPixmap(QPixmap(base_String));
+    this->base_Image->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
+    this->base_Image->setZValue(-10);
+
+    QGraphicsScene* preview_Screen = new QGraphicsScene(this);
+    ui->preview_Graphics_View->setScene(preview_Screen);
+
+    this->preview_Image =preview_Screen->addPixmap(QPixmap(base_String));
 }
 
 crop_Widget::~crop_Widget()
@@ -74,37 +88,32 @@ void crop_Widget::update_Crop_Preview_Image()
 
     QPixmap base_Pix = this->base_Image->pixmap();
     QPainter *paint = new QPainter(&base_Pix);
-    QPixmap target(h, w);
+    QPixmap target(w, h);
 
     paint = new QPainter(&target);
     tuple<int, int> pos = this->selected_Area->get_Position();
     paint->drawPixmap(-get<0>(pos), -get<1>(pos), base_Pix);
 
 
-    ui->preivew_Label_2->clear();
-    ui->preivew_Label_2->setPixmap(target);
-    ui->preivew_Label_2->update();
+    preview_Image->setPixmap(target);
 
-    int brush_Size = int(5);
+    ui->preview_Graphics_View->resetTransform();
 
-    QPen rect_Brush = QPen(selected_Area->get_Colour());
-    rect_Brush.setWidth(brush_Size);
+    int vw = ui->preview_Graphics_View->viewport()->width();
+    int vh = ui->preview_Graphics_View->viewport()->height();
 
-    paint->setPen(rect_Brush);
+    qreal s = fmin(vw/float(preview_Image->pixmap().width()),vh/float(preview_Image->pixmap().height()));
 
-    paint->drawRect(selected_Area->x(), selected_Area->y(), h,w+brush_Size); //(brush_Size / 2, brush_Size / 2, (h * 2) - (brush_Size), (w * 2) - (brush_Size));
-
-    paint->end();
+    ui->preview_Graphics_View->scale(s, s);
 }
 
 void crop_Widget::reload_Preview()
-{   int h = this->selected_Area->get_Height();
+{
+    int h = this->selected_Area->get_Height();
     int w = this->selected_Area->get_Width();
-    QPixmap target(h, w);
+    QPixmap target(w, h);
 
-    ui->preivew_Label_2->clear();
-    ui->preivew_Label_2->setPixmap(target);
-    ui->preivew_Label_2->update();
+    preview_Image->setPixmap(target);
 }
 
 void crop_Widget::on_work_Images_itemDoubleClicked(QListWidgetItem *item)
@@ -125,7 +134,7 @@ void crop_Widget::on_crop_btn_clicked()
             "",
             tr("JPEG(*.jpg *.jpeg);;PNG(*.png)")
             );
-    QImage crop = ui->preivew_Label_2->pixmap()->toImage();
+    QImage crop = preview_Image->pixmap().toImage();
     crop.save(image_Path);
 }
 
@@ -477,13 +486,18 @@ void crop_Widget::showEvent(QShowEvent *ev)
 {
     QWidget::showEvent(ev);
 
-    //this->base_Image_2->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
-    //ui->horizontal_Slider_Width->setMaximum(this->base_Image_2->pixmap().width());
-    //ui->horizontal_Slider_Height->setMaximum(this->base_Image_2->pixmap().height());
+    this->base_Image->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
+    ui->horizontal_Slider_Width->setMaximum(this->base_Image->pixmap().width());
+    ui->horizontal_Slider_Height->setMaximum(this->base_Image->pixmap().height());
 
-    this->reset_Crop_Image_Zoom();
+    this->selected_Area = new cropped_Area();
+    this->selected_Area->setParentItem(this->base_Image);
+
+
+
     this->update_Crop_Preview_Image();
     this->set_Crop_Maximums();
+    this->reset_Crop_Image_Zoom();
 }
 
 void crop_Widget::on_check_Box_Spherical_4_stateChanged(int arg)
