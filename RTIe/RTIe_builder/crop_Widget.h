@@ -17,7 +17,7 @@ class crop_Widget : public QWidget
     Q_OBJECT
 
 public:
-    explicit crop_Widget(QWidget *parent = nullptr);
+    explicit crop_Widget(QWidget *parent = nullptr, QString base_String = "");
     ~crop_Widget();
 
 private slots:
@@ -50,6 +50,8 @@ private slots:
     void on_zoom_Out_Button_2_clicked();
 private:
     QGraphicsPixmapItem* base_Image;
+    QGraphicsPixmapItem* preview_Image;
+
     cropped_Area *selected_Area;
     QLabel *image_Label;
     int thread_Count = 0;

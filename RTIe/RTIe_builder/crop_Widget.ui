@@ -35,7 +35,7 @@
        </property>
        <widget class="QGraphicsView" name="image_Graphics_View">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -49,10 +49,16 @@
        </widget>
        <widget class="QCheckBox" name="check_Box_Spherical_4">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>60</height>
+         </size>
         </property>
         <property name="text">
          <string>Apply to all Images.</string>
@@ -158,7 +164,7 @@ QToolBox::tab:selected {
 }*/</string>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="movement_Page_2">
            <property name="geometry">
@@ -166,7 +172,7 @@ QToolBox::tab:selected {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>395</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -281,7 +287,7 @@ QToolBox::tab:selected {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>395</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -322,7 +328,7 @@ QToolBox::tab:selected {
                <number>5000</number>
               </property>
               <property name="value">
-               <number>100</number>
+               <number>300</number>
               </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -350,7 +356,7 @@ QToolBox::tab:selected {
                <double>5000.000000000000000</double>
               </property>
               <property name="value">
-               <double>100.000000000000000</double>
+               <double>300.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -399,7 +405,7 @@ QToolBox::tab:selected {
                <double>5000.000000000000000</double>
               </property>
               <property name="value">
-               <double>100.000000000000000</double>
+               <double>300.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -418,10 +424,16 @@ QToolBox::tab:selected {
                <number>5000</number>
               </property>
               <property name="value">
-               <number>100</number>
+               <number>300</number>
               </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="tickPosition">
+               <enum>QSlider::TicksBelow</enum>
+              </property>
+              <property name="tickInterval">
+               <number>100</number>
               </property>
              </widget>
             </item>
@@ -470,7 +482,7 @@ QToolBox::tab:selected {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>395</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -782,6 +794,9 @@ QScrollBar::sub-line:horizontal {
               <property name="maximum">
                <number>255</number>
               </property>
+              <property name="value">
+               <number>255</number>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -808,7 +823,7 @@ QScrollBar::sub-line:horizontal {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>395</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -826,7 +841,7 @@ QScrollBar::sub-line:horizontal {
                  <x>0</x>
                  <y>0</y>
                  <width>340</width>
-                 <height>344</height>
+                 <height>314</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -882,6 +897,12 @@ QScrollBar::sub-line:horizontal {
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>20</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>Segoe Script</family>
@@ -894,36 +915,18 @@ QScrollBar::sub-line:horizontal {
             <string>Preview:</string>
            </property>
           </widget>
-          <widget class="QLabel" name="preivew_Label_2">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
+          <widget class="QGraphicsView" name="preview_Graphics_View">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+            <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>250</width>
-             <height>250</height>
+             <width>360</width>
+             <height>280</height>
             </size>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::Panel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Plain</enum>
-           </property>
-           <property name="lineWidth">
-            <number>4</number>
-           </property>
-           <property name="text">
-            <string notr="true"/>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
            </property>
           </widget>
          </widget>
