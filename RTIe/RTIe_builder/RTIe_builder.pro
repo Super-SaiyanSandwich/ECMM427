@@ -8,6 +8,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 SOURCES += \
     crop_Widget.cpp \
     cropped_area.cpp \
+    fitter_Widget.cpp \
     image_Gatherer.cpp \
     image_Management_Nui.cpp \
     import_Widget.cpp \
@@ -28,6 +29,7 @@ RESOURCES += \
 HEADERS += \
     crop_Widget.h \
     cropped_area.h \
+    fitter_Widget.h \
     image_Gatherer.h \
     image_Management_Nui.h \
     import_Widget.h \
@@ -42,6 +44,7 @@ HEADERS += \
 
 FORMS += \
     crop_Widget.ui \
+    fitter_Widget.ui \
     import_Widget.ui \
     marble_widget.ui \
     project_Wizard.ui \
