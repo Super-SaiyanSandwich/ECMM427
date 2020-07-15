@@ -5,6 +5,9 @@
 #include "project_Wizard.h"
 #include "image_Gatherer.h"
 #include "splash_Screen.h"
+#include "fitter_Widget.h"
+#include "crop_Widget.h"
+#include "marble_widget.h"
 #define dumpval(x) qDebug()<<#x<<'='<<x
 
 #include <QTranslator>
@@ -75,14 +78,6 @@ system_Ui::system_Ui(QWidget *parent) :
 {
 
     ui->setupUi(this);
-
-
-
-
-
-//    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(0))));
-
-
 }
 
 system_Ui::~system_Ui()
@@ -130,64 +125,99 @@ void system_Ui::start()
 
 //==================================== Page change buttons  ===============================
 
+void system_Ui::on_image_Management_Btn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+
+    ui->image_Management_Btn->setEnabled(false);
+
+    ui->marble_Detection_Btn->setEnabled(true);
+    ui->remove_Marble_Btn->setEnabled(true);
+    ui->export_Btn->setEnabled(true);
+}
+
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
-    //*marble_Detection *md = new*/ marble_Detection(this, ui->work_Images->item(0)->text());
+    if (ui->stackedWidget->currentIndex() == 0){
+        if (image_Management_Nui::get_Working_Image_Paths().length() == 0){
+            QMessageBox Error_Summary;
+            Error_Summary.setText("No Images Error");
+            Error_Summary.setInformativeText("There are currently no image files that are a part of this project. Please import some before proceeding.");
+            Error_Summary.setStandardButtons(QMessageBox::Ok);
+            Error_Summary.setDefaultButton(QMessageBox::Ok);
+            Error_Summary.exec();
+            return;
+        }
+    }
+
+    if (marbleDetectionIndex == 0){
+        marble_Widget *md = new marble_Widget(nullptr, ui->import_Page->get_Select(), ui->import_Page->get_List());
+        marbleDetectionIndex = ui->stackedWidget->addWidget(md);
+    }
+
+    ui->stackedWidget->setCurrentIndex(marbleDetectionIndex);
+
+    ui->marble_Detection_Btn->setEnabled(false);
+
+    ui->image_Management_Btn->setEnabled(true);
+    ui->remove_Marble_Btn->setEnabled(true);
+    ui->export_Btn->setEnabled(true);
 }
+
 
 void system_Ui::on_remove_Marble_Btn_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    if (ui->stackedWidget->currentIndex() == 0){
+        if (image_Management_Nui::get_Working_Image_Paths().length() == 0){
+            QMessageBox Error_Summary;
+            Error_Summary.setText("No Images Found.");
+            Error_Summary.setInformativeText("There are currently no image files that are a part of this project. Please import some before proceeding.");
+            Error_Summary.setStandardButtons(QMessageBox::Ok);
+            Error_Summary.setDefaultButton(QMessageBox::Ok);
+            Error_Summary.exec();
+            return;
+        }
+    }
+
+    if (removeMarbleIndex == 0){
+        crop_Widget *rmv = new crop_Widget();
+        removeMarbleIndex = ui->stackedWidget->addWidget(rmv);
+    }
+
+    ui->stackedWidget->setCurrentIndex(removeMarbleIndex);
+
+    ui->remove_Marble_Btn->setEnabled(false);
+
+    ui->image_Management_Btn->setEnabled(true);
+    ui->marble_Detection_Btn->setEnabled(true);
+    ui->export_Btn->setEnabled(true);
 }
 
 void system_Ui::on_export_Btn_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
-}
+    if (ui->stackedWidget->currentIndex() == 0){
+        if (image_Management_Nui::get_Working_Image_Paths().length() == 0){
+            QMessageBox Error_Summary;
+            Error_Summary.setText("No Images Error");
+            Error_Summary.setInformativeText("There are currently no image files that are a part of this project. Please import some before proceeding.");
+            Error_Summary.setStandardButtons(QMessageBox::Ok);
+            Error_Summary.setDefaultButton(QMessageBox::Ok);
+            Error_Summary.exec();
+            return;
+        }
+    }
 
-void system_Ui::on_image_Management_Btn_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
 
-void system_Ui::on_remove_Marble_Btn_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
+    if (exportIndex == 0){
+        fitter_Widget* rmv = new fitter_Widget();
+        exportIndex = ui->stackedWidget->addWidget(rmv);
+    }
 
-void system_Ui::on_export_Btn_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}
+    ui->stackedWidget->setCurrentIndex(exportIndex);
 
-void system_Ui::on_image_Management_Btn_3_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
+    ui->export_Btn->setEnabled(false);
 
-void system_Ui::on_marble_Detection_Btn_3_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->image_Management_Btn->setEnabled(true);
+    ui->marble_Detection_Btn->setEnabled(true);
+    ui->remove_Marble_Btn->setEnabled(true);
 }
-
-void system_Ui::on_export_Btn_3_clicked()
-{
-     ui->stackedWidget->setCurrentIndex(3);
-}
-
-void system_Ui::on_image_Management_Btn_4_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void system_Ui::on_marble_Detection_Btn_4_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void system_Ui::on_remove_Marble_Btn_4_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-

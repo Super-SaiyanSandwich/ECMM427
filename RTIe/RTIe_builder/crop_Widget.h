@@ -50,6 +50,8 @@ private slots:
     void on_zoom_Out_Button_2_clicked();
 
 private:
+    bool first_Load = true;
+
     QGraphicsPixmapItem* base_Image;
     QGraphicsPixmapItem* preview_Image;
 

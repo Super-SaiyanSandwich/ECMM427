@@ -512,18 +512,22 @@ void crop_Widget::showEvent(QShowEvent *ev)
 {
     QWidget::showEvent(ev);
 
-    this->base_Image->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
-    ui->horizontal_Slider_Width->setMaximum(this->base_Image->pixmap().width());
-    ui->horizontal_Slider_Height->setMaximum(this->base_Image->pixmap().height());
+    if(first_Load){
+        this->base_Image->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
+        ui->horizontal_Slider_Width->setMaximum(this->base_Image->pixmap().width());
+        ui->horizontal_Slider_Height->setMaximum(this->base_Image->pixmap().height());
 
-    this->selected_Area = new cropped_Area();
-    this->selected_Area->setParentItem(this->base_Image);
+        this->selected_Area = new cropped_Area();
+        this->selected_Area->setParentItem(this->base_Image);
 
 
 
-    this->update_Crop_Preview_Image();
-    this->set_Crop_Maximums();
-    this->reset_Crop_Image_Zoom();
+        this->update_Crop_Preview_Image();
+        this->set_Crop_Maximums();
+        this->reset_Crop_Image_Zoom();
+
+        first_Load = !first_Load;
+    }
 }
 
 void crop_Widget::on_apply_all_stateChanged(int arg)

@@ -44,7 +44,7 @@ using namespace std;
 /// \param parent window
 ///
 
-marble_Widget::marble_Widget(QWidget *parent, QString base_String) :
+marble_Widget::marble_Widget(QWidget *parent, QString base_String, QList<QListWidgetItem *> * icons) :
     QWidget(parent),
     ui(new Ui::marble_Widget)
 {
@@ -57,10 +57,13 @@ marble_Widget::marble_Widget(QWidget *parent, QString base_String) :
     ui->marbleGraphicView->setScene(marble_Selection_Screen);
     marble_Selection_Screen->installEventFilter(this);
 
-
-    this->base_Image = marble_Selection_Screen->addPixmap(QPixmap(base_String));
+    qInfo() << base_String;
+    this->base_Image = marble_Selection_Screen->addPixmap(QPixmap(splashScreen::project_Path+ "/images/wd/" + base_String));
     this->base_Image->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
     this->base_Image->setZValue(-10);
+
+
+    this->icons = icons;
 }
 
 
@@ -222,20 +225,33 @@ void marble_Widget::showEvent(QShowEvent *ev)
 {
     QWidget::showEvent(ev);
 
-    this->base_Image->setPixmap(QPixmap::fromImage(QImage(this->load_Image_Icons())));
+    if(first_Load){
+        //this->base_Image->setPixmap(QPixmap::fromImage(QImage(this->load_Image_Icons())));
+        for (QListWidgetItem * icon : *icons) {
+            QListWidgetItem * ic = new QListWidgetItem(icon->text());
+            ic->setIcon(icon->icon());
+            ui->listWidget->addItem(ic);
+        }
 
-    //this->reset_Image_Zoom();
-    //this->update_Preview_Image();
-    //this->set_Maximums();
-    marble *new_Marble = new marble();
-    this->marble_Selection_Screen->addItem(new_Marble);
-    marble_List.append(new_Marble);
-    selected_Marble = new_Marble;
-    selected_Marble->setSelected(true);
-    selected_Marble->setParentItem(base_Image);
+        this->reset_Image_Zoom();
 
-    QListWidgetItem *list_Icon = new QListWidgetItem("Marble 1");
-    ui->listWidget_2->addItem(list_Icon);
+
+        marble *new_Marble = new marble();
+        this->marble_Selection_Screen->addItem(new_Marble);
+        marble_List.append(new_Marble);
+        selected_Marble = new_Marble;
+        selected_Marble->setSelected(true);
+        selected_Marble->setParentItem(base_Image);
+
+        this->set_Maximums();
+
+        QListWidgetItem *list_Icon = new QListWidgetItem("Marble 1");
+        ui->listWidget_2->addItem(list_Icon);
+
+        this->update_Preview_Image();
+
+        first_Load = !first_Load;
+    }
 }
 
 void marble_Widget::add_Item_To_List(QImage image, QString filename)
