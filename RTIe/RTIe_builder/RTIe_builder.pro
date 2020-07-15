@@ -49,5 +49,3 @@ FORMS += \
     marble_widget.ui \
     project_Wizard.ui \
     system_ui.ui
-
-
