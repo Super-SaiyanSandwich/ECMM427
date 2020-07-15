@@ -81,49 +81,9 @@ private slots:
 
     void on_export_Btn_clicked();
 
-    void on_image_Management_Btn_2_clicked();
+    void on_image_Management_Btn_clicked();
 
-    void on_remove_Marble_Btn_2_clicked();
 
-    void on_export_Btn_2_clicked();
-
-    void on_image_Management_Btn_3_clicked();
-
-    void on_marble_Detection_Btn_3_clicked();
-
-    void on_export_Btn_3_clicked();
-
-    void on_image_Management_Btn_4_clicked();
-
-    void on_marble_Detection_Btn_4_clicked();
-
-    void on_remove_Marble_Btn_4_clicked();
-
-    void on_generate_Btn_clicked();
-
-    void on_lp_Location_clicked();
-
-    void on_output_Location_clicked();
-
-    void on_fitter_Location_clicked();
-
-    void on_resize_Checkbox_clicked();
-
-    void on_ptm_Fitter_clicked();
-
-    void on_hsh_Fitter_clicked();
-
-    QString error_Message(bool);
-
-    QStringList get_File_List();
-
-    void on_previous_Image_Btn_clicked();
-
-    void on_next_Image_Btn_clicked();
-
-    void on_cancel_fitter_Btn_clicked();
-
-    void result();
 
 private:
 //    marble_Detection marbles;
@@ -135,6 +95,9 @@ private:
 
     QFile lp_File;
 
+    int marbleDetectionIndex = 0;
+    int removeMarbleIndex = 0;
+    int exportIndex = 0;
 
 
 };

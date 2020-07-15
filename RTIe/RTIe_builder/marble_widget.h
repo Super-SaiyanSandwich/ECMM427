@@ -18,7 +18,7 @@ class marble_Widget : public QWidget
     Q_OBJECT
 
 public:
-    explicit marble_Widget(QWidget *parent = nullptr, QString base_String = "");
+    explicit marble_Widget(QWidget *parent = nullptr, QString base_String = "", QList<QListWidgetItem *> * icons = new QList<QListWidgetItem *>());
     ~marble_Widget();
     bool load_File(const QString &);
     void set_RGB(int r, int g, int b);
@@ -28,6 +28,7 @@ private:
 
     QGraphicsScene *marble_Selection_Screen;
     QGraphicsPixmapItem *base_Image;
+    QList<QListWidgetItem *> * icons;
 
 //    QGraphicsScene *marble_Preview_Screen;
 //    QGraphicsPixmapItem *preview_Image;
@@ -56,6 +57,7 @@ private:
     QString load_Image_Icons();
 
     bool eventFilter(QObject *object, QEvent *event);
+    bool first_Load = true;
 
 protected:
     void showEvent(QShowEvent *ev);

@@ -1,3 +1,4 @@
+#include "image_Gatherer.h"
 #include "image_Management_Nui.h"
 #include "import_Widget.h"
 #include "splash_Screen.h"
@@ -5,6 +6,7 @@
 
 #include <QFileInfo>
 #include <QTextStream>
+#include <QThread>
 
 import_Widget::import_Widget(QWidget *parent) :
     QWidget(parent),
@@ -26,8 +28,36 @@ import_Widget::~import_Widget()
     delete ui;
 }
 
+QString import_Widget::get_Select()
+{
+    if(ui->listWidget->selectedItems().length() > 0)  return ui->listWidget->selectedItems()[0]->text();
+    return ui->listWidget->item(0)->text();
+}
+
+QList<QListWidgetItem *> * import_Widget::get_List()
+{
+    QList<QListWidgetItem *> *out = new QList<QListWidgetItem *>();
+    for (int var = 0; var < ui->listWidget->count(); ++var) {
+        out->append(ui->listWidget->item(var));
+    }
+    return out;
+}
+
+void import_Widget::add_Item_To_List(QImage image, QString filename)
+{
+    QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
+    item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
+    item->setCheckState(Qt::Unchecked); // AND initialize check state
+    ui->listWidget->addItem(item);
+}
+
 
 void import_Widget::image_Display(){
+
+    ui->listWidget->setViewMode(QListWidget::IconMode);
+    ui->listWidget->setIconSize(QSize(250,250));
+    ui->listWidget->setResizeMode(QListWidget::Adjust);
+
 
     QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
     QStringListIterator file_Iterator(path_List);
@@ -35,6 +65,9 @@ void import_Widget::image_Display(){
 
     while (file_Iterator.hasNext())
     {
+        QThread *thread = new QThread();
+        image_Gatherer *ig = new image_Gatherer();
+        ig->moveToThread( thread );
 
         QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
         QFile current_Image(path);
@@ -42,10 +75,13 @@ void import_Widget::image_Display(){
         QString file_Name(current_Image_Info.fileName());
         file_Names.append(file_Name);
 
-        QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString(file_Name));
-        item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
-        item->setCheckState(Qt::Unchecked); // AND initialize check state
-        ui->listWidget->addItem(item);
+
+        QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
+        QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Item_To_List(const QImage &, const QString &)));
+
+        ig->setInput(file_Name);
+        thread->start();
+
     }
 }
 
@@ -53,13 +89,17 @@ void import_Widget::showEvent(QShowEvent *ev)
 {
     QWidget::showEvent(ev);
 
-    this->image_Display();
+    if (first_Load){
+        this->image_Display();
+        first_Load = !first_Load;
+    }
 }
 
 void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->preview_Item->setPixmap( QPixmap::fromImage(QImage(preview_Image)) );
+    this->preview_Item->setScale(qMin(preview_Item->pixmap().height() / ui->graphicsView->viewport()->height(),preview_Item->pixmap().width() / ui->graphicsView->viewport()->width()));
 //    int w = ui->image_Preview->width();
 //    int h = ui->image_Preview->height();
 //    ui->image_Preview->clear();
