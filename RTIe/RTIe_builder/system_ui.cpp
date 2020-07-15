@@ -80,7 +80,7 @@ system_Ui::system_Ui(QWidget *parent) :
 
 
 
-    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(0))));
+//    ui->image_Label_3->setPixmap(QPixmap::fromImage(QImage(this->get_File_List().value(0))));
 
 
 }

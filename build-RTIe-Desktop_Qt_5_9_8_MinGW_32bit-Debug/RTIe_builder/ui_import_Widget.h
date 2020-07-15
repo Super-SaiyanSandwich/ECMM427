@@ -32,7 +32,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *preview_Layout;
     QLabel *preivew_Label;
-    QGraphicsView *graphicsView;
+    QGraphicsView *graphics_View;
     QLabel *metadata_Label;
     QTableWidget *metadata_Table;
     QVBoxLayout *import_Layout;
@@ -45,7 +45,7 @@ public:
     {
         if (import_Widget->objectName().isEmpty())
             import_Widget->setObjectName(QStringLiteral("import_Widget"));
-        import_Widget->resize(665, 427);
+        import_Widget->resize(911, 669);
         horizontalLayout = new QHBoxLayout(import_Widget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         preview_Layout = new QVBoxLayout();
@@ -65,10 +65,10 @@ public:
 
         preview_Layout->addWidget(preivew_Label);
 
-        graphicsView = new QGraphicsView(import_Widget);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphics_View = new QGraphicsView(import_Widget);
+        graphics_View->setObjectName(QStringLiteral("graphics_View"));
 
-        preview_Layout->addWidget(graphicsView);
+        preview_Layout->addWidget(graphics_View);
 
         metadata_Label = new QLabel(import_Widget);
         metadata_Label->setObjectName(QStringLiteral("metadata_Label"));
@@ -88,8 +88,8 @@ public:
             metadata_Table->setColumnCount(1);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         metadata_Table->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        if (metadata_Table->rowCount() < 8)
-            metadata_Table->setRowCount(8);
+        if (metadata_Table->rowCount() < 7)
+            metadata_Table->setRowCount(7);
         QFont font2;
         font2.setPointSize(10);
         font2.setBold(true);
@@ -129,19 +129,13 @@ public:
         __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
         __qtablewidgetitem6->setFont(font2);
         __qtablewidgetitem6->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem6->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(5, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
         __qtablewidgetitem7->setTextAlignment(Qt::AlignCenter);
         __qtablewidgetitem7->setFont(font2);
         __qtablewidgetitem7->setBackground(QColor(0, 85, 255));
+        __qtablewidgetitem7->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(6, __qtablewidgetitem7);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        __qtablewidgetitem8->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem8->setFont(font2);
-        __qtablewidgetitem8->setBackground(QColor(0, 170, 255));
-        __qtablewidgetitem8->setForeground(brush);
-        metadata_Table->setVerticalHeaderItem(7, __qtablewidgetitem8);
         metadata_Table->setObjectName(QStringLiteral("metadata_Table"));
         QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
         sizePolicy1.setHorizontalStretch(0);
@@ -229,17 +223,15 @@ public:
         QTableWidgetItem *___qtablewidgetitem2 = metadata_Table->verticalHeaderItem(1);
         ___qtablewidgetitem2->setText(QApplication::translate("import_Widget", "Image Name", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem3 = metadata_Table->verticalHeaderItem(2);
-        ___qtablewidgetitem3->setText(QApplication::translate("import_Widget", "Owner", Q_NULLPTR));
+        ___qtablewidgetitem3->setText(QApplication::translate("import_Widget", "Edited by", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem4 = metadata_Table->verticalHeaderItem(3);
-        ___qtablewidgetitem4->setText(QApplication::translate("import_Widget", "Edited by", Q_NULLPTR));
+        ___qtablewidgetitem4->setText(QApplication::translate("import_Widget", "Location", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem5 = metadata_Table->verticalHeaderItem(4);
-        ___qtablewidgetitem5->setText(QApplication::translate("import_Widget", "Location", Q_NULLPTR));
+        ___qtablewidgetitem5->setText(QApplication::translate("import_Widget", "Date Created", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem6 = metadata_Table->verticalHeaderItem(5);
-        ___qtablewidgetitem6->setText(QApplication::translate("import_Widget", "Date Created", Q_NULLPTR));
+        ___qtablewidgetitem6->setText(QApplication::translate("import_Widget", "Width (cm)", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem7 = metadata_Table->verticalHeaderItem(6);
-        ___qtablewidgetitem7->setText(QApplication::translate("import_Widget", "Width (cm)", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem8 = metadata_Table->verticalHeaderItem(7);
-        ___qtablewidgetitem8->setText(QApplication::translate("import_Widget", "Height (cm)", Q_NULLPTR));
+        ___qtablewidgetitem7->setText(QApplication::translate("import_Widget", "Height (cm)", Q_NULLPTR));
         import_btn->setText(QApplication::translate("import_Widget", "Import", Q_NULLPTR));
         delete_Btn->setText(QApplication::translate("import_Widget", "Delete", Q_NULLPTR));
     } // retranslateUi

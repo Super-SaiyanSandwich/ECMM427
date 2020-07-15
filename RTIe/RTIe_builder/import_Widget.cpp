@@ -16,7 +16,7 @@ import_Widget::import_Widget(QWidget *parent) :
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
     QGraphicsScene *scene = new QGraphicsScene(this);
-    ui->graphicsView->setScene(scene);
+    ui->graphics_View->setScene(scene);
 
     this->preview_Item = scene->addPixmap(QPixmap(0,0));
 }
