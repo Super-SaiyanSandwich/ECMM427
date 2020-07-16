@@ -65,6 +65,7 @@ void import_Widget::image_Display(){
 
     while (file_Iterator.hasNext())
     {
+        QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
         QThread *thread = new QThread();
         image_Gatherer *ig = new image_Gatherer();
         ig->moveToThread( thread );
