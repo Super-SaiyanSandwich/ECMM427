@@ -583,18 +583,32 @@ void marble_Widget::on_test_Button_clicked()
     qInfo() << "Y" << sum_Y;
     qInfo() << "Radius" << radius;
 
-    double C2 = pow((sum_X - radius),2) + pow((sum_Y - radius),2);
+    double dX = abs(sum_X - radius);
+    double dY = abs(sum_Y - radius);
+
+    double C2 = pow(dX,2) + pow(dY,2);
     double R2 = pow(radius, 2);
 
-    double theta = acos((radius - sum_Y)/ sqrt(C2));
-    theta = (sum_X < radius)? (2 * M_PI) - theta:theta;
+    double Z2 = R2 - C2;
 
-    double phi =  acos(  ( sqrt(R2 - C2) ) / (radius)  );
+    double theta = atan(dX/dY);
+    theta = (sum_Y > radius)? M_PI - theta: theta;
+    theta = (sum_X < radius)? (2 * M_PI) - theta: theta;
+
+
+    double phi =  atan(  sqrt( Z2 / C2 )  );
+    phi = (M_PI * 0.5) - phi;
 
 
     qInfo() << "Theta" << theta;
 
     qInfo() << "Phi" << phi;
+
+
+    qInfo() << "x = " <<  sin(phi) * sin(theta);
+    qInfo() << "y = " <<  sin(phi) * cos(theta);
+    qInfo() << "z = " <<  cos(phi);
+    qInfo() << "Z = " <<  sqrt(Z2);
 
     QPixmap base_Pix = QPixmap::fromImage(marble);
     ui->preivew_Label->setPixmap(base_Pix);
@@ -659,8 +673,9 @@ void marble_Widget::on_checkBox_stateChanged(int arg)
 {
     if(arg == 0)
     {
-        QString image_Path = splashScreen::project_Path + "/images/wd/" + ui->listWidget->selectedItems()[0]->text();
-
+        QString image_Path;
+        if(ui->listWidget->selectedItems().length() > 0)  image_Path = splashScreen::project_Path + "/images/wd/" + ui->listWidget->selectedItems()[0]->text();
+        else image_Path = splashScreen::project_Path + "/images/wd/" + ui->listWidget->item(0)->text();
         this->base_Image->setPixmap(QPixmap::fromImage(QImage(image_Path)));
     }
     else
@@ -670,24 +685,28 @@ void marble_Widget::on_checkBox_stateChanged(int arg)
         // Will have to experiment more in the future.
 
         QPixmap* avg_Image = new QPixmap(base_Image->pixmap().size());
+        avg_Image->fill(Qt::black);
         QPainter *paint = new QPainter(avg_Image);
-        const int COUNT = ui->listWidget->count();
+        const float COUNT = float(ui->listWidget->count());
 
         paint->setOpacity(1.0/ COUNT);
 
-        QProgressDialog progress("Processing Images...", "Cancel", 0, COUNT, this);
-        //progress.setWindowModality(Qt::WindowModal);
+        QProgressDialog* progress = new QProgressDialog("Processing Images...", "Okay", 0, COUNT, this);
+        progress->setWindowModality(Qt::WindowModal);
+        progress->show();
+        progress->setValue(0);
 
         for(int i = 0; i < COUNT; ++i)
         {
-            progress.setValue(i);
+            progress->setValue(i);
+            QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
             QString image_Path = splashScreen::project_Path + "/images/wd/" + ui->listWidget->item(i)->text();
             paint->drawImage(0,0,QImage(image_Path));
 
         }
 
-        progress.setValue(COUNT);
+        progress->setValue(COUNT);
 
         this->base_Image->setPixmap(*avg_Image);
         this->update_Main_Image();

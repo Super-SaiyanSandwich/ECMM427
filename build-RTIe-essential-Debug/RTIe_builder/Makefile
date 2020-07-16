@@ -531,11 +531,7 @@ ui_project_Wizard.h: ../../RTIe/RTIe_builder/project_Wizard.ui \
 
 ui_system_ui.h: ../../RTIe/RTIe_builder/system_ui.ui \
 		/usr/lib/qt5/bin/uic \
-		../../RTIe/RTIe_builder/marble_widget.h \
-		../../RTIe/RTIe_builder/import_Widget.h \
-		../../RTIe/RTIe_builder/crop_Widget.h \
-		../../RTIe/RTIe_builder/marble.h \
-		../../RTIe/RTIe_builder/cropped_area.h
+		../../RTIe/RTIe_builder/import_Widget.h
 	/usr/lib/qt5/bin/uic ../../RTIe/RTIe_builder/system_ui.ui -o ui_system_ui.h
 
 compiler_yacc_decl_make_all:
@@ -564,6 +560,7 @@ cropped_area.o: ../../RTIe/RTIe_builder/cropped_area.cpp ../../RTIe/RTIe_builder
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cropped_area.o ../../RTIe/RTIe_builder/cropped_area.cpp
 
 fitter_Widget.o: ../../RTIe/RTIe_builder/fitter_Widget.cpp ../../RTIe/RTIe_builder/fitter_Widget.h \
+		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		ui_fitter_Widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fitter_Widget.o ../../RTIe/RTIe_builder/fitter_Widget.cpp
 
@@ -585,7 +582,8 @@ image_Management_Nui.o: ../../RTIe/RTIe_builder/image_Management_Nui.cpp ../../R
 		../../RTIe/RTIe_builder/cropped_area.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image_Management_Nui.o ../../RTIe/RTIe_builder/image_Management_Nui.cpp
 
-import_Widget.o: ../../RTIe/RTIe_builder/import_Widget.cpp ../../RTIe/RTIe_builder/image_Management_Nui.h \
+import_Widget.o: ../../RTIe/RTIe_builder/import_Widget.cpp ../../RTIe/RTIe_builder/image_Gatherer.h \
+		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		../../RTIe/RTIe_builder/import_Widget.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
 		../../RTIe/RTIe_builder/new_Project.h \
@@ -617,8 +615,6 @@ marble_widget.o: ../../RTIe/RTIe_builder/marble_widget.cpp ../../RTIe/RTIe_build
 		../../RTIe/RTIe_builder/marble.h \
 		ui_marble_widget.h \
 		ui_system_ui.h \
-		../../RTIe/RTIe_builder/crop_Widget.h \
-		../../RTIe/RTIe_builder/cropped_area.h \
 		../../RTIe/RTIe_builder/import_Widget.h \
 		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		../../RTIe/RTIe_builder/image_Gatherer.h \
@@ -626,7 +622,8 @@ marble_widget.o: ../../RTIe/RTIe_builder/marble_widget.cpp ../../RTIe/RTIe_build
 		../../RTIe/RTIe_builder/new_Project.h \
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
-		../../RTIe/RTIe_builder/system_ui.h
+		../../RTIe/RTIe_builder/system_ui.h \
+		../../RTIe/RTIe_builder/cropped_area.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o marble_widget.o ../../RTIe/RTIe_builder/marble_widget.cpp
 
 new_Project.o: ../../RTIe/RTIe_builder/new_Project.cpp ../../RTIe/RTIe_builder/new_Project.h \
@@ -665,11 +662,12 @@ system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_builder/syste
 		../../RTIe/RTIe_builder/new_Project_Settings.h \
 		../../RTIe/RTIe_builder/project_Wizard.h \
 		ui_system_ui.h \
-		../../RTIe/RTIe_builder/crop_Widget.h \
 		../../RTIe/RTIe_builder/import_Widget.h \
+		../../RTIe/RTIe_builder/image_Gatherer.h \
+		../../RTIe/RTIe_builder/fitter_Widget.h \
+		../../RTIe/RTIe_builder/crop_Widget.h \
 		../../RTIe/RTIe_builder/marble_widget.h \
-		../../RTIe/RTIe_builder/marble.h \
-		../../RTIe/RTIe_builder/image_Gatherer.h
+		../../RTIe/RTIe_builder/marble.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o system_ui.o ../../RTIe/RTIe_builder/system_ui.cpp
 
 qrc_test.o: qrc_test.cpp 
