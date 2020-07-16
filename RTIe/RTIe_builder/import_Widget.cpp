@@ -99,7 +99,7 @@ void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->preview_Item->setPixmap( QPixmap::fromImage(QImage(preview_Image)) );
-    this->preview_Item->setScale(qMin(preview_Item->pixmap().height() / ui->graphicsView->viewport()->height(),preview_Item->pixmap().width() / ui->graphicsView->viewport()->width()));
+    this->preview_Item->setScale(qMin(preview_Item->pixmap().height() / ui->graphics_View->viewport()->height(),preview_Item->pixmap().width() / ui->graphics_View->viewport()->width()));
 //    int w = ui->image_Preview->width();
 //    int h = ui->image_Preview->height();
 //    ui->image_Preview->clear();

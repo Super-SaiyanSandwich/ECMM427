@@ -23,10 +23,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "crop_Widget.h"
-#include "fitter_Widget.h"
 #include "import_Widget.h"
-#include "marble_widget.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -56,48 +53,17 @@ public:
     QAction *actionHindi;
     QAction *actionNew_Project;
     QWidget *centralwidget;
-    QVBoxLayout *verticalLayout_19;
+    QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidget;
-    QWidget *import_Page;
+    import_Widget *import_Page;
     QVBoxLayout *verticalLayout_4;
-    import_Widget *system_import_widget;
-    QWidget *widget_2;
-    QVBoxLayout *verticalLayout_5;
+    QWidget *button_Widget;
+    QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_9;
     QPushButton *image_Management_Btn;
     QPushButton *marble_Detection_Btn;
     QPushButton *remove_Marble_Btn;
     QPushButton *export_Btn;
-    QWidget *marblePage;
-    QVBoxLayout *verticalLayout_20;
-    marble_Widget *system_marble_widget;
-    QWidget *widget_6;
-    QVBoxLayout *verticalLayout_6;
-    QHBoxLayout *horizontalLayout_11;
-    QPushButton *image_Management_Btn_2;
-    QPushButton *marble_Detection_Btn_2;
-    QPushButton *remove_Marble_Btn_2;
-    QPushButton *export_Btn_2;
-    QWidget *page3;
-    QVBoxLayout *verticalLayout_13;
-    crop_Widget *system_crop_widget;
-    QWidget *widget_4;
-    QHBoxLayout *horizontalLayout_2;
-    QHBoxLayout *horizontalLayout_7;
-    QPushButton *image_Management_Btn_3;
-    QPushButton *marble_Detection_Btn_3;
-    QPushButton *remove_Marble_Btn_3;
-    QPushButton *export_Btn_3;
-    QWidget *page4;
-    QVBoxLayout *verticalLayout_18;
-    fitter_Widget *system_Fitter_Widget;
-    QWidget *widget_5;
-    QHBoxLayout *horizontalLayout_8;
-    QHBoxLayout *horizontalLayout_10;
-    QPushButton *image_Management_Btn_4;
-    QPushButton *marble_Detection_Btn_4;
-    QPushButton *remove_Marble_Btn_4;
-    QPushButton *export_Btn_4;
     QMenuBar *menubar;
     QMenu *menuEdit;
     QMenu *menuView;
@@ -205,8 +171,8 @@ public:
         sizePolicy1.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
         centralwidget->setSizePolicy(sizePolicy1);
         centralwidget->setMaximumSize(QSize(20000, 20000));
-        verticalLayout_19 = new QVBoxLayout(centralwidget);
-        verticalLayout_19->setObjectName(QStringLiteral("verticalLayout_19"));
+        verticalLayout = new QVBoxLayout(centralwidget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
         stackedWidget->setEnabled(true);
@@ -217,30 +183,29 @@ public:
         stackedWidget->setSizePolicy(sizePolicy2);
         stackedWidget->setAutoFillBackground(false);
         stackedWidget->setLineWidth(14);
-        import_Page = new QWidget();
+        import_Page = new import_Widget();
         import_Page->setObjectName(QStringLiteral("import_Page"));
         sizePolicy.setHeightForWidth(import_Page->sizePolicy().hasHeightForWidth());
         import_Page->setSizePolicy(sizePolicy);
         verticalLayout_4 = new QVBoxLayout(import_Page);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        system_import_widget = new import_Widget(import_Page);
-        system_import_widget->setObjectName(QStringLiteral("system_import_widget"));
+        stackedWidget->addWidget(import_Page);
 
-        verticalLayout_4->addWidget(system_import_widget);
+        verticalLayout->addWidget(stackedWidget);
 
-        widget_2 = new QWidget(import_Page);
-        widget_2->setObjectName(QStringLiteral("widget_2"));
-        QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+        button_Widget = new QWidget(centralwidget);
+        button_Widget->setObjectName(QStringLiteral("button_Widget"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
-        widget_2->setSizePolicy(sizePolicy3);
-        widget_2->setMaximumSize(QSize(16777215, 60));
-        verticalLayout_5 = new QVBoxLayout(widget_2);
-        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        sizePolicy3.setHeightForWidth(button_Widget->sizePolicy().hasHeightForWidth());
+        button_Widget->setSizePolicy(sizePolicy3);
+        button_Widget->setMaximumSize(QSize(16777213, 60));
+        verticalLayout_2 = new QVBoxLayout(button_Widget);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        image_Management_Btn = new QPushButton(widget_2);
+        image_Management_Btn = new QPushButton(button_Widget);
         image_Management_Btn->setObjectName(QStringLiteral("image_Management_Btn"));
         image_Management_Btn->setEnabled(false);
         QSizePolicy sizePolicy4(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
@@ -253,21 +218,21 @@ public:
 
         horizontalLayout_9->addWidget(image_Management_Btn);
 
-        marble_Detection_Btn = new QPushButton(widget_2);
+        marble_Detection_Btn = new QPushButton(button_Widget);
         marble_Detection_Btn->setObjectName(QStringLiteral("marble_Detection_Btn"));
         sizePolicy4.setHeightForWidth(marble_Detection_Btn->sizePolicy().hasHeightForWidth());
         marble_Detection_Btn->setSizePolicy(sizePolicy4);
 
         horizontalLayout_9->addWidget(marble_Detection_Btn);
 
-        remove_Marble_Btn = new QPushButton(widget_2);
+        remove_Marble_Btn = new QPushButton(button_Widget);
         remove_Marble_Btn->setObjectName(QStringLiteral("remove_Marble_Btn"));
         sizePolicy4.setHeightForWidth(remove_Marble_Btn->sizePolicy().hasHeightForWidth());
         remove_Marble_Btn->setSizePolicy(sizePolicy4);
 
         horizontalLayout_9->addWidget(remove_Marble_Btn);
 
-        export_Btn = new QPushButton(widget_2);
+        export_Btn = new QPushButton(button_Widget);
         export_Btn->setObjectName(QStringLiteral("export_Btn"));
         sizePolicy4.setHeightForWidth(export_Btn->sizePolicy().hasHeightForWidth());
         export_Btn->setSizePolicy(sizePolicy4);
@@ -275,197 +240,10 @@ public:
         horizontalLayout_9->addWidget(export_Btn);
 
 
-        verticalLayout_5->addLayout(horizontalLayout_9);
+        verticalLayout_2->addLayout(horizontalLayout_9);
 
 
-        verticalLayout_4->addWidget(widget_2);
-
-        stackedWidget->addWidget(import_Page);
-        marblePage = new QWidget();
-        marblePage->setObjectName(QStringLiteral("marblePage"));
-        sizePolicy.setHeightForWidth(marblePage->sizePolicy().hasHeightForWidth());
-        marblePage->setSizePolicy(sizePolicy);
-        verticalLayout_20 = new QVBoxLayout(marblePage);
-        verticalLayout_20->setObjectName(QStringLiteral("verticalLayout_20"));
-        system_marble_widget = new marble_Widget(marblePage);
-        system_marble_widget->setObjectName(QStringLiteral("system_marble_widget"));
-        sizePolicy.setHeightForWidth(system_marble_widget->sizePolicy().hasHeightForWidth());
-        system_marble_widget->setSizePolicy(sizePolicy);
-
-        verticalLayout_20->addWidget(system_marble_widget);
-
-        widget_6 = new QWidget(marblePage);
-        widget_6->setObjectName(QStringLiteral("widget_6"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(widget_6->sizePolicy().hasHeightForWidth());
-        widget_6->setSizePolicy(sizePolicy5);
-        widget_6->setMaximumSize(QSize(16777215, 60));
-        verticalLayout_6 = new QVBoxLayout(widget_6);
-        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        horizontalLayout_11 = new QHBoxLayout();
-        horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
-        image_Management_Btn_2 = new QPushButton(widget_6);
-        image_Management_Btn_2->setObjectName(QStringLiteral("image_Management_Btn_2"));
-        image_Management_Btn_2->setEnabled(false);
-        sizePolicy4.setHeightForWidth(image_Management_Btn_2->sizePolicy().hasHeightForWidth());
-        image_Management_Btn_2->setSizePolicy(sizePolicy4);
-        image_Management_Btn_2->setCheckable(false);
-        image_Management_Btn_2->setFlat(false);
-
-        horizontalLayout_11->addWidget(image_Management_Btn_2);
-
-        marble_Detection_Btn_2 = new QPushButton(widget_6);
-        marble_Detection_Btn_2->setObjectName(QStringLiteral("marble_Detection_Btn_2"));
-        marble_Detection_Btn_2->setEnabled(false);
-        sizePolicy4.setHeightForWidth(marble_Detection_Btn_2->sizePolicy().hasHeightForWidth());
-        marble_Detection_Btn_2->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_11->addWidget(marble_Detection_Btn_2);
-
-        remove_Marble_Btn_2 = new QPushButton(widget_6);
-        remove_Marble_Btn_2->setObjectName(QStringLiteral("remove_Marble_Btn_2"));
-        sizePolicy4.setHeightForWidth(remove_Marble_Btn_2->sizePolicy().hasHeightForWidth());
-        remove_Marble_Btn_2->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_11->addWidget(remove_Marble_Btn_2);
-
-        export_Btn_2 = new QPushButton(widget_6);
-        export_Btn_2->setObjectName(QStringLiteral("export_Btn_2"));
-        sizePolicy4.setHeightForWidth(export_Btn_2->sizePolicy().hasHeightForWidth());
-        export_Btn_2->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_11->addWidget(export_Btn_2);
-
-
-        verticalLayout_6->addLayout(horizontalLayout_11);
-
-
-        verticalLayout_20->addWidget(widget_6);
-
-        stackedWidget->addWidget(marblePage);
-        page3 = new QWidget();
-        page3->setObjectName(QStringLiteral("page3"));
-        sizePolicy.setHeightForWidth(page3->sizePolicy().hasHeightForWidth());
-        page3->setSizePolicy(sizePolicy);
-        verticalLayout_13 = new QVBoxLayout(page3);
-        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
-        system_crop_widget = new crop_Widget(page3);
-        system_crop_widget->setObjectName(QStringLiteral("system_crop_widget"));
-
-        verticalLayout_13->addWidget(system_crop_widget);
-
-        widget_4 = new QWidget(page3);
-        widget_4->setObjectName(QStringLiteral("widget_4"));
-        sizePolicy5.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
-        widget_4->setSizePolicy(sizePolicy5);
-        widget_4->setMaximumSize(QSize(16777215, 60));
-        horizontalLayout_2 = new QHBoxLayout(widget_4);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        horizontalLayout_7->setSizeConstraint(QLayout::SetMaximumSize);
-        image_Management_Btn_3 = new QPushButton(widget_4);
-        image_Management_Btn_3->setObjectName(QStringLiteral("image_Management_Btn_3"));
-        image_Management_Btn_3->setEnabled(true);
-        sizePolicy4.setHeightForWidth(image_Management_Btn_3->sizePolicy().hasHeightForWidth());
-        image_Management_Btn_3->setSizePolicy(sizePolicy4);
-        image_Management_Btn_3->setCheckable(false);
-        image_Management_Btn_3->setFlat(false);
-
-        horizontalLayout_7->addWidget(image_Management_Btn_3);
-
-        marble_Detection_Btn_3 = new QPushButton(widget_4);
-        marble_Detection_Btn_3->setObjectName(QStringLiteral("marble_Detection_Btn_3"));
-        sizePolicy4.setHeightForWidth(marble_Detection_Btn_3->sizePolicy().hasHeightForWidth());
-        marble_Detection_Btn_3->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_7->addWidget(marble_Detection_Btn_3);
-
-        remove_Marble_Btn_3 = new QPushButton(widget_4);
-        remove_Marble_Btn_3->setObjectName(QStringLiteral("remove_Marble_Btn_3"));
-        remove_Marble_Btn_3->setEnabled(false);
-        sizePolicy4.setHeightForWidth(remove_Marble_Btn_3->sizePolicy().hasHeightForWidth());
-        remove_Marble_Btn_3->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_7->addWidget(remove_Marble_Btn_3);
-
-        export_Btn_3 = new QPushButton(widget_4);
-        export_Btn_3->setObjectName(QStringLiteral("export_Btn_3"));
-        sizePolicy4.setHeightForWidth(export_Btn_3->sizePolicy().hasHeightForWidth());
-        export_Btn_3->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_7->addWidget(export_Btn_3);
-
-
-        horizontalLayout_2->addLayout(horizontalLayout_7);
-
-
-        verticalLayout_13->addWidget(widget_4);
-
-        stackedWidget->addWidget(page3);
-        page4 = new QWidget();
-        page4->setObjectName(QStringLiteral("page4"));
-        sizePolicy.setHeightForWidth(page4->sizePolicy().hasHeightForWidth());
-        page4->setSizePolicy(sizePolicy);
-        verticalLayout_18 = new QVBoxLayout(page4);
-        verticalLayout_18->setObjectName(QStringLiteral("verticalLayout_18"));
-        system_Fitter_Widget = new fitter_Widget(page4);
-        system_Fitter_Widget->setObjectName(QStringLiteral("system_Fitter_Widget"));
-
-        verticalLayout_18->addWidget(system_Fitter_Widget);
-
-        widget_5 = new QWidget(page4);
-        widget_5->setObjectName(QStringLiteral("widget_5"));
-        sizePolicy5.setHeightForWidth(widget_5->sizePolicy().hasHeightForWidth());
-        widget_5->setSizePolicy(sizePolicy5);
-        widget_5->setMaximumSize(QSize(16777215, 60));
-        horizontalLayout_8 = new QHBoxLayout(widget_5);
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        horizontalLayout_10 = new QHBoxLayout();
-        horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
-        image_Management_Btn_4 = new QPushButton(widget_5);
-        image_Management_Btn_4->setObjectName(QStringLiteral("image_Management_Btn_4"));
-        image_Management_Btn_4->setEnabled(true);
-        sizePolicy4.setHeightForWidth(image_Management_Btn_4->sizePolicy().hasHeightForWidth());
-        image_Management_Btn_4->setSizePolicy(sizePolicy4);
-        image_Management_Btn_4->setCheckable(false);
-        image_Management_Btn_4->setFlat(false);
-
-        horizontalLayout_10->addWidget(image_Management_Btn_4);
-
-        marble_Detection_Btn_4 = new QPushButton(widget_5);
-        marble_Detection_Btn_4->setObjectName(QStringLiteral("marble_Detection_Btn_4"));
-        sizePolicy4.setHeightForWidth(marble_Detection_Btn_4->sizePolicy().hasHeightForWidth());
-        marble_Detection_Btn_4->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_10->addWidget(marble_Detection_Btn_4);
-
-        remove_Marble_Btn_4 = new QPushButton(widget_5);
-        remove_Marble_Btn_4->setObjectName(QStringLiteral("remove_Marble_Btn_4"));
-        sizePolicy4.setHeightForWidth(remove_Marble_Btn_4->sizePolicy().hasHeightForWidth());
-        remove_Marble_Btn_4->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_10->addWidget(remove_Marble_Btn_4);
-
-        export_Btn_4 = new QPushButton(widget_5);
-        export_Btn_4->setObjectName(QStringLiteral("export_Btn_4"));
-        export_Btn_4->setEnabled(false);
-        sizePolicy4.setHeightForWidth(export_Btn_4->sizePolicy().hasHeightForWidth());
-        export_Btn_4->setSizePolicy(sizePolicy4);
-
-        horizontalLayout_10->addWidget(export_Btn_4);
-
-
-        horizontalLayout_8->addLayout(horizontalLayout_10);
-
-
-        verticalLayout_18->addWidget(widget_5);
-
-        stackedWidget->addWidget(page4);
-
-        verticalLayout_19->addWidget(stackedWidget);
+        verticalLayout->addWidget(button_Widget);
 
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
@@ -509,7 +287,7 @@ public:
 
         retranslateUi(system_Ui);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(system_Ui);
@@ -575,20 +353,8 @@ public:
         actionNew_Project->setText(QApplication::translate("system_Ui", "New Project", Q_NULLPTR));
         image_Management_Btn->setText(QApplication::translate("system_Ui", "Image Management", Q_NULLPTR));
         marble_Detection_Btn->setText(QApplication::translate("system_Ui", "Marble Detection", Q_NULLPTR));
-        remove_Marble_Btn->setText(QApplication::translate("system_Ui", "Remove Marble", Q_NULLPTR));
+        remove_Marble_Btn->setText(QApplication::translate("system_Ui", "Crop Marble from Images", Q_NULLPTR));
         export_Btn->setText(QApplication::translate("system_Ui", "Export", Q_NULLPTR));
-        image_Management_Btn_2->setText(QApplication::translate("system_Ui", "Image Management", Q_NULLPTR));
-        marble_Detection_Btn_2->setText(QApplication::translate("system_Ui", "Marble Detection", Q_NULLPTR));
-        remove_Marble_Btn_2->setText(QApplication::translate("system_Ui", "Remove Marble", Q_NULLPTR));
-        export_Btn_2->setText(QApplication::translate("system_Ui", "Export", Q_NULLPTR));
-        image_Management_Btn_3->setText(QApplication::translate("system_Ui", "Image Management", Q_NULLPTR));
-        marble_Detection_Btn_3->setText(QApplication::translate("system_Ui", "Marble Detection", Q_NULLPTR));
-        remove_Marble_Btn_3->setText(QApplication::translate("system_Ui", "Remove Marble", Q_NULLPTR));
-        export_Btn_3->setText(QApplication::translate("system_Ui", "Export", Q_NULLPTR));
-        image_Management_Btn_4->setText(QApplication::translate("system_Ui", "Image Management", Q_NULLPTR));
-        marble_Detection_Btn_4->setText(QApplication::translate("system_Ui", "Marble Detection", Q_NULLPTR));
-        remove_Marble_Btn_4->setText(QApplication::translate("system_Ui", "Remove Marble", Q_NULLPTR));
-        export_Btn_4->setText(QApplication::translate("system_Ui", "Export", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("system_Ui", "Edit", Q_NULLPTR));
         menuView->setTitle(QApplication::translate("system_Ui", "View", Q_NULLPTR));
         menuLanguage->setTitle(QApplication::translate("system_Ui", "Language", Q_NULLPTR));
