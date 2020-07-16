@@ -157,7 +157,7 @@ QToolBox::tab:selected {
 }*/</string>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="marble_Page">
              <property name="geometry">
@@ -165,7 +165,7 @@ QToolBox::tab:selected {
                <x>0</x>
                <y>0</y>
                <width>296</width>
-               <height>678</height>
+               <height>642</height>
               </rect>
              </property>
              <attribute name="label">
@@ -185,7 +185,7 @@ QToolBox::tab:selected {
                      <x>0</x>
                      <y>0</y>
                      <width>274</width>
-                     <height>623</height>
+                     <height>587</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -237,7 +237,7 @@ QToolBox::tab:selected {
                <x>0</x>
                <y>0</y>
                <width>249</width>
-               <height>678</height>
+               <height>642</height>
               </rect>
              </property>
              <attribute name="label">
@@ -362,7 +362,7 @@ QToolBox::tab:selected {
                <x>0</x>
                <y>0</y>
                <width>249</width>
-               <height>678</height>
+               <height>642</height>
               </rect>
              </property>
              <attribute name="label">
@@ -453,7 +453,7 @@ QToolBox::tab:selected {
                <x>0</x>
                <y>0</y>
                <width>249</width>
-               <height>678</height>
+               <height>642</height>
               </rect>
              </property>
              <attribute name="label">
@@ -780,13 +780,20 @@ QScrollBar::sub-line:horizontal {
                <x>0</x>
                <y>0</y>
                <width>294</width>
-               <height>678</height>
+               <height>642</height>
               </rect>
              </property>
              <attribute name="label">
               <string>Images</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Select Image to change Display:</string>
+                </property>
+               </widget>
+              </item>
               <item>
                <widget class="QScrollArea" name="scrollArea_2">
                 <property name="widgetResizable">
@@ -798,7 +805,7 @@ QScrollBar::sub-line:horizontal {
                    <x>0</x>
                    <y>0</y>
                    <width>274</width>
-                   <height>596</height>
+                   <height>599</height>
                   </rect>
                  </property>
                  <property name="sizePolicy">
@@ -829,26 +836,6 @@ QScrollBar::sub-line:horizontal {
                   </item>
                  </layout>
                 </widget>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="test_Button">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Run Marble Detection</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="open_Button">
-                <property name="text">
-                 <string>Open</string>
-                </property>
                </widget>
               </item>
              </layout>
@@ -932,6 +919,25 @@ QScrollBar::sub-line:horizontal {
            </spacer>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="test_Button">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Generate Light Position (.lp) File</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

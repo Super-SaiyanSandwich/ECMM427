@@ -88,7 +88,7 @@ void project_Wizard::create_Project(){
       // variable to be used across the software.
       QString project_Path = dir.path() + "/" + project_Name;
       splashScreen::project_Path = project_Path;
-
+      splashScreen::project_Name = project_Name;
       // Uses the project's directory to create all nested directories.
       QDir project_Dir(project_Path);
       project_Dir.mkdir("./images/");

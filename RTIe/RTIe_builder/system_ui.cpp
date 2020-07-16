@@ -98,12 +98,13 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
         {
             QTextStream in(&project_File);
             splashScreen::project_Path = in.readLine();
+            splashScreen::project_Name = project_File.fileName().remove(".rtie");
             project_File.close();
         }
 
     }
 
-    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
+    qInfo() << "OPEN PATH:: " << splashScreen::project_Path;
 
     system_Ui::start();
 
