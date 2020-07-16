@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_crop_Widget_t {
     QByteArrayData data[30];
-    char stringdata0[805];
+    char stringdata0[793];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,36 +37,36 @@ QT_MOC_LITERAL(2, 45, 0), // ""
 QT_MOC_LITERAL(3, 46, 16), // "QListWidgetItem*"
 QT_MOC_LITERAL(4, 63, 4), // "item"
 QT_MOC_LITERAL(5, 68, 21), // "on_cancel_btn_clicked"
-QT_MOC_LITERAL(6, 90, 37), // "on_check_Box_Spherical_4_stat..."
-QT_MOC_LITERAL(7, 128, 4), // "arg1"
-QT_MOC_LITERAL(8, 133, 39), // "on_horizontal_Slider_X_2_slid..."
-QT_MOC_LITERAL(9, 173, 39), // "on_horizontal_Slider_Y_2_slid..."
-QT_MOC_LITERAL(10, 213, 19), // "on_crop_btn_clicked"
-QT_MOC_LITERAL(11, 233, 28), // "on_spin_Box_X_2_valueChanged"
-QT_MOC_LITERAL(12, 262, 1), // "X"
-QT_MOC_LITERAL(13, 264, 28), // "on_spin_Box_Y_2_valueChanged"
-QT_MOC_LITERAL(14, 293, 1), // "Y"
-QT_MOC_LITERAL(15, 295, 31), // "on_spin_Box_Height_valueChanged"
-QT_MOC_LITERAL(16, 327, 5), // "value"
-QT_MOC_LITERAL(17, 333, 30), // "on_spin_Box_Width_valueChanged"
-QT_MOC_LITERAL(18, 364, 37), // "on_horizontal_Slider_X_2_valu..."
-QT_MOC_LITERAL(19, 402, 37), // "on_horizontal_Slider_Y_2_valu..."
-QT_MOC_LITERAL(20, 440, 40), // "on_horizontal_Slider_Height_v..."
-QT_MOC_LITERAL(21, 481, 39), // "on_horizontal_Slider_Width_va..."
-QT_MOC_LITERAL(22, 521, 43), // "on_horizontal_Scroll_Bar_Red_..."
-QT_MOC_LITERAL(23, 565, 45), // "on_horizontal_Scroll_Bar_Gree..."
-QT_MOC_LITERAL(24, 611, 44), // "on_horizontal_Scroll_Bar_Blue..."
-QT_MOC_LITERAL(25, 656, 35), // "on_colour_Selector_Button_2_c..."
-QT_MOC_LITERAL(26, 692, 24), // "on_open_Button_2_clicked"
-QT_MOC_LITERAL(27, 717, 30), // "on_zoom_Reset_Button_2_clicked"
-QT_MOC_LITERAL(28, 748, 27), // "on_zoom_In_Button_2_clicked"
-QT_MOC_LITERAL(29, 776, 28) // "on_zoom_Out_Button_2_clicked"
+QT_MOC_LITERAL(6, 90, 25), // "on_apply_all_stateChanged"
+QT_MOC_LITERAL(7, 116, 4), // "arg1"
+QT_MOC_LITERAL(8, 121, 39), // "on_horizontal_Slider_X_2_slid..."
+QT_MOC_LITERAL(9, 161, 39), // "on_horizontal_Slider_Y_2_slid..."
+QT_MOC_LITERAL(10, 201, 19), // "on_crop_btn_clicked"
+QT_MOC_LITERAL(11, 221, 28), // "on_spin_Box_X_2_valueChanged"
+QT_MOC_LITERAL(12, 250, 1), // "X"
+QT_MOC_LITERAL(13, 252, 28), // "on_spin_Box_Y_2_valueChanged"
+QT_MOC_LITERAL(14, 281, 1), // "Y"
+QT_MOC_LITERAL(15, 283, 31), // "on_spin_Box_Height_valueChanged"
+QT_MOC_LITERAL(16, 315, 5), // "value"
+QT_MOC_LITERAL(17, 321, 30), // "on_spin_Box_Width_valueChanged"
+QT_MOC_LITERAL(18, 352, 37), // "on_horizontal_Slider_X_2_valu..."
+QT_MOC_LITERAL(19, 390, 37), // "on_horizontal_Slider_Y_2_valu..."
+QT_MOC_LITERAL(20, 428, 40), // "on_horizontal_Slider_Height_v..."
+QT_MOC_LITERAL(21, 469, 39), // "on_horizontal_Slider_Width_va..."
+QT_MOC_LITERAL(22, 509, 43), // "on_horizontal_Scroll_Bar_Red_..."
+QT_MOC_LITERAL(23, 553, 45), // "on_horizontal_Scroll_Bar_Gree..."
+QT_MOC_LITERAL(24, 599, 44), // "on_horizontal_Scroll_Bar_Blue..."
+QT_MOC_LITERAL(25, 644, 35), // "on_colour_Selector_Button_2_c..."
+QT_MOC_LITERAL(26, 680, 24), // "on_open_Button_2_clicked"
+QT_MOC_LITERAL(27, 705, 30), // "on_zoom_Reset_Button_2_clicked"
+QT_MOC_LITERAL(28, 736, 27), // "on_zoom_In_Button_2_clicked"
+QT_MOC_LITERAL(29, 764, 28) // "on_zoom_Out_Button_2_clicked"
 
     },
     "crop_Widget\0on_work_Images_itemDoubleClicked\0"
     "\0QListWidgetItem*\0item\0on_cancel_btn_clicked\0"
-    "on_check_Box_Spherical_4_stateChanged\0"
-    "arg1\0on_horizontal_Slider_X_2_sliderReleased\0"
+    "on_apply_all_stateChanged\0arg1\0"
+    "on_horizontal_Slider_X_2_sliderReleased\0"
     "on_horizontal_Slider_Y_2_sliderReleased\0"
     "on_crop_btn_clicked\0on_spin_Box_X_2_valueChanged\0"
     "X\0on_spin_Box_Y_2_valueChanged\0Y\0"
@@ -159,7 +159,7 @@ void crop_Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         switch (_id) {
         case 0: _t->on_work_Images_itemDoubleClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         case 1: _t->on_cancel_btn_clicked(); break;
-        case 2: _t->on_check_Box_Spherical_4_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->on_apply_all_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->on_horizontal_Slider_X_2_sliderReleased(); break;
         case 4: _t->on_horizontal_Slider_Y_2_sliderReleased(); break;
         case 5: _t->on_crop_btn_clicked(); break;

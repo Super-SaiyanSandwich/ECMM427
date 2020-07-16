@@ -49,8 +49,8 @@ image_Management_Nui::~image_Management_Nui() {};
  * preserves file names.
  *
  */
-void image_Management_Nui::import(QWidget* main){
-
+void image_Management_Nui::import(QWidget* main)
+{
     //Creates a dialog to choose images to import according to the format filter
     QFileDialog dialog;
     dialog.setFileMode(QFileDialog::ExistingFiles);
@@ -114,8 +114,8 @@ void image_Management_Nui::import(QWidget* main){
  *
  *
  */
-QStringList image_Management_Nui::get_Working_Image_Paths(){
-    //wd Path is created to prepend file names (see below)
+QStringList image_Management_Nui::get_Working_Image_Paths()
+{//wd Path is created to prepend file names (see below)
     QString wd = splashScreen::project_Path + "/images/wd/";
 
     //Dir is used to retrieve all image NAMES (not paths), and filters acceptable formats and directories.
@@ -143,7 +143,8 @@ QStringList image_Management_Nui::get_Working_Image_Paths(){
  *
  *
  */
-void image_Management_Nui::delete_(QStringList file_Names){
+void image_Management_Nui::delete_(QStringList file_Names)
+{
 
     //Combines QStringList into singular QStrings
     QString file_List_Str = file_Names.join( "\n");

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>665</width>
-    <height>427</height>
+    <width>911</width>
+    <height>669</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,7 +37,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QGraphicsView" name="graphicsView"/>
+      <widget class="QGraphicsView" name="graphics_View"/>
      </item>
      <item>
       <widget class="QLabel" name="metadata_Label">
@@ -186,37 +186,6 @@
        </row>
        <row>
         <property name="text">
-         <string>Owner</string>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="textAlignment">
-         <set>AlignCenter</set>
-        </property>
-        <property name="background">
-         <color>
-          <red>0</red>
-          <green>85</green>
-          <blue>255</blue>
-         </color>
-        </property>
-        <property name="foreground">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </property>
-       </row>
-       <row>
-        <property name="text">
          <string>Edited by</string>
         </property>
         <property name="font">
@@ -232,7 +201,7 @@
         <property name="background">
          <color>
           <red>0</red>
-          <green>170</green>
+          <green>85</green>
           <blue>255</blue>
          </color>
         </property>
@@ -263,7 +232,7 @@
         <property name="background">
          <color>
           <red>0</red>
-          <green>85</green>
+          <green>170</green>
           <blue>255</blue>
          </color>
         </property>
@@ -294,7 +263,7 @@
         <property name="background">
          <color>
           <red>0</red>
-          <green>170</green>
+          <green>85</green>
           <blue>255</blue>
          </color>
         </property>
@@ -325,7 +294,7 @@
         <property name="background">
          <color>
           <red>0</red>
-          <green>85</green>
+          <green>170</green>
           <blue>255</blue>
          </color>
         </property>
@@ -347,7 +316,7 @@
         <property name="background">
          <color>
           <red>0</red>
-          <green>170</green>
+          <green>85</green>
           <blue>255</blue>
          </color>
         </property>

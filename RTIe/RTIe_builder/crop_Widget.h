@@ -25,7 +25,7 @@ private slots:
 
     void on_cancel_btn_clicked();
 
-    void on_check_Box_Spherical_4_stateChanged(int arg1);
+    void on_apply_all_stateChanged(int arg1);
 
     void on_horizontal_Slider_X_2_sliderReleased();
 
@@ -48,6 +48,7 @@ private slots:
     void on_zoom_Reset_Button_2_clicked();
     void on_zoom_In_Button_2_clicked();
     void on_zoom_Out_Button_2_clicked();
+
 private:
     bool first_Load = true;
 
