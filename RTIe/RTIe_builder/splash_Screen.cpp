@@ -9,6 +9,7 @@
 #include <iostream>
 
 QString splashScreen::project_Path;
+QString splashScreen::project_Name;
 
 splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 {    

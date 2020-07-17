@@ -42,6 +42,7 @@ private:
 
     void update_Main_Image();
     void update_Preview_Image();
+    QPixmap * generate_Preview_Image(QPixmap source);
     void inverted_Marker();
     QImage applyEffectToImage(QImage src, QGraphicsEffect *effect, int extent = 0);
     QPixmap applyEffectToImage(QPixmap src, QGraphicsEffect *effect, int extent = 0);
@@ -50,6 +51,7 @@ private:
     void adjust_Scroll_Bar(QScrollBar *scrollBar, double factor);
     void set_Maximums();
     QString load_Image_Icons();
+    QString detect_Reflection(QImage marble);
 
     bool eventFilter(QObject *object, QEvent *event);
     bool first_Load = true;

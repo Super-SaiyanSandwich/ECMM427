@@ -87,21 +87,49 @@ void marble_Widget::update_Main_Image()
 ///
 void marble_Widget::update_Preview_Image()
 {
+    int rad = this->selected_Marble->getRadius();
+
+    QPixmap* target = this->generate_Preview_Image(this->base_Image->pixmap());
+
+
+    ui->preivew_Label->clear();
+    ui->preivew_Label->setPixmap(*target);
+    ui->preivew_Label->update();
+
+
+    int brush_Size = int(rad / 6.0);
+    QPen ellipseBrush = QPen(selected_Marble->getColour());
+    ellipseBrush.setWidth(brush_Size);
+
+    QPainter *paint = new QPainter(target);
+    paint->setPen(ellipseBrush);
+
+    paint->drawEllipse(brush_Size / 2, brush_Size / 2, (rad * 2) - (brush_Size), (rad * 2) - (brush_Size));
+    paint->end();
+
+    ui->listWidget_2->item(marble_List.indexOf(selected_Marble))->setIcon(QIcon(*target));
+
+
+}
+
+QPixmap * marble_Widget::generate_Preview_Image(QPixmap source)
+{
     bool blur = false;
     int rad = this->selected_Marble->getRadius();
 
-    QPixmap base_Pix = this->base_Image->pixmap();
-    QPainter *paint = new QPainter(&base_Pix);
-    QPixmap target(rad * 2, rad * 2);
 
-    paint = new QPainter(&target);
+    QPixmap *target = new QPixmap(rad * 2, rad * 2);
+
+    QPainter *paint = new QPainter(target);
+
+
     tuple<int, int> pos = this->selected_Marble->getPosition();
 
     if (blur){
         QGraphicsBlurEffect *blur = new QGraphicsBlurEffect;
         blur->setBlurRadius(8);
 
-        QPixmap blur_Pix = (applyEffectToImage(base_Pix, blur));
+        QPixmap blur_Pix = (applyEffectToImage(source, blur));
 
 
         paint->drawPixmap(-get<0>(pos), -get<1>(pos), blur_Pix);
@@ -116,24 +144,10 @@ void marble_Widget::update_Preview_Image()
     paint->setClipRegion(mask);
 
     //base_Pix = QPixmap::fromImage(this->base_Image);
-    paint->drawPixmap(-get<0>(pos), -get<1>(pos), base_Pix);
-
-
-    ui->preivew_Label->clear();
-    ui->preivew_Label->setPixmap(target);
-    ui->preivew_Label->update();
-
-    int brush_Size = int(rad / 6.0);
-    QPen ellipseBrush = QPen(selected_Marble->getColour());
-    ellipseBrush.setWidth(brush_Size);
-
-    paint->setPen(ellipseBrush);
-
-    paint->drawEllipse(brush_Size / 2, brush_Size / 2, (rad * 2) - (brush_Size), (rad * 2) - (brush_Size));
-
-    ui->listWidget_2->item(marble_List.indexOf(selected_Marble))->setIcon(QIcon(target));
-
+    paint->drawPixmap(-get<0>(pos), -get<1>(pos), source);
     paint->end();
+
+    return target;
 }
 
 void marble_Widget::inverted_Marker()
@@ -208,6 +222,7 @@ QString marble_Widget::load_Image_Icons()
     }
     return  file_Iterator.previous().toLocal8Bit().constData();
 }
+
 
 bool marble_Widget::eventFilter(QObject *object, QEvent *event)
 {
@@ -516,12 +531,8 @@ int pivot_Channel(int c)
     return c;
 }
 
-// ### TODO: 07/04/20 ###
-// Change name of function to more appropriate name.
-///
-/// \brief Performs the contrast process on the currently selected image.
-///
-void marble_Widget::on_test_Button_clicked()
+
+QString marble_Widget::detect_Reflection(QImage marble)
 {
     QRgb pixel;
     QColor col;
@@ -531,8 +542,6 @@ void marble_Widget::on_test_Button_clicked()
     //statusBar()->showMessage(QString("Beginning Light Spot Detection"));
 
     vector<tuple<int,int>> cluster_Points;
-
-    QImage marble = ui->preivew_Label->pixmap()->toImage();
 
 
     for(int x = 0; x < marble.width(); x++)
@@ -579,9 +588,9 @@ void marble_Widget::on_test_Button_clicked()
     marble.setPixel(sum_X, sum_Y-1, qRgb(0, 255, 0));
 
     //statusBar()->showMessage(QString("X: %1, Y: %2").arg(QString::number(sum_X), QString::number(sum_Y)));
-    qInfo() << "X" << sum_X;
-    qInfo() << "Y" << sum_Y;
-    qInfo() << "Radius" << radius;
+//    qInfo() << "X" << sum_X;
+//    qInfo() << "Y" << sum_Y;
+//    qInfo() << "Radius" << radius;
 
     double dX = abs(sum_X - radius);
     double dY = abs(sum_Y - radius);
@@ -600,19 +609,66 @@ void marble_Widget::on_test_Button_clicked()
     phi = (M_PI * 0.5) - phi;
 
 
-    qInfo() << "Theta" << theta;
+//    qInfo() << "Theta" << theta;
 
-    qInfo() << "Phi" << phi;
+//    qInfo() << "Phi" << phi;
 
+    double x = sin(phi) * sin(theta);
+    double y = sin(phi) * cos(theta);
+    double z = cos(phi);
 
-    qInfo() << "x = " <<  sin(phi) * sin(theta);
-    qInfo() << "y = " <<  sin(phi) * cos(theta);
-    qInfo() << "z = " <<  cos(phi);
-    qInfo() << "Z = " <<  sqrt(Z2);
+//    qInfo() << "x = " <<  sin(phi) * sin(theta);
+//    qInfo() << "y = " <<  sin(phi) * cos(theta);
+//    qInfo() << "z = " <<  cos(phi);
+//    qInfo() << "Z = " <<  sqrt(Z2);
 
-    QPixmap base_Pix = QPixmap::fromImage(marble);
-    ui->preivew_Label->setPixmap(base_Pix);
+    return QString::fromStdString(to_string(x) + " " + to_string(y) + " " + to_string(z));
 }
+
+// ### TODO: 07/04/20 ###
+// Change name of function to more appropriate name.
+// ### TODO: 17/08/20 ###
+// Add functionality for user to decide where to save.
+///
+/// \brief Performs the marble detection process on all images in the current project.
+///
+void marble_Widget::on_test_Button_clicked()
+{
+    qInfo() << splashScreen::project_Path + "/" + splashScreen::project_Name + ".lp" << endl;
+    QFile* lp_File = new QFile(splashScreen::project_Path + "/" + splashScreen::project_Name + ".lp");
+    if (lp_File->open(QIODevice::WriteOnly)) {
+        QTextStream stream(lp_File);
+
+        const int COUNT = ui->listWidget->count();
+        qInfo() << "Cheeeese" << endl;
+        stream << COUNT << endl;
+
+        QProgressDialog* progress = new QProgressDialog("Processing Images...", "Cancel", 0, COUNT, this);
+        progress->setWindowModality(Qt::WindowModal);
+        progress->show();
+        progress->setValue(0);
+
+        for(int i = 0; i < COUNT; ++i)
+        {
+            progress->setValue(i);
+            QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+
+            QString coords = this->detect_Reflection(this->generate_Preview_Image(splashScreen::project_Path+ "/images/wd/" + ui->listWidget->item(i)->text())->toImage());
+            stream << splashScreen::project_Path+ "/images/wd/" + ui->listWidget->item(i)->text() << " " << coords << endl;
+
+        }
+
+        progress->setValue(COUNT);
+
+    } else {
+        qInfo() << lp_File->errorString();
+    }
+    lp_File->close();
+    _Destroy(lp_File);
+}
+
+
+
 
 ///
 /// \brief When an image is double-clicked in the list of images, that images is selected as the image to use for marble selection
@@ -662,6 +718,7 @@ void marble_Widget::on_horizontal_Slider_Y_sliderReleased()
 {
     this->update_Preview_Image();
 }
+
 
 // ### TODO: 06/04/20 ###
 // Change name of function and object to something more appropriate
