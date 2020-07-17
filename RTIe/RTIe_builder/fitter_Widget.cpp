@@ -11,7 +11,21 @@ fitter_Widget::fitter_Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::fitter_Widget)
 {
+
+    qInfo() << "Begin MD";
+
     ui->setupUi(this);
+    QStringList image_Paths = get_File_List();
+    ui->image_Label->clear();
+    ui->image_Name->clear();
+
+    QImage image = QImage(this->get_File_List().value(0));
+
+    ui->image_Label->setPixmap(QPixmap::fromImage(image));
+    ui->image_Label->update();
+    QStringList pieces = image_Paths.value(0).split( "/" );
+    QString neededWord = pieces.value( pieces.length() - 1 );
+    ui->image_Name->setText(neededWord);
 }
 
 fitter_Widget::~fitter_Widget()

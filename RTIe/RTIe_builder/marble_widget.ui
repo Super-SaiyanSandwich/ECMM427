@@ -157,7 +157,7 @@ QToolBox::tab:selected {
 }*/</string>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="marble_Page">
              <property name="geometry">
@@ -165,7 +165,7 @@ QToolBox::tab:selected {
                <x>0</x>
                <y>0</y>
                <width>296</width>
-               <height>678</height>
+               <height>683</height>
               </rect>
              </property>
              <attribute name="label">
@@ -185,7 +185,7 @@ QToolBox::tab:selected {
                      <x>0</x>
                      <y>0</y>
                      <width>274</width>
-                     <height>623</height>
+                     <height>630</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -236,8 +236,8 @@ QToolBox::tab:selected {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>249</width>
-               <height>678</height>
+               <width>258</width>
+               <height>683</height>
               </rect>
              </property>
              <attribute name="label">
@@ -361,8 +361,8 @@ QToolBox::tab:selected {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>249</width>
-               <height>678</height>
+               <width>258</width>
+               <height>683</height>
               </rect>
              </property>
              <attribute name="label">
@@ -452,8 +452,8 @@ QToolBox::tab:selected {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>249</width>
-               <height>678</height>
+               <width>258</width>
+               <height>683</height>
               </rect>
              </property>
              <attribute name="label">
@@ -780,7 +780,7 @@ QScrollBar::sub-line:horizontal {
                <x>0</x>
                <y>0</y>
                <width>294</width>
-               <height>678</height>
+               <height>683</height>
               </rect>
              </property>
              <attribute name="label">
@@ -798,7 +798,7 @@ QScrollBar::sub-line:horizontal {
                    <x>0</x>
                    <y>0</y>
                    <width>274</width>
-                   <height>596</height>
+                   <height>605</height>
                   </rect>
                  </property>
                  <property name="sizePolicy">

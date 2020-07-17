@@ -22,10 +22,12 @@ public:
 
 private:
     QGraphicsPixmapItem *preview_Item;
+    QGraphicsScene *scene;
 
     Ui::import_Widget *ui;
     void image_Display();
-
+    void reset_Image_Zoom();
+    QStringList get_File_List();
     bool first_Load = true;
 
 protected:

@@ -180,7 +180,7 @@ void system_Ui::on_remove_Marble_Btn_clicked()
     }
 
     if (removeMarbleIndex == 0){
-        crop_Widget *rmv = new crop_Widget();
+        crop_Widget *rmv = new crop_Widget(nullptr, ui->import_Page->get_Select(), ui->import_Page->get_List());
         removeMarbleIndex = ui->stackedWidget->addWidget(rmv);
     }
 

@@ -18,7 +18,7 @@
 
 using namespace std;
 
-crop_Widget::crop_Widget(QWidget *parent, QString base_String) :
+crop_Widget::crop_Widget(QWidget *parent, QString base_String, QList<QListWidgetItem *> * icons) :
     QWidget(parent),
     ui(new Ui::crop_Widget)
 {
@@ -37,7 +37,10 @@ crop_Widget::crop_Widget(QWidget *parent, QString base_String) :
     ui->preview_Graphics_View->setScene(preview_Screen);
 
     this->preview_Image =preview_Screen->addPixmap(QPixmap(base_String));
+
+    this->icons = icons;
 }
+
 
 crop_Widget::~crop_Widget()
 {
@@ -124,65 +127,6 @@ void crop_Widget::on_work_Images_itemDoubleClicked(QListWidgetItem *item)
     this->update_Main_Cropped_Image();
     this->reset_Crop_Image_Zoom();
     this->reload_Preview();
-}
-
-/// \brief Main button
-void crop_Widget::on_crop_btn_clicked()
-{
-    int h = this->selected_Area->get_Height();
-    int w = this->selected_Area->get_Width();
-//    QString current_Image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
-    if (ui->apply_all->isChecked()){
-        QStringList image_paths = image_Management_Nui::get_Working_Image_Paths();
-
-//        int h = this->selected_Area->get_Height();
-//        int w = this->selected_Area->get_Width();
-
-
-        //Iterates over all file paths
-        QStringListIterator file_Iterator(image_paths);
-        while(file_Iterator.hasNext()){
-            //Apply x,y,w and h on the image and replace the old image in that file path
-            QString image_Path = file_Iterator.next(); //File path for each image in the work directory.
-
-//            qInfo()<<image_Path;
-
-            QPixmap base_Pix = QPixmap(image_Path);
-            QPainter *paint = new QPainter(&base_Pix);
-
-            QPixmap target(w, h);
-            paint = new QPainter(&target);
-            tuple<int, int> pos = this->selected_Area->get_Position();
-            paint->drawPixmap(-get<0>(pos), -get<1>(pos), base_Pix);
-
-            QImage crop = target.toImage();
-            crop.save(image_Path);
-        }
-    }
-
-//    QPixmap target(w, h);
-//    QImage crop = target.toImage();
-//    crop.save(current_Image_Path);
-}
-
-/// \brief RESET THE X,Y,HEIGHT,WIDTH AND THE PREVIEW OF THE CROPPING BOX
-void crop_Widget::on_cancel_btn_clicked()
-{
-    this->reload_Preview();
-    selected_Area->set_Width(100);
-    selected_Area->set_Height(100);
-    selected_Area->set_Position(0,0);
-
-    ui->horizontal_Slider_X_2->setValue(0);
-    ui->horizontal_Slider_Y_2->setValue(0);
-    ui->horizontal_Slider_Height->setValue(100);
-    ui->horizontal_Slider_Width->setValue(100);
-
-
-    ui->spin_Box_X_2->setValue(0);
-    ui->spin_Box_Y_2->setValue(0);
-    ui->spin_Box_Height->setValue(100);
-    ui->spin_Box_Width->setValue(100);
 }
 
 /// \brief Updates the images displayed on screen by painting over the base image
@@ -582,4 +526,78 @@ bool crop_Widget::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter( object, event );
 }
 
+
+// -------------- Important functions --------------------------
+
+
+
+/// \brief Main button
+void crop_Widget::on_crop_btn_clicked()
+{
+    int h = this->selected_Area->get_Height();
+    int w = this->selected_Area->get_Width();
+//    QString current_Image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
+    if (ui->apply_all->isChecked()){
+        QStringList image_paths = image_Management_Nui::get_Working_Image_Paths();
+
+        const float COUNT = float(image_paths.count());
+        qInfo()<<COUNT;
+
+        QProgressDialog* progress = new QProgressDialog("Processing Images...", "Okay", 0, COUNT, this);
+        progress->setWindowModality(Qt::WindowModal);
+        progress->show();
+        progress->setValue(0);
+
+
+        //Iterates over all file paths
+        QStringListIterator file_Iterator(image_paths);
+        int i = 0;
+        while(file_Iterator.hasNext()){
+            progress->setValue(i);
+            i++;
+            QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+
+            //Apply x,y,w and h on the image and replace the old image in that file path
+            QString image_Path = file_Iterator.next(); //File path for each image in the work directory.
+
+//            qInfo()<<image_Path;
+
+            QPixmap base_Pix = QPixmap(image_Path);
+            QPainter *paint = new QPainter(&base_Pix);
+
+            QPixmap target(w, h);
+            paint = new QPainter(&target);
+            tuple<int, int> pos = this->selected_Area->get_Position();
+            paint->drawPixmap(-get<0>(pos), -get<1>(pos), base_Pix);
+
+            QImage crop = target.toImage();
+            crop.save(image_Path);
+        }
+        progress->setValue(COUNT);
+    }
+
+//    QPixmap target(w, h);
+//    QImage crop = target.toImage();
+//    crop.save(current_Image_Path);
+}
+
+/// \brief RESET THE X,Y,HEIGHT,WIDTH AND THE PREVIEW OF THE CROPPING BOX
+void crop_Widget::on_cancel_btn_clicked()
+{
+    this->reload_Preview();
+    selected_Area->set_Width(100);
+    selected_Area->set_Height(100);
+    selected_Area->set_Position(0,0);
+
+    ui->horizontal_Slider_X_2->setValue(0);
+    ui->horizontal_Slider_Y_2->setValue(0);
+    ui->horizontal_Slider_Height->setValue(100);
+    ui->horizontal_Slider_Width->setValue(100);
+
+
+    ui->spin_Box_X_2->setValue(0);
+    ui->spin_Box_Y_2->setValue(0);
+    ui->spin_Box_Height->setValue(100);
+    ui->spin_Box_Width->setValue(100);
+}
 

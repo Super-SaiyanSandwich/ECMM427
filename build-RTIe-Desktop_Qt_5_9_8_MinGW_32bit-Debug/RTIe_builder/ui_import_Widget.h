@@ -19,6 +19,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -35,6 +36,7 @@ public:
     QGraphicsView *graphics_View;
     QLabel *metadata_Label;
     QTableWidget *metadata_Table;
+    QSpacerItem *horizontalSpacer;
     QVBoxLayout *import_Layout;
     QSplitter *splitter_3;
     QPushButton *import_btn;
@@ -167,6 +169,10 @@ public:
 
 
         horizontalLayout->addLayout(preview_Layout);
+
+        horizontalSpacer = new QSpacerItem(30, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
 
         import_Layout = new QVBoxLayout();
         import_Layout->setObjectName(QStringLiteral("import_Layout"));

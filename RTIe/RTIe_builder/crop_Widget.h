@@ -17,8 +17,10 @@ class crop_Widget : public QWidget
     Q_OBJECT
 
 public:
-    explicit crop_Widget(QWidget *parent = nullptr, QString base_String = "");
+    explicit crop_Widget(QWidget *parent = nullptr, QString base_String = "", QList<QListWidgetItem *> * icons = new QList<QListWidgetItem *>());
     ~crop_Widget();
+    void set_RGB(int r, int g, int b);
+    bool load_Cropping_File(const QString &fileName);
 
 private slots:
     void on_work_Images_itemDoubleClicked(QListWidgetItem *item);
@@ -55,6 +57,8 @@ private:
     QGraphicsPixmapItem* base_Image;
     QGraphicsPixmapItem* preview_Image;
 
+    QList<QListWidgetItem *> * icons;
+
     cropped_Area *selected_Area;
     QLabel *image_Label;
     int thread_Count = 0;
@@ -77,11 +81,9 @@ private:
     QString load_Image_Icons();
 
     void add_Crop_Item_To_List(QImage image, QString filename);
-    void set_RGB(int r, int g, int b);
-    bool load_Cropping_File(const QString &fileName);
+
 protected:
     void showEvent(QShowEvent *ev);
-
     bool eventFilter(QObject *object, QEvent *event);
 };
 

@@ -13,14 +13,16 @@ import_Widget::import_Widget(QWidget *parent) :
     ui(new Ui::import_Widget)
 {
     ui->setupUi(this);
+
     ui->listWidget->setViewMode(QListWidget::IconMode);
     ui->listWidget->setIconSize(QSize(200,150));
     ui->listWidget->setResizeMode(QListWidget::Adjust);
 
-    QGraphicsScene *scene = new QGraphicsScene(this);
+    scene = new QGraphicsScene(this);
     ui->graphics_View->setScene(scene);
 
     this->preview_Item = scene->addPixmap(QPixmap(0,0));
+    this->preview_Item->setFlag(QGraphicsItem::ItemClipsChildrenToShape,true);
 }
 
 import_Widget::~import_Widget()
@@ -50,7 +52,6 @@ void import_Widget::add_Item_To_List(QImage image, QString filename)
     item->setCheckState(Qt::Unchecked); // AND initialize check state
     ui->listWidget->addItem(item);
 }
-
 
 void import_Widget::image_Display(){
 
@@ -96,16 +97,28 @@ void import_Widget::showEvent(QShowEvent *ev)
     }
 }
 
+void import_Widget::reset_Image_Zoom()
+{
+    ui->graphics_View->resetTransform();
+
+    int w = ui->graphics_View->width();
+    int h = ui->graphics_View->height();
+
+    qreal s = fmin(w/float(preview_Item->pixmap().width()),h/float(preview_Item->pixmap().height()));
+
+    ui->graphics_View->scale(s, s);
+}
+
 void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->preview_Item->setPixmap( QPixmap::fromImage(QImage(preview_Image)) );
-    this->preview_Item->setScale(qMin(preview_Item->pixmap().height() / ui->graphics_View->viewport()->height(),preview_Item->pixmap().width() / ui->graphics_View->viewport()->width()));
-//    int w = ui->image_Preview->width();
-//    int h = ui->image_Preview->height();
-//    ui->image_Preview->clear();
-//    ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-//    ui->image_Preview->update();
+    ui->graphics_View->update();
+    reset_Image_Zoom();
+
+//    ui->graphics_View->clear();
+//    ui->graphics_View->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+//    ui->graphics_View->update();
 
     for (int i=0; i<ui->metadata_Table->rowCount(); ++i)
     {
@@ -162,12 +175,29 @@ void import_Widget::on_import_btn_clicked()
     this->image_Display();
 }
 
+QStringList import_Widget:: get_File_List()
+{
+    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
+    QStringListIterator file_Iterator(path_List);
+    QStringList file_Names;
+    while (file_Iterator.hasNext())
+    {
+        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
+        QString file_Name(path);
+        file_Names.append(file_Name);
+
+    }
+
+    return file_Names;
+}
+
 
 /*
  * When the delete button is pressed it will get all the items
  * in the QListWidget that are Qt::Checked and pass them to the
  * delete function to be deleted (or not, depending on the user's choice).
  */
+
 void import_Widget::on_delete_Btn_clicked()
 {
     // checked_Image_Names will contain the file_Names of all checked images

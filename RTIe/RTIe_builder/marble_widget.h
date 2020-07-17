@@ -30,11 +30,6 @@ private:
     QGraphicsPixmapItem *base_Image;
     QList<QListWidgetItem *> * icons;
 
-//    QGraphicsScene *marble_Preview_Screen;
-//    QGraphicsPixmapItem *preview_Image;
-//    QGraphicsPixmapItem *backgroudn_Preview_Image;
-
-
     marble *selected_Marble;
     QList<marble*> marble_List;
 
