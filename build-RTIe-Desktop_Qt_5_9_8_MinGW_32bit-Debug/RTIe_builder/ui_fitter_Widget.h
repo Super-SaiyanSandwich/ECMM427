@@ -161,8 +161,8 @@ public:
 
         image_Label = new QLabel(fitter_Widget);
         image_Label->setObjectName(QStringLiteral("image_Label"));
-        sizePolicy.setHeightForWidth(image_Label->sizePolicy().hasHeightForWidth());
-        image_Label->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(image_Label->sizePolicy().hasHeightForWidth());
+        image_Label->setSizePolicy(sizePolicy2);
         image_Label->setMinimumSize(QSize(300, 300));
         image_Label->setMaximumSize(QSize(1000, 1000));
         image_Label->setFrameShape(QFrame::Box);
@@ -314,6 +314,7 @@ public:
         hsh_Fitter->setObjectName(QStringLiteral("hsh_Fitter"));
         sizePolicy2.setHeightForWidth(hsh_Fitter->sizePolicy().hasHeightForWidth());
         hsh_Fitter->setSizePolicy(sizePolicy2);
+        hsh_Fitter->setAutoFillBackground(false);
 
         fitter_Type_Layout->addWidget(hsh_Fitter);
 

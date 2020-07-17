@@ -27,8 +27,6 @@ private slots:
 
     void on_cancel_btn_clicked();
 
-    void on_apply_all_stateChanged(int arg1);
-
     void on_horizontal_Slider_X_2_sliderReleased();
 
     void on_horizontal_Slider_Y_2_sliderReleased();
@@ -58,7 +56,7 @@ private:
     QGraphicsPixmapItem* preview_Image;
 
     QList<QListWidgetItem *> * icons;
-
+    QGraphicsScene* crop_Selection_Screen ;
     cropped_Area *selected_Area;
     QLabel *image_Label;
     int thread_Count = 0;

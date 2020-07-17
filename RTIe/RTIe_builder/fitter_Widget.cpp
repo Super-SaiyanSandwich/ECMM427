@@ -76,8 +76,18 @@ void fitter_Widget::on_generate_Btn_clicked()
                 connect (process, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
                 process->start(fitter_Location);
 
+                ui->progress_Bar->setValue(0);
+//                int i = 0;
+
+//                qInfo()<<process->state();
+//                if(process->state()==2){
+//                    ui->progress_Bar->setValue(i);
+//                    i++;
+
+//                }
 
                 if (process->waitForFinished(-1)){
+
                     // will wait forever until finished
                     ui->progress_Bar->setValue(100);
                     ui->status->setText("Finished...");
@@ -87,6 +97,7 @@ void fitter_Widget::on_generate_Btn_clicked()
                     ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);;
                     ui->generate_Btn->setDisabled(true);
                 }
+
 
 
 

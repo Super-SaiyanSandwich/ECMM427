@@ -57,7 +57,8 @@ marble_Widget::marble_Widget(QWidget *parent, QString base_String, QList<QListWi
     ui->marbleGraphicView->setScene(marble_Selection_Screen);
     marble_Selection_Screen->installEventFilter(this);
 
-    qInfo() << base_String;
+
+    ui->image_Name->setText(base_String);
     this->base_Image = marble_Selection_Screen->addPixmap(QPixmap(splashScreen::project_Path+ "/images/wd/" + base_String));
     this->base_Image->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
     this->base_Image->setZValue(-10);
@@ -677,6 +678,8 @@ void marble_Widget::on_test_Button_clicked()
 void marble_Widget::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     QString image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
+
+    ui->image_Name->setText(item->text());
     this->base_Image->setPixmap(QPixmap::fromImage(QImage(image_Path)));
     this->update_Main_Image();
     this->reset_Image_Zoom();

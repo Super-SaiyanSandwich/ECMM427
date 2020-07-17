@@ -17,6 +17,7 @@
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -27,6 +28,7 @@
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QToolBox>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
@@ -37,7 +39,9 @@ QT_BEGIN_NAMESPACE
 class Ui_marble_Widget
 {
 public:
-    QHBoxLayout *horizontalLayout_4;
+    QGridLayout *gridLayout;
+    QSplitter *splitter;
+    QLabel *image_Name;
     QGraphicsView *marbleGraphicView;
     QWidget *sidebarContainerWidget;
     QHBoxLayout *horizontalLayout;
@@ -107,42 +111,66 @@ public:
     QCheckBox *checkBox;
     QWidget *images_Page;
     QVBoxLayout *verticalLayout_9;
+    QLabel *label;
     QScrollArea *scrollArea_2;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout_10;
     QListWidget *listWidget;
-    QPushButton *test_Button;
-    QPushButton *open_Button;
     QVBoxLayout *ToolboxLayout;
     QHBoxLayout *previewLayout;
     QSpacerItem *horizontalSpacer;
     QLabel *preivew_Label;
     QSpacerItem *horizontalSpacer_2;
+    QPushButton *test_Button;
 
     void setupUi(QWidget *marble_Widget)
     {
         if (marble_Widget->objectName().isEmpty())
             marble_Widget->setObjectName(QStringLiteral("marble_Widget"));
-        marble_Widget->resize(1418, 1100);
-        horizontalLayout_4 = new QHBoxLayout(marble_Widget);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        marbleGraphicView = new QGraphicsView(marble_Widget);
-        marbleGraphicView->setObjectName(QStringLiteral("marbleGraphicView"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        marble_Widget->resize(1418, 768);
+        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(marbleGraphicView->sizePolicy().hasHeightForWidth());
-        marbleGraphicView->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(marble_Widget->sizePolicy().hasHeightForWidth());
+        marble_Widget->setSizePolicy(sizePolicy);
+        gridLayout = new QGridLayout(marble_Widget);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        splitter = new QSplitter(marble_Widget);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setOrientation(Qt::Vertical);
+        image_Name = new QLabel(splitter);
+        image_Name->setObjectName(QStringLiteral("image_Name"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(image_Name->sizePolicy().hasHeightForWidth());
+        image_Name->setSizePolicy(sizePolicy1);
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(true);
+        font.setItalic(true);
+        font.setWeight(75);
+        image_Name->setFont(font);
+        image_Name->setAlignment(Qt::AlignCenter);
+        splitter->addWidget(image_Name);
+        marbleGraphicView = new QGraphicsView(splitter);
+        marbleGraphicView->setObjectName(QStringLiteral("marbleGraphicView"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(marbleGraphicView->sizePolicy().hasHeightForWidth());
+        marbleGraphicView->setSizePolicy(sizePolicy2);
+        splitter->addWidget(marbleGraphicView);
 
-        horizontalLayout_4->addWidget(marbleGraphicView);
+        gridLayout->addWidget(splitter, 0, 0, 1, 1);
 
         sidebarContainerWidget = new QWidget(marble_Widget);
         sidebarContainerWidget->setObjectName(QStringLiteral("sidebarContainerWidget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(sidebarContainerWidget->sizePolicy().hasHeightForWidth());
-        sidebarContainerWidget->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(sidebarContainerWidget->sizePolicy().hasHeightForWidth());
+        sidebarContainerWidget->setSizePolicy(sizePolicy3);
         horizontalLayout = new QHBoxLayout(sidebarContainerWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         line_2 = new QFrame(sidebarContainerWidget);
@@ -174,14 +202,14 @@ public:
 
         Preview = new QLabel(sidebarContainerWidget);
         Preview->setObjectName(QStringLiteral("Preview"));
-        QFont font;
-        font.setFamily(QStringLiteral("MS Shell Dlg 2"));
-        font.setPointSize(14);
-        font.setBold(false);
-        font.setItalic(false);
-        font.setWeight(9);
-        font.setKerning(true);
-        Preview->setFont(font);
+        QFont font1;
+        font1.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font1.setPointSize(14);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(9);
+        font1.setKerning(true);
+        Preview->setFont(font1);
         Preview->setStyleSheet(QStringLiteral("font: 75 14pt \"MS Shell Dlg 2\";"));
 
         PreviewSwapLayout->addWidget(Preview);
@@ -195,13 +223,13 @@ public:
 
         toolBox = new QToolBox(sidebarContainerWidget);
         toolBox->setObjectName(QStringLiteral("toolBox"));
-        QFont font1;
-        font1.setFamily(QStringLiteral("MS Shell Dlg 2"));
-        font1.setPointSize(10);
-        font1.setBold(false);
-        font1.setItalic(false);
-        font1.setWeight(50);
-        toolBox->setFont(font1);
+        QFont font2;
+        font2.setFamily(QStringLiteral("MS Shell Dlg 2"));
+        font2.setPointSize(10);
+        font2.setBold(false);
+        font2.setItalic(false);
+        font2.setWeight(50);
+        toolBox->setFont(font2);
         toolBox->setStyleSheet(QLatin1String("QToolBox::tab {\n"
 "background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E1E1E1, stop: 0.4 #DDDDDD, stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
 "border: 2px solid #C4C4C3;\n"
@@ -229,7 +257,7 @@ public:
 "}*/"));
         marble_Page = new QWidget();
         marble_Page->setObjectName(QStringLiteral("marble_Page"));
-        marble_Page->setGeometry(QRect(0, 0, 296, 683));
+        marble_Page->setGeometry(QRect(0, 0, 296, 315));
         verticalLayout_8 = new QVBoxLayout(marble_Page);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
         verticalLayout = new QVBoxLayout();
@@ -239,13 +267,14 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 274, 630));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 274, 262));
         verticalLayout_7 = new QVBoxLayout(scrollAreaWidgetContents_3);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         listWidget_2 = new QListWidget(scrollAreaWidgetContents_3);
         listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
         listWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget_2->setDefaultDropAction(Qt::IgnoreAction);
+
         verticalLayout_7->addWidget(listWidget_2);
 
         scrollArea_3->setWidget(scrollAreaWidgetContents_3);
@@ -274,14 +303,14 @@ public:
         toolBox->addItem(marble_Page, QStringLiteral("Marbles"));
         movement_Page = new QWidget();
         movement_Page->setObjectName(QStringLiteral("movement_Page"));
-        movement_Page->setGeometry(QRect(0, 0, 258, 683));
+        movement_Page->setGeometry(QRect(0, 0, 258, 315));
         verticalLayout_12 = new QVBoxLayout(movement_Page);
         verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         label_X = new QLabel(movement_Page);
         label_X->setObjectName(QStringLiteral("label_X"));
-        label_X->setFont(font1);
+        label_X->setFont(font2);
         label_X->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
         verticalLayout_2->addWidget(label_X);
@@ -305,7 +334,7 @@ public:
         label_Y = new QLabel(movement_Page);
         label_Y->setObjectName(QStringLiteral("label_Y"));
         label_Y->setEnabled(true);
-        label_Y->setFont(font1);
+        label_Y->setFont(font2);
         label_Y->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
         verticalLayout_2->addWidget(label_Y);
@@ -335,7 +364,7 @@ public:
         toolBox->addItem(movement_Page, QStringLiteral("Position"));
         scale_Page = new QWidget();
         scale_Page->setObjectName(QStringLiteral("scale_Page"));
-        scale_Page->setGeometry(QRect(0, 0, 258, 683));
+        scale_Page->setGeometry(QRect(0, 0, 258, 315));
         verticalLayout_13 = new QVBoxLayout(scale_Page);
         verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
         verticalLayout_3 = new QVBoxLayout();
@@ -386,7 +415,7 @@ public:
         toolBox->addItem(scale_Page, QStringLiteral("Scale"));
         tools_Page = new QWidget();
         tools_Page->setObjectName(QStringLiteral("tools_Page"));
-        tools_Page->setGeometry(QRect(0, 0, 258, 683));
+        tools_Page->setGeometry(QRect(0, 0, 241, 316));
         verticalLayout_11 = new QVBoxLayout(tools_Page);
         verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
         verticalLayout_4 = new QVBoxLayout();
@@ -642,29 +671,31 @@ public:
         toolBox->addItem(tools_Page, QStringLiteral("Tools"));
         images_Page = new QWidget();
         images_Page->setObjectName(QStringLiteral("images_Page"));
-        images_Page->setGeometry(QRect(0, 0, 294, 683));
+        images_Page->setGeometry(QRect(0, 0, 294, 315));
         verticalLayout_9 = new QVBoxLayout(images_Page);
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        label = new QLabel(images_Page);
+        label->setObjectName(QStringLiteral("label"));
+
+        verticalLayout_9->addWidget(label);
+
         scrollArea_2 = new QScrollArea(images_Page);
         scrollArea_2->setObjectName(QStringLiteral("scrollArea_2"));
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 274, 605));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(scrollAreaWidgetContents_2->sizePolicy().hasHeightForWidth());
-        scrollAreaWidgetContents_2->setSizePolicy(sizePolicy2);
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 274, 276));
+        sizePolicy1.setHeightForWidth(scrollAreaWidgetContents_2->sizePolicy().hasHeightForWidth());
+        scrollAreaWidgetContents_2->setSizePolicy(sizePolicy1);
         verticalLayout_10 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
         listWidget = new QListWidget(scrollAreaWidgetContents_2);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
-        listWidget->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
+        listWidget->setSizePolicy(sizePolicy4);
         listWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         listWidget->setDefaultDropAction(Qt::IgnoreAction);
 
@@ -673,21 +704,6 @@ public:
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
 
         verticalLayout_9->addWidget(scrollArea_2);
-
-        test_Button = new QPushButton(images_Page);
-        test_Button->setObjectName(QStringLiteral("test_Button"));
-        QSizePolicy sizePolicy4(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(test_Button->sizePolicy().hasHeightForWidth());
-        test_Button->setSizePolicy(sizePolicy4);
-
-        verticalLayout_9->addWidget(test_Button);
-
-        open_Button = new QPushButton(images_Page);
-        open_Button->setObjectName(QStringLiteral("open_Button"));
-
-        verticalLayout_9->addWidget(open_Button);
 
         toolBox->addItem(images_Page, QStringLiteral("Images"));
 
@@ -731,16 +747,27 @@ public:
 
         sidebarLayout->addLayout(previewLayout);
 
+        test_Button = new QPushButton(sidebarContainerWidget);
+        test_Button->setObjectName(QStringLiteral("test_Button"));
+        QSizePolicy sizePolicy6(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(test_Button->sizePolicy().hasHeightForWidth());
+        test_Button->setSizePolicy(sizePolicy6);
+        test_Button->setMinimumSize(QSize(0, 30));
+
+        sidebarLayout->addWidget(test_Button);
+
 
         horizontalLayout->addLayout(sidebarLayout);
 
 
-        horizontalLayout_4->addWidget(sidebarContainerWidget);
+        gridLayout->addWidget(sidebarContainerWidget, 0, 1, 1, 1);
 
 
         retranslateUi(marble_Widget);
 
-        toolBox->setCurrentIndex(3);
+        toolBox->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(marble_Widget);
@@ -749,6 +776,7 @@ public:
     void retranslateUi(QWidget *marble_Widget)
     {
         marble_Widget->setWindowTitle(QApplication::translate("marble_Widget", "Form", Q_NULLPTR));
+        image_Name->setText(QString());
         swap_Button->setText(QString());
         Preview->setText(QApplication::translate("marble_Widget", "Preview:", Q_NULLPTR));
         add_Marble_Button->setText(QApplication::translate("marble_Widget", "Add Marble", Q_NULLPTR));
@@ -778,9 +806,9 @@ public:
         label_2->setText(QApplication::translate("marble_Widget", "Image Manipulation:", Q_NULLPTR));
         checkBox->setText(QApplication::translate("marble_Widget", "Average Images", Q_NULLPTR));
         toolBox->setItemText(toolBox->indexOf(tools_Page), QApplication::translate("marble_Widget", "Tools", Q_NULLPTR));
-        test_Button->setText(QApplication::translate("marble_Widget", "Run Marble Detection", Q_NULLPTR));
-        open_Button->setText(QApplication::translate("marble_Widget", "Open", Q_NULLPTR));
+        label->setText(QApplication::translate("marble_Widget", "Select Image to change Display:", Q_NULLPTR));
         toolBox->setItemText(toolBox->indexOf(images_Page), QApplication::translate("marble_Widget", "Images", Q_NULLPTR));
+        test_Button->setText(QApplication::translate("marble_Widget", "Generate Light Position (.lp) File", Q_NULLPTR));
     } // retranslateUi
 
 };
