@@ -98,7 +98,7 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
         {
             QTextStream in(&project_File);
             splashScreen::project_Path = in.readLine();
-            splashScreen::project_Name = project_File.fileName().remove(".rtie");
+            splashScreen::project_Name = project_File.fileName().remove(".rtie").remove(splashScreen::project_Path);
             project_File.close();
         }
 

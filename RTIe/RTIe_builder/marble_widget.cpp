@@ -627,15 +627,17 @@ QString marble_Widget::detect_Reflection(QImage marble)
 
 // ### TODO: 07/04/20 ###
 // Change name of function to more appropriate name.
+// ### TODO: 17/08/20 ###
+// Add functionality for user to decide where to save.
 ///
-/// \brief Performs the contrast process on the currently selected image.
+/// \brief Performs the marble detection process on all images in the current project.
 ///
 void marble_Widget::on_test_Button_clicked()
 {
     qInfo() << splashScreen::project_Path + "/" + splashScreen::project_Name + ".lp" << endl;
-    QFile lp_File(splashScreen::project_Path + "/" + splashScreen::project_Name + ".lp");
-    if (lp_File.open(QIODevice::ReadWrite)) {
-        QTextStream stream(&lp_File);
+    QFile* lp_File = new QFile(splashScreen::project_Path + "/" + splashScreen::project_Name + ".lp");
+    if (lp_File->open(QIODevice::WriteOnly)) {
+        QTextStream stream(lp_File);
 
         const int COUNT = ui->listWidget->count();
         qInfo() << "Cheeeese" << endl;
@@ -656,7 +658,13 @@ void marble_Widget::on_test_Button_clicked()
 
         }
 
+        progress->setValue(COUNT);
+
+    } else {
+        qInfo() << lp_File->errorString();
     }
+    lp_File->close();
+    _Destroy(lp_File);
 }
 
 
