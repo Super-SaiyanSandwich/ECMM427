@@ -479,11 +479,11 @@ void crop_Widget::on_crop_btn_clicked()
     int h = this->selected_Area->get_Height();
     int w = this->selected_Area->get_Width();
 //    QString current_Image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
-    if (ui->apply_all->isChecked()){
+    if (ui->apply_all->isChecked())
+    {
         QStringList image_paths = image_Management_Nui::get_Working_Image_Paths();
 
         const float COUNT = float(image_paths.count());
-        qInfo()<<COUNT;
 
         QProgressDialog* progress = new QProgressDialog("Processing Images...", "Okay", 0, COUNT, this);
         progress->setWindowModality(Qt::WindowModal);
@@ -502,7 +502,6 @@ void crop_Widget::on_crop_btn_clicked()
             //Apply x,y,w and h on the image and replace the old image in that file path
             QString image_Path = file_Iterator.next(); //File path for each image in the work directory.
 
-//            qInfo()<<image_Path;
 
             QPixmap base_Pix = QPixmap(image_Path);
             QPainter *paint = new QPainter(&base_Pix);

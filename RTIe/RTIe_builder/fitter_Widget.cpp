@@ -64,39 +64,39 @@ void fitter_Widget::on_generate_Btn_clicked()
             ui->status->setText("Loading...");
             ui->generate_Btn->setDisabled(true);
             fitter_Location += fitter_Args.join(" ");   // entire command line executable with the arguments
-
+//            int i = 0;
+            ui->progress_Bar->setMaximum(100);
+            ui->progress_Bar->setMinimum(0);
+            ui->progress_Bar->setValue(0);
 
             try {
                 //run the executable with the command-line arguments
                 QProcess *process = new QProcess(this);
 
-                ui->progress_Bar->setMaximum(100);
-                ui->progress_Bar->setMinimum(0);
+
+
 
                 connect (process, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
                 process->start(fitter_Location);
 
-                ui->progress_Bar->setValue(0);
-//                int i = 0;
 
-//                qInfo()<<process->state();
-//                if(process->state()==2){
-//                    ui->progress_Bar->setValue(i);
-//                    i++;
 
-//                }
 
-                if (process->waitForFinished(-1)){
-
-                    // will wait forever until finished
-                    ui->progress_Bar->setValue(100);
-                    ui->status->setText("Finished...");
-
-                    std_Output = process->readAllStandardOutput();
-                    std_Error = process->readAllStandardError();
-                    ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);;
-                    ui->generate_Btn->setDisabled(true);
+               if(process->state() == 1){
+                    QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
                 }
+
+               process->waitForFinished(-1);
+
+                // will wait forever until finished
+                ui->progress_Bar->setValue(100);
+                ui->status->setText("Finished...");
+
+                std_Output = process->readAllStandardOutput();
+                std_Error = process->readAllStandardError();
+                ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);;
+                ui->generate_Btn->setDisabled(true);
+
 
 
 
