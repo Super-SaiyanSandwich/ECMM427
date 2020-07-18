@@ -72,7 +72,6 @@ new_Project::new_Project(QWidget *parent) : QMainWindow(parent)
 
 }
 
-
 void new_Project::new_Project_Open_Page()
 {
     new_Project *new_Project_Page = new new_Project();
@@ -134,7 +133,6 @@ void new_Project::update_Edit_Boxes(QString project_Location, QString project_Na
     this->findChild<QLineEdit *>("project_Name", Qt::FindDirectChildrenOnly)->setText(this->project_Name);
     this->findChild<QLineEdit *>("editor", Qt::FindDirectChildrenOnly)->setText(this->editor);
 }
-
 
 void new_Project::close_Page()
 {

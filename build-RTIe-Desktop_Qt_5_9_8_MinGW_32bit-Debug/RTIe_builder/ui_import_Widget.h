@@ -139,6 +139,7 @@ public:
         __qtablewidgetitem7->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(6, __qtablewidgetitem7);
         metadata_Table->setObjectName(QStringLiteral("metadata_Table"));
+        metadata_Table->setEnabled(true);
         QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);

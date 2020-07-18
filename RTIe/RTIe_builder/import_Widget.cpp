@@ -116,9 +116,6 @@ void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
     ui->graphics_View->update();
     reset_Image_Zoom();
 
-//    ui->graphics_View->clear();
-//    ui->graphics_View->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-//    ui->graphics_View->update();
 
     for (int i=0; i<ui->metadata_Table->rowCount(); ++i)
     {

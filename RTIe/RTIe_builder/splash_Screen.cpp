@@ -68,7 +68,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 
      //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
      connect(help_Button, SIGNAL(clicked()), this, SLOT(help_Button_Clicked()));
-     this->hide();
+
 
 }
 /*

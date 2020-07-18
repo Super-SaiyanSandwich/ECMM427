@@ -45,7 +45,6 @@ new_Project_Settings::new_Project_Settings(QWidget *parent) : QMainWindow(parent
     connect(create_Button, SIGNAL(clicked()), this, SLOT(create_Project()));
 }
 
-
 void new_Project_Settings::new_Project_Settings_Open_Page(QString project_Location, QString project_Name,QString editor)
 {
     new_Project_Settings *new_Project_Settings_Page = new new_Project_Settings();
@@ -56,7 +55,6 @@ void new_Project_Settings::new_Project_Settings_Open_Page(QString project_Locati
     new_Project_Settings_Page->editor = editor;
 }
 
-
 void new_Project_Settings::back_Trigger()
 {
      new_Project *new_Project_Page = new new_Project();
@@ -64,7 +62,6 @@ void new_Project_Settings::back_Trigger()
      new_Project_Page->show();
      this->close_Page();
 }
-
 
 void new_Project_Settings::close_Page()
 {

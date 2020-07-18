@@ -230,7 +230,7 @@ public:
 "}*/"));
         movement_Page_2 = new QWidget();
         movement_Page_2->setObjectName(QStringLiteral("movement_Page_2"));
-        movement_Page_2->setGeometry(QRect(0, 0, 360, 379));
+        movement_Page_2->setGeometry(QRect(0, 0, 83, 160));
         verticalLayout_9 = new QVBoxLayout(movement_Page_2);
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
         label_X_2 = new QLabel(movement_Page_2);
@@ -292,7 +292,7 @@ public:
         toolBox_2->addItem(movement_Page_2, QStringLiteral("Position"));
         scale_Page_2 = new QWidget();
         scale_Page_2->setObjectName(QStringLiteral("scale_Page_2"));
-        scale_Page_2->setGeometry(QRect(0, 0, 360, 379));
+        scale_Page_2->setGeometry(QRect(0, 0, 102, 219));
         gridLayout_5 = new QGridLayout(scale_Page_2);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         check_Box_Spherical_2 = new QCheckBox(scale_Page_2);
@@ -385,7 +385,7 @@ public:
         toolBox_2->addItem(scale_Page_2, QStringLiteral("Scale"));
         tools_Page_2 = new QWidget();
         tools_Page_2->setObjectName(QStringLiteral("tools_Page_2"));
-        tools_Page_2->setGeometry(QRect(0, 0, 360, 379));
+        tools_Page_2->setGeometry(QRect(0, 0, 93, 267));
         verticalLayout_10 = new QVBoxLayout(tools_Page_2);
         verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
         zoom_Label_2 = new QLabel(tools_Page_2);
@@ -638,7 +638,6 @@ public:
         work_Images->setObjectName(QStringLiteral("work_Images"));
         work_Images->setEditTriggers(QAbstractItemView::NoEditTriggers);
         work_Images->setDefaultDropAction(Qt::IgnoreAction);
-        work_Images->setItemAlignment(Qt::AlignLeading);
 
         gridLayout_2->addWidget(work_Images, 0, 0, 1, 1);
 
@@ -683,7 +682,7 @@ public:
 
         retranslateUi(crop_Widget);
 
-        toolBox_2->setCurrentIndex(1);
+        toolBox_2->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(crop_Widget);

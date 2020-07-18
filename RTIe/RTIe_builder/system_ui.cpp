@@ -78,6 +78,7 @@ system_Ui::system_Ui(QWidget *parent) :
 {
 
     ui->setupUi(this);
+    this->setWindowIcon(QIcon(":/test.png"));  //set the icon HERE.
 }
 
 system_Ui::~system_Ui()
@@ -106,7 +107,10 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     qInfo() << "OPEN PATH:: " << splashScreen::project_Path;
 
-    system_Ui::start();
+    //system_Ui::start();
+
+    this->start();
+
 
 
 }
@@ -221,4 +225,28 @@ void system_Ui::on_export_Btn_clicked()
     ui->image_Management_Btn->setEnabled(true);
     ui->marble_Detection_Btn->setEnabled(true);
     ui->remove_Marble_Btn->setEnabled(true);
+}
+
+void system_Ui::on_action_New_Project_2_triggered()
+{
+    project_Wizard *new_Project  =  new  project_Wizard();
+    new_Project->create_Project_Wizard();
+    this->close();
+}
+
+void system_Ui::on_action_Open_Project_2_triggered()
+{
+    this->open_Selected_Project();
+    this->close();
+}
+
+void system_Ui::on_action_Exit_2_triggered()
+{
+    QApplication::quit();
+}
+
+void system_Ui::on_actionRtiEx_Wiki_triggered()
+{
+    QString wiki_Link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
+    QDesktopServices::openUrl(QUrl(wiki_Link, QUrl::TolerantMode));
 }

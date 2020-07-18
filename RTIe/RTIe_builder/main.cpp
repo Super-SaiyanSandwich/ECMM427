@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 {
     QApplication* app = new QApplication(argc, argv);
     QString project_Path;
+    app->setWindowIcon(QIcon(":/test.png"));  //set the icon HERE.
     //PREVIEW SPLASH SCREEN & PROJECT WIZARD
     splashScreen splashScreen;
     splashScreen.show();

@@ -85,6 +85,14 @@ private slots:
 
 
 
+    void on_action_New_Project_2_triggered();
+
+    void on_action_Open_Project_2_triggered();
+
+    void on_action_Exit_2_triggered();
+
+    void on_actionRtiEx_Wiki_triggered();
+
 private:
 //    marble_Detection marbles;
 

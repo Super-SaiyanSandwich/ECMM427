@@ -168,114 +168,59 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuEdit">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="action_Undo"/>
-    <addaction name="action_Redo"/>
-    <addaction name="separator"/>
-    <addaction name="action_Cut"/>
-    <addaction name="action_Copy"/>
-    <addaction name="action_Paste"/>
-    <addaction name="action_Clear"/>
-   </widget>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>View</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuLanguage">
-    <property name="title">
-     <string>Language</string>
-    </property>
-    <addaction name="actionEnglish"/>
-    <addaction name="actionFrench"/>
-    <addaction name="actionGerman"/>
-    <addaction name="actionGerman_2"/>
-    <addaction name="actionKorean"/>
-    <addaction name="actionMandarin"/>
-    <addaction name="actionHindi"/>
-   </widget>
    <widget class="QMenu" name="menuHelp">
+    <property name="tearOffEnabled">
+     <bool>true</bool>
+    </property>
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionRtiEx_Wiki"/>
    </widget>
    <widget class="QMenu" name="menuFile">
+    <property name="tearOffEnabled">
+     <bool>true</bool>
+    </property>
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNew_Project"/>
+    <addaction name="action_New_Project_2"/>
+    <addaction name="action_Open_Project_2"/>
+    <addaction name="separator"/>
+    <addaction name="action_Exit_2"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuEdit"/>
-   <addaction name="menuView"/>
-   <addaction name="menuLanguage"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action_New_Project">
+  <action name="action_New_Project_2">
    <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/new.png</normaloff>:/rec/img/new.png</iconset>
+    <iconset resource="test.qrc">
+     <normaloff>:/new.png</normaloff>:/new.png</iconset>
    </property>
    <property name="text">
-    <string>New</string>
+    <string>New Project</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
    </property>
   </action>
-  <action name="action_Open_Project">
+  <action name="action_Open_Project_2">
    <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/open.png</normaloff>:/rec/img/open.png</iconset>
+    <iconset resource="test.qrc">
+     <normaloff>:/open.png</normaloff>:/open.png</iconset>
    </property>
    <property name="text">
-    <string>Open </string>
+    <string>Open Project</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="action_Save">
+  <action name="action_Exit_2">
    <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/save.png</normaloff>:/rec/img/save.png</iconset>
-   </property>
-   <property name="text">
-    <string>Save</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+S</string>
-   </property>
-  </action>
-  <action name="action_Save_As">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/save_as.png</normaloff>:/rec/img/save_as.png</iconset>
-   </property>
-   <property name="text">
-    <string>Save As</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+S</string>
-   </property>
-  </action>
-  <action name="action_Close">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/close.png</normaloff>:/rec/img/close.png</iconset>
-   </property>
-   <property name="text">
-    <string>Close</string>
-   </property>
-  </action>
-  <action name="action_Exit">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/exit.png</normaloff>:/rec/img/exit.png</iconset>
+    <iconset resource="test.qrc">
+     <normaloff>:/Exit.png</normaloff>:/Exit.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -284,122 +229,9 @@
     <string>Ctrl+Shift+X</string>
    </property>
   </action>
-  <action name="action_Undo">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/undo.png</normaloff>:/rec/img/undo.png</iconset>
-   </property>
+  <action name="actionRtiEx_Wiki">
    <property name="text">
-    <string>Undo</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Z</string>
-   </property>
-  </action>
-  <action name="action_Redo">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/redo.png</normaloff>:/rec/img/redo.png</iconset>
-   </property>
-   <property name="text">
-    <string>Redo</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Y</string>
-   </property>
-  </action>
-  <action name="action_Cut">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/cut.png</normaloff>:/rec/img/cut.png</iconset>
-   </property>
-   <property name="text">
-    <string>Cut</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+X</string>
-   </property>
-  </action>
-  <action name="action_Copy">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/copy.png</normaloff>:/rec/img/copy.png</iconset>
-   </property>
-   <property name="text">
-    <string>Copy</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+C</string>
-   </property>
-  </action>
-  <action name="action_Paste">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/rec/img/paste.png</normaloff>:/rec/img/paste.png</iconset>
-   </property>
-   <property name="text">
-    <string>Paste</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+V</string>
-   </property>
-  </action>
-  <action name="action_Clear">
-   <property name="text">
-    <string>Clear</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+C</string>
-   </property>
-  </action>
-  <action name="actionImport">
-   <property name="text">
-    <string>Import</string>
-   </property>
-  </action>
-  <action name="actionExport">
-   <property name="text">
-    <string>Export</string>
-   </property>
-  </action>
-  <action name="actionEnglish">
-   <property name="text">
-    <string>English</string>
-   </property>
-  </action>
-  <action name="actionFrench">
-   <property name="text">
-    <string>French</string>
-   </property>
-  </action>
-  <action name="actionGerman">
-   <property name="text">
-    <string>Spanish</string>
-   </property>
-  </action>
-  <action name="actionKorean">
-   <property name="text">
-    <string>Korean</string>
-   </property>
-  </action>
-  <action name="actionGerman_2">
-   <property name="text">
-    <string>German</string>
-   </property>
-  </action>
-  <action name="actionMandarin">
-   <property name="text">
-    <string>Mandarin</string>
-   </property>
-  </action>
-  <action name="actionHindi">
-   <property name="text">
-    <string>Hindi</string>
-   </property>
-  </action>
-  <action name="actionNew_Project">
-   <property name="text">
-    <string>New Project</string>
+    <string>Help Forum</string>
    </property>
   </action>
  </widget>
@@ -411,6 +243,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="test.qrc"/>
+ </resources>
  <connections/>
 </ui>
