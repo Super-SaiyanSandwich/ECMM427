@@ -59,18 +59,9 @@ void project_Wizard::create_Project_Wizard()
 
 /*
  * Does all the actual project creation operations: making directories,
- * he project .rtie file, as well as the removal reasons text file.
- *
- *
- *
+ * the project .rtie file, as well as the removal reasons text file.
  */
 void project_Wizard::create_Project(){
-
-    //TODO
-    //QFileDialog dialog(this);
-    //dialog.setFileMode(QFileDialog::DirectoryOnly);
-    //dialog.setOption(QFileDialog::ShowDirsOnly);
-
 
     QString project_container_Path = verification_Path;//dialog.directory().path();
     QDir verification_Dir(project_container_Path + "/" + project_Name);
@@ -156,8 +147,6 @@ void project_Wizard::choose_Project_Directory(){
 
     // Project name is retrieved from the QNameLineEdit
     project_Name = ui->project_Name_Line_Edit->text();
-//    editor = ui->editor_Name->text();
-//    qInfo()<< "This is the input: "<<editor;
 
     // Complete chosen path is then processed, and showed on the
     // project wizard for the user to validate

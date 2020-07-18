@@ -78,7 +78,7 @@ system_Ui::system_Ui(QWidget *parent) :
 {
 
     ui->setupUi(this);
-    this->setWindowIcon(QIcon(":/test.png"));  //set the icon HERE.
+    this->setWindowIcon(QIcon(":/RTIEx.ico"));  //set the icon HERE.
 }
 
 system_Ui::~system_Ui()
