@@ -33,7 +33,7 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0">
           <widget class="QLabel" name="image_Name">
@@ -196,7 +196,7 @@ QToolBox::tab:selected {
 }*/</string>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="movement_Page_2">
            <property name="geometry">
@@ -204,7 +204,7 @@ QToolBox::tab:selected {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>379</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -319,7 +319,7 @@ QToolBox::tab:selected {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>379</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -514,7 +514,7 @@ QToolBox::tab:selected {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>379</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -855,7 +855,7 @@ QScrollBar::sub-line:horizontal {
              <x>0</x>
              <y>0</y>
              <width>360</width>
-             <height>379</height>
+             <height>365</height>
             </rect>
            </property>
            <attribute name="label">
@@ -873,7 +873,7 @@ QScrollBar::sub-line:horizontal {
                  <x>0</x>
                  <y>0</y>
                  <width>340</width>
-                 <height>330</height>
+                 <height>345</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_2">
@@ -892,19 +892,6 @@ QScrollBar::sub-line:horizontal {
                 </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="open_Button_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Open</string>
-              </property>
              </widget>
             </item>
            </layout>
