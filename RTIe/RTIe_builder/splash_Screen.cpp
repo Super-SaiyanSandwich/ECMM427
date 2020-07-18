@@ -15,7 +15,6 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 {    
 
      this->setFixedSize(350, 300);
-     //this->setWindowFlags(Qt::CustomizeWindowHint);
      this->setStyleSheet("background-image: url(:/RTIEx.jpg);");
 
      QString button_Icon_Style = "QPushButton{border:none;background-color:rgba(255, 255, 255,100);}";
@@ -32,8 +31,6 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
                                  "background-color: white;"
                                  "border-style: inset;"
                               "}";
-
-//     QString *splashScreen::project_Path = "A Way";
 
      QPushButton *new_Project_Button = new QPushButton("New Project", this);
      new_Project_Button->setGeometry(130, 130, 90, 30);
@@ -60,15 +57,11 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
      settings_Button->setMinimumSize(30, 30);
      settings_Button->setMaximumSize(30, 30);
 
-     //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
-     //connect(new_Project_Button, SIGNAL(clicked()), &new_project, SLOT(new_Project_Open_Page()));open_Project_Button
-
      connect(open_Project_Button, SIGNAL(clicked()), &open_Existing_Project, SLOT(open_Selected_Project())); //Where I need to pass file location to system_ui.cpp
+     connect(open_Project_Button, SIGNAL(clicked()), this, SLOT(close()));
      connect(new_Project_Button, SIGNAL(clicked()), &create_project_wizard, SLOT(create_Project_Wizard()));
-
-     //connect(exit_Button, SIGNAL(clicked()), this, SLOT(exit_App()));
+     connect(new_Project_Button, SIGNAL(clicked()), this, SLOT(close()));
      connect(help_Button, SIGNAL(clicked()), this, SLOT(help_Button_Clicked()));
-
 
 }
 /*
