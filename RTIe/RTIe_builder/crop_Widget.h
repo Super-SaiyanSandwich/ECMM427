@@ -44,7 +44,7 @@ private slots:
     void on_horizontal_Scroll_Bar_Green_2_valueChanged(int value);
     void on_horizontal_Scroll_Bar_Blue_2_valueChanged(int value);
     void on_colour_Selector_Button_2_clicked();
-    void on_open_Button_2_clicked();
+//    void on_open_Button_2_clicked();
     void on_zoom_Reset_Button_2_clicked();
     void on_zoom_In_Button_2_clicked();
     void on_zoom_Out_Button_2_clicked();

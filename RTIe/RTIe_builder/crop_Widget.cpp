@@ -341,35 +341,35 @@ void crop_Widget::image_Zoom(int percent)
     ui->zoom_Out_Button_2->setEnabled(zoom_Percentage > 33);
 }
 
-static void initialize_Image_File_Dialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
-{
-    static bool first_Dialog = true;
+//static void initialize_Image_File_Dialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
+//{
+//    static bool first_Dialog = true;
 
-    if (first_Dialog) {
-        first_Dialog = false;
-        const QStringList pictures_Locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
-        dialog.setDirectory(pictures_Locations.isEmpty() ? QDir::currentPath() : pictures_Locations.last());
-    }
+//    if (first_Dialog) {
+//        first_Dialog = false;
+//        const QStringList pictures_Locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+//        dialog.setDirectory(pictures_Locations.isEmpty() ? QDir::currentPath() : pictures_Locations.last());
+//    }
 
-    QStringList mimeTypeFilters;
-    const QByteArrayList supportedMimeTypes = acceptMode == QFileDialog::AcceptOpen
-        ? QImageReader::supportedMimeTypes() : QImageWriter::supportedMimeTypes();
-    foreach (const QByteArray &mimeTypeName, supportedMimeTypes)
-        mimeTypeFilters.append(mimeTypeName);
-    mimeTypeFilters.sort();
-    dialog.setMimeTypeFilters(mimeTypeFilters);
-    dialog.selectMimeTypeFilter("image/jpeg");
-    if (acceptMode == QFileDialog::AcceptSave)
-        dialog.setDefaultSuffix("jpg");
-}
+//    QStringList mimeTypeFilters;
+//    const QByteArrayList supportedMimeTypes = acceptMode == QFileDialog::AcceptOpen
+//        ? QImageReader::supportedMimeTypes() : QImageWriter::supportedMimeTypes();
+//    foreach (const QByteArray &mimeTypeName, supportedMimeTypes)
+//        mimeTypeFilters.append(mimeTypeName);
+//    mimeTypeFilters.sort();
+//    dialog.setMimeTypeFilters(mimeTypeFilters);
+//    dialog.selectMimeTypeFilter("image/jpeg");
+//    if (acceptMode == QFileDialog::AcceptSave)
+//        dialog.setDefaultSuffix("jpg");
+//}
 
-void crop_Widget::on_open_Button_2_clicked()
-{
-    QFileDialog dialog(this, tr("Open File"));
-    initialize_Image_File_Dialog(dialog, QFileDialog::AcceptOpen);
+//void crop_Widget::on_open_Button_2_clicked()
+//{
+//    QFileDialog dialog(this, tr("Open File"));
+//    initialize_Image_File_Dialog(dialog, QFileDialog::AcceptOpen);
 
-    while (dialog.exec() == QDialog::Accepted && !load_Cropping_File(dialog.selectedFiles().first())) {};
-}
+//    while (dialog.exec() == QDialog::Accepted && !load_Cropping_File(dialog.selectedFiles().first())) {};
+//}
 
 void crop_Widget::on_zoom_Reset_Button_2_clicked()
 {
@@ -577,4 +577,5 @@ void crop_Widget::on_cancel_btn_clicked()
     ui->spin_Box_Height->setValue(100);
     ui->spin_Box_Width->setValue(100);
 }
+
 

@@ -40,7 +40,7 @@ public:
     QGridLayout *gridLayout_3;
     QVBoxLayout *verticalLayout;
     QSplitter *splitter_2;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QLabel *image_Name;
     QGraphicsView *image_Graphics_View;
@@ -91,7 +91,6 @@ public:
     QWidget *scrollAreaWidgetContents_3;
     QGridLayout *gridLayout_2;
     QListWidget *work_Images;
-    QPushButton *open_Button_2;
     QSplitter *splitter;
     QLabel *label_3;
     QGraphicsView *preview_Graphics_View;
@@ -114,12 +113,12 @@ public:
         splitter_2 = new QSplitter(crop_Widget);
         splitter_2->setObjectName(QStringLiteral("splitter_2"));
         splitter_2->setOrientation(Qt::Vertical);
-        widget = new QWidget(splitter_2);
-        widget->setObjectName(QStringLiteral("widget"));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget = new QWidget(splitter_2);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        image_Name = new QLabel(widget);
+        image_Name = new QLabel(layoutWidget);
         image_Name->setObjectName(QStringLiteral("image_Name"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -136,7 +135,7 @@ public:
 
         gridLayout->addWidget(image_Name, 0, 0, 1, 1);
 
-        image_Graphics_View = new QGraphicsView(widget);
+        image_Graphics_View = new QGraphicsView(layoutWidget);
         image_Graphics_View->setObjectName(QStringLiteral("image_Graphics_View"));
         QSizePolicy sizePolicy2(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
         sizePolicy2.setHorizontalStretch(0);
@@ -148,7 +147,7 @@ public:
 
         gridLayout->addWidget(image_Graphics_View, 1, 0, 1, 1);
 
-        splitter_2->addWidget(widget);
+        splitter_2->addWidget(layoutWidget);
 
         verticalLayout->addWidget(splitter_2);
 
@@ -632,29 +631,20 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QStringLiteral("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 340, 330));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 340, 359));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_3);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         work_Images = new QListWidget(scrollAreaWidgetContents_3);
         work_Images->setObjectName(QStringLiteral("work_Images"));
         work_Images->setEditTriggers(QAbstractItemView::NoEditTriggers);
         work_Images->setDefaultDropAction(Qt::IgnoreAction);
+        work_Images->setItemAlignment(Qt::AlignLeading);
 
         gridLayout_2->addWidget(work_Images, 0, 0, 1, 1);
 
         scrollArea_3->setWidget(scrollAreaWidgetContents_3);
 
         verticalLayout_11->addWidget(scrollArea_3);
-
-        open_Button_2 = new QPushButton(images_Page_2);
-        open_Button_2->setObjectName(QStringLiteral("open_Button_2"));
-        QSizePolicy sizePolicy8(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy8.setHorizontalStretch(0);
-        sizePolicy8.setVerticalStretch(0);
-        sizePolicy8.setHeightForWidth(open_Button_2->sizePolicy().hasHeightForWidth());
-        open_Button_2->setSizePolicy(sizePolicy8);
-
-        verticalLayout_11->addWidget(open_Button_2);
 
         toolBox_2->addItem(images_Page_2, QStringLiteral("Images"));
 
@@ -674,11 +664,11 @@ public:
         splitter->addWidget(label_3);
         preview_Graphics_View = new QGraphicsView(splitter);
         preview_Graphics_View->setObjectName(QStringLiteral("preview_Graphics_View"));
-        QSizePolicy sizePolicy9(QSizePolicy::Expanding, QSizePolicy::Maximum);
-        sizePolicy9.setHorizontalStretch(0);
-        sizePolicy9.setVerticalStretch(0);
-        sizePolicy9.setHeightForWidth(preview_Graphics_View->sizePolicy().hasHeightForWidth());
-        preview_Graphics_View->setSizePolicy(sizePolicy9);
+        QSizePolicy sizePolicy8(QSizePolicy::Expanding, QSizePolicy::Maximum);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(preview_Graphics_View->sizePolicy().hasHeightForWidth());
+        preview_Graphics_View->setSizePolicy(sizePolicy8);
         preview_Graphics_View->setMinimumSize(QSize(360, 280));
         splitter->addWidget(preview_Graphics_View);
 
@@ -732,7 +722,6 @@ public:
         label_Blue_2->setText(QApplication::translate("crop_Widget", "   Blue:", Q_NULLPTR));
         colour_Selector_Button_2->setText(QApplication::translate("crop_Widget", "...", Q_NULLPTR));
         toolBox_2->setItemText(toolBox_2->indexOf(tools_Page_2), QApplication::translate("crop_Widget", "Tools", Q_NULLPTR));
-        open_Button_2->setText(QApplication::translate("crop_Widget", "Open", Q_NULLPTR));
         toolBox_2->setItemText(toolBox_2->indexOf(images_Page_2), QApplication::translate("crop_Widget", "Images", Q_NULLPTR));
         label_3->setText(QApplication::translate("crop_Widget", "Preview:", Q_NULLPTR));
     } // retranslateUi
