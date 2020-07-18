@@ -106,6 +106,7 @@ void project_Wizard::create_Project(){
       if (project_RTIE_File.open(QIODevice::ReadWrite)) {
           QTextStream stream(&project_RTIE_File);
           QDate date = QDate::currentDate();
+          editor = ui->editor_Name->text();
           valid = date.toString();
           stream << dir.path() << "/" << project_Name << endl;
 //          stream << "Owner Name: "  << owner << endl;
@@ -155,8 +156,8 @@ void project_Wizard::choose_Project_Directory(){
 
     // Project name is retrieved from the QNameLineEdit
     project_Name = ui->project_Name_Line_Edit->text();
-    editor = ui->editor_Name->text();
-    qInfo()<<editor;
+//    editor = ui->editor_Name->text();
+//    qInfo()<< "This is the input: "<<editor;
 
     // Complete chosen path is then processed, and showed on the
     // project wizard for the user to validate
