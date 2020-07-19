@@ -76,7 +76,7 @@ void fitter_Widget::on_generate_Btn_clicked()
 
 
 
-                connect (process, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
+//                connect (this, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
                 process->start(fitter_Location);
 
 
@@ -157,7 +157,15 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                 std_Output = process->readAllStandardOutput();
                 std_Error = process->readAllStandardError();
-                ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);;
+                if (std_Output != "")
+                {
+                    ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);
+                }
+                else
+                {
+                    ui->fitter_Info->setText("Failed to Work\n------------------\n"+std_Error);
+                }
+
                 ui->generate_Btn->setDisabled(true);
             }
 
