@@ -421,10 +421,13 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_test.cpp
 qrc_test.cpp: ../../RTIe/RTIe_builder/test.qrc \
 		/usr/lib/qt5/bin/rcc \
+		../../RTIe/RTIe_builder/open.png \
 		../../RTIe/RTIe_builder/Exit.png \
 		../../RTIe/RTIe_builder/marble_Test_Image.jpg \
 		../../RTIe/RTIe_builder/RTIEx.jpg \
 		../../RTIe/RTIe_builder/test.png \
+		../../RTIe/RTIe_builder/new.png \
+		../../RTIe/RTIe_builder/RTIEx.ico \
 		../../RTIe/RTIe_builder/settings.png \
 		../../RTIe/RTIe_builder/noun_swap_99117.png
 	/usr/lib/qt5/bin/rcc -name test ../../RTIe/RTIe_builder/test.qrc -o qrc_test.cpp

@@ -7,6 +7,8 @@
 #include <QFileInfo>
 #include <QTextStream>
 #include <QThread>
+#include <math.h>
+
 
 import_Widget::import_Widget(QWidget *parent) :
     QWidget(parent),
