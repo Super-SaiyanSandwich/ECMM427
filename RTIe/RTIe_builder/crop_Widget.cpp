@@ -401,7 +401,7 @@ QString crop_Widget::load_Crop_Image_Icons()
         QString file_Name(current_Image_Info.fileName());
 
         QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
-        QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Crop_Item_To_List(const QImage &, const QString &)));
+//        QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Crop_Item_To_List(const QImage &, const QString &)));
 
         ig->setInput(file_Name);
         thread_Count++;
@@ -412,7 +412,6 @@ QString crop_Widget::load_Crop_Image_Icons()
 
 void crop_Widget::add_Crop_Item_To_List(QImage image, QString filename)
 {
-//    qInfo() << "ITEM BEING ADDED: " << filename;
     QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
     ui->work_Images->addItem(item);
 
@@ -515,16 +514,17 @@ void crop_Widget::on_crop_btn_clicked()
             crop.save(image_Path);
         }
         progress->setValue(COUNT);
-    }
+    }else{
 
-    QString image_Path = QFileDialog::getSaveFileName(
-                this,
-                tr("Save File"),
-                "",
-                tr("JPEG(*.jpg *.jpeg);;PNG(*.png)")
-                );
-    QPixmap crop = ui->preview_Graphics_View->grab(ui->preview_Graphics_View->sceneRect().toRect()); // NEED TO WORK ON THIS!!
-    crop.save(image_Path);
+        QString image_Path = QFileDialog::getSaveFileName(
+                    this,
+                    tr("Save File"),
+                    "",
+                    tr("JPEG(*.jpg *.jpeg);;PNG(*.png)")
+                    );
+        QPixmap crop = ui->preview_Graphics_View->grab(ui->preview_Graphics_View->sceneRect().toRect()); // NEED TO WORK ON THIS!!
+        crop.save(image_Path);
+    }
 }
 
 /// \brief RESET THE X,Y,HEIGHT,WIDTH AND THE PREVIEW OF THE CROPPING BOX

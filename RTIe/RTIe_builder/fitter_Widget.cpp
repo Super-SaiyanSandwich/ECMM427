@@ -43,12 +43,16 @@ fitter_Widget::~fitter_Widget()
 
 void fitter_Widget::on_generate_Btn_clicked()
 {
+     ui->status->setText("Loading...");
+     ui->progress_Bar->setMaximum(100);
+     ui->progress_Bar->setMinimum(0);
+     ui->progress_Bar->setValue(0);
      QString ptm_Option = ui->ptm_Luminance->currentText(); // check t+he current luminance option selected e.g {rgb / lrgb}
      QString hsh_Option = ui->hsh_Order->currentText();
 
 
     if(ui->ptm_Fitter->isChecked()){
-
+        ui->progress_Bar->setValue(current_Slide+1);
 
         if(ptm_Option == "RGB"){  // add the selected luminace as an argument
             fitter_Args += " -f 0 ";
@@ -61,29 +65,31 @@ void fitter_Widget::on_generate_Btn_clicked()
             /* the ptm fitter has command-line args of :
                     <fitter location> -i <lp file location> -o <destination filepath> -f <rgb / lrgb>
             */
-            ui->status->setText("Loading...");
-            ui->generate_Btn->setDisabled(true);
-            fitter_Location += fitter_Args.join(" ");   // entire command line executable with the arguments
-//            int i = 0;
-            ui->progress_Bar->setMaximum(100);
-            ui->progress_Bar->setMinimum(0);
-            ui->progress_Bar->setValue(0);
 
+            ui->generate_Btn->setDisabled(true);
+            ui->progress_Bar->setValue(current_Slide+1);
+            fitter_Location += fitter_Args.join(" ");   // entire command line executable with the arguments
             try {
                 //run the executable with the command-line arguments
+                ui->progress_Bar->setValue(current_Slide+1);
                 QProcess *process = new QProcess(this);
 
 
 
 
-//                connect (this, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
+                connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(itHasFinished(int, QProcess::ExitStatus)));
+
+
                 process->start(fitter_Location);
+                ui->progress_Bar->setValue(current_Slide+1);
+                QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
 
 
 
-               if(process->state() == 1){
-                    QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+               while(process->state() == 1)
+               {
+                    ui->progress_Bar->setValue(current_Slide+1);
                 }
 
                process->waitForFinished(-1);
@@ -125,11 +131,12 @@ void fitter_Widget::on_generate_Btn_clicked()
 
     else if(ui->hsh_Fitter->isChecked()){
         // Clear all the fields.
-
+        ui->progress_Bar->setValue(current_Slide+1);
 
         QString hsh_Option = ui->hsh_Order->currentText(); // check the current luminance option selected e.g {rgb / lrgb}
 
         if ( lp_Path != "" && output_Path != "" && hsh_Option != ""){
+            ui->progress_Bar->setValue(current_Slide+1);
             //&& ui->temp->text() !="" && ui->fitter_Placeholder->text() !="" && ui->output_Placeholder->text()!="" && ui->hsh_Order->currentText() != ""
             /* the hsh has command-line args of :
                             <fitter location> <lp file location> <HSH order> <destination filepath>
@@ -139,36 +146,39 @@ void fitter_Widget::on_generate_Btn_clicked()
 
             fitter_Location += " "+ lp_Path + hsh_Option +" " + output_Path; // entire command line executablle with the arguments
             try {
+                ui->progress_Bar->setValue(current_Slide+1);
                 //run the executable with the command-line arguments
                 qInfo()<<fitter_Location;
 
-            QProcess *process = new QProcess(this);
-            ui->progress_Bar->reset();
-            ui->progress_Bar->setMaximum(100);
-            ui->progress_Bar->setMinimum(0);
+                QProcess *process = new QProcess(this);
 
-            connect (process, SIGNAL(readyReadStandardOutput()), this, SLOT(result()));
-            process->start(fitter_Location);
 
-            if (process->waitForFinished(-1)){
+                connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(itHasFinished(int, QProcess::ExitStatus)));
+
+
+
+                process->start(fitter_Location);
+                ui->progress_Bar->setValue(current_Slide+1);
+                QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+
+
+                while(process->state() == 1)
+                {
+                     ui->progress_Bar->setValue(current_Slide+1);
+                 }
+
+                process->waitForFinished(-1);
                 // will wait forever until finished
                 ui->progress_Bar->setValue(100);
                 ui->status->setText("Finished...");
 
                 std_Output = process->readAllStandardOutput();
                 std_Error = process->readAllStandardError();
-                if (std_Output != "")
-                {
-                    ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);
-                }
-                else
-                {
-                    ui->fitter_Info->setText("Failed to Work\n------------------\n"+std_Error);
-                }
+
+                ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);
+
 
                 ui->generate_Btn->setDisabled(true);
-            }
-
 
 
             }catch (std::exception e){
@@ -197,13 +207,17 @@ void fitter_Widget::on_generate_Btn_clicked()
 
 }
 
-void fitter_Widget::result()
+
+
+void fitter_Widget::itHasFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
-//    while(-1){
-//       QString t = process->readLine();
-//       if( t.isEmpty() ) break;
-      ui->progress_Bar->setValue( ui->progress_Bar->value()+1);
-//   }
+    if(exitCode == 0 and exitStatus == QProcess::NormalExit) //The application closed properly (no crash)
+    {
+    //Let's make progress bar to show 100%
+        ui->progress_Bar->setMaximum(100);
+        ui->progress_Bar->setMinimum(0);
+        ui->progress_Bar->setValue(100);
+    }
 }
 
 QString fitter_Widget:: error_Message(bool hsh)
