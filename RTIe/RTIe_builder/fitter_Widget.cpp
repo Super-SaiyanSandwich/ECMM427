@@ -89,8 +89,12 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                while(process->state() == 1)
                {
-                    ui->progress_Bar->setValue(current_Slide+1);
-                }
+                   std_Output = process->readAllStandardOutput();
+
+                   ui->fitter_Info->setText("Working\n------------------\n"+std_Output);
+
+                   QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+               }
 
                process->waitForFinished(-1);
 
@@ -156,7 +160,6 @@ void fitter_Widget::on_generate_Btn_clicked()
                 connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(itHasFinished(int, QProcess::ExitStatus)));
 
 
-
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
                 QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
@@ -164,8 +167,12 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                 while(process->state() == 1)
                 {
-                     ui->progress_Bar->setValue(current_Slide+1);
-                 }
+                    std_Output = process->readAllStandardOutput();
+
+                    ui->fitter_Info->setText("Working\n------------------\n"+std_Output);
+
+                    QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+                }
 
                 process->waitForFinished(-1);
                 // will wait forever until finished
