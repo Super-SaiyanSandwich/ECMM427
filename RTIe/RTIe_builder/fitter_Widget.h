@@ -3,6 +3,7 @@
 
 #include <QListWidget>
 #include <QWidget>
+#include "QProcess"
 
 namespace Ui {
 class fitter_Widget;
@@ -27,6 +28,7 @@ private slots:
     void on_hsh_Fitter_clicked();
     void on_previous_Image_Btn_clicked();
     void on_next_Image_Btn_clicked();
+    void itHasFinished(int arg1, QProcess::ExitStatus arg2);
 
 private:
     Ui::fitter_Widget *ui;
