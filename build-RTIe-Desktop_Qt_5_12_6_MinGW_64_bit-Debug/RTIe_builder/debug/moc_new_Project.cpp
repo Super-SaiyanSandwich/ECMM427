@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_new_Project_t {
-    QByteArrayData data[9];
-    char stringdata0[125];
+    QByteArrayData data[10];
+    char stringdata0[132];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,15 +37,16 @@ QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 17), // "update_Edit_Boxes"
 QT_MOC_LITERAL(4, 53, 16), // "project_Location"
 QT_MOC_LITERAL(5, 70, 12), // "project_Name"
-QT_MOC_LITERAL(6, 83, 10), // "close_Page"
-QT_MOC_LITERAL(7, 94, 20), // "open_Location_Select"
-QT_MOC_LITERAL(8, 115, 9) // "next_Page"
+QT_MOC_LITERAL(6, 83, 6), // "editor"
+QT_MOC_LITERAL(7, 90, 10), // "close_Page"
+QT_MOC_LITERAL(8, 101, 20), // "open_Location_Select"
+QT_MOC_LITERAL(9, 122, 9) // "next_Page"
 
     },
     "new_Project\0new_Project_Open_Page\0\0"
     "update_Edit_Boxes\0project_Location\0"
-    "project_Name\0close_Page\0open_Location_Select\0"
-    "next_Page"
+    "project_Name\0editor\0close_Page\0"
+    "open_Location_Select\0next_Page"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,14 +65,14 @@ static const uint qt_meta_data_new_Project[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    0,   39,    2, 0x0a /* Public */,
-       3,    2,   40,    2, 0x0a /* Public */,
-       6,    0,   45,    2, 0x08 /* Private */,
-       7,    0,   46,    2, 0x08 /* Private */,
-       8,    0,   47,    2, 0x08 /* Private */,
+       3,    3,   40,    2, 0x0a /* Public */,
+       7,    0,   47,    2, 0x08 /* Private */,
+       8,    0,   48,    2, 0x08 /* Private */,
+       9,    0,   49,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    4,    5,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,    4,    5,    6,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -86,7 +87,7 @@ void new_Project::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->new_Project_Open_Page(); break;
-        case 1: _t->update_Edit_Boxes((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 1: _t->update_Edit_Boxes((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 2: _t->close_Page(); break;
         case 3: _t->open_Location_Select(); break;
         case 4: _t->next_Page(); break;
