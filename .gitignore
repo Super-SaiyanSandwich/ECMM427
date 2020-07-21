@@ -41,3 +41,4 @@ build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/splash_screen.o
 build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/qrc_test.cpp
 build-RTIe-Desktop_Qt_5_14_0_MinGW_32_bit-Debug/RTIe_builder/moc_new_Project_Wizard.cpp
 *.hsh
+RTIe/RTIe_builder/RTIEx.xcf
