@@ -19,7 +19,6 @@ cropped_Area::cropped_Area()
 QRectF cropped_Area::boundingRect() const
 {
     return QRectF(-((PEN_WIDTH + 1)/ 2), -((PEN_WIDTH + 1)/ 2), width + PEN_WIDTH,height + PEN_WIDTH);
-//    return QRectF(0,0, (2 * width)- 10, (2 * height)- 10);
 }
 
 void cropped_Area::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
