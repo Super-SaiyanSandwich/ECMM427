@@ -142,8 +142,13 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(image_Graphics_View->sizePolicy().hasHeightForWidth());
         image_Graphics_View->setSizePolicy(sizePolicy2);
+        image_Graphics_View->setAcceptDrops(true);
+        image_Graphics_View->setAutoFillBackground(false);
         image_Graphics_View->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         image_Graphics_View->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        QBrush brush(QColor(0, 0, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        image_Graphics_View->setBackgroundBrush(brush);
 
         gridLayout->addWidget(image_Graphics_View, 1, 0, 1, 1);
 
@@ -665,6 +670,7 @@ public:
         sizePolicy8.setHeightForWidth(preview_Graphics_View->sizePolicy().hasHeightForWidth());
         preview_Graphics_View->setSizePolicy(sizePolicy8);
         preview_Graphics_View->setMinimumSize(QSize(360, 280));
+        preview_Graphics_View->setBackgroundBrush(brush);
         splitter->addWidget(preview_Graphics_View);
 
         verticalLayout_8->addWidget(splitter);

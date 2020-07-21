@@ -54,6 +54,15 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="backgroundBrush">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </property>
      </widget>
     </widget>
    </item>
