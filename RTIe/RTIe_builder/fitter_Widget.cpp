@@ -26,6 +26,8 @@ fitter_Widget::fitter_Widget(QWidget *parent) :
     QStringList pieces = image_Paths.value(0).split( "/" );
     QString neededWord = pieces.value( pieces.length() - 1 );
     ui->image_Name->setText(neededWord);
+    ui->generate_Btn->setDisabled(true);
+
 }
 
 fitter_Widget::~fitter_Widget()
@@ -82,7 +84,6 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
-                QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
 
 
@@ -104,7 +105,7 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                 std_Output = process->readAllStandardOutput();
                 std_Error = process->readAllStandardError();
-                ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);;
+                ui->fitter_Info->setText("Worked Sucessfully\n======================================\n"+std_Output);;
                 ui->generate_Btn->setDisabled(true);
 
 
@@ -113,7 +114,7 @@ void fitter_Widget::on_generate_Btn_clicked()
 
             }catch (std::exception e){
 
-                ui->fitter_Info->setText("Failed to Work\n------------------\n"+std_Error);
+                ui->fitter_Info->setText("Failed to Work\n======================================\n"+std_Error);
 
             }
         }
@@ -141,28 +142,28 @@ void fitter_Widget::on_generate_Btn_clicked()
 
         if ( lp_Path != "" && output_Path != "" && hsh_Option != ""){
             ui->progress_Bar->setValue(current_Slide+1);
-            //&& ui->temp->text() !="" && ui->fitter_Placeholder->text() !="" && ui->output_Placeholder->text()!="" && ui->hsh_Order->currentText() != ""
+
             /* the hsh has command-line args of :
                             <fitter location> <lp file location> <HSH order> <destination filepath>
             */
 
 
 
-            fitter_Location += " "+ lp_Path + hsh_Option +" " + output_Path; // entire command line executablle with the arguments
+            fitter_Location += " "+ lp_Path + hsh_Option +" " + output_Path; // entire command line executable with the arguments
             try {
-                ui->progress_Bar->setValue(current_Slide+1);
+
                 //run the executable with the command-line arguments
                 qInfo()<<fitter_Location;
+                ui->progress_Bar->setValue(current_Slide+1);
 
                 QProcess *process = new QProcess(this);
 
 
-                connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(itHasFinished(int, QProcess::ExitStatus)));
+                connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(done(int, QProcess::ExitStatus)));
 
 
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
-                QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
 
                 while(process->state() == 1)
@@ -182,14 +183,14 @@ void fitter_Widget::on_generate_Btn_clicked()
                 std_Output = process->readAllStandardOutput();
                 std_Error = process->readAllStandardError();
 
-                ui->fitter_Info->setText("Worked Sucessfully\n------------------\n"+std_Output);
+                ui->fitter_Info->setText("Worked Sucessfully\n=======================================\n"+std_Output);
 
 
                 ui->generate_Btn->setDisabled(true);
 
 
             }catch (std::exception e){
-                ui->fitter_Info->setText("Failed to Work\n------------------\n"+std_Error);
+                ui->fitter_Info->setText("Failed to Work\n======================================\n"+std_Error);
 
             }
 
@@ -216,7 +217,7 @@ void fitter_Widget::on_generate_Btn_clicked()
 
 
 
-void fitter_Widget::itHasFinished(int exitCode, QProcess::ExitStatus exitStatus)
+void fitter_Widget::done(int exitCode, QProcess::ExitStatus exitStatus)
 {
     if(exitCode == 0 and exitStatus == QProcess::NormalExit) //The application closed properly (no crash)
     {

@@ -203,15 +203,15 @@ QToolBox::tab:selected {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>83</width>
-             <height>160</height>
+             <width>360</width>
+             <height>379</height>
             </rect>
            </property>
            <attribute name="label">
             <string>Position</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_9">
-            <item>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0">
              <widget class="QLabel" name="label_X_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -232,7 +232,7 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item>
+            <item row="1" column="0">
              <widget class="QSpinBox" name="spin_Box_X_2">
               <property name="toolTip">
                <string>X Value of Sphere</string>
@@ -245,7 +245,7 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item>
+            <item row="2" column="0">
              <widget class="QSlider" name="horizontal_Slider_X_2">
               <property name="maximum">
                <number>2088</number>
@@ -258,7 +258,7 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item>
+            <item row="3" column="0">
              <widget class="QLabel" name="label_Y_2">
               <property name="enabled">
                <bool>true</bool>
@@ -282,7 +282,7 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item>
+            <item row="4" column="0">
              <widget class="QSpinBox" name="spin_Box_Y_2">
               <property name="maximum">
                <number>1387</number>
@@ -292,7 +292,7 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item>
+            <item row="5" column="0">
              <widget class="QSlider" name="horizontal_Slider_Y_2">
               <property name="maximum">
                <number>1387</number>
@@ -318,30 +318,48 @@ QToolBox::tab:selected {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>102</width>
-             <height>219</height>
+             <width>360</width>
+             <height>379</height>
             </rect>
            </property>
            <attribute name="label">
             <string>Scale</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_5">
-            <item row="7" column="0">
-             <widget class="QCheckBox" name="check_Box_Spherical_2">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
+            <item row="6" column="0">
+             <widget class="Line" name="line_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="text">
-               <string>Force Scale</string>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-              <property name="checked">
-               <bool>true</bool>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="radius_Label_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Segoe Script</family>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Width:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
               </property>
              </widget>
             </item>
@@ -367,8 +385,8 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item row="4" column="0">
-             <widget class="QDoubleSpinBox" name="spin_Box_Height">
+            <item row="1" column="0">
+             <widget class="QDoubleSpinBox" name="spin_Box_Width">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                 <horstretch>0</horstretch>
@@ -416,31 +434,6 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QDoubleSpinBox" name="spin_Box_Width">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="toolTip">
-               <string>Selecter for Radius of Sphere</string>
-              </property>
-              <property name="decimals">
-               <number>1</number>
-              </property>
-              <property name="minimum">
-               <double>100.000000000000000</double>
-              </property>
-              <property name="maximum">
-               <double>5000.000000000000000</double>
-              </property>
-              <property name="value">
-               <double>300.000000000000000</double>
-              </property>
-             </widget>
-            </item>
             <item row="5" column="0">
              <widget class="QSlider" name="horizontal_Slider_Height">
               <property name="sizePolicy">
@@ -469,40 +462,28 @@ QToolBox::tab:selected {
               </property>
              </widget>
             </item>
-            <item row="6" column="0">
-             <widget class="Line" name="line_2">
+            <item row="4" column="0">
+             <widget class="QDoubleSpinBox" name="spin_Box_Height">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+              <property name="toolTip">
+               <string>Selecter for Radius of Sphere</string>
               </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="radius_Label_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+              <property name="decimals">
+               <number>1</number>
               </property>
-              <property name="font">
-               <font>
-                <family>Segoe Script</family>
-                <pointsize>12</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
+              <property name="minimum">
+               <double>100.000000000000000</double>
               </property>
-              <property name="text">
-               <string>Width:</string>
+              <property name="maximum">
+               <double>5000.000000000000000</double>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              <property name="value">
+               <double>300.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -513,8 +494,8 @@ QToolBox::tab:selected {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>93</width>
-             <height>267</height>
+             <width>360</width>
+             <height>379</height>
             </rect>
            </property>
            <attribute name="label">
@@ -861,40 +842,60 @@ QScrollBar::sub-line:horizontal {
            <attribute name="label">
             <string>Images</string>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_11">
-            <item>
-             <widget class="QScrollArea" name="scrollArea_3">
-              <property name="widgetResizable">
-               <bool>true</bool>
+           <widget class="QSplitter" name="splitter_3">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>311</width>
+              <height>371</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Select Image to change Display:</string>
+             </property>
+            </widget>
+            <widget class="QScrollArea" name="scrollArea_3">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents_3">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>309</width>
+                <height>343</height>
+               </rect>
               </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents_3">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>340</width>
-                 <height>359</height>
-                </rect>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_2">
-                <item row="0" column="0">
-                 <widget class="QListWidget" name="work_Images">
-                  <property name="editTriggers">
-                   <set>QAbstractItemView::NoEditTriggers</set>
-                  </property>
-                  <property name="defaultDropAction">
-                   <enum>Qt::IgnoreAction</enum>
-                  </property>
-                  <property name="itemAlignment">
-                   <set>Qt::AlignLeading</set>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <item row="0" column="0">
+                <widget class="QListWidget" name="work_Images">
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="defaultDropAction">
+                  <enum>Qt::IgnoreAction</enum>
+                 </property>
+                 <property name="itemAlignment">
+                  <set>Qt::AlignLeading</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
-            </item>
-           </layout>
+            </widget>
+           </widget>
           </widget>
          </widget>
         </item>
