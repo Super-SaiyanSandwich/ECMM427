@@ -2,16 +2,35 @@
 #include "image_Management_Nui.h"
 #include "splash_Screen.h"
 #include "ui_system_ui.h"
-#include "marble_Detection.h"
-#include "ptm_fitter.h"
+#include "project_Wizard.h"
+#include "image_Gatherer.h"
+#include "splash_Screen.h"
+#include "fitter_Widget.h"
+#include "crop_Widget.h"
+#include "marble_widget.h"
+#define dumpval(x) qDebug()<<#x<<'='<<x
 
+#include <QTranslator>
 #include <QFileDialog>
 #include <QDebug>
 #include <QPixmap>
 #include <QListWidgetItem>
-#include <QDebug>
 #include <QFile>
 #include <QFileDialog>
+#include <QLabel>
+#include <QLineEdit>
+#include <QObject>
+#include <QTextBrowser>
+#include <QTableWidget>
+#include <QDateTime>
+#include <QProcess>
+#include <QProgressBar>
+
+#include <tuple>
+#include <vector>
+#include <math.h>
+#define _USE_MATH_DEFINES
+
 
 
 #include <QApplication>
@@ -19,17 +38,47 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QComboBox>
+
+#include <QApplication>
+#include <QtWidgets>
+#include <QTranslator>
+#include <QLocale>
+#include <QLibraryInfo>
+#include <iostream>
+#include <fstream>
+#include <exception>
+
+#include <QBasicTimer>
+#include <QList>
+#include <QImage>
+#include <QDir>
+#include <QPainter>
+#include <QPaintEvent>
+
+#include <QThread>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
+
+
+using namespace std;
+
+// CONSTANT VALUES
+#define CENTER_SCALE_FACTOR 0.3
+#define SCROLL_AREA_HEIGHT 694.0
+#define SCROLL_AREA_WIDTH 1044.0
+#define CONTRAST_PIVOT_POINT 215
+#define CONTRAST_SCALE 2
+#define BORDER_SCALE_FACTOR 0.1
+
 
 system_Ui::system_Ui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::system_Ui)
 {
-    ui->setupUi(this);
-    ui->listWidget->setViewMode(QListWidget::IconMode);
-    ui->listWidget->setIconSize(QSize(200,150));
-    ui->listWidget->setResizeMode(QListWidget::Adjust);
-    image_Display();
 
+    ui->setupUi(this);
+    this->setWindowIcon(QIcon(":/RTIEx.ico"));  //set the icon HERE.
 }
 
 system_Ui::~system_Ui()
@@ -42,7 +91,6 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setNameFilter(tr("RTIe Files (*.rtie *.RTIE"));
 
     if(dialog.exec()){
         QFile project_File(dialog.selectedFiles().at(0).toLocal8Bit().constData());
@@ -51,165 +99,154 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
         {
             QTextStream in(&project_File);
             splashScreen::project_Path = in.readLine();
+            splashScreen::project_Name = project_File.fileName().remove(".rtie").remove(splashScreen::project_Path);
             project_File.close();
         }
 
     }
 
-    qInfo() << "test OPEN PATH:: " << splashScreen::project_Path;
+    qInfo() << "OPEN PATH:: " << splashScreen::project_Path;
 
-    system_Ui::start();
+    //system_Ui::start();
+
+    this->start();
 
 
-
-    //QString path = dialog.directory.path();
 
 }
 
-void system_Ui::start(){
+void system_Ui::start()
+{
     system_Ui *home = new system_Ui();
     home->showMaximized();
 }
 
-void system_Ui::image_Display(){
 
-    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
-    QStringListIterator file_Iterator(path_List);
-    QStringList file_Names;
 
-    while (file_Iterator.hasNext())
-    {
 
-        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-        QFile current_Image(path);
-        QFileInfo current_Image_Info(current_Image.fileName());
-        QString file_Name(current_Image_Info.fileName());
-        file_Names.append(file_Name);
 
-        QListWidgetItem *item = new QListWidgetItem(QIcon(path),QString(file_Name));//
-        //QImage result = item->scaled(800, 600)->scaled(200, 150, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-        item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
-        item->setCheckState(Qt::Unchecked); // AND initialize check state
-        ui->listWidget->addItem(item);
-    }
 
-}
 
-void system_Ui::on_btn5_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(4);
-}
 
-void system_Ui::on_btn2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
+//==================================== Page change buttons  ===============================
 
-void system_Ui::on_btn1_clicked()
+void system_Ui::on_image_Management_Btn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-}
 
-void system_Ui::on_btn3_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
+    ui->image_Management_Btn->setEnabled(false);
 
-void system_Ui::on_btn2_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void system_Ui::on_btn4_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}
-
-void system_Ui::on_btn3_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
-void system_Ui::on_btn5_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(4);
-}
-
-void system_Ui::on_btn4_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}
-
-void system_Ui::on_btn1_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-
-void system_Ui::on_listWidget_itemClicked(QListWidgetItem *item) //Produce the selected Image in the Thumbnail
-{
-    QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
-    qInfo() << "Item Selected:" << preview_Image;
-    this->base_Image = QImage(preview_Image);
-    QPixmap pix = QPixmap::fromImage(this->base_Image);
-    int w = ui->image_Preview->width();
-    int h = ui->image_Preview->height();
-    ui->image_Preview->clear();
-    ui->image_Preview->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
-    ui->image_Preview->update();
-}
-
-/*
- * Triggers the event for image_Management_Nui::import()
- */
-void system_Ui::on_import_btn_clicked()
-{
-    image_Management_Nui::import();
-
-    // We must clear the listWidget in order to prevent populating it with the
-    // same items repeatedly
-    ui->listWidget->clear();
-    system_Ui::image_Display();
-}
-
-/*
- * When the delete button is pressed it will get all the items
- * in the QListWidget that are Qt::Checked and pass them to the
- * delete function to be deleted (or not, depending on the user's choice).
- */
-void system_Ui::on_delete_Btn_clicked()
-{
-    // checked_Image_Names will contain the file_Names of all checked images
-    QStringList checked_Image_Names;
-    // Iterate over all listWidget items and check their states
-    for(int i = 0; i < ui->listWidget->count(); ++i)
-    {
-        QListWidgetItem* item = ui->listWidget->item(i);
-        bool isChecked = item->checkState();
-
-        //If isChecked is true, the item names will be appended to Checked_Image_Names
-        if(isChecked){
-            checked_Image_Names<< item->text();
-        }
-    }
-
-    image_Management_Nui::delete_(checked_Image_Names);
-
-    // We must clear the listWidget in order to prevent populating it with the
-    // same items repeatedly
-    ui->listWidget->clear();
-    system_Ui::image_Display();
+    ui->marble_Detection_Btn->setEnabled(true);
+    ui->remove_Marble_Btn->setEnabled(true);
+    ui->export_Btn->setEnabled(true);
 }
 
 void system_Ui::on_marble_Detection_Btn_clicked()
 {
-    this->hide();
-    marble_Detection *u = new marble_Detection();
-    u->show();
+    if (ui->stackedWidget->currentIndex() == 0){
+        if (image_Management_Nui::get_Working_Image_Paths().length() == 0){
+            QMessageBox Error_Summary;
+            Error_Summary.setText("No Images Error");
+            Error_Summary.setInformativeText("There are currently no image files that are a part of this project. Please import some before proceeding.");
+            Error_Summary.setStandardButtons(QMessageBox::Ok);
+            Error_Summary.setDefaultButton(QMessageBox::Ok);
+            Error_Summary.exec();
+            return;
+        }
+    }
+
+    if (marbleDetectionIndex == 0){
+        marble_Widget *md = new marble_Widget(nullptr, ui->import_Page->get_Select(), ui->import_Page->get_List());
+        marbleDetectionIndex = ui->stackedWidget->addWidget(md);
+    }
+
+    ui->stackedWidget->setCurrentIndex(marbleDetectionIndex);
+
+    ui->marble_Detection_Btn->setEnabled(false);
+
+    ui->image_Management_Btn->setEnabled(true);
+    ui->remove_Marble_Btn->setEnabled(true);
+    ui->export_Btn->setEnabled(true);
 }
 
-void system_Ui::on_export_2_clicked()
+
+void system_Ui::on_remove_Marble_Btn_clicked()
 {
-    ptm_fitter *t = new ptm_fitter();
-    t->show();
+    if (ui->stackedWidget->currentIndex() == 0){
+        if (image_Management_Nui::get_Working_Image_Paths().length() == 0){
+            QMessageBox Error_Summary;
+            Error_Summary.setText("No Images Found.");
+            Error_Summary.setInformativeText("There are currently no image files that are a part of this project. Please import some before proceeding.");
+            Error_Summary.setStandardButtons(QMessageBox::Ok);
+            Error_Summary.setDefaultButton(QMessageBox::Ok);
+            Error_Summary.exec();
+            return;
+        }
+    }
+
+    if (removeMarbleIndex == 0){
+        crop_Widget *rmv = new crop_Widget(nullptr, ui->import_Page->get_Select(), ui->import_Page->get_List());
+        removeMarbleIndex = ui->stackedWidget->addWidget(rmv);
+    }
+
+    ui->stackedWidget->setCurrentIndex(removeMarbleIndex);
+
+    ui->remove_Marble_Btn->setEnabled(false);
+
+    ui->image_Management_Btn->setEnabled(true);
+    ui->marble_Detection_Btn->setEnabled(true);
+    ui->export_Btn->setEnabled(true);
+}
+
+void system_Ui::on_export_Btn_clicked()
+{
+    if (ui->stackedWidget->currentIndex() == 0){
+        if (image_Management_Nui::get_Working_Image_Paths().length() == 0){
+            QMessageBox Error_Summary;
+            Error_Summary.setText("No Images Error");
+            Error_Summary.setInformativeText("There are currently no image files that are a part of this project. Please import some before proceeding.");
+            Error_Summary.setStandardButtons(QMessageBox::Ok);
+            Error_Summary.setDefaultButton(QMessageBox::Ok);
+            Error_Summary.exec();
+            return;
+        }
+    }
+
+
+    if (exportIndex == 0){
+        fitter_Widget* rmv = new fitter_Widget();
+        exportIndex = ui->stackedWidget->addWidget(rmv);
+    }
+
+    ui->stackedWidget->setCurrentIndex(exportIndex);
+
+    ui->export_Btn->setEnabled(false);
+
+    ui->image_Management_Btn->setEnabled(true);
+    ui->marble_Detection_Btn->setEnabled(true);
+    ui->remove_Marble_Btn->setEnabled(true);
+}
+
+void system_Ui::on_action_New_Project_2_triggered()
+{
+    project_Wizard *new_Project  =  new  project_Wizard();
+    new_Project->create_Project_Wizard();
+    this->close();
+}
+
+void system_Ui::on_action_Open_Project_2_triggered()
+{
+    this->open_Selected_Project();
+    this->close();
+}
+
+void system_Ui::on_action_Exit_2_triggered()
+{
+    QApplication::quit();
+}
+
+void system_Ui::on_actionRtiEx_Wiki_triggered()
+{
+    QString wiki_Link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
+    QDesktopServices::openUrl(QUrl(wiki_Link, QUrl::TolerantMode));
 }

@@ -2,7 +2,6 @@
 #include "ui_project_Wizard.h"
 
 #include "new_Project_Wizard.h"
-//#include "new_Project_Wizard.h"
 #include "splash_Screen.h"
 #include "system_ui.h"
 
@@ -18,6 +17,10 @@
 #include <QGridLayout>
 #include <QWizardPage>
 
+
+
+
+QString project_Wizard::valid;
 project_Wizard::project_Wizard(QWidget *parent) :
     QWizard(parent),
     ui(new Ui::project_Wizard)
@@ -56,21 +59,11 @@ void project_Wizard::create_Project_Wizard()
 
 /*
  * Does all the actual project creation operations: making directories,
- * he project .rtie file, as well as the removal reasons text file.
- *
- *
- *
+ * the project .rtie file, as well as the removal reasons text file.
  */
 void project_Wizard::create_Project(){
 
-    //TODO
-    //QFileDialog dialog(this);
-    //dialog.setFileMode(QFileDialog::DirectoryOnly);
-    //dialog.setOption(QFileDialog::ShowDirsOnly);
-
-
     QString project_container_Path = verification_Path;//dialog.directory().path();
-
     QDir verification_Dir(project_container_Path + "/" + project_Name);
 
     // Confirms that the user's desired project name doesn't exist,
@@ -86,7 +79,7 @@ void project_Wizard::create_Project(){
       // variable to be used across the software.
       QString project_Path = dir.path() + "/" + project_Name;
       splashScreen::project_Path = project_Path;
-
+      splashScreen::project_Name = project_Name;
       // Uses the project's directory to create all nested directories.
       QDir project_Dir(project_Path);
       project_Dir.mkdir("./images/");
@@ -103,8 +96,18 @@ void project_Wizard::create_Project(){
       QFile project_RTIE_File(project_Dir.path() + "/" + project_Name + ".rtie");
       if (project_RTIE_File.open(QIODevice::ReadWrite)) {
           QTextStream stream(&project_RTIE_File);
+          QDate date = QDate::currentDate();
+          editor = ui->editor_Name->text();
+          valid = date.toString();
           stream << dir.path() << "/" << project_Name << endl;
+//          stream << "Owner Name: "  << owner << endl;
+          stream << "Editor Name: "  << editor << endl;
+          stream << "Created on: "  << valid << endl;
+
       }
+
+
+
 
       // Creates and opens the image management window.
       system_Ui::start();
@@ -151,6 +154,12 @@ void project_Wizard::choose_Project_Directory(){
     ui->path_Placeholder->setText(chosen_Path);
 
     verification_Path = chosen_Location;
-
-
 }
+
+void project_Wizard::on_project_Name_Line_Edit_textChanged(const QString &arg1)
+{
+    project_Name = arg1;
+    QString chosen_Path = verification_Path + "/" + project_Name;
+    ui->path_Placeholder->setText(chosen_Path);
+}
+

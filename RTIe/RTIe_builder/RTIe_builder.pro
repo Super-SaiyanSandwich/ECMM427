@@ -6,14 +6,19 @@ QT = core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
+    crop_Widget.cpp \
+    cropped_area.cpp \
+    fitter_Widget.cpp \
     image_Gatherer.cpp \
     image_Management_Nui.cpp \
+    import_Widget.cpp \
     main.cpp \
-    marble_Detection.cpp \
+    marble.cpp \
+    marble_List_Item.cpp \
+    marble_widget.cpp \
     new_Project.cpp \
     new_Project_Settings.cpp \
     project_Wizard.cpp \
-    ptm_fitter.cpp \
     splash_Screen.cpp \
     system_ui.cpp
 
@@ -22,20 +27,27 @@ RESOURCES += \
     test.qrc
 
 HEADERS += \
+    crop_Widget.h \
+    cropped_area.h \
+    fitter_Widget.h \
     image_Gatherer.h \
     image_Management_Nui.h \
-    marble_Detection.h \
+    import_Widget.h \
+    marble.h \
+    marble_List_Item.h \
+    marble_widget.h \
     new_Project.h \
     new_Project_Settings.h \
     project_Wizard.h \
-    ptm_fitter.h \
     splash_Screen.h \
     system_ui.h
 
 FORMS += \
-    marble_Detection.ui \
+    crop_Widget.ui \
+    fitter_Widget.ui \
+    import_Widget.ui \
+    marble_widget.ui \
     project_Wizard.ui \
-    ptm_fitter.ui \
     system_ui.ui
 
-
+DISTFILES +=

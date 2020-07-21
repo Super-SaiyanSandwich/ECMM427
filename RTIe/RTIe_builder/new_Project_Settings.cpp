@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QtCore>
+#include <system_ui.h>
 
 #include <QPushButton>
 #include <QFileDialog>
@@ -44,24 +45,23 @@ new_Project_Settings::new_Project_Settings(QWidget *parent) : QMainWindow(parent
     connect(create_Button, SIGNAL(clicked()), this, SLOT(create_Project()));
 }
 
-
-void new_Project_Settings::new_Project_Settings_Open_Page(QString project_Location, QString project_Name)
+void new_Project_Settings::new_Project_Settings_Open_Page(QString project_Location, QString project_Name,QString editor)
 {
     new_Project_Settings *new_Project_Settings_Page = new new_Project_Settings();
     new_Project_Settings_Page->show();
+
     new_Project_Settings_Page->project_Name = project_Name;
     new_Project_Settings_Page->project_Location = project_Location;
+    new_Project_Settings_Page->editor = editor;
 }
-
 
 void new_Project_Settings::back_Trigger()
 {
      new_Project *new_Project_Page = new new_Project();
-     new_Project_Page->update_Edit_Boxes(project_Location, project_Name);
+     new_Project_Page->update_Edit_Boxes(project_Location, project_Name,editor);
      new_Project_Page->show();
      this->close_Page();
 }
-
 
 void new_Project_Settings::close_Page()
 {
