@@ -358,10 +358,6 @@ void crop_Widget::on_zoom_Out_Button_2_clicked()
 
 void crop_Widget::set_Crop_Maximums()
 {
-//    double center = ((0.5 * selected_Area->get_Width())+
-//                     (0.5 * selected_Area->get_Height()));
-//    ui->horizontal_Slider_X_2->setMaximum(selected_Area->x()- (center) * 2);
-//    ui->horizontal_Slider_Y_2->setMaximum(selected_Area->y()- (center) * 2);
 
     ui->horizontal_Slider_X_2->setMaximum(this->base_Image->pixmap().width() - (selected_Area->get_Width())); // check this OVER!!
     ui->horizontal_Slider_Y_2->setMaximum(this->base_Image->pixmap().height() - (selected_Area->get_Height()));
@@ -401,7 +397,6 @@ QString crop_Widget::load_Crop_Image_Icons()
         QString file_Name(current_Image_Info.fileName());
 
         QObject::connect( thread, SIGNAL(started()), ig, SLOT(start()) );
-//        QObject::connect( ig, SIGNAL(finished(const QImage &, const QString &)), this, SLOT(add_Crop_Item_To_List(const QImage &, const QString &)));
 
         ig->setInput(file_Name);
         thread_Count++;
@@ -477,14 +472,13 @@ void crop_Widget::on_crop_btn_clicked()
 {
     int h = this->selected_Area->get_Height();
     int w = this->selected_Area->get_Width();
-//    QString current_Image_Path = splashScreen::project_Path+ "/images/wd/" +item->text();
     if (ui->apply_all->isChecked())
     {
         QStringList image_paths = image_Management_Nui::get_Working_Image_Paths();
 
         const float COUNT = float(image_paths.count());
 
-        QProgressDialog* progress = new QProgressDialog("Processing Images...", "Okay", 0, COUNT, this);
+        QProgressDialog* progress = new QProgressDialog("Cropping all Images...", "Okay", 0, COUNT, this);
         progress->setWindowModality(Qt::WindowModal);
         progress->show();
         progress->setValue(0);

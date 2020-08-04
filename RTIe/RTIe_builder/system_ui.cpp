@@ -8,68 +8,14 @@
 #include "fitter_Widget.h"
 #include "crop_Widget.h"
 #include "marble_widget.h"
-#define dumpval(x) qDebug()<<#x<<'='<<x
-
-#include <QTranslator>
-#include <QFileDialog>
-#include <QDebug>
-#include <QPixmap>
-#include <QListWidgetItem>
-#include <QFile>
-#include <QFileDialog>
-#include <QLabel>
-#include <QLineEdit>
-#include <QObject>
-#include <QTextBrowser>
-#include <QTableWidget>
-#include <QDateTime>
-#include <QProcess>
-#include <QProgressBar>
-
-#include <tuple>
-#include <vector>
-#include <math.h>
-#define _USE_MATH_DEFINES
-
-
 
 #include <QApplication>
 #include <QtWidgets>
-#include <QTranslator>
-#include <QLocale>
-#include <QLibraryInfo>
-#include <QComboBox>
-
-#include <QApplication>
-#include <QtWidgets>
-#include <QTranslator>
-#include <QLocale>
-#include <QLibraryInfo>
-#include <iostream>
-#include <fstream>
-#include <exception>
-
-#include <QBasicTimer>
-#include <QList>
-#include <QImage>
-#include <QDir>
-#include <QPainter>
-#include <QPaintEvent>
-
-#include <QThread>
-#include <QGraphicsPixmapItem>
-#include <QGraphicsItem>
 
 
-using namespace std;
 
-// CONSTANT VALUES
-#define CENTER_SCALE_FACTOR 0.3
-#define SCROLL_AREA_HEIGHT 694.0
-#define SCROLL_AREA_WIDTH 1044.0
-#define CONTRAST_PIVOT_POINT 215
-#define CONTRAST_SCALE 2
-#define BORDER_SCALE_FACTOR 0.1
+
+
 
 
 system_Ui::system_Ui(QWidget *parent) :
@@ -122,12 +68,6 @@ void system_Ui::start()
 }
 
 
-
-
-
-
-
-
 //==================================== Page change buttons  ===============================
 
 void system_Ui::on_image_Management_Btn_clicked()
@@ -168,7 +108,6 @@ void system_Ui::on_marble_Detection_Btn_clicked()
     ui->remove_Marble_Btn->setEnabled(true);
     ui->export_Btn->setEnabled(true);
 }
-
 
 void system_Ui::on_remove_Marble_Btn_clicked()
 {

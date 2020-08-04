@@ -51,3 +51,8 @@ FORMS += \
     system_ui.ui
 
 DISTFILES +=
+
+mac {
+    QMAKE_CXXFLAGS += --coverage
+    QMAKE_LFLAGS += --coverage
+}
