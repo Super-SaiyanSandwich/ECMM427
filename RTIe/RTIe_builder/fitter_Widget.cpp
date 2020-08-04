@@ -85,9 +85,6 @@ void fitter_Widget::on_generate_Btn_clicked()
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
 
-
-
-
                while(process->state() == 1)
                {
                    std_Output = process->readAllStandardOutput();
@@ -164,6 +161,7 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
+                //QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
 
                 while(process->state() == 1)
