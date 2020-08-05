@@ -99,8 +99,9 @@ void RTIe_tests::load_Cropping_File()
 void RTIe_tests::on_crop_btn_clicked()
 {
     QPushButton crop_button;
+    crop_Widget *obj = new crop_Widget();
 
-    QTest::mousePress(&crop_button, "hello world");
+    QTest::mousePress(obj, &crop_button);
 
     QCOMPARE(crop_button.text(), QString("hello world"));
 }
