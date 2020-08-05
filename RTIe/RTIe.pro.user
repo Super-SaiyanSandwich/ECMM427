@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.3, 2020-07-24T21:50:50. -->
+<!-- Written by QtCreator 4.12.3, 2020-08-05T15:22:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -85,9 +85,9 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.9.8 MinGW 32bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.9.8 MinGW 32bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt5.598.win32_mingw53_kit</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">1</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">0</value>
@@ -329,7 +329,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Tda-d/Documents/GitHub/ECMM427/build-RTIe-Desktop_Qt_5_9_8_MinGW_32bit-Release/RTIe_builder</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Tda-d/Documents/GitHub/ECMM427/build-RTIe-Desktop_Qt_5_9_8_MinGW_32bit-Debug/RTIe_builder</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -391,7 +391,6 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">RTIe_tests2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Tda-d/Documents/GitHub/ECMM427/RTIe/RTIe_tests/RTIe_tests.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Tda-d/Documents/GitHub/ECMM427/RTIe/RTIe_tests/RTIe_tests.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
@@ -404,7 +403,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Tda-d/Documents/GitHub/ECMM427/build-RTIe-Desktop_Qt_5_9_8_MinGW_32bit-Release/RTIe_tests</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Tda-d/Documents/GitHub/ECMM427/build-RTIe-Desktop_Qt_5_9_8_MinGW_32bit-Debug/RTIe_tests</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
   </valuemap>
