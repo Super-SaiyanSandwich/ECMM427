@@ -1,11 +1,14 @@
 ﻿#include "fitter_Widget.h"
 #include "image_Management_Nui.h"
 #include "ui_fitter_Widget.h"
+#include "splash_Screen.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QProcess>
 #include <QDebug>
+
+
 
 fitter_Widget::fitter_Widget(QWidget *parent) :
     QWidget(parent),
@@ -209,6 +212,9 @@ void fitter_Widget::on_generate_Btn_clicked()
 
         }
     }
+
+    QString wd = splashScreen::project_Path;
+
 
 
 }
