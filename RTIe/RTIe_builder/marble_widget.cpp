@@ -48,7 +48,8 @@ marble_Widget::marble_Widget(QWidget *parent, QString base_String, QList<QListWi
     QWidget(parent),
     ui(new Ui::marble_Widget)
 {
-    qInfo() << "Begin MD";
+    // Debugging Statement
+    //qInfo() << "Begin MD";
 
     ui->setupUi(this);
 
@@ -178,6 +179,7 @@ QImage marble_Widget::applyEffectToImage(QImage src, QGraphicsEffect *effect, in
     return res;
 }
 
+// Editted from::  https://stackoverflow.com/questions/23698114/how-can-i-apply-a-graphic-effect-to-the-image-in-qlistview
 QPixmap marble_Widget::applyEffectToImage(QPixmap src, QGraphicsEffect *effect, int extent)
 {
     if(src.isNull()) return QPixmap();   //No need to do anything else!
@@ -263,6 +265,7 @@ void marble_Widget::showEvent(QShowEvent *ev)
 
         QListWidgetItem *list_Icon = new QListWidgetItem("Marble 1");
         ui->listWidget_2->addItem(list_Icon);
+        new_Marble->icon = list_Icon;
 
         this->update_Preview_Image();
 
@@ -272,7 +275,8 @@ void marble_Widget::showEvent(QShowEvent *ev)
 
 void marble_Widget::add_Item_To_List(QImage image, QString filename)
 {
-    qInfo() << "ITEM BEING ADDED FOR MARBLE: " << filename;
+    // Debugging Statement
+    //qInfo() << "ITEM BEING ADDED FOR MARBLE: " << filename;
     QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap::fromImage(image)),filename);
     ui->listWidget->addItem(item);
     this->thread_Count--;
@@ -451,6 +455,7 @@ bool marble_Widget::load_File(const QString &fileName)
     return true;
 }
 
+// DEPRICATED
 static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
 {
     static bool firstDialog = true;
@@ -476,13 +481,13 @@ static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMo
 ///
 /// \brief Used to trigger necessary steps when loading an image.
 ///
-void marble_Widget::on_open_Button_clicked()
-{
-    QFileDialog dialog(this, tr("Open File"));
-    initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
+//void marble_Widget::on_open_Button_clicked()
+//{
+//    QFileDialog dialog(this, tr("Open File"));
+//    initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
 
-    while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {};
-}
+//    while (dialog.exec() == QDialog::Accepted && !load_File(dialog.selectedFiles().first())) {};
+//}
 
 ///
 /// \brief Triggered on button click, has main canvas zoom reset
@@ -582,11 +587,11 @@ QString marble_Widget::detect_Reflection(QImage marble)
     sum_X = int(sum_X);
     sum_Y = int(sum_Y);
 
-    marble.setPixel(sum_X, sum_Y, qRgb(0, 255, 0));
-    marble.setPixel(sum_X+1, sum_Y, qRgb(0, 255, 0));
-    marble.setPixel(sum_X-1, sum_Y, qRgb(0, 255, 0));
-    marble.setPixel(sum_X, sum_Y+1, qRgb(0, 255, 0));
-    marble.setPixel(sum_X, sum_Y-1, qRgb(0, 255, 0));
+//    marble.setPixel(sum_X, sum_Y, qRgb(0, 255, 0));
+//    marble.setPixel(sum_X+1, sum_Y, qRgb(0, 255, 0));
+//    marble.setPixel(sum_X-1, sum_Y, qRgb(0, 255, 0));
+//    marble.setPixel(sum_X, sum_Y+1, qRgb(0, 255, 0));
+//    marble.setPixel(sum_X, sum_Y-1, qRgb(0, 255, 0));
 
     //statusBar()->showMessage(QString("X: %1, Y: %2").arg(QString::number(sum_X), QString::number(sum_Y)));
 //    qInfo() << "X" << sum_X;
@@ -690,21 +695,21 @@ void marble_Widget::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 ///
 /// \brief Switches view between main image and preveiw image.
 ///
-void marble_Widget::on_swap_Button_clicked()
-{
-    this->invert_Selector = !this->invert_Selector;
+//void marble_Widget::on_swap_Button_clicked()
+//{
+//    this->invert_Selector = !this->invert_Selector;
 
-    if (invert_Selector){
-        this->ui->horizontalSpacer_2->changeSize(0,20);
-        this->ui->horizontalSpacer->changeSize(0,20);
-    }else{
-        this->ui->horizontalSpacer_2->changeSize(80,20);
-        this->ui->horizontalSpacer->changeSize(80,20);
-    }
+//    if (invert_Selector){
+//        this->ui->horizontalSpacer_2->changeSize(0,20);
+//        this->ui->horizontalSpacer->changeSize(0,20);
+//    }else{
+//        this->ui->horizontalSpacer_2->changeSize(80,20);
+//        this->ui->horizontalSpacer->changeSize(80,20);
+//    }
 
-    this->update_Main_Image();
-    this->update_Preview_Image();
-}
+//    this->update_Main_Image();
+//    this->update_Preview_Image();
+//}
 
 ///
 /// \brief Preview Image only updated on slider release. This function implements that functionality.
@@ -795,8 +800,13 @@ void marble_Widget::on_add_Marble_Button_clicked()
     selected_Marble->setSelected(true);
     selected_Marble->setParentItem(base_Image);
 
-    QListWidgetItem *list_Icon = new QListWidgetItem("Marble 1");
+    marble_Count++;
+
+    QString marble_Name = QString("Marble ") + QString::number(marble_Count);
+
+    QListWidgetItem *list_Icon = new QListWidgetItem(marble_Name);
     ui->listWidget_2->addItem(list_Icon);
+    new_Marble->icon = list_Icon;
 
     //qInfo() << "1" ;
 
@@ -819,9 +829,35 @@ void marble_Widget::on_add_Marble_Button_clicked()
 
     ui->horizontal_Slider_X->setValue(int(selected_Marble->x()));
     ui->horizontal_Slider_Y->setValue(int(selected_Marble->y()));
+
+    ui->remove_Marble_Button->setEnabled(true);
 }
 
 void marble_Widget::on_remove_Marble_Button_clicked()
 {
+
+    int index = marble_List.indexOf(selected_Marble);
+    marble_List.removeAt(index);
+
+    selected_Marble->setSelected(false);
+
+
+
+    //ui->listWidget_2->removeItemWidget(selected_Marble->number);
+
+    for (int i = 0; i <= marble_List.length(); i++) {
+       qInfo() << ui->listWidget_2->item(i)->text() << endl;
+
+    }
+
+
+    this->marble_Selection_Screen->removeItem(selected_Marble);
+
+    selected_Marble = marble_List.at(index % marble_List.length());
+
+
+    if (marble_List.length() == 1){
+        ui->remove_Marble_Button->setEnabled(false);
+    }
 
 }
