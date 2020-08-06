@@ -4,7 +4,7 @@ QT += gui
 CONFIG += qt warn_on depend_includepath testcase\
           console
 
-TARGET = RTIeBuilder #CodeCoverageExample
+TARGET = CodeCoverageExample
 
 # --coverage option is synonym for: -fprofile-arcs -ftest-coverage -lgcov
 QMAKE_CXXFLAGS += --coverage

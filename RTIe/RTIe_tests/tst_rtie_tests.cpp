@@ -5,10 +5,15 @@
 
 #include "test_suite.h"
 #include "..\RTIe_builder\crop_Widget.h"
+#include "..\RTIe_builder\crop_Widget.ui"
+
+namespace Ui {
+class RTIe_tests;
+}
 
 
 // add necessary includes here
-
+ui->horizontalSlider->installEventFilter(new RTIe_tests());
 class RTIe_tests : public QObject
 {
     Q_OBJECT
@@ -79,12 +84,21 @@ private:
     void add_Crop_Item_To_List(QImage image, QString filename);
 
 protected:
-    void showEvent(QShowEvent *ev);
-//    bool eventFilter(QObject *object, QEvent *event);
+      bool eventFilter(QObject* object, QEvent* event) override
+      {
+          qDebug() << event->type();
+
+          return QObject::eventFilter(object, event);
+      }
 
 
 
 };
+
+RTIe_tests::RTIe_tests() :
+//    QWidget(parent),
+    ui(new Ui::RTIe_tests)
+{}
 
 // Testing starts Here
 
@@ -92,17 +106,21 @@ void RTIe_tests::load_Cropping_File()
 {
     crop_Widget *obj = new crop_Widget();
     bool result = obj->load_Cropping_File("image1.jpg");
-    qInfo()<<result;
-    QCOMPARE(result, false);
+//    qInfo()<<result;
+    QCOMPARE(result, true);
 }
 
 void RTIe_tests::on_crop_btn_clicked()
 {
     QPushButton crop_button;
 
-    QTest::mousePress(&crop_button, "hello world");
+    crop_button.show();
 
-    QCOMPARE(crop_button.text(), QString("hello world"));
+   crop_button.clicked(false);
+
+    QTest::mouseClick( &crop_button, Qt::LeftButton );
+    crop_button.clicked(true);
+
 }
 
 //RTIe_tests::~RTIe_tests()
