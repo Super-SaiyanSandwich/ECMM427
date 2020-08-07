@@ -35,7 +35,7 @@ private:
 
 
     int thread_Count = 0;
-
+    int marble_Count = 1;
     int zoom_Percentage = 100;
 
     bool invert_Selector = false;
@@ -71,14 +71,14 @@ private slots:
     void on_horizontal_Scroll_Bar_Blue_valueChanged(int value);
     void on_colour_Selector_Button_clicked();
     void on_horizontal_Slider_Radius_valueChanged(int value);
-    void on_open_Button_clicked();
+    //void on_open_Button_clicked();
     void on_zoom_Reset_Button_clicked();
     void on_zoom_In_Button_clicked();
     void on_zoom_Out_Button_clicked();
     void on_test_Button_clicked();
     void add_Item_To_List(const QImage image, const QString filename);
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
-    void on_swap_Button_clicked();
+    //void on_swap_Button_clicked();
     void on_horizontal_Slider_X_sliderReleased();
     void on_horizontal_Slider_Y_sliderReleased();
     void on_checkBox_stateChanged(int arg1);

@@ -27,6 +27,7 @@ DEL_DIR       = rmdir
 MOVE          = move
 SUBTARGETS    =  \
 		sub-RTIe_builder \
+		sub-------------Desktop-test_project \
 		sub-RTIe_tests
 
 
@@ -55,6 +56,31 @@ sub-RTIe_builder-install_subtargets: FORCE
 sub-RTIe_builder-uninstall_subtargets: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ ) && $(MAKE) -f Makefile uninstall
+sub-------------Desktop-test_project-qmake_all:  FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++
+	cd ..\..\..\..\Desktop\test_project\ && $(MAKE) -f Makefile qmake_all
+sub-------------Desktop-test_project: FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile
+sub-------------Desktop-test_project-make_first: FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile 
+sub-------------Desktop-test_project-all: FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile all
+sub-------------Desktop-test_project-clean: FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile clean
+sub-------------Desktop-test_project-distclean: FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile distclean
+sub-------------Desktop-test_project-install_subtargets: FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile install
+sub-------------Desktop-test_project-uninstall_subtargets: FORCE
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile uninstall
 sub-RTIe_tests-qmake_all:  FORCE
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
 	cd RTIe_tests\ && $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++
@@ -212,6 +238,7 @@ Makefile: ../RTIe/RTIe.pro C:/Qt/5.9.8/mingw53_32/mkspecs/win32-g++/qmake.conf C
 		C:/Qt/5.9.8/mingw53_32/mkspecs/features/qt_config.prf \
 		C:/Qt/5.9.8/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/5.9.8/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/5.9.8/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/5.9.8/mingw53_32/mkspecs/features/toolchain.prf \
 		C:/Qt/5.9.8/mingw53_32/mkspecs/features/default_pre.prf \
@@ -361,6 +388,7 @@ C:/Qt/5.9.8/mingw53_32/mkspecs/features/qt_functions.prf:
 C:/Qt/5.9.8/mingw53_32/mkspecs/features/qt_config.prf:
 C:/Qt/5.9.8/mingw53_32/mkspecs/win32-g++/qmake.conf:
 C:/Qt/5.9.8/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/5.9.8/mingw53_32/mkspecs/features/exclusive_builds.prf:
 C:/Qt/5.9.8/mingw53_32/mkspecs/features/toolchain.prf:
 C:/Qt/5.9.8/mingw53_32/mkspecs/features/default_pre.prf:
@@ -381,48 +409,60 @@ C:/Qt/5.9.8/mingw53_32/mkspecs/features/lex.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\RTIe\RTIe.pro -spec win32-g++
 
-qmake_all: sub-RTIe_builder-qmake_all sub-RTIe_tests-qmake_all FORCE
+qmake_all: sub-RTIe_builder-qmake_all sub-------------Desktop-test_project-qmake_all sub-RTIe_tests-qmake_all FORCE
 
-make_first: sub-RTIe_builder-make_first sub-RTIe_tests-make_first  FORCE
-all: sub-RTIe_builder-all sub-RTIe_tests-all  FORCE
-clean: sub-RTIe_builder-clean sub-RTIe_tests-clean  FORCE
-distclean: sub-RTIe_builder-distclean sub-RTIe_tests-distclean  FORCE
+make_first: sub-RTIe_builder-make_first sub-------------Desktop-test_project-make_first sub-RTIe_tests-make_first  FORCE
+all: sub-RTIe_builder-all sub-------------Desktop-test_project-all sub-RTIe_tests-all  FORCE
+clean: sub-RTIe_builder-clean sub-------------Desktop-test_project-clean sub-RTIe_tests-clean  FORCE
+distclean: sub-RTIe_builder-distclean sub-------------Desktop-test_project-distclean sub-RTIe_tests-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-RTIe_builder-install_subtargets sub-RTIe_tests-install_subtargets FORCE
-uninstall_subtargets: sub-RTIe_builder-uninstall_subtargets sub-RTIe_tests-uninstall_subtargets FORCE
+install_subtargets: sub-RTIe_builder-install_subtargets sub-------------Desktop-test_project-install_subtargets sub-RTIe_tests-install_subtargets FORCE
+uninstall_subtargets: sub-RTIe_builder-uninstall_subtargets sub-------------Desktop-test_project-uninstall_subtargets sub-RTIe_tests-uninstall_subtargets FORCE
 
 sub-RTIe_builder-debug:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ ) && $(MAKE) -f Makefile debug
+sub-------------Desktop-test_project-debug:
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile debug
 sub-RTIe_tests-debug:
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
 	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ ) && $(MAKE) -f Makefile debug
-debug: sub-RTIe_builder-debug sub-RTIe_tests-debug
+debug: sub-RTIe_builder-debug sub-------------Desktop-test_project-debug sub-RTIe_tests-debug
 
 sub-RTIe_builder-release:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ ) && $(MAKE) -f Makefile release
+sub-------------Desktop-test_project-release:
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile release
 sub-RTIe_tests-release:
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
 	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ ) && $(MAKE) -f Makefile release
-release: sub-RTIe_builder-release sub-RTIe_tests-release
+release: sub-RTIe_builder-release sub-------------Desktop-test_project-release sub-RTIe_tests-release
 
 sub-RTIe_builder-check:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ ) && $(MAKE) -f Makefile check
+sub-------------Desktop-test_project-check:
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile check
 sub-RTIe_tests-check:
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
 	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ ) && $(MAKE) -f Makefile check
-check: sub-RTIe_builder-check sub-RTIe_tests-check
+check: sub-RTIe_builder-check sub-------------Desktop-test_project-check sub-RTIe_tests-check
 
 sub-RTIe_builder-benchmark:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ ) && $(MAKE) -f Makefile benchmark
+sub-------------Desktop-test_project-benchmark:
+	@if not exist ..\..\..\..\Desktop\test_project\ mkdir ..\..\..\..\Desktop\test_project\ & if not exist ..\..\..\..\Desktop\test_project\ exit 1
+	cd ..\..\..\..\Desktop\test_project\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Desktop\test_project\test_project.pro -spec win32-g++ ) && $(MAKE) -f Makefile benchmark
 sub-RTIe_tests-benchmark:
 	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
 	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile C:\Users\Tda-d\Documents\GitHub\ECMM427\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-RTIe_builder-benchmark sub-RTIe_tests-benchmark
+benchmark: sub-RTIe_builder-benchmark sub-------------Desktop-test_project-benchmark sub-RTIe_tests-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE
