@@ -641,7 +641,7 @@ public:
         work_Images->setObjectName(QStringLiteral("work_Images"));
         work_Images->setEditTriggers(QAbstractItemView::NoEditTriggers);
         work_Images->setDefaultDropAction(Qt::IgnoreAction);
-//        work_Images->setItemAlignment(Qt::AlignLeading);
+        work_Images->setItemAlignment(Qt::AlignLeading);
 
         gridLayout_2->addWidget(work_Images, 0, 0, 1, 1);
 

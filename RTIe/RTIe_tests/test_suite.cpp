@@ -2,7 +2,7 @@
 
 QVector<QObject*> Test_Suite::suites_;
 
-Test_Suite::Test_Suite(QWidget *parent) : QWidget(parent)
+Test_Suite::Test_Suite()
 {
     suites_.append(this);
 }

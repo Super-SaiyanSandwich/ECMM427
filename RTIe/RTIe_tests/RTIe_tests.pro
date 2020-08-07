@@ -4,15 +4,20 @@ QT += gui
 CONFIG += qt warn_on depend_includepath testcase\
           console
 
+CONFIG   -= app_bundle
+
 TARGET = CodeCoverageExample
 
 # --coverage option is synonym for: -fprofile-arcs -ftest-coverage -lgcov
 QMAKE_CXXFLAGS += --coverage
 QMAKE_LFLAGS += --coverage
 
+include( $$PWD/tests/Tests.pri)
+
 TEMPLATE = app
 
 SOURCES +=  tst_rtie_tests.cpp \
+    main_test.cpp \
     test_suite.cpp\
     ../RTIe_builder/crop_Widget.cpp \
     ../RTIe_builder/cropped_area.cpp \
