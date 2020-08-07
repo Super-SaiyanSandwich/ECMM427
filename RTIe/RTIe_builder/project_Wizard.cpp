@@ -16,6 +16,7 @@
 #include <QObject>
 #include <QGridLayout>
 #include <QWizardPage>
+#include <QAction>
 
 
 
@@ -163,3 +164,10 @@ void project_Wizard::on_project_Name_Line_Edit_textChanged(const QString &arg1)
     ui->path_Placeholder->setText(chosen_Path);
 }
 
+
+void project_Wizard::on_project_Wizard_rejected()
+{
+    qInfo()<<"restarting";
+    qApp->exit(splashScreen::REBOOT_EXIT_CODE);
+
+}

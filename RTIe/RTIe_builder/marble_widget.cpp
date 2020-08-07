@@ -665,7 +665,7 @@ void marble_Widget::on_test_Button_clicked()
         qInfo() << lp_File->errorString();
     }
     lp_File->close();
-    _Destroy(lp_File);
+    //_Destroy(lp_File);
 }
 
 

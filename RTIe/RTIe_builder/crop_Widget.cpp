@@ -129,6 +129,7 @@ void crop_Widget::on_work_Images_itemDoubleClicked(QListWidgetItem *item)
 
     this->update_Main_Cropped_Image();
     this->reset_Crop_Image_Zoom();
+    this->update_Crop_Preview_Image();
     this->reload_Preview();
 }
 
