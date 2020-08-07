@@ -3,7 +3,6 @@
 
 #include <QPainter>
 #include <QGraphicsItem>
-#include <QListWidgetItem>
 
 class marble : public QGraphicsItem
 {
@@ -25,7 +24,7 @@ public:
     std::tuple<int, int> getPosition();
     qreal getRadius();
     QColor getColour();
-    QListWidgetItem* icon;
+
 
 
 protected:
