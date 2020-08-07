@@ -1,6 +1,7 @@
 ﻿#include "fitter_Widget.h"
 #include "image_Management_Nui.h"
 #include "ui_fitter_Widget.h"
+#include "splash_Screen.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -8,6 +9,8 @@
 #include <QDebug>
 #include <QGraphicsView>
 #include <QGraphicsPixmapItem>
+
+
 
 fitter_Widget::fitter_Widget(QWidget *parent) :
     QWidget(parent),
@@ -102,9 +105,6 @@ void fitter_Widget::on_generate_Btn_clicked()
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
 
-
-
-
                while(process->state() == 1)
                {
                    std_Output = process->readAllStandardOutput();
@@ -181,6 +181,7 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
+                //QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
 
                 while(process->state() == 1)
@@ -228,6 +229,9 @@ void fitter_Widget::on_generate_Btn_clicked()
 
         }
     }
+
+    QString wd = splashScreen::project_Path;
+
 
 
 }
