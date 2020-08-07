@@ -22,7 +22,7 @@ public:
     void set_RGB(int r, int g, int b);
     bool load_Cropping_File(const QString &fileName);
 
-private slots:
+public slots: // change to private
     void on_work_Images_itemDoubleClicked(QListWidgetItem *item);
 
     void on_cancel_btn_clicked();
