@@ -239,7 +239,7 @@
   <customwidget>
    <class>import_Widget</class>
    <extends>QWidget</extends>
-   <header>import_Widget.h</header>
+   <header>../RTIe_builder/import_Widget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

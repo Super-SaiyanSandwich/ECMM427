@@ -42,7 +42,7 @@ private:
     int apply_All_Check_Status;
     //Image and reason lists are linked by indexes.
     QStringList image_Delete_List;
-    QStringList reason_Delete_List;
+    QString reason_Delete_Text;
 
 
 protected:
@@ -63,6 +63,7 @@ private slots:
     void update_Preview();
     void on_delete_Button_clicked();
     void on_apply_All_stateChanged(int arg1);
+    void update_Remaining_Image_List();
 };
 
 #endif // DELETION_DIALOG_H
