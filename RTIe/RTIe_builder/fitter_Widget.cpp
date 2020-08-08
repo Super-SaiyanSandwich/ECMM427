@@ -7,6 +7,8 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <QDebug>
+#include <QGraphicsView>
+#include <QGraphicsPixmapItem>
 
 
 
@@ -18,18 +20,35 @@ fitter_Widget::fitter_Widget(QWidget *parent) :
     qInfo() << "Begin MD";
 
     ui->setupUi(this);
-    QStringList image_Paths = get_File_List();
-    ui->image_Label->clear();
+    QStringList image_Names = image_Management_Nui::get_Working_Image_Names();
+    //ui->image_Graphics_View->resetCachedContent();
     ui->image_Name->clear();
 
+    /*
     QImage image = QImage(this->get_File_List().value(0));
+    QPixmap img = QPixmap::fromImage(image);
 
-    ui->image_Label->setPixmap(QPixmap::fromImage(image));
+    int w = img.width();
+    int h = img.height();
+
+    ui->image_Label->setPixmap(img.scaled(w,h,Qt::KeepAspectRatio));
     ui->image_Label->update();
-    QStringList pieces = image_Paths.value(0).split( "/" );
-    QString neededWord = pieces.value( pieces.length() - 1 );
-    ui->image_Name->setText(neededWord);
+    */
+    QString first_Image_File_Name = image_Names.first();
+    ui->image_Name->setText(first_Image_File_Name);
+    QImage first_Image = QImage(image_Management_Nui::get_Working_Image_Paths().first());
+
+    image_Preview_Scene = new QGraphicsScene(this);
+    ui->image_Graphics_View->setScene(image_Preview_Scene);
+
+    this->image_Preview_Pixmap = image_Preview_Scene->addPixmap(QPixmap::fromImage(first_Image));
+    //this->image_Preview_Pixmap->setFlag(QGraphicsItem::ItemClipsChildrenToShape,true);
+    ui->image_Graphics_View->fitInView(image_Preview_Scene->sceneRect(), Qt::KeepAspectRatio);
+    ui->image_Graphics_View->show();
+
     ui->generate_Btn->setDisabled(true);
+
+
 
 }
 
@@ -43,8 +62,6 @@ fitter_Widget::~fitter_Widget()
 /// LP file for them, cropping them if the crop is selected, and running the fitter using the new LP file. Prints
 /// the output of th e fitter to the {@link CropExecuteLayout#fitterOutputArea}.Deals with all errors that
 /// could occur in this method through the use of an error dialog.
-
-
 
 void fitter_Widget::on_generate_Btn_clicked()
 {
@@ -437,62 +454,57 @@ void fitter_Widget::on_hsh_Fitter_clicked()
     ui->ptm_Luminance->setCurrentText("");
 }
 
-QStringList fitter_Widget:: get_File_List()
-{
-    QStringList path_List = image_Management_Nui::get_Working_Image_Paths();//*splashScreen::project_Path
-    QStringListIterator file_Iterator(path_List);
-    QStringList file_Names;
-    while (file_Iterator.hasNext())
-    {
-        QString path = file_Iterator.next().toLocal8Bit().constData(); //Path Location
-        QString file_Name(path);
-        file_Names.append(file_Name);
-
-    }
-
-    return file_Names;
-}
-
 void fitter_Widget::on_previous_Image_Btn_clicked()
 {
-    QStringList image_Paths = get_File_List();
-    ui->image_Label->clear();
+    QStringList image_Paths = image_Management_Nui::get_Working_Image_Paths();
     ui->image_Name->clear();
-
     current_Slide--;
 
     if (current_Slide < 0)
         current_Slide = image_Paths.size()-1;
 
+    QStringList split_Image_Path = image_Paths.value(current_Slide).split( "/" );
+    QString image_File_Name = split_Image_Path.value( split_Image_Path.length() - 1 );
+    ui->image_Name->setText(image_File_Name);
 
-    QImage image = QImage(this->get_File_List().value(current_Slide));
+    QImage image = QImage(image_Paths.value(current_Slide));
+    ui->image_Graphics_View->setScene(image_Preview_Scene);
+    this->image_Preview_Pixmap = image_Preview_Scene->addPixmap(QPixmap::fromImage(image));
+    ui->image_Graphics_View->fitInView(image_Preview_Scene->sceneRect(), Qt::KeepAspectRatio);
+    ui->image_Graphics_View->show();
 
-    ui->image_Label->setPixmap(QPixmap::fromImage(image));
-    ui->image_Label->update();
 
     ui->width_Measurement->setText(QString::number(image.width()));
     ui->height_Measurement->setText(QString::number(image.height()));
-    QStringList pieces = image_Paths.value(current_Slide).split( "/" );
-    QString neededWord = pieces.value( pieces.length() - 1 );
-    ui->image_Name->setText(neededWord);
+
+
 }
 
 void fitter_Widget::on_next_Image_Btn_clicked()
 {
-    QStringList image_Paths = get_File_List();
-    ui->image_Label->clear();
+    QStringList image_Paths = image_Management_Nui::get_Working_Image_Paths();
     ui->image_Name->clear();
     current_Slide++;
+
     if (current_Slide >= image_Paths.size())
       current_Slide = 0;
 
-    QImage image = QImage(this->get_File_List().value(current_Slide));
-    ui->image_Label->setPixmap(QPixmap::fromImage(image));
-    ui->image_Label->update();
+    QStringList split_Image_Path = image_Paths.value(current_Slide).split( "/" );
+    QString image_File_Name = split_Image_Path.value( split_Image_Path.length() - 1 );
+    ui->image_Name->setText(image_File_Name);
+
+    QImage image = QImage(image_Paths.value(current_Slide));
+    ui->image_Graphics_View->setScene(image_Preview_Scene);
+    this->image_Preview_Pixmap = image_Preview_Scene->addPixmap(QPixmap::fromImage(image));
+    ui->image_Graphics_View->fitInView(image_Preview_Scene->sceneRect(), Qt::KeepAspectRatio);
+    ui->image_Graphics_View->show();
 
     ui->width_Measurement->setText(QString::number(image.width()));
     ui->height_Measurement->setText(QString::number(image.height()));
-    QStringList pieces = image_Paths.value(current_Slide).split( "/" );
-    QString neededWord = pieces.value( pieces.length() - 1 );
-    ui->image_Name->setText(neededWord);
+
+
+}
+
+void fitter_Widget::showEvent(QShowEvent *){
+    ui->image_Graphics_View->fitInView(image_Preview_Scene->sceneRect(), Qt::KeepAspectRatio);
 }

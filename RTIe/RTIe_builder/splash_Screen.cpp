@@ -10,6 +10,7 @@
 
 QString splashScreen::project_Path;
 QString splashScreen::project_Name;
+int const splashScreen::REBOOT_EXIT_CODE = -123456789;
 
 splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 {    
@@ -56,6 +57,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
      settings_Button->setIconSize(QSize(30,30));
      settings_Button->setMinimumSize(30, 30);
      settings_Button->setMaximumSize(30, 30);
+
 
      connect(open_Project_Button, SIGNAL(clicked()), &open_Existing_Project, SLOT(open_Selected_Project())); //Where I need to pass file location to system_ui.cpp
      connect(open_Project_Button, SIGNAL(clicked()), this, SLOT(close()));
