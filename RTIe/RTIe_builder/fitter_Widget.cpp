@@ -363,12 +363,10 @@ void fitter_Widget::on_fitter_Location_clicked()
 {
     QFileDialog dialog(this);
 
-    QString filter_2 = "fitter(*.exe)";     //(ptm or hsh)
+    //QString filter_2 = "fitter(*.exe)";     //(ptm or hsh)
+    dialog.setFilter(QDir::Executable | QDir::Files);
 
-
-    fitter_Location = dialog.getOpenFileName(this, tr("Open File"),
-                                                    "",
-                                                    filter_2);
+    fitter_Location = dialog.getOpenFileName(this, tr("Open File"),"");
 
     ui->fitter_Placeholder->setText(fitter_Location);
 
