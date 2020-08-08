@@ -22,7 +22,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "..\RTIe_builder\import_Widget.h"
+#include "import_Widget.h"
 
 QT_BEGIN_NAMESPACE
 

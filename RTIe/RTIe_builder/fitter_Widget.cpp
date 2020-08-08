@@ -240,7 +240,7 @@ QString fitter_Widget:: error_Message(bool hsh)
     if (hsh){
         dropdown_Option = ui->hsh_Order->currentText() == "" ;
         empty_Order = "Hsh Order";
-        fitter = ".hsh";
+        fitter = ".rti";
 
     }
     else {
@@ -393,7 +393,7 @@ void fitter_Widget::on_output_Location_clicked()
         chosen_Location+= ".ptm";
         fitter_Args += " -o " + chosen_Location + " ";
     }else{
-        chosen_Location+= ".hsh";
+        chosen_Location+= ".rti";
         output_Path += chosen_Location + " ";
     }
     ui->output_Placeholder->setText(chosen_Location);
