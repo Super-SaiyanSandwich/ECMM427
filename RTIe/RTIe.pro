@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
-SUBDIRS = RTIe_builder
+SUBDIRS = RTIe_builder\
+#           RTIe_tests
 
 CONFIG += qt
 
