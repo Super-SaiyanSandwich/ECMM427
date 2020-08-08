@@ -1,7 +1,7 @@
 #include <QtTest/QtTest>
 
 #include "test_suite.h"
-#include "../RTIe_builder/crop_Widget.h"
+#include "..\RTIe_builder\crop_Widget.h"
 
 
 
@@ -17,60 +17,25 @@ public:
 //    ~RTIe_tests();
 
 private slots: //change to private
-    void test_on_work_Images_itemDoubleClicked();//QListWidgetItem *item);
-    void test_on_cancel_btn_clicked();
-    void test_on_horizontal_Slider_X_2_sliderReleased();
-    void test_on_horizontal_Slider_Y_2_sliderReleased();
-    void test_on_crop_btn_clicked();
-
-    void test_on_spin_Box_X_2_valueChanged();//int X);
-    void test_on_spin_Box_Y_2_valueChanged();//int Y);
-    void test_on_spin_Box_Height_valueChanged();//double value);
-    void test_on_spin_Box_Width_valueChanged();//double value);
-    void test_on_horizontal_Slider_X_2_valueChanged();//int value);
-    void test_on_horizontal_Slider_Y_2_valueChanged();//int value);
-    void test_on_horizontal_Slider_Height_valueChanged();//int value);
-    void test_on_horizontal_Slider_Width_valueChanged();//int value);
-    void test_on_horizontal_Scroll_Bar_Red_2_valueChanged();//int value);
-    void test_on_horizontal_Scroll_Bar_Green_2_valueChanged();//int value);
-    void test_on_horizontal_Scroll_Bar_Blue_2_valueChanged();//int value);
-    void test_on_colour_Selector_Button_2_clicked();
-    void test_on_zoom_Reset_Button_2_clicked();
-    void test_on_zoom_In_Button_2_clicked();
-    void test_on_zoom_Out_Button_2_clicked();
-
-private:
-    bool first_Load = true;
 
 
-    int thread_Count = 0;
-    int zoom_Percentage = 100;
+//    QRectF boundingRect();
+//    void paint();//QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+
+    void test_set_and_get_Position();//qreal x, qreal y); std::tuple<int, int> get_Position();
+    void test_set_Colour();//int r, int g, int b);
+    void test_set_Colour1();//QColor colour);
+    void test_set_R();//int r);
+    void test_set_G();//int g);
+    void test_set_B();//int b);
+    void test_set_and_get_Height();//qreal height);
+    void test_set_and_get_Width();//qreal width);
+//    void test_set_Selected();//bool selected);
 
 
-    void test_Apply_Effect_To_Pixmap();
-//    void test_update_Main_Cropped_Image();
-//    void test_update_Crop_Preview_Image();
-//    void test_reload_Preview();
-//    void test_image_Crop_Zoom();//int percent);
-
-
-
-//    void test_load_Crop_Image_Icons();
-//    void test_reset_Crop_Image_Zoom();
-//    void test_image_Zoom();
-//    void test_set_Crop_Maximums();
-//    void test_load_Image_Icons();
-
-//    void add_Crop_Item_To_List(QImage image, QString filename);
-
-protected:
-      bool eventFilter(QObject* object, QEvent* event) override
-      {
-          qDebug() << event->type();
-
-          return QObject::eventFilter(object, event);
-      }
-
+//    qreal test_get_Width();
+//    qreal test_get_Height();
+//    QColor test_get_Colour();
 
 
 };
@@ -87,7 +52,7 @@ void RTIe_tests::test_load_Cropping_File()
     QCOMPARE(result, true);
 }
 
-void RTIe_tests::test_on_crop_btn_clicked()
+void RTIe_tests::test_set_and_get_Position()
 {
 //    QPushButton crop_button;
 
@@ -98,275 +63,478 @@ void RTIe_tests::test_on_crop_btn_clicked()
 //    QTest::mouseClick( &crop_button, Qt::LeftButton );
 //    crop_button.clicked(true);
     try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_crop_btn_clicked();
+        qreal x = 5 ;
+        qreal y = 5 ;
+        cropped_Area *obj = new cropped_Area();
+        obj->set_Position(x,y);
+        std::tuple<qreal, qreal> result = obj->get_Position();
+        qreal res_x = std::get<0>(result);
+        qreal res_y = std::get<1>(result);
+
+        QCOMPARE(res_x,5);
+        QCOMPARE(res_y,5);
     } catch (...) {
         qInfo()<<"An error has occured: ";
     }
 
 }
 
-void RTIe_tests::test_on_work_Images_itemDoubleClicked()
+void RTIe_tests::test_set_Colour()
+{
+
+    try {
+        int r = 200;
+        int g = 100;
+        int b = 5;
+        cropped_Area *obj = new cropped_Area();
+        obj->set_Colour(r,g,b);
+        QColor result = obj->get_Colour();
+        QCOMPARE(result,QColor::fromRgb(200,100,5));
+    } catch (...) {
+        qInfo()<<"An error has occured: ";
+    }
+
+}
+
+void RTIe_tests::test_set_Colour1()
 {
   try { //GOOD
-        QListWidgetItem *newItem = new QListWidgetItem;
-        newItem->setText("itemText");
-        crop_Widget *obj = new crop_Widget();
-        obj->on_work_Images_itemDoubleClicked(newItem);
+        QColor colour = Qt::blue;
+        cropped_Area *obj = new cropped_Area();
+        obj->set_Colour(colour);
+        QColor result = obj->get_Colour();
+        QCOMPARE(result,Qt::blue);
     } catch (...) {
         qInfo()<<"An error has occured: ";
     }
-    try { //BAD
-          QListWidgetItem *newItem = new QListWidgetItem;
-          newItem->setText("");
-          crop_Widget *obj = new crop_Widget();
-          obj->on_work_Images_itemDoubleClicked(newItem);
-      } catch (...) {
-          qInfo()<<"An error has occured: ";
-      }
+//    try { //BAD
+//          QListWidgetItem *newItem = new QListWidgetItem;
+//          newItem->setText("");
+//          crop_Widget *obj = new crop_Widget();
+//          obj->on_work_Images_itemDoubleClicked(newItem);
+//      } catch (...) {
+//          qInfo()<<"An error has occured: ";
+//      }
 
 }
 
 
-void RTIe_tests::test_on_cancel_btn_clicked()
-{
-
-    try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_cancel_btn_clicked();
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-
-
-
-void RTIe_tests::test_on_horizontal_Slider_X_2_sliderReleased()
+void RTIe_tests::test_set_R()
 {
     try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Slider_X_2_sliderReleased();
+        int r = 12;
+        cropped_Area *obj = new cropped_Area();
+        obj->set_R(r);
+        QCOMPARE(QColor().red(),12 );
     } catch (...) {
         qInfo()<<"An error has occured: ";
     }
-
 }
 
-void RTIe_tests::test_on_horizontal_Slider_Y_2_sliderReleased()
+
+
+
+void RTIe_tests::test_set_G()
 {
     try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Slider_Y_2_sliderReleased();
+        int g =10;
+        cropped_Area *obj = new cropped_Area();
+        obj->set_G(g);
+        QCOMPARE(QColor().green(),10 );
     } catch (...) {
         qInfo()<<"An error has occured: ";
     }
 
 }
 
+void RTIe_tests::test_set_B()
+{
+    try {
+        int b = 84;
+        cropped_Area *obj = new cropped_Area();
+        obj->set_R(b);
+        QCOMPARE(QColor().blue(),84 );
+    } catch (...) {
+        qInfo()<<"An error has occured: ";
+    }
+}
 
-void RTIe_tests::test_on_spin_Box_X_2_valueChanged()
+
+void RTIe_tests::test_set_and_get_Height()
 {
     int X = 0;
     try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_spin_Box_X_2_valueChanged(X);
+        cropped_Area *obj = new cropped_Area();
+        obj->set_Height(X);
+        qreal result = obj->get_Height();
+        QCOMPARE(result,0);
     } catch (...) {
         qInfo()<<"An error has occured: ";
     }
 
 }
 
-void RTIe_tests::test_on_spin_Box_Y_2_valueChanged()
+void RTIe_tests::test_set_and_get_Width()
 {
     int Y = 0;
     try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_spin_Box_Y_2_valueChanged(Y);
+        cropped_Area *obj = new cropped_Area();
+        obj->set_Width(Y);
+        qreal result = obj->get_Width();
+        QCOMPARE(result,0);
     } catch (...) {
         qInfo()<<"An error has occured: ";
     }
 
 }
 
-void RTIe_tests::test_on_spin_Box_Height_valueChanged()
-{
-    int value = 12;
-    try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_spin_Box_Height_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_spin_Box_Width_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_spin_Box_Width_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_horizontal_Slider_X_2_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Slider_X_2_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_horizontal_Slider_Y_2_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Slider_Y_2_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_horizontal_Slider_Height_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Slider_Height_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_horizontal_Slider_Width_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Slider_Width_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_horizontal_Scroll_Bar_Red_2_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Scroll_Bar_Red_2_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_horizontal_Scroll_Bar_Green_2_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Scroll_Bar_Green_2_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_horizontal_Scroll_Bar_Blue_2_valueChanged()
-{
-
-    try {
-        int value = 12;
-        crop_Widget *obj = new crop_Widget();
-        obj->on_horizontal_Scroll_Bar_Blue_2_valueChanged(value);
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_colour_Selector_Button_2_clicked()
-{
-
-    try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_colour_Selector_Button_2_clicked();
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_zoom_Reset_Button_2_clicked()
-{
-
-    try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_zoom_Reset_Button_2_clicked();
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_zoom_In_Button_2_clicked()
-{
-
-    try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_zoom_In_Button_2_clicked();
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
-{
-
-    try {
-        crop_Widget *obj = new crop_Widget();
-        obj->on_zoom_Out_Button_2_clicked();
-    } catch (...) {
-        qInfo()<<"An error has occured: ";
-    }
-
-}
-
-
-//void RTIe_tests::test_Apply_Effect_To_Pixmap()
+//void RTIe_tests::test_set_Selected()
 //{
-
+//    int value = 12;
 //    try {
 //        crop_Widget *obj = new crop_Widget();
-//        obj->apply_Effect_To_Pixmap();
+//        obj->on_spin_Box_Height_valueChanged(value);
 //    } catch (...) {
 //        qInfo()<<"An error has occured: ";
 //    }
 
 //}
 
+
+
+//void RTIe_tests::test_on_horizontal_Slider_X_2_valueChanged()
+//{
+
+//    try {
+//        int value = 12;
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_horizontal_Slider_X_2_valueChanged(value);
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_horizontal_Slider_Y_2_valueChanged()
+//{
+
+//    try {
+//        int value = 12;
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_horizontal_Slider_Y_2_valueChanged(value);
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_horizontal_Slider_Height_valueChanged()
+//{
+
+//    try {
+//        int value = 12;
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_horizontal_Slider_Height_valueChanged(value);
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_horizontal_Slider_Width_valueChanged()
+//{
+
+//    try {
+//        int value = 12;
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_horizontal_Slider_Width_valueChanged(value);
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_horizontal_Scroll_Bar_Red_2_valueChanged()
+//{
+
+//    try {
+//        int value = 12;
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_horizontal_Scroll_Bar_Red_2_valueChanged(value);
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_horizontal_Scroll_Bar_Green_2_valueChanged()
+//{
+
+//    try {
+//        int value = 12;
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_horizontal_Scroll_Bar_Green_2_valueChanged(value);
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_horizontal_Scroll_Bar_Blue_2_valueChanged()
+//{
+
+//    try {
+//        int value = 12;
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_horizontal_Scroll_Bar_Blue_2_valueChanged(value);
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_colour_Selector_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_colour_Selector_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_zoom_Reset_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Reset_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_zoom_In_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_In_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+////void RTIe_tests::test_Apply_Effect_To_Pixmap()
+////{
+
+////    try {
+////        crop_Widget *obj = new crop_Widget();
+////        obj->apply_Effect_To_Pixmap();
+////    } catch (...) {
+////        qInfo()<<"An error has occured: ";
+////    }
+
+////}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
+
+
+//void RTIe_tests::test_on_zoom_Out_Button_2_clicked()
+//{
+
+//    try {
+//        crop_Widget *obj = new crop_Widget();
+//        obj->on_zoom_Out_Button_2_clicked();
+//    } catch (...) {
+//        qInfo()<<"An error has occured: ";
+//    }
+
+//}
 
 
 static RTIe_tests rtieInstance;
