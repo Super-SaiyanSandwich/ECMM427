@@ -166,7 +166,7 @@ void image_Management_Nui::delete_(QStringList file_Names)
 {
     deletion_Dialog del;
     int result = del.process_Images(file_Names);
-    qInfo()<<"result:"<<result;
+    //qInfo()<<"result:"<<result;
 
     //if result = 1 | User pressed OK
     if(result == QDialog::Accepted){
