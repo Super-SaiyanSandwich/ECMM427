@@ -99,9 +99,11 @@ int deletion_Dialog::process_Images(QStringList image_Names){
     //Carry out changes listed
     if(dialog_Status_Code == QDialog::Accepted){
         qInfo() << "TEST ACCEPTED";
+        dialog_Status_Code = 1;
     //Perform no operations
     } else {
         qInfo() << "TEST REJECTED";
+        dialog_Status_Code = 0;
     }
 
     return dialog_Status_Code;
