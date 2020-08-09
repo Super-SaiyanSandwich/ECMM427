@@ -17,7 +17,7 @@ include( $$PWD/tests/Tests.pri)
 TEMPLATE = app
 
 SOURCES +=  tst_rtie_tests.cpp \
-    main_test.cpp \
+#    main_test.cpp \
     test_suite.cpp\
     ../RTIe_builder/crop_Widget.cpp \
     ../RTIe_builder/cropped_area.cpp \
