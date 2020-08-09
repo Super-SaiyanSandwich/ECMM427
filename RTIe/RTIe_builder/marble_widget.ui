@@ -168,24 +168,6 @@
               </spacer>
              </item>
              <item>
-              <widget class="QToolButton" name="swap_Button">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normalon>:/noun_swap_99117.png</normalon>
-                </iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>40</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QLabel" name="Preview">
                <property name="font">
                 <font>
@@ -713,7 +695,7 @@ QToolBox::tab:selected {
                 <x>0</x>
                 <y>0</y>
                 <width>296</width>
-                <height>414</height>
+                <height>408</height>
                </rect>
               </property>
               <attribute name="label">
@@ -739,7 +721,7 @@ QToolBox::tab:selected {
                       <x>0</x>
                       <y>0</y>
                       <width>274</width>
-                      <height>360</height>
+                      <height>356</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -796,8 +778,8 @@ QToolBox::tab:selected {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>921</width>
-                <height>428</height>
+                <width>296</width>
+                <height>408</height>
                </rect>
               </property>
               <attribute name="label">
@@ -921,8 +903,8 @@ QToolBox::tab:selected {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>921</width>
-                <height>428</height>
+                <width>296</width>
+                <height>408</height>
                </rect>
               </property>
               <attribute name="label">
@@ -1012,8 +994,8 @@ QToolBox::tab:selected {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>921</width>
-                <height>428</height>
+                <width>296</width>
+                <height>408</height>
                </rect>
               </property>
               <attribute name="label">
@@ -1339,8 +1321,8 @@ QScrollBar::sub-line:horizontal {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>921</width>
-                <height>428</height>
+                <width>296</width>
+                <height>408</height>
                </rect>
               </property>
               <attribute name="label">
@@ -1364,8 +1346,8 @@ QScrollBar::sub-line:horizontal {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>901</width>
-                    <height>386</height>
+                    <width>276</width>
+                    <height>368</height>
                    </rect>
                   </property>
                   <property name="sizePolicy">
