@@ -28,8 +28,7 @@ SYMLINK       = $(QMAKE) -install ln -f -s
 DEL_DIR       = rmdir
 MOVE          = move
 SUBTARGETS    =  \
-		sub-RTIe_builder \
-		sub-RTIe_tests
+		sub-RTIe_builder
 
 
 sub-RTIe_builder-qmake_all:  FORCE
@@ -57,31 +56,6 @@ sub-RTIe_builder-install_subtargets: FORCE
 sub-RTIe_builder-uninstall_subtargets: FORCE
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
-sub-RTIe_tests-qmake_all:  FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
-	cd RTIe_tests\ && $(MAKE) -f Makefile qmake_all
-sub-RTIe_tests: FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile
-sub-RTIe_tests-make_first: FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile 
-sub-RTIe_tests-all: FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile all
-sub-RTIe_tests-clean: FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile clean
-sub-RTIe_tests-distclean: FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile distclean
-sub-RTIe_tests-install_subtargets: FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile install
-sub-RTIe_tests-uninstall_subtargets: FORCE
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ../RTIe/RTIe.pro F:/QT/5.12.6/mingw73_64/mkspecs/win32-g++/qmake.conf F:/QT/5.12.6/mingw73_64/mkspecs/features/spec_pre.prf \
 		F:/QT/5.12.6/mingw73_64/mkspecs/qdevice.pri \
@@ -419,48 +393,36 @@ F:/QT/5.12.6/mingw73_64/mkspecs/features/lex.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\RTIe\RTIe.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 
-qmake_all: sub-RTIe_builder-qmake_all sub-RTIe_tests-qmake_all FORCE
+qmake_all: sub-RTIe_builder-qmake_all FORCE
 
-make_first: sub-RTIe_builder-make_first sub-RTIe_tests-make_first  FORCE
-all: sub-RTIe_builder-all sub-RTIe_tests-all  FORCE
-clean: sub-RTIe_builder-clean sub-RTIe_tests-clean  FORCE
-distclean: sub-RTIe_builder-distclean sub-RTIe_tests-distclean  FORCE
+make_first: sub-RTIe_builder-make_first  FORCE
+all: sub-RTIe_builder-all  FORCE
+clean: sub-RTIe_builder-clean  FORCE
+distclean: sub-RTIe_builder-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-RTIe_builder-install_subtargets sub-RTIe_tests-install_subtargets FORCE
-uninstall_subtargets: sub-RTIe_builder-uninstall_subtargets sub-RTIe_tests-uninstall_subtargets FORCE
+install_subtargets: sub-RTIe_builder-install_subtargets FORCE
+uninstall_subtargets: sub-RTIe_builder-uninstall_subtargets FORCE
 
 sub-RTIe_builder-debug:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile debug
-sub-RTIe_tests-debug:
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile debug
-debug: sub-RTIe_builder-debug sub-RTIe_tests-debug
+debug: sub-RTIe_builder-debug
 
 sub-RTIe_builder-release:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile release
-sub-RTIe_tests-release:
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile release
-release: sub-RTIe_builder-release sub-RTIe_tests-release
+release: sub-RTIe_builder-release
 
 sub-RTIe_builder-check:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
-sub-RTIe_tests-check:
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile check
-check: sub-RTIe_builder-check sub-RTIe_tests-check
+check: sub-RTIe_builder-check
 
 sub-RTIe_builder-benchmark:
 	@if not exist RTIe_builder\ mkdir RTIe_builder\ & if not exist RTIe_builder\ exit 1
 	cd RTIe_builder\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_builder\RTIe_builder.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
-sub-RTIe_tests-benchmark:
-	@if not exist RTIe_tests\ mkdir RTIe_tests\ & if not exist RTIe_tests\ exit 1
-	cd RTIe_tests\ && ( if not exist Makefile $(QMAKE) -o Makefile F:\Users\Dave\Documents\LearningQT\RTIe\RTIe_tests\RTIe_tests.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-RTIe_builder-benchmark sub-RTIe_tests-benchmark
+benchmark: sub-RTIe_builder-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE

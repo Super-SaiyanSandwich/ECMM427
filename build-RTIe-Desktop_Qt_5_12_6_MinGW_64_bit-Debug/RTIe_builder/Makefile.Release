@@ -49,6 +49,7 @@ OBJECTS_DIR   = release
 
 SOURCES       = ..\..\RTIe\RTIe_builder\crop_Widget.cpp \
 		..\..\RTIe\RTIe_builder\cropped_area.cpp \
+		..\..\RTIe\RTIe_builder\deletion_dialog.cpp \
 		..\..\RTIe\RTIe_builder\fitter_Widget.cpp \
 		..\..\RTIe\RTIe_builder\image_Gatherer.cpp \
 		..\..\RTIe\RTIe_builder\image_Management_Nui.cpp \
@@ -63,6 +64,7 @@ SOURCES       = ..\..\RTIe\RTIe_builder\crop_Widget.cpp \
 		..\..\RTIe\RTIe_builder\splash_Screen.cpp \
 		..\..\RTIe\RTIe_builder\system_ui.cpp release\qrc_test.cpp \
 		release\moc_crop_Widget.cpp \
+		release\moc_deletion_dialog.cpp \
 		release\moc_fitter_Widget.cpp \
 		release\moc_image_Gatherer.cpp \
 		release\moc_image_Management_Nui.cpp \
@@ -75,6 +77,7 @@ SOURCES       = ..\..\RTIe\RTIe_builder\crop_Widget.cpp \
 		release\moc_system_ui.cpp
 OBJECTS       = release/crop_Widget.o \
 		release/cropped_area.o \
+		release/deletion_dialog.o \
 		release/fitter_Widget.o \
 		release/image_Gatherer.o \
 		release/image_Management_Nui.o \
@@ -90,6 +93,7 @@ OBJECTS       = release/crop_Widget.o \
 		release/system_ui.o \
 		release/qrc_test.o \
 		release/moc_crop_Widget.o \
+		release/moc_deletion_dialog.o \
 		release/moc_fitter_Widget.o \
 		release/moc_image_Gatherer.o \
 		release/moc_image_Management_Nui.o \
@@ -103,6 +107,7 @@ OBJECTS       = release/crop_Widget.o \
 
 DIST          =  ..\..\RTIe\RTIe_builder\crop_Widget.h \
 		..\..\RTIe\RTIe_builder\cropped_area.h \
+		..\..\RTIe\RTIe_builder\deletion_dialog.h \
 		..\..\RTIe\RTIe_builder\fitter_Widget.h \
 		..\..\RTIe\RTIe_builder\image_Gatherer.h \
 		..\..\RTIe\RTIe_builder\image_Management_Nui.h \
@@ -116,6 +121,7 @@ DIST          =  ..\..\RTIe\RTIe_builder\crop_Widget.h \
 		..\..\RTIe\RTIe_builder\splash_Screen.h \
 		..\..\RTIe\RTIe_builder\system_ui.h ..\..\RTIe\RTIe_builder\crop_Widget.cpp \
 		..\..\RTIe\RTIe_builder\cropped_area.cpp \
+		..\..\RTIe\RTIe_builder\deletion_dialog.cpp \
 		..\..\RTIe\RTIe_builder\fitter_Widget.cpp \
 		..\..\RTIe\RTIe_builder\image_Gatherer.cpp \
 		..\..\RTIe\RTIe_builder\image_Management_Nui.cpp \
@@ -139,7 +145,7 @@ DESTDIR_TARGET = release\RTIeBuilder.exe
 first: all
 all: Makefile.Release  release/RTIeBuilder.exe
 
-release/RTIeBuilder.exe: F:/QT/5.12.6/mingw73_64/lib/libQt5Widgets.a F:/QT/5.12.6/mingw73_64/lib/libQt5Gui.a F:/QT/5.12.6/mingw73_64/lib/libQt5Core.a F:/QT/5.12.6/mingw73_64/lib/libqtmain.a ui_crop_Widget.h ui_fitter_Widget.h ui_import_Widget.h ui_marble_widget.h ui_project_Wizard.h ui_system_ui.h $(OBJECTS) 
+release/RTIeBuilder.exe: F:/QT/5.12.6/mingw73_64/lib/libQt5Widgets.a F:/QT/5.12.6/mingw73_64/lib/libQt5Gui.a F:/QT/5.12.6/mingw73_64/lib/libQt5Core.a F:/QT/5.12.6/mingw73_64/lib/libqtmain.a ui_crop_Widget.h ui_deletion_dialog.h ui_fitter_Widget.h ui_import_Widget.h ui_marble_widget.h ui_project_Wizard.h ui_system_ui.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.RTIeBuilder.Release  $(LIBS)
 
 qmake: FORCE
@@ -148,10 +154,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) RTIeBuilder.zip $(SOURCES) $(DIST) ..\..\RTIe\RTIe_builder\RTIe_builder.pro F:\QT\5.12.6\mingw73_64\mkspecs\features\spec_pre.prf F:\QT\5.12.6\mingw73_64\mkspecs\qdevice.pri F:\QT\5.12.6\mingw73_64\mkspecs\features\device_config.prf F:\QT\5.12.6\mingw73_64\mkspecs\common\sanitize.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\gcc-base.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\g++-base.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\angle.conf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf F:\QT\5.12.6\mingw73_64\mkspecs\common\windows-vulkan.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\g++-win32.conf F:\QT\5.12.6\mingw73_64\mkspecs\qconfig.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3drender.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axbase.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axserver.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_core.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_core_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_dbus.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_designer.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gui.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_help.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_help_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_location.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_location_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_network.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_network_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_nfc.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_opengl.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioning.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qml.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quick.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_repparser.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_scxml.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sensors.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialport.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sql.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_svg.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_testlib.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_uitools.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_websockets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_widgets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_winextras.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xml.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\features\qt_functions.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qt_config.prf F:\QT\5.12.6\mingw73_64\mkspecs\win32-g++\qmake.conf F:\QT\5.12.6\mingw73_64\mkspecs\features\spec_post.prf ..\.qmake.stash F:\QT\5.12.6\mingw73_64\mkspecs\features\exclusive_builds.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\toolchain.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\default_pre.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\default_pre.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\resolve_config.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\exclusive_builds_post.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\default_post.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\build_pass.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qml_debug.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\precompile_header.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\warn_on.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qt.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\resources.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\moc.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\opengl.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\uic.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qmake_use.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\file_copies.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\windows.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\testcase_targets.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\exceptions.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\yacc.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\lex.prf ..\..\RTIe\RTIe_builder\RTIe_builder.pro ..\..\RTIe\RTIe_builder\test.qrc F:\QT\5.12.6\mingw73_64\lib\Qt5Widgets.prl F:\QT\5.12.6\mingw73_64\lib\Qt5Gui.prl F:\QT\5.12.6\mingw73_64\lib\Qt5Core.prl F:\QT\5.12.6\mingw73_64\lib\qtmain.prl   ..\..\RTIe\RTIe_builder\test.qrc F:\QT\5.12.6\mingw73_64\mkspecs\features\data\dummy.cpp ..\..\RTIe\RTIe_builder\crop_Widget.h ..\..\RTIe\RTIe_builder\cropped_area.h ..\..\RTIe\RTIe_builder\fitter_Widget.h ..\..\RTIe\RTIe_builder\image_Gatherer.h ..\..\RTIe\RTIe_builder\image_Management_Nui.h ..\..\RTIe\RTIe_builder\import_Widget.h ..\..\RTIe\RTIe_builder\marble.h ..\..\RTIe\RTIe_builder\marble_List_Item.h ..\..\RTIe\RTIe_builder\marble_widget.h ..\..\RTIe\RTIe_builder\new_Project.h ..\..\RTIe\RTIe_builder\new_Project_Settings.h ..\..\RTIe\RTIe_builder\project_Wizard.h ..\..\RTIe\RTIe_builder\splash_Screen.h ..\..\RTIe\RTIe_builder\system_ui.h  ..\..\RTIe\RTIe_builder\crop_Widget.cpp ..\..\RTIe\RTIe_builder\cropped_area.cpp ..\..\RTIe\RTIe_builder\fitter_Widget.cpp ..\..\RTIe\RTIe_builder\image_Gatherer.cpp ..\..\RTIe\RTIe_builder\image_Management_Nui.cpp ..\..\RTIe\RTIe_builder\import_Widget.cpp ..\..\RTIe\RTIe_builder\main.cpp ..\..\RTIe\RTIe_builder\marble.cpp ..\..\RTIe\RTIe_builder\marble_List_Item.cpp ..\..\RTIe\RTIe_builder\marble_widget.cpp ..\..\RTIe\RTIe_builder\new_Project.cpp ..\..\RTIe\RTIe_builder\new_Project_Settings.cpp ..\..\RTIe\RTIe_builder\project_Wizard.cpp ..\..\RTIe\RTIe_builder\splash_Screen.cpp ..\..\RTIe\RTIe_builder\system_ui.cpp ..\..\RTIe\RTIe_builder\crop_Widget.ui ..\..\RTIe\RTIe_builder\fitter_Widget.ui ..\..\RTIe\RTIe_builder\import_Widget.ui ..\..\RTIe\RTIe_builder\marble_widget.ui ..\..\RTIe\RTIe_builder\project_Wizard.ui ..\..\RTIe\RTIe_builder\system_ui.ui    
+	$(ZIP) RTIeBuilder.zip $(SOURCES) $(DIST) ..\..\RTIe\RTIe_builder\RTIe_builder.pro F:\QT\5.12.6\mingw73_64\mkspecs\features\spec_pre.prf F:\QT\5.12.6\mingw73_64\mkspecs\qdevice.pri F:\QT\5.12.6\mingw73_64\mkspecs\features\device_config.prf F:\QT\5.12.6\mingw73_64\mkspecs\common\sanitize.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\gcc-base.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\g++-base.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\angle.conf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf F:\QT\5.12.6\mingw73_64\mkspecs\common\windows-vulkan.conf F:\QT\5.12.6\mingw73_64\mkspecs\common\g++-win32.conf F:\QT\5.12.6\mingw73_64\mkspecs\qconfig.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3drender.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axbase.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axserver.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_core.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_core_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_dbus.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_designer.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gui.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_help.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_help_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_location.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_location_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_network.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_network_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_nfc.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_opengl.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioning.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qml.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quick.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_repparser.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_scxml.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sensors.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialport.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sql.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_svg.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_testlib.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_uitools.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_websockets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_widgets.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_winextras.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xml.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri F:\QT\5.12.6\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri F:\QT\5.12.6\mingw73_64\mkspecs\features\qt_functions.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qt_config.prf F:\QT\5.12.6\mingw73_64\mkspecs\win32-g++\qmake.conf F:\QT\5.12.6\mingw73_64\mkspecs\features\spec_post.prf ..\.qmake.stash F:\QT\5.12.6\mingw73_64\mkspecs\features\exclusive_builds.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\toolchain.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\default_pre.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\default_pre.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\resolve_config.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\exclusive_builds_post.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\default_post.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\build_pass.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qml_debug.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\precompile_header.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\warn_on.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qt.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\resources.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\moc.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\opengl.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\uic.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\qmake_use.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\file_copies.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\win32\windows.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\testcase_targets.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\exceptions.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\yacc.prf F:\QT\5.12.6\mingw73_64\mkspecs\features\lex.prf ..\..\RTIe\RTIe_builder\RTIe_builder.pro ..\..\RTIe\RTIe_builder\test.qrc F:\QT\5.12.6\mingw73_64\lib\Qt5Widgets.prl F:\QT\5.12.6\mingw73_64\lib\Qt5Gui.prl F:\QT\5.12.6\mingw73_64\lib\Qt5Core.prl F:\QT\5.12.6\mingw73_64\lib\qtmain.prl   ..\..\RTIe\RTIe_builder\test.qrc F:\QT\5.12.6\mingw73_64\mkspecs\features\data\dummy.cpp ..\..\RTIe\RTIe_builder\crop_Widget.h ..\..\RTIe\RTIe_builder\cropped_area.h ..\..\RTIe\RTIe_builder\deletion_dialog.h ..\..\RTIe\RTIe_builder\fitter_Widget.h ..\..\RTIe\RTIe_builder\image_Gatherer.h ..\..\RTIe\RTIe_builder\image_Management_Nui.h ..\..\RTIe\RTIe_builder\import_Widget.h ..\..\RTIe\RTIe_builder\marble.h ..\..\RTIe\RTIe_builder\marble_List_Item.h ..\..\RTIe\RTIe_builder\marble_widget.h ..\..\RTIe\RTIe_builder\new_Project.h ..\..\RTIe\RTIe_builder\new_Project_Settings.h ..\..\RTIe\RTIe_builder\project_Wizard.h ..\..\RTIe\RTIe_builder\splash_Screen.h ..\..\RTIe\RTIe_builder\system_ui.h  ..\..\RTIe\RTIe_builder\crop_Widget.cpp ..\..\RTIe\RTIe_builder\cropped_area.cpp ..\..\RTIe\RTIe_builder\deletion_dialog.cpp ..\..\RTIe\RTIe_builder\fitter_Widget.cpp ..\..\RTIe\RTIe_builder\image_Gatherer.cpp ..\..\RTIe\RTIe_builder\image_Management_Nui.cpp ..\..\RTIe\RTIe_builder\import_Widget.cpp ..\..\RTIe\RTIe_builder\main.cpp ..\..\RTIe\RTIe_builder\marble.cpp ..\..\RTIe\RTIe_builder\marble_List_Item.cpp ..\..\RTIe\RTIe_builder\marble_widget.cpp ..\..\RTIe\RTIe_builder\new_Project.cpp ..\..\RTIe\RTIe_builder\new_Project_Settings.cpp ..\..\RTIe\RTIe_builder\project_Wizard.cpp ..\..\RTIe\RTIe_builder\splash_Screen.cpp ..\..\RTIe\RTIe_builder\system_ui.cpp ..\..\RTIe\RTIe_builder\crop_Widget.ui ..\..\RTIe\RTIe_builder\deletion_dialog.ui ..\..\RTIe\RTIe_builder\fitter_Widget.ui ..\..\RTIe\RTIe_builder\import_Widget.ui ..\..\RTIe\RTIe_builder\marble_widget.ui ..\..\RTIe\RTIe_builder\project_Wizard.ui ..\..\RTIe\RTIe_builder\system_ui.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\crop_Widget.o release\cropped_area.o release\fitter_Widget.o release\image_Gatherer.o release\image_Management_Nui.o release\import_Widget.o release\main.o release\marble.o release\marble_List_Item.o release\marble_widget.o release\new_Project.o release\new_Project_Settings.o release\project_Wizard.o release\splash_Screen.o release\system_ui.o release\qrc_test.o release\moc_crop_Widget.o release\moc_fitter_Widget.o release\moc_image_Gatherer.o release\moc_image_Management_Nui.o release\moc_import_Widget.o release\moc_marble_widget.o release\moc_new_Project.o release\moc_new_Project_Settings.o release\moc_project_Wizard.o release\moc_splash_Screen.o release\moc_system_ui.o
+	-$(DEL_FILE) release\crop_Widget.o release\cropped_area.o release\deletion_dialog.o release\fitter_Widget.o release\image_Gatherer.o release\image_Management_Nui.o release\import_Widget.o release\main.o release\marble.o release\marble_List_Item.o release\marble_widget.o release\new_Project.o release\new_Project_Settings.o release\project_Wizard.o release\splash_Screen.o release\system_ui.o release\qrc_test.o release\moc_crop_Widget.o release\moc_deletion_dialog.o release\moc_fitter_Widget.o release\moc_image_Gatherer.o release\moc_image_Management_Nui.o release\moc_import_Widget.o release\moc_marble_widget.o release\moc_new_Project.o release\moc_new_Project_Settings.o release\moc_project_Wizard.o release\moc_splash_Screen.o release\moc_system_ui.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -189,9 +195,9 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: F:/QT/5.12.6/mingw73_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -O2 -Wall -W -Wextra -dM -E -o release\moc_predefs.h F:\QT\5.12.6\mingw73_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: release/moc_crop_Widget.cpp release/moc_fitter_Widget.cpp release/moc_image_Gatherer.cpp release/moc_image_Management_Nui.cpp release/moc_import_Widget.cpp release/moc_marble_widget.cpp release/moc_new_Project.cpp release/moc_new_Project_Settings.cpp release/moc_project_Wizard.cpp release/moc_splash_Screen.cpp release/moc_system_ui.cpp
+compiler_moc_header_make_all: release/moc_crop_Widget.cpp release/moc_deletion_dialog.cpp release/moc_fitter_Widget.cpp release/moc_image_Gatherer.cpp release/moc_image_Management_Nui.cpp release/moc_import_Widget.cpp release/moc_marble_widget.cpp release/moc_new_Project.cpp release/moc_new_Project_Settings.cpp release/moc_project_Wizard.cpp release/moc_splash_Screen.cpp release/moc_system_ui.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_crop_Widget.cpp release\moc_fitter_Widget.cpp release\moc_image_Gatherer.cpp release\moc_image_Management_Nui.cpp release\moc_import_Widget.cpp release\moc_marble_widget.cpp release\moc_new_Project.cpp release\moc_new_Project_Settings.cpp release\moc_project_Wizard.cpp release\moc_splash_Screen.cpp release\moc_system_ui.cpp
+	-$(DEL_FILE) release\moc_crop_Widget.cpp release\moc_deletion_dialog.cpp release\moc_fitter_Widget.cpp release\moc_image_Gatherer.cpp release\moc_image_Management_Nui.cpp release\moc_import_Widget.cpp release\moc_marble_widget.cpp release\moc_new_Project.cpp release\moc_new_Project_Settings.cpp release\moc_project_Wizard.cpp release\moc_splash_Screen.cpp release\moc_system_ui.cpp
 release/moc_crop_Widget.cpp: ../../RTIe/RTIe_builder/crop_Widget.h \
 		../../RTIe/RTIe_builder/cropped_area.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QPainter \
@@ -330,6 +336,134 @@ release/moc_crop_Widget.cpp: ../../RTIe/RTIe_builder/crop_Widget.h \
 		F:/QT/5.12.6/mingw73_64/bin/moc.exe
 	F:\QT\5.12.6\mingw73_64\bin\moc.exe $(DEFINES) --include F:/Users/Dave/Documents/LearningQT/build-RTIe-Desktop_Qt_5_12_6_MinGW_64_bit-Debug/RTIe_builder/release/moc_predefs.h -IF:/QT/5.12.6/mingw73_64/mkspecs/win32-g++ -IF:/Users/Dave/Documents/LearningQT/RTIe/RTIe_builder -IF:/QT/5.12.6/mingw73_64/include -IF:/QT/5.12.6/mingw73_64/include/QtWidgets -IF:/QT/5.12.6/mingw73_64/include/QtGui -IF:/QT/5.12.6/mingw73_64/include/QtANGLE -IF:/QT/5.12.6/mingw73_64/include/QtCore -I. -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IF:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\..\RTIe\RTIe_builder\crop_Widget.h -o release\moc_crop_Widget.cpp
 
+release/moc_deletion_dialog.cpp: ../../RTIe/RTIe_builder/deletion_dialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDialog \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtwidgetsglobal.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtguiglobal.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qglobal.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qconfig.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qtcore-config.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsystemdetection.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qprocessordetection.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcompilerdetection.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qtypeinfo.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsysinfo.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qlogging.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qflags.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbasicatomic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qgenericatomic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic_msvc.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qglobalstatic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmutex.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qnumeric.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qversiontagging.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtgui-config.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtwidgets-config.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qwindowdefs.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobjectdefs.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qnamespace.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qwindowdefs_win.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobject.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstring.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qchar.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbytearray.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qrefcount.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qarraydata.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringliteral.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringalgorithms.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringbuilder.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qlist.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qalgorithms.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qiterator.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qhashfunctions.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qpair.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbytearraylist.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringlist.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qregexp.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringmatcher.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreevent.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qscopedpointer.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmetatype.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qvarlengtharray.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcontainerfwd.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobject_impl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmargins.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpaintdevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qrect.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsize.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qpoint.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpalette.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qcolor.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qrgb.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qrgba64.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qbrush.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qvector.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qmatrix.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpolygon.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qregion.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qdatastream.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qiodevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qline.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtransform.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpainterpath.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qimage.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpixelformat.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpixmap.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsharedpointer.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qshareddata.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qhash.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsharedpointer_impl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qfont.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qfontmetrics.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qfontinfo.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsizepolicy.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qcursor.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qkeysequence.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qevent.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qvariant.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmap.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qdebug.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qtextstream.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qlocale.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qset.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcontiguouscache.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qurl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qurlquery.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qfile.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qfiledevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qvector2d.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtouchdevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QCheckBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qicon.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QTextEdit \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextedit.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qframe.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextdocument.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextoption.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextcursor.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextformat.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDialogButtonBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialogbuttonbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLabel \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlabel.h \
+		release/moc_predefs.h \
+		F:/QT/5.12.6/mingw73_64/bin/moc.exe
+	F:\QT\5.12.6\mingw73_64\bin\moc.exe $(DEFINES) --include F:/Users/Dave/Documents/LearningQT/build-RTIe-Desktop_Qt_5_12_6_MinGW_64_bit-Debug/RTIe_builder/release/moc_predefs.h -IF:/QT/5.12.6/mingw73_64/mkspecs/win32-g++ -IF:/Users/Dave/Documents/LearningQT/RTIe/RTIe_builder -IF:/QT/5.12.6/mingw73_64/include -IF:/QT/5.12.6/mingw73_64/include/QtWidgets -IF:/QT/5.12.6/mingw73_64/include/QtGui -IF:/QT/5.12.6/mingw73_64/include/QtANGLE -IF:/QT/5.12.6/mingw73_64/include/QtCore -I. -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IF:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\..\RTIe\RTIe_builder\deletion_dialog.h -o release\moc_deletion_dialog.cpp
+
 release/moc_fitter_Widget.cpp: ../../RTIe/RTIe_builder/fitter_Widget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistwidget.h \
@@ -456,6 +590,13 @@ release/moc_fitter_Widget.cpp: ../../RTIe/RTIe_builder/fitter_Widget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QProcess \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qprocess.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpainter.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextoption.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsscene.h \
 		release/moc_predefs.h \
 		F:/QT/5.12.6/mingw73_64/bin/moc.exe
 	F:\QT\5.12.6\mingw73_64\bin\moc.exe $(DEFINES) --include F:/Users/Dave/Documents/LearningQT/build-RTIe-Desktop_Qt_5_12_6_MinGW_64_bit-Debug/RTIe_builder/release/moc_predefs.h -IF:/QT/5.12.6/mingw73_64/mkspecs/win32-g++ -IF:/Users/Dave/Documents/LearningQT/RTIe/RTIe_builder -IF:/QT/5.12.6/mingw73_64/include -IF:/QT/5.12.6/mingw73_64/include/QtWidgets -IF:/QT/5.12.6/mingw73_64/include/QtGui -IF:/QT/5.12.6/mingw73_64/include/QtANGLE -IF:/QT/5.12.6/mingw73_64/include/QtCore -I. -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IF:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\..\RTIe\RTIe_builder\fitter_Widget.h -o release\moc_fitter_Widget.cpp
@@ -796,6 +937,11 @@ release/moc_import_Widget.cpp: ../../RTIe/RTIe_builder/import_Widget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabwidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qrubberband.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
 		release/moc_predefs.h \
 		F:/QT/5.12.6/mingw73_64/bin/moc.exe
 	F:\QT\5.12.6\mingw73_64\bin\moc.exe $(DEFINES) --include F:/Users/Dave/Documents/LearningQT/build-RTIe-Desktop_Qt_5_12_6_MinGW_64_bit-Debug/RTIe_builder/release/moc_predefs.h -IF:/QT/5.12.6/mingw73_64/mkspecs/win32-g++ -IF:/Users/Dave/Documents/LearningQT/RTIe/RTIe_builder -IF:/QT/5.12.6/mingw73_64/include -IF:/QT/5.12.6/mingw73_64/include/QtWidgets -IF:/QT/5.12.6/mingw73_64/include/QtGui -IF:/QT/5.12.6/mingw73_64/include/QtANGLE -IF:/QT/5.12.6/mingw73_64/include/QtCore -I. -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IF:/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IF:/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\..\RTIe\RTIe_builder\import_Widget.h -o release\moc_import_Widget.cpp
@@ -1680,12 +1826,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_crop_Widget.h ui_fitter_Widget.h ui_import_Widget.h ui_marble_widget.h ui_project_Wizard.h ui_system_ui.h
+compiler_uic_make_all: ui_crop_Widget.h ui_deletion_dialog.h ui_fitter_Widget.h ui_import_Widget.h ui_marble_widget.h ui_project_Wizard.h ui_system_ui.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_crop_Widget.h ui_fitter_Widget.h ui_import_Widget.h ui_marble_widget.h ui_project_Wizard.h ui_system_ui.h
+	-$(DEL_FILE) ui_crop_Widget.h ui_deletion_dialog.h ui_fitter_Widget.h ui_import_Widget.h ui_marble_widget.h ui_project_Wizard.h ui_system_ui.h
 ui_crop_Widget.h: ../../RTIe/RTIe_builder/crop_Widget.ui \
 		F:/QT/5.12.6/mingw73_64/bin/uic.exe
 	F:\QT\5.12.6\mingw73_64\bin\uic.exe ..\..\RTIe\RTIe_builder\crop_Widget.ui -o ui_crop_Widget.h
+
+ui_deletion_dialog.h: ../../RTIe/RTIe_builder/deletion_dialog.ui \
+		F:/QT/5.12.6/mingw73_64/bin/uic.exe
+	F:\QT\5.12.6\mingw73_64\bin\uic.exe ..\..\RTIe\RTIe_builder\deletion_dialog.ui -o ui_deletion_dialog.h
 
 ui_fitter_Widget.h: ../../RTIe/RTIe_builder/fitter_Widget.ui \
 		F:/QT/5.12.6/mingw73_64/bin/uic.exe
@@ -1830,7 +1980,12 @@ ui_system_ui.h: ../../RTIe/RTIe_builder/system_ui.ui \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabbar.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabwidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qrubberband.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h
 	F:\QT\5.12.6\mingw73_64\bin\uic.exe ..\..\RTIe\RTIe_builder\system_ui.ui -o ui_system_ui.h
 
 compiler_yacc_decl_make_all:
@@ -2042,10 +2197,12 @@ release/crop_Widget.o: ../../RTIe/RTIe_builder/crop_Widget.cpp ../../RTIe/RTIe_b
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollArea \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollBar \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollbar.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSlider \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpinBox \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSplitter \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
@@ -2193,6 +2350,213 @@ release/cropped_area.o: ../../RTIe/RTIe_builder/cropped_area.cpp ../../RTIe/RTIe
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\cropped_area.o ..\..\RTIe\RTIe_builder\cropped_area.cpp
 
+release/deletion_dialog.o: ../../RTIe/RTIe_builder/deletion_dialog.cpp ../../RTIe/RTIe_builder/deletion_dialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDialog \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtwidgetsglobal.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtguiglobal.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qglobal.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qconfig.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qtcore-config.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsystemdetection.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qprocessordetection.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcompilerdetection.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qtypeinfo.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsysinfo.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qlogging.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qflags.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbasicatomic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qgenericatomic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qatomic_msvc.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qglobalstatic.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmutex.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qnumeric.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qversiontagging.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtgui-config.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtwidgets-config.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qwindowdefs.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobjectdefs.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qnamespace.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qwindowdefs_win.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobject.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstring.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qchar.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbytearray.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qrefcount.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qarraydata.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringliteral.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringalgorithms.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringbuilder.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qlist.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qalgorithms.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qiterator.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qhashfunctions.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qpair.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbytearraylist.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringlist.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qregexp.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qstringmatcher.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreevent.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qscopedpointer.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmetatype.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qvarlengtharray.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcontainerfwd.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qobject_impl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmargins.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpaintdevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qrect.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsize.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qpoint.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpalette.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qcolor.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qrgb.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qrgba64.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qbrush.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qvector.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qmatrix.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpolygon.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qregion.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qdatastream.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qiodevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qline.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtransform.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpainterpath.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qimage.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpixelformat.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpixmap.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsharedpointer.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qshareddata.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qhash.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qsharedpointer_impl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qfont.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qfontmetrics.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qfontinfo.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsizepolicy.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qcursor.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qkeysequence.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qevent.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qvariant.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qmap.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qdebug.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qtextstream.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qlocale.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qset.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcontiguouscache.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qurl.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qurlquery.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qfile.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qfiledevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qvector2d.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtouchdevice.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QCheckBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qicon.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QTextEdit \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextedit.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qframe.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextdocument.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextoption.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextcursor.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextformat.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDialogButtonBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialogbuttonbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLabel \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlabel.h \
+		ui_deletion_dialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpainter.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsscene.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGridLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractitemview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qitemselectionmodel.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstyleoption.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qvalidator.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qregularexpression.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qslider.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractslider.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstyle.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabbar.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qrubberband.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollArea \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
+		../../RTIe/RTIe_builder/splash_Screen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMainWindow \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmainwindow.h \
+		../../RTIe/RTIe_builder/new_Project.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLineEdit \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlineedit.h \
+		../../RTIe/RTIe_builder/new_Project_Settings.h \
+		../../RTIe/RTIe_builder/project_Wizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizardPage \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizard \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QAction \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
+		../../RTIe/RTIe_builder/system_ui.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidgetItem \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QFile \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsScene \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QComboBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcombobox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QBasicTimer \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbasictimer.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QList \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QImage \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QDir \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qdir.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qfileinfo.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QPainter \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QPaintEvent \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QProgressBar \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qprogressbar.h \
+		../../RTIe/RTIe_builder/cropped_area.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsItem \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QDebug \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QPixmap \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMessageBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmessagebox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QStringList
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\deletion_dialog.o ..\..\RTIe\RTIe_builder\deletion_dialog.cpp
+
 release/fitter_Widget.o: ../../RTIe/RTIe_builder/fitter_Widget.cpp ../../RTIe/RTIe_builder/fitter_Widget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistwidget.h \
@@ -2319,6 +2683,13 @@ release/fitter_Widget.o: ../../RTIe/RTIe_builder/fitter_Widget.cpp ../../RTIe/RT
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QProcess \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qprocess.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpainter.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextoption.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsscene.h \
 		../../RTIe/RTIe_builder/image_Management_Nui.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QStringList \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QList \
@@ -2352,8 +2723,6 @@ release/fitter_Widget.o: ../../RTIe/RTIe_builder/fitter_Widget.cpp ../../RTIe/RT
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlineedit.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextcursor.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextformat.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qpen.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextoption.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QProgressBar \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qprogressbar.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
@@ -2361,18 +2730,39 @@ release/fitter_Widget.o: ../../RTIe/RTIe_builder/fitter_Widget.cpp ../../RTIe/RT
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QRadioButton \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qradiobutton.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSplitter \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QTextBrowser \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextbrowser.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextedit.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextdocument.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QFileDialog \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qfiledialog.h \
+		../../RTIe/RTIe_builder/splash_Screen.h \
+		../../RTIe/RTIe_builder/new_Project.h \
+		../../RTIe/RTIe_builder/new_Project_Settings.h \
+		../../RTIe/RTIe_builder/project_Wizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizardPage \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizard \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QAction \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
+		../../RTIe/RTIe_builder/system_ui.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QFile \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsScene \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QBasicTimer \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qbasictimer.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QImage \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QDir \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qdir.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qfileinfo.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QPainter \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/QPaintEvent \
+		../../RTIe/RTIe_builder/cropped_area.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsItem \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QFileDialog \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qfiledialog.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMessageBox \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmessagebox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QDebug
@@ -2725,6 +3115,15 @@ release/image_Management_Nui.o: ../../RTIe/RTIe_builder/image_Management_Nui.cpp
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qprogressbar.h \
 		../../RTIe/RTIe_builder/cropped_area.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsItem \
+		../../RTIe/RTIe_builder/deletion_dialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDialog \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QCheckBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QTextEdit \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextedit.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextdocument.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDialogButtonBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialogbuttonbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QDebug \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
@@ -2857,8 +3256,6 @@ release/image_Management_Nui.o: ../../RTIe/RTIe_builder/image_Management_Nui.cpp
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qinputdialog.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMessageBox \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmessagebox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QCheckBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QErrorMessage \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qerrormessage.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QTextStream \
@@ -3000,6 +3397,11 @@ release/import_Widget.o: ../../RTIe/RTIe_builder/import_Widget.cpp ../../RTIe/RT
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsitem.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
 		../../RTIe/RTIe_builder/new_Project.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLineEdit \
@@ -3054,23 +3456,20 @@ release/import_Widget.o: ../../RTIe/RTIe_builder/import_Widget.cpp ../../RTIe/RT
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHeaderView \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qheaderview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSplitter \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QTableWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtablewidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtableview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QFileInfo \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QTextStream \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QThread \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qthread.h
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qthread.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QDebug \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMessageBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\import_Widget.o ..\..\RTIe\RTIe_builder\import_Widget.cpp
 
 release/main.o: ../../RTIe/RTIe_builder/main.cpp F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
@@ -3353,19 +3752,41 @@ release/marble.o: ../../RTIe/RTIe_builder/marble.cpp ../../RTIe/RTIe_builder/mar
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qlocale.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qset.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcontiguouscache.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsWidget \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicswidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicslayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidgetItem \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractitemview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qframe.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpalette.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsizepolicy.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qevent.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qcursor.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qkeysequence.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qevent.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qurl.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qurlquery.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qfile.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qfiledevice.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qvector2d.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtouchdevice.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qpalette.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qitemselectionmodel.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstyleoption.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qvalidator.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qregularexpression.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qicon.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qslider.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractslider.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstyle.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabbar.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qrubberband.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsWidget \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicswidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicslayoutitem.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsScene \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\marble.o ..\..\RTIe\RTIe_builder\marble.cpp
@@ -3661,12 +4082,11 @@ release/marble_widget.o: ../../RTIe/RTIe_builder/marble_widget.cpp ../../RTIe/RT
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGridLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
@@ -4755,8 +5175,6 @@ release/project_Wizard.o: ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSplitter \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
 		../../RTIe/RTIe_builder/new_Project_Wizard.h \
 		../../RTIe/RTIe_builder/splash_Screen.h \
@@ -5044,6 +5462,7 @@ release/project_Wizard.o: ../../RTIe/RTIe_builder/project_Wizard.cpp ../../RTIe/
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsizegrip.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qspinbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplashscreen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedwidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstatusbar.h \
@@ -5573,6 +5992,9 @@ release/system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_build
 		../../RTIe/RTIe_builder/fitter_Widget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QProcess \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qprocess.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
 		../../RTIe/RTIe_builder/crop_Widget.h \
 		../../RTIe/RTIe_builder/marble_widget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollBar \
@@ -5826,8 +6248,6 @@ release/system_ui.o: ../../RTIe/RTIe_builder/system_ui.cpp ../../RTIe/RTIe_build
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicssceneevent.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicstransform.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QVector3D \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgroupbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qheaderview.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qinputdialog.h \
@@ -5886,6 +6306,9 @@ release/qrc_test.o: release/qrc_test.cpp
 
 release/moc_crop_Widget.o: release/moc_crop_Widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_crop_Widget.o release\moc_crop_Widget.cpp
+
+release/moc_deletion_dialog.o: release/moc_deletion_dialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_deletion_dialog.o release\moc_deletion_dialog.cpp
 
 release/moc_fitter_Widget.o: release/moc_fitter_Widget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_fitter_Widget.o release\moc_fitter_Widget.cpp

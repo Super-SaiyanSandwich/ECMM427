@@ -26,7 +26,7 @@ deletion_Dialog::deletion_Dialog(QWidget *parent) :
 
     current_Image_Index = 0;
     current_Image_Name = "";
-    current_Reason_Text = "";
+    //current_Reason_Text = "";
 
     dialog_Status_Code = 0;
     apply_All_Check_Status = 0;

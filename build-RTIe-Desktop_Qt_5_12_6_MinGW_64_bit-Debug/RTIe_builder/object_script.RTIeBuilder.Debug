@@ -1,5 +1,6 @@
 debug/crop_Widget.o
 debug/cropped_area.o
+debug/deletion_dialog.o
 debug/fitter_Widget.o
 debug/image_Gatherer.o
 debug/image_Management_Nui.o
@@ -15,6 +16,7 @@ debug/splash_Screen.o
 debug/system_ui.o
 debug/qrc_test.o
 debug/moc_crop_Widget.o
+debug/moc_deletion_dialog.o
 debug/moc_fitter_Widget.o
 debug/moc_image_Gatherer.o
 debug/moc_image_Management_Nui.o

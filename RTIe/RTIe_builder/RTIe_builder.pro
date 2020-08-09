@@ -53,9 +53,4 @@ FORMS += \
     project_Wizard.ui \
     system_ui.ui
 
-DISTFILES +=
 
-mac {
-    QMAKE_CXXFLAGS += --coverage
-    QMAKE_LFLAGS += --coverage
-}

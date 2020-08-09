@@ -1,5 +1,6 @@
 release/crop_Widget.o
 release/cropped_area.o
+release/deletion_dialog.o
 release/fitter_Widget.o
 release/image_Gatherer.o
 release/image_Management_Nui.o
@@ -15,6 +16,7 @@ release/splash_Screen.o
 release/system_ui.o
 release/qrc_test.o
 release/moc_crop_Widget.o
+release/moc_deletion_dialog.o
 release/moc_fitter_Widget.o
 release/moc_image_Gatherer.o
 release/moc_image_Management_Nui.o

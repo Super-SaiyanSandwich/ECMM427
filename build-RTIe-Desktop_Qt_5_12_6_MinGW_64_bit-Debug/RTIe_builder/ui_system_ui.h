@@ -166,7 +166,7 @@ public:
         system_Ui->setCentralWidget(centralwidget);
         menubar = new QMenuBar(system_Ui);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1090, 21));
+        menubar->setGeometry(QRect(0, 0, 1090, 22));
         menuHelp = new QMenu(menubar);
         menuHelp->setObjectName(QString::fromUtf8("menuHelp"));
         menuHelp->setTearOffEnabled(true);
@@ -212,7 +212,7 @@ public:
         actionRtiEx_Wiki->setText(QApplication::translate("system_Ui", "Help Forum", nullptr));
         image_Management_Btn->setText(QApplication::translate("system_Ui", "Image Management", nullptr));
         marble_Detection_Btn->setText(QApplication::translate("system_Ui", "Marble Detection", nullptr));
-        remove_Marble_Btn->setText(QApplication::translate("system_Ui", "Crop Marble from Images", nullptr));
+        remove_Marble_Btn->setText(QApplication::translate("system_Ui", "Image Crop", nullptr));
         export_Btn->setText(QApplication::translate("system_Ui", "Export", nullptr));
         menuHelp->setTitle(QApplication::translate("system_Ui", "Help", nullptr));
         menuFile->setTitle(QApplication::translate("system_Ui", "File", nullptr));

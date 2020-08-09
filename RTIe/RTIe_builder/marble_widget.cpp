@@ -249,6 +249,7 @@ void marble_Widget::showEvent(QShowEvent *ev)
             QListWidgetItem * ic = new QListWidgetItem(icon->text());
             ic->setIcon(icon->icon());
             ui->listWidget->addItem(ic);
+            QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
         }
 
         this->reset_Image_Zoom();
@@ -260,13 +261,14 @@ void marble_Widget::showEvent(QShowEvent *ev)
         selected_Marble = new_Marble;
         selected_Marble->setSelected(true);
         selected_Marble->setParentItem(base_Image);
+        QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
         this->set_Maximums();
 
         QListWidgetItem *list_Icon = new QListWidgetItem("Marble 1");
         ui->listWidget_2->addItem(list_Icon);
         new_Marble->icon = list_Icon;
-
+        QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
         this->update_Preview_Image();
 
         first_Load = !first_Load;
@@ -456,27 +458,27 @@ bool marble_Widget::load_File(const QString &fileName)
 }
 
 // DEPRICATED
-static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
-{
-    static bool firstDialog = true;
+//static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
+//{
+//    static bool firstDialog = true;
 
-    if (firstDialog) {
-        firstDialog = false;
-        const QStringList picturesLocations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
-        dialog.setDirectory(picturesLocations.isEmpty() ? QDir::currentPath() : picturesLocations.last());
-    }
+//    if (firstDialog) {
+//        firstDialog = false;
+//        const QStringList picturesLocations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+//        dialog.setDirectory(picturesLocations.isEmpty() ? QDir::currentPath() : picturesLocations.last());
+//    }
 
-    QStringList mimeTypeFilters;
-    const QByteArrayList supportedMimeTypes = acceptMode == QFileDialog::AcceptOpen
-        ? QImageReader::supportedMimeTypes() : QImageWriter::supportedMimeTypes();
-    foreach (const QByteArray &mimeTypeName, supportedMimeTypes)
-        mimeTypeFilters.append(mimeTypeName);
-    mimeTypeFilters.sort();
-    dialog.setMimeTypeFilters(mimeTypeFilters);
-    dialog.selectMimeTypeFilter("image/jpeg");
-    if (acceptMode == QFileDialog::AcceptSave)
-        dialog.setDefaultSuffix("jpg");
-}
+//    QStringList mimeTypeFilters;
+//    const QByteArrayList supportedMimeTypes = acceptMode == QFileDialog::AcceptOpen
+//        ? QImageReader::supportedMimeTypes() : QImageWriter::supportedMimeTypes();
+//    foreach (const QByteArray &mimeTypeName, supportedMimeTypes)
+//        mimeTypeFilters.append(mimeTypeName);
+//    mimeTypeFilters.sort();
+//    dialog.setMimeTypeFilters(mimeTypeFilters);
+//    dialog.selectMimeTypeFilter("image/jpeg");
+//    if (acceptMode == QFileDialog::AcceptSave)
+//        dialog.setDefaultSuffix("jpg");
+//}
 
 ///
 /// \brief Used to trigger necessary steps when loading an image.
