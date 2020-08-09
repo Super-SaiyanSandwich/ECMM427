@@ -169,7 +169,7 @@ void image_Management_Nui::delete_(QStringList file_Names)
     qInfo()<<"result:"<<result;
 
     //if result = 1 | User pressed OK
-    if(result == QDialog::Accepted){
+    if(result == 1){
 
 
 
