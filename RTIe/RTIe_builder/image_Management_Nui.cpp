@@ -2,6 +2,7 @@
 #include "new_Project_Settings.h"
 #include "splash_Screen.h"
 #include "system_ui.h"
+#include "deletion_dialog.h"
 
 #include <QDir>
 #include <QDebug>
@@ -26,9 +27,12 @@
 #include <QTextStream>
 #include <QStringList>
 #include <QProgressDialog>
+#include <QCheckBox>
+
+
 
 // Global constant, lists the acceptable image formats
-QStringList ACCEPTED_FORMATS = QStringList()<<"*.jpg" << "*.JPG"<< "*.png"<< "*.PNG";
+QStringList ACCEPTED_FORMATS = QStringList()<<"*.jpg" << "*.JPG"<< "*.png"<< "*.PNG" << "*.jpeg" << "*.JPEG" << ".bmp" << ".BMP";
 
 image_Management_Nui::image_Management_Nui()
 {
@@ -132,6 +136,24 @@ QStringList image_Management_Nui::get_Working_Image_Paths()
     return file_Paths;
 }
 
+QStringList image_Management_Nui::get_Working_Image_Names(){
+
+    QStringList file_Paths = get_Working_Image_Paths();
+    QStringListIterator file_Iterator(file_Paths);
+    QStringList file_Names;
+
+    while(file_Iterator.hasNext()){
+        QString cur_Image_Path = file_Iterator.next().toLocal8Bit().constData();
+        QStringList split_Image_Path = cur_Image_Path.split("/");
+
+        QString cur_Image_Name = split_Image_Path.value( split_Image_Path.length()-1 );
+        QString file_Name(cur_Image_Name);
+        file_Names.append(file_Name);
+    }
+
+    return file_Names;
+}
+
 
 // Delete/Remove image from working directory
 /*
@@ -142,7 +164,46 @@ QStringList image_Management_Nui::get_Working_Image_Paths()
  */
 void image_Management_Nui::delete_(QStringList file_Names)
 {
+    deletion_Dialog del;
+    int result = del.process_Images(file_Names);
+    qInfo()<<"result:"<<result;
 
+    //if result = 1 | User pressed OK
+    if(result == 1){
+
+        //qInfo()<<"QDIALOG::ACCEPTED WORKING";
+        //QString reason = del.get_Deletion_Reason();
+
+        /*if(applied_All){
+
+        }else{
+
+        }*/
+
+    //User pressed cancel | User pressed cancel
+    }else if (result == -1){
+
+        QMessageBox null_Selected;
+        null_Selected.setText("Error: unable to execute delete operation.");
+        null_Selected.setInformativeText("No images were selected to be deleted.");
+        null_Selected.setStandardButtons(QMessageBox::Ok);
+        null_Selected.setDefaultButton(QMessageBox::Ok);
+
+        null_Selected.exec();
+
+    } else {
+        //qInfo()<<"Failed cancel";
+        QMessageBox deletion_Cancellation;
+        deletion_Cancellation.setText("Delete Operation Cancelled.");
+        deletion_Cancellation.setInformativeText("No images will be deleted.");
+        deletion_Cancellation.setStandardButtons(QMessageBox::Ok);
+        deletion_Cancellation.setDefaultButton(QMessageBox::Ok);
+        deletion_Cancellation.exec();
+
+    }
+
+
+    /* START
     //Combines QStringList into singular QStrings
     QString file_List_Str = file_Names.join( "\n");
 
@@ -173,10 +234,12 @@ void image_Management_Nui::delete_(QStringList file_Names)
         QStringList removed_Files;
         QStringList cancelled_Files;
 
-        /*
+
          * Iterates per image requesting reason from user and appends the given
          * reason to the separating headers.
-         */
+
+
+
         while(file_Name_Iterator.hasNext()){
 
             QString file_Name = file_Name_Iterator.next().toLocal8Bit().constData();
@@ -194,11 +257,11 @@ void image_Management_Nui::delete_(QStringList file_Names)
             //The user still has a choice to cancel, despite prior confirmation
             if(ok){
 
-                /*
+
                  * Given confirmation, the user's input will be taken and written to the
                  * removed_Images_Reasons text file in the working directory. Moreover,
                  * the givem image file will be removed from ONLY the working directory.
-                 */
+
                 removed_Files << file_Name;
                 file.remove();
 
@@ -215,11 +278,11 @@ void image_Management_Nui::delete_(QStringList file_Names)
 
             }else{
 
-                /*
+
                  *
                  * Given the user's choice to cancel, despite prior confirmation. Secondary
                  * confirmation will be given, notifying the user that the operation will not occur.
-                 */
+                 *
                 cancelled_Files << file_Name;
                 QMessageBox delete_Cancellation_Alert;
                 delete_Cancellation_Alert.setText("Delete operation cancelled.");
@@ -228,16 +291,17 @@ void image_Management_Nui::delete_(QStringList file_Names)
                 delete_Cancellation_Alert.setDefaultButton(QMessageBox::Ok);
                 delete_Cancellation_Alert.exec();
 
+
             }
 
 
         //END OF WHILE LOOP
         }
 
-        /*
+        *
          * A summary is given containing all images that have been confirmed to be
          * deleted as well as those that have confirmed to be cancelled.
-         */
+         *
         QString summary = "The following files were removed:\n" + removed_Files.join(", ")
         + "\n\nThe following files were not removed:\n" + cancelled_Files.join(", ");
 
@@ -248,7 +312,7 @@ void image_Management_Nui::delete_(QStringList file_Names)
         deletion_Summary.setDefaultButton(QMessageBox::Ok);
         deletion_Summary.exec();
 
-    }
+    } END*/
 
 
 }

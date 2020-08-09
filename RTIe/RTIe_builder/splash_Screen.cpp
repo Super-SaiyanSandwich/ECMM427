@@ -10,6 +10,7 @@
 
 QString splashScreen::project_Path;
 QString splashScreen::project_Name;
+int const splashScreen::REBOOT_EXIT_CODE = -123456789;
 
 splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
 {    
@@ -57,6 +58,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
      settings_Button->setMinimumSize(30, 30);
      settings_Button->setMaximumSize(30, 30);
 
+
      connect(open_Project_Button, SIGNAL(clicked()), &open_Existing_Project, SLOT(open_Selected_Project())); //Where I need to pass file location to system_ui.cpp
      connect(open_Project_Button, SIGNAL(clicked()), this, SLOT(close()));
      connect(new_Project_Button, SIGNAL(clicked()), &create_project_wizard, SLOT(create_Project_Wizard()));
@@ -69,7 +71,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
  */
 void splashScreen::help_Button_Clicked()
 {
-    QString wiki_Link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
+    QString wiki_Link = "https://rtiex.atlassian.net/wiki/spaces/REB/overview";
     QDesktopServices::openUrl(QUrl(wiki_Link, QUrl::TolerantMode));
 
 

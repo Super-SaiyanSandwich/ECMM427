@@ -2,7 +2,7 @@
 #define MARBLE_LIST_ITEM_H
 
 #include <QListWidgetItem>
-#include <marble.h>
+#include "marble.h"
 
 class marble_List_Item : public QListWidgetItem
 {
