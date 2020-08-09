@@ -17,6 +17,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -28,16 +29,14 @@ class Ui_import_Widget
 {
 public:
     QHBoxLayout *horizontalLayout;
-    QSplitter *splitter;
-    QWidget *layoutWidget;
     QVBoxLayout *preview_Layout;
+    QLabel *preivew_Label;
     QGraphicsView *graphics_View;
     QLabel *metadata_Label;
     QTableWidget *metadata_Table;
-    QWidget *layoutWidget1;
+    QSpacerItem *horizontalSpacer;
     QVBoxLayout *import_Layout;
-    QWidget *horizontalWidget;
-    QHBoxLayout *horizontalLayout_4;
+    QSplitter *splitter_3;
     QPushButton *import_btn;
     QPushButton *delete_Btn;
     QListWidget *listWidget;
@@ -47,133 +46,111 @@ public:
         if (import_Widget->objectName().isEmpty())
             import_Widget->setObjectName(QString::fromUtf8("import_Widget"));
         import_Widget->resize(911, 669);
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(import_Widget->sizePolicy().hasHeightForWidth());
-        import_Widget->setSizePolicy(sizePolicy);
         horizontalLayout = new QHBoxLayout(import_Widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        splitter = new QSplitter(import_Widget);
-        splitter->setObjectName(QString::fromUtf8("splitter"));
-        splitter->setEnabled(true);
-        sizePolicy.setHeightForWidth(splitter->sizePolicy().hasHeightForWidth());
-        splitter->setSizePolicy(sizePolicy);
-        splitter->setFocusPolicy(Qt::NoFocus);
-        splitter->setContextMenuPolicy(Qt::DefaultContextMenu);
-        splitter->setLayoutDirection(Qt::LeftToRight);
-        splitter->setFrameShape(QFrame::NoFrame);
-        splitter->setLineWidth(0);
-        splitter->setMidLineWidth(0);
-        splitter->setOrientation(Qt::Horizontal);
-        splitter->setOpaqueResize(true);
-        splitter->setHandleWidth(20);
-        splitter->setChildrenCollapsible(false);
-        layoutWidget = new QWidget(splitter);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        preview_Layout = new QVBoxLayout(layoutWidget);
+        preview_Layout = new QVBoxLayout();
         preview_Layout->setObjectName(QString::fromUtf8("preview_Layout"));
-        preview_Layout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        preview_Layout->setContentsMargins(0, 0, 0, 0);
-        graphics_View = new QGraphicsView(layoutWidget);
-        graphics_View->setObjectName(QString::fromUtf8("graphics_View"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(graphics_View->sizePolicy().hasHeightForWidth());
-        graphics_View->setSizePolicy(sizePolicy1);
-        graphics_View->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-        graphics_View->setInteractive(true);
-        graphics_View->setResizeAnchor(QGraphicsView::AnchorViewCenter);
-        graphics_View->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
-
-        preview_Layout->addWidget(graphics_View);
-
-        metadata_Label = new QLabel(layoutWidget);
-        metadata_Label->setObjectName(QString::fromUtf8("metadata_Label"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(metadata_Label->sizePolicy().hasHeightForWidth());
-        metadata_Label->setSizePolicy(sizePolicy2);
+        preivew_Label = new QLabel(import_Widget);
+        preivew_Label->setObjectName(QString::fromUtf8("preivew_Label"));
+        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(preivew_Label->sizePolicy().hasHeightForWidth());
+        preivew_Label->setSizePolicy(sizePolicy);
         QFont font;
         font.setPointSize(12);
         font.setBold(true);
-        font.setItalic(false);
         font.setWeight(75);
-        metadata_Label->setFont(font);
+        preivew_Label->setFont(font);
+
+        preview_Layout->addWidget(preivew_Label);
+
+        graphics_View = new QGraphicsView(import_Widget);
+        graphics_View->setObjectName(QString::fromUtf8("graphics_View"));
+        QBrush brush(QColor(0, 0, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        graphics_View->setBackgroundBrush(brush);
+
+        preview_Layout->addWidget(graphics_View);
+
+        metadata_Label = new QLabel(import_Widget);
+        metadata_Label->setObjectName(QString::fromUtf8("metadata_Label"));
+        sizePolicy.setHeightForWidth(metadata_Label->sizePolicy().hasHeightForWidth());
+        metadata_Label->setSizePolicy(sizePolicy);
+        QFont font1;
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setItalic(false);
+        font1.setWeight(75);
+        metadata_Label->setFont(font1);
 
         preview_Layout->addWidget(metadata_Label);
 
-        metadata_Table = new QTableWidget(layoutWidget);
+        metadata_Table = new QTableWidget(import_Widget);
         if (metadata_Table->columnCount() < 1)
             metadata_Table->setColumnCount(1);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         metadata_Table->setHorizontalHeaderItem(0, __qtablewidgetitem);
         if (metadata_Table->rowCount() < 7)
             metadata_Table->setRowCount(7);
-        QBrush brush(QColor(122, 122, 122, 255));
-        brush.setStyle(Qt::SolidPattern);
-        QFont font1;
-        font1.setPointSize(10);
-        font1.setBold(true);
-        font1.setWeight(75);
+        QFont font2;
+        font2.setPointSize(10);
+        font2.setBold(true);
+        font2.setWeight(75);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         __qtablewidgetitem1->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem1->setFont(font1);
-        __qtablewidgetitem1->setForeground(brush);
+        __qtablewidgetitem1->setFont(font2);
+        __qtablewidgetitem1->setBackground(QColor(0, 85, 255));
         metadata_Table->setVerticalHeaderItem(0, __qtablewidgetitem1);
-        QBrush brush1(QColor(0, 0, 0, 255));
-        brush1.setStyle(Qt::SolidPattern);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         __qtablewidgetitem2->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem2->setFont(font1);
-        __qtablewidgetitem2->setBackground(QColor(255, 255, 255));
-        __qtablewidgetitem2->setForeground(brush1);
+        __qtablewidgetitem2->setFont(font2);
+        __qtablewidgetitem2->setBackground(QColor(0, 170, 255));
+        __qtablewidgetitem2->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(1, __qtablewidgetitem2);
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
         __qtablewidgetitem3->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem3->setFont(font1);
+        __qtablewidgetitem3->setFont(font2);
+        __qtablewidgetitem3->setBackground(QColor(0, 85, 255));
         __qtablewidgetitem3->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(2, __qtablewidgetitem3);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
         __qtablewidgetitem4->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem4->setFont(font1);
-        __qtablewidgetitem4->setBackground(QColor(255, 255, 255));
-        __qtablewidgetitem4->setForeground(brush1);
+        __qtablewidgetitem4->setFont(font2);
+        __qtablewidgetitem4->setBackground(QColor(0, 170, 255));
+        __qtablewidgetitem4->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(3, __qtablewidgetitem4);
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
         __qtablewidgetitem5->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem5->setFont(font1);
+        __qtablewidgetitem5->setFont(font2);
+        __qtablewidgetitem5->setBackground(QColor(0, 85, 255));
         __qtablewidgetitem5->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(4, __qtablewidgetitem5);
         QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
         __qtablewidgetitem6->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem6->setFont(font1);
-        __qtablewidgetitem6->setBackground(QColor(255, 255, 255));
-        __qtablewidgetitem6->setForeground(brush1);
+        __qtablewidgetitem6->setFont(font2);
+        __qtablewidgetitem6->setBackground(QColor(0, 170, 255));
         metadata_Table->setVerticalHeaderItem(5, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
         __qtablewidgetitem7->setTextAlignment(Qt::AlignCenter);
-        __qtablewidgetitem7->setFont(font1);
+        __qtablewidgetitem7->setFont(font2);
+        __qtablewidgetitem7->setBackground(QColor(0, 85, 255));
         __qtablewidgetitem7->setForeground(brush);
         metadata_Table->setVerticalHeaderItem(6, __qtablewidgetitem7);
-        QFont font2;
-        font2.setKerning(true);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        __qtablewidgetitem8->setFont(font2);
-        metadata_Table->setItem(0, 0, __qtablewidgetitem8);
         metadata_Table->setObjectName(QString::fromUtf8("metadata_Table"));
         metadata_Table->setEnabled(true);
-        sizePolicy2.setHeightForWidth(metadata_Table->sizePolicy().hasHeightForWidth());
-        metadata_Table->setSizePolicy(sizePolicy2);
-        metadata_Table->setMaximumSize(QSize(16777215, 16777215));
-        metadata_Table->setFrameShape(QFrame::NoFrame);
+        QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(metadata_Table->sizePolicy().hasHeightForWidth());
+        metadata_Table->setSizePolicy(sizePolicy1);
+        metadata_Table->setMaximumSize(QSize(999999, 16777215));
+        metadata_Table->setFrameShape(QFrame::Panel);
         metadata_Table->setFrameShadow(QFrame::Plain);
         metadata_Table->setLineWidth(1);
         metadata_Table->setDragDropMode(QAbstractItemView::InternalMove);
         metadata_Table->setAlternatingRowColors(true);
-        metadata_Table->setShowGrid(false);
+        metadata_Table->setShowGrid(true);
         metadata_Table->setGridStyle(Qt::SolidLine);
         metadata_Table->setSortingEnabled(false);
         metadata_Table->setWordWrap(true);
@@ -183,7 +160,6 @@ public:
         metadata_Table->horizontalHeader()->setDefaultSectionSize(410);
         metadata_Table->horizontalHeader()->setHighlightSections(true);
         metadata_Table->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
-        metadata_Table->horizontalHeader()->setStretchLastSection(true);
         metadata_Table->verticalHeader()->setMinimumSectionSize(10);
         metadata_Table->verticalHeader()->setHighlightSections(true);
         metadata_Table->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
@@ -191,54 +167,52 @@ public:
 
         preview_Layout->addWidget(metadata_Table);
 
-        splitter->addWidget(layoutWidget);
-        layoutWidget1 = new QWidget(splitter);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        import_Layout = new QVBoxLayout(layoutWidget1);
+
+        horizontalLayout->addLayout(preview_Layout);
+
+        horizontalSpacer = new QSpacerItem(30, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        import_Layout = new QVBoxLayout();
         import_Layout->setObjectName(QString::fromUtf8("import_Layout"));
-        import_Layout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        import_Layout->setContentsMargins(0, 0, 0, 0);
-        horizontalWidget = new QWidget(layoutWidget1);
-        horizontalWidget->setObjectName(QString::fromUtf8("horizontalWidget"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        splitter_3 = new QSplitter(import_Widget);
+        splitter_3->setObjectName(QString::fromUtf8("splitter_3"));
+        QSizePolicy sizePolicy2(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(splitter_3->sizePolicy().hasHeightForWidth());
+        splitter_3->setSizePolicy(sizePolicy2);
+        splitter_3->setOrientation(Qt::Horizontal);
+        import_btn = new QPushButton(splitter_3);
+        import_btn->setObjectName(QString::fromUtf8("import_btn"));
+        QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(horizontalWidget->sizePolicy().hasHeightForWidth());
-        horizontalWidget->setSizePolicy(sizePolicy3);
-        horizontalLayout_4 = new QHBoxLayout(horizontalWidget);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalLayout_4->setSizeConstraint(QLayout::SetDefaultConstraint);
-        import_btn = new QPushButton(horizontalWidget);
-        import_btn->setObjectName(QString::fromUtf8("import_btn"));
-
-        horizontalLayout_4->addWidget(import_btn);
-
-        delete_Btn = new QPushButton(horizontalWidget);
+        sizePolicy3.setHeightForWidth(import_btn->sizePolicy().hasHeightForWidth());
+        import_btn->setSizePolicy(sizePolicy3);
+        splitter_3->addWidget(import_btn);
+        delete_Btn = new QPushButton(splitter_3);
         delete_Btn->setObjectName(QString::fromUtf8("delete_Btn"));
+        sizePolicy3.setHeightForWidth(delete_Btn->sizePolicy().hasHeightForWidth());
+        delete_Btn->setSizePolicy(sizePolicy3);
+        splitter_3->addWidget(delete_Btn);
 
-        horizontalLayout_4->addWidget(delete_Btn);
+        import_Layout->addWidget(splitter_3);
 
-
-        import_Layout->addWidget(horizontalWidget);
-
-        listWidget = new QListWidget(layoutWidget1);
+        listWidget = new QListWidget(import_Widget);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        sizePolicy.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
-        listWidget->setSizePolicy(sizePolicy);
+        sizePolicy3.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
+        listWidget->setSizePolicy(sizePolicy3);
         listWidget->setLineWidth(5);
-        listWidget->setSortingEnabled(true);
 
         import_Layout->addWidget(listWidget);
 
-        splitter->addWidget(layoutWidget1);
 
-        horizontalLayout->addWidget(splitter);
+        horizontalLayout->addLayout(import_Layout);
 
 
         retranslateUi(import_Widget);
-
-        listWidget->setCurrentRow(-1);
-
 
         QMetaObject::connectSlotsByName(import_Widget);
     } // setupUi
@@ -246,6 +220,7 @@ public:
     void retranslateUi(QWidget *import_Widget)
     {
         import_Widget->setWindowTitle(QApplication::translate("import_Widget", "Form", nullptr));
+        preivew_Label->setText(QApplication::translate("import_Widget", "Preview", nullptr));
         metadata_Label->setText(QApplication::translate("import_Widget", "Metadata", nullptr));
         QTableWidgetItem *___qtablewidgetitem = metadata_Table->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("import_Widget", "Value", nullptr));
@@ -254,20 +229,15 @@ public:
         QTableWidgetItem *___qtablewidgetitem2 = metadata_Table->verticalHeaderItem(1);
         ___qtablewidgetitem2->setText(QApplication::translate("import_Widget", "Image Name", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = metadata_Table->verticalHeaderItem(2);
-        ___qtablewidgetitem3->setText(QApplication::translate("import_Widget", "Creator", nullptr));
+        ___qtablewidgetitem3->setText(QApplication::translate("import_Widget", "Edited by", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = metadata_Table->verticalHeaderItem(3);
         ___qtablewidgetitem4->setText(QApplication::translate("import_Widget", "Location", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = metadata_Table->verticalHeaderItem(4);
         ___qtablewidgetitem5->setText(QApplication::translate("import_Widget", "Date Created", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = metadata_Table->verticalHeaderItem(5);
-        ___qtablewidgetitem6->setText(QApplication::translate("import_Widget", "Width (px)", nullptr));
+        ___qtablewidgetitem6->setText(QApplication::translate("import_Widget", "Width (cm)", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = metadata_Table->verticalHeaderItem(6);
-        ___qtablewidgetitem7->setText(QApplication::translate("import_Widget", "Height (px)", nullptr));
-
-        const bool __sortingEnabled = metadata_Table->isSortingEnabled();
-        metadata_Table->setSortingEnabled(false);
-        metadata_Table->setSortingEnabled(__sortingEnabled);
-
+        ___qtablewidgetitem7->setText(QApplication::translate("import_Widget", "Height (cm)", nullptr));
         import_btn->setText(QApplication::translate("import_Widget", "Import", nullptr));
         delete_Btn->setText(QApplication::translate("import_Widget", "Delete", nullptr));
     } // retranslateUi

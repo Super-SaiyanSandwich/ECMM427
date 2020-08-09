@@ -129,6 +129,7 @@ void crop_Widget::on_work_Images_itemDoubleClicked(QListWidgetItem *item)
 
     this->update_Main_Cropped_Image();
     this->reset_Crop_Image_Zoom();
+    this->update_Crop_Preview_Image();
     this->reload_Preview();
 }
 
@@ -428,18 +429,16 @@ void crop_Widget::showEvent(QShowEvent *ev)
             QListWidgetItem * ic = new QListWidgetItem(icon->text());
             ic->setIcon(icon->icon());
             ui->work_Images->addItem(ic);
-            QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
         }
 
 
         this->base_Image->setPixmap(QPixmap::fromImage(QImage(this->load_Crop_Image_Icons())));
         ui->horizontal_Slider_Width->setMaximum(this->base_Image->pixmap().width());
         ui->horizontal_Slider_Height->setMaximum(this->base_Image->pixmap().height());
-        QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
         this->selected_Area = new cropped_Area();
         this->selected_Area->setParentItem(this->base_Image);
-        QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+
 
 
         this->update_Crop_Preview_Image();

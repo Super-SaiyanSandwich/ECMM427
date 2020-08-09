@@ -4,6 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QListWidgetItem>
 #include <QWidget>
+#include <QVBoxLayout>
 
 namespace Ui {
 class import_Widget;

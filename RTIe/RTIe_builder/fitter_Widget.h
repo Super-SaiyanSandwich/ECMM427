@@ -4,6 +4,7 @@
 #include <QListWidget>
 #include <QWidget>
 #include "QProcess"
+#include <QGraphicsView>
 
 namespace Ui {
 class fitter_Widget;
@@ -33,8 +34,10 @@ private slots:
 private:
     Ui::fitter_Widget *ui;
 
+    QGraphicsPixmapItem *image_Preview_Pixmap;
+    QGraphicsScene *image_Preview_Scene;
+
     QString error_Message(bool hsh);
-    QStringList get_File_List();
 
     int current_Slide = 0;
     QString chosen_Location;
@@ -56,6 +59,9 @@ private:
     QString fitter;
     bool dropdown_Option;
     void result();
+
+protected:
+    void showEvent(QShowEvent *);
 };
 
 #endif // FITTER_WIDGET_H

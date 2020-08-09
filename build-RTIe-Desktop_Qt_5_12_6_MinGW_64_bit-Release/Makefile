@@ -204,6 +204,7 @@ Makefile: ../RTIe/RTIe.pro F:/QT/5.12.6/mingw73_64/mkspecs/win32-g++/qmake.conf 
 		F:/QT/5.12.6/mingw73_64/mkspecs/features/qt_config.prf \
 		F:/QT/5.12.6/mingw73_64/mkspecs/win32-g++/qmake.conf \
 		F:/QT/5.12.6/mingw73_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		F:/QT/5.12.6/mingw73_64/mkspecs/features/exclusive_builds.prf \
 		F:/QT/5.12.6/mingw73_64/mkspecs/features/toolchain.prf \
 		F:/QT/5.12.6/mingw73_64/mkspecs/features/default_pre.prf \
@@ -371,6 +372,7 @@ F:/QT/5.12.6/mingw73_64/mkspecs/features/qt_functions.prf:
 F:/QT/5.12.6/mingw73_64/mkspecs/features/qt_config.prf:
 F:/QT/5.12.6/mingw73_64/mkspecs/win32-g++/qmake.conf:
 F:/QT/5.12.6/mingw73_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 F:/QT/5.12.6/mingw73_64/mkspecs/features/exclusive_builds.prf:
 F:/QT/5.12.6/mingw73_64/mkspecs/features/toolchain.prf:
 F:/QT/5.12.6/mingw73_64/mkspecs/features/default_pre.prf:
