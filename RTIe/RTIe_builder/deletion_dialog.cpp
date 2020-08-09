@@ -43,23 +43,12 @@ deletion_Dialog::~deletion_Dialog()
     delete ui;
 }
 
-QString deletion_Dialog::get_Deletion_Reason()
-{
-    return "";
-}
 
-void deletion_Dialog::set_Display_Image_Name(QString image_Name){
-    ui->image_File_Name->setText(image_Name);
-}
 
 void deletion_Dialog::showEvent(QShowEvent *){
     ui->image_Preview->fitInView(image_Preview_Scene->sceneRect(), Qt::KeepAspectRatio);
 }
 
-void deletion_Dialog::update_Current_Image(QString image_Name){
-    ui->image_File_Name->setText(image_Name);
-
-}
 
 /*
  * dialog_status_code : 1 = accepted, 0 = rejected, -1 = image_names is empty
@@ -83,7 +72,6 @@ int deletion_Dialog::process_Images(QStringList image_Names){
         current_Image_Name = image_Names.at(current_Image_Index);
         QString current_Image_Path = splashScreen::project_Path + "/images/wd/" + current_Image_Name;
 
-        this->set_Display_Image_Name(current_Image_Name);
         ui->image_File_Name->setText(current_Image_Name);
         ui->remaining_Images_List->addItems(working_Image_Names_List);
         ui->removal_Reason->setText("~Type your reason for deleting an image here~");

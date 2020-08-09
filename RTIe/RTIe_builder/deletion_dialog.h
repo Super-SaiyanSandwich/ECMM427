@@ -49,11 +49,7 @@ protected:
     void showEvent(QShowEvent *);
 
 public slots:
-    QString get_Deletion_Reason();
-    void set_Display_Image_Name(QString image_Name);
     int process_Images(QStringList image_Names);
-    void update_Current_Image(QString image_Name);
-
 
 private slots:
     void on_next_Image_Button_clicked();
