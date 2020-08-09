@@ -71,7 +71,7 @@ splashScreen::splashScreen(QWidget *parent) : QMainWindow(parent)
  */
 void splashScreen::help_Button_Clicked()
 {
-    QString wiki_Link = "https://universityofexeteruk.sharepoint.com/sites/Stevens_Research/RTIExeter%20Wiki/Home.aspx";
+    QString wiki_Link = "https://rtiex.atlassian.net/wiki/spaces/REB/overview";
     QDesktopServices::openUrl(QUrl(wiki_Link, QUrl::TolerantMode));
 
 
