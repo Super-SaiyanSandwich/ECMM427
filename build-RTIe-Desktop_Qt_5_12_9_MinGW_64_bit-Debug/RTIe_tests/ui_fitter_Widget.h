@@ -266,31 +266,6 @@ public:
         sizePolicy3.setHeightForWidth(temp->sizePolicy().hasHeightForWidth());
         temp->setSizePolicy(sizePolicy3);
         temp->setMinimumSize(QSize(300, 0));
-        QPalette palette;
-        QBrush brush(QColor(0, 0, 0, 255));
-        brush.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush1(QColor(0, 0, 0, 128));
-        brush1.setStyle(Qt::SolidPattern);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
-#endif
-        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
-#endif
-        QBrush brush2(QColor(255, 255, 255, 127));
-        brush2.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-        QBrush brush3(QColor(231, 231, 231, 128));
-        brush3.setStyle(Qt::SolidPattern);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
-#endif
-        temp->setPalette(palette);
         temp->setFrameShape(QFrame::Box);
         temp->setFrameShadow(QFrame::Plain);
         temp->setLineWidth(1);
@@ -329,23 +304,6 @@ public:
         sizePolicy3.setHeightForWidth(fitter_Placeholder->sizePolicy().hasHeightForWidth());
         fitter_Placeholder->setSizePolicy(sizePolicy3);
         fitter_Placeholder->setMinimumSize(QSize(300, 0));
-        QPalette palette1;
-        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Active, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
-#endif
-        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
-#endif
-        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
-        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
-#endif
-        fitter_Placeholder->setPalette(palette1);
         fitter_Placeholder->setAutoFillBackground(false);
         fitter_Placeholder->setLocale(QLocale(QLocale::English, QLocale::UnitedKingdom));
         fitter_Placeholder->setFrameShape(QFrame::Box);
@@ -379,23 +337,6 @@ public:
         sizePolicy3.setHeightForWidth(output_Placeholder->sizePolicy().hasHeightForWidth());
         output_Placeholder->setSizePolicy(sizePolicy3);
         output_Placeholder->setMinimumSize(QSize(300, 0));
-        QPalette palette2;
-        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Active, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
-#endif
-        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Inactive, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
-#endif
-        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
-        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
-#endif
-        output_Placeholder->setPalette(palette2);
         output_Placeholder->setFrameShape(QFrame::Box);
         output_Placeholder->setFrameShadow(QFrame::Plain);
         output_Placeholder->setLineWidth(1);

@@ -1,8 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS = RTIe_builder\
-#           RTIe_tests
-
+           RTIe_tests
 CONFIG += qt
 
 QT += widgets

@@ -266,31 +266,6 @@ public:
         sizePolicy3.setHeightForWidth(temp->sizePolicy().hasHeightForWidth());
         temp->setSizePolicy(sizePolicy3);
         temp->setMinimumSize(QSize(300, 0));
-        QPalette palette;
-        QBrush brush(QColor(0, 0, 0, 255));
-        brush.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush1(QColor(0, 0, 0, 128));
-        brush1.setStyle(Qt::SolidPattern);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
-#endif
-        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
-#endif
-        QBrush brush2(QColor(255, 255, 255, 127));
-        brush2.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-        QBrush brush3(QColor(231, 231, 231, 128));
-        brush3.setStyle(Qt::SolidPattern);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
-#endif
-        temp->setPalette(palette);
         temp->setFrameShape(QFrame::Box);
         temp->setFrameShadow(QFrame::Plain);
         temp->setLineWidth(1);
@@ -329,23 +304,6 @@ public:
         sizePolicy3.setHeightForWidth(fitter_Placeholder->sizePolicy().hasHeightForWidth());
         fitter_Placeholder->setSizePolicy(sizePolicy3);
         fitter_Placeholder->setMinimumSize(QSize(300, 0));
-        QPalette palette1;
-        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Active, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
-#endif
-        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
-#endif
-        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
-        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
-#endif
-        fitter_Placeholder->setPalette(palette1);
         fitter_Placeholder->setAutoFillBackground(false);
         fitter_Placeholder->setLocale(QLocale(QLocale::English, QLocale::UnitedKingdom));
         fitter_Placeholder->setFrameShape(QFrame::Box);
@@ -379,23 +337,6 @@ public:
         sizePolicy3.setHeightForWidth(output_Placeholder->sizePolicy().hasHeightForWidth());
         output_Placeholder->setSizePolicy(sizePolicy3);
         output_Placeholder->setMinimumSize(QSize(300, 0));
-        QPalette palette2;
-        palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Active, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Active, QPalette::PlaceholderText, brush1);
-#endif
-        palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette2.setBrush(QPalette::Inactive, QPalette::Text, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush1);
-#endif
-        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
-        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush2);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush3);
-#endif
-        output_Placeholder->setPalette(palette2);
         output_Placeholder->setFrameShape(QFrame::Box);
         output_Placeholder->setFrameShadow(QFrame::Plain);
         output_Placeholder->setLineWidth(1);
@@ -717,3 +658,50 @@ namespace Ui {
 QT_END_NAMESPACE
 
 #endif // UI_FITTER_WIDGET_H
+
+//File Location:"", nullptr));
+//        temp->setText(QString());
+//        lp_Location->setText(QApplication::translate("fitter_Widget", "...", nullptr));
+//        label_21->setText(QApplication::translate("fitter_Widget", "FITTER Location:", nullptr));
+//        fitter_Placeholder->setText(QString());
+//        fitter_Location->setText(QApplication::translate("fitter_Widget", "...", nullptr));
+//        label_23->setText(QApplication::translate("fitter_Widget", "Destination Location:", nullptr));
+//        output_Placeholder->setText(QString());
+//        output_Location->setText(QApplication::translate("fitter_Widget", "...", nullptr));
+//        actual_Size_Label->setText(QApplication::translate("fitter_Widget", "Size:", nullptr));
+//        width_Label->setText(QApplication::translate("fitter_Widget", "Width(px):", nullptr));
+//        height_Label->setText(QApplication::translate("fitter_Widget", "Height(px):", nullptr));
+//        resize_Checkbox->setText(QApplication::translate("fitter_Widget", "resize", nullptr));
+//        width_Measurement->setText(QApplication::translate("fitter_Widget", "123", nullptr));
+//        height_Measurement->setText(QApplication::translate("fitter_Widget", "567", nullptr));
+//        label_32->setText(QApplication::translate("fitter_Widget", "HSH Order:", nullptr));
+//        hsh_Order->setItemText(0, QString());
+//        hsh_Order->setItemText(1, QApplication::translate("fitter_Widget", "2", nullptr));
+//        hsh_Order->setItemText(2, QApplication::translate("fitter_Widget", "3", nullptr));
+//        hsh_Order->setItemText(3, QApplication::translate("fitter_Widget", "4", nullptr));
+
+//        label_39->setText(QApplication::translate("fitter_Widget", "PTM (luminance):", nullptr));
+//        ptm_Luminance->setItemText(0, QString());
+//        ptm_Luminance->setItemText(1, QApplication::translate("fitter_Widget", "RGB", nullptr));
+//        ptm_Luminance->setItemText(2, QApplication::translate("fitter_Widget", "LRGB", nullptr));
+
+//        label_33->setText(QApplication::translate("fitter_Widget", "Fitter Information", nullptr));
+//        fitter_Info->setHtml(QApplication::translate("fitter_Widget", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+//"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+//"p, li { white-space: pre-wrap; }\n"
+//"</style></head><body style=\" font-family:'.SF NS Text'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+//"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;\"><br /></p></body></html>", nullptr));
+//        status->setText(QString());
+//        generate_Btn->setText(QApplication::translate("fitter_Widget", "Generate", nullptr));
+//        cancel_fitter_Btn->setText(QApplication::translate("fitter_Widget", "Cancel", nullptr));
+//    } // retranslateUi
+
+//};
+
+//namespace Ui {
+//    class fitter_Widget: public Ui_fitter_Widget {};
+//} // namespace Ui
+
+//QT_END_NAMESPACE
+
+//#endif // UI_FITTER_WIDGET_H
