@@ -539,7 +539,7 @@ void RTIe_tests::test_set_and_get_Width()
 
 static RTIe_tests rtieInstance;
 
-//QTEST_MAIN(RTIe_tests)
+QTEST_MAIN(RTIe_tests)
 
 #include "tst_rtie_tests.moc"
 

@@ -171,9 +171,16 @@ void image_Management_Nui::delete_(QStringList file_Names)
     //if result = 1 | User pressed OK
     if(result == 1){
 
+        //qInfo()<<"QDIALOG::ACCEPTED WORKING";
+        //QString reason = del.get_Deletion_Reason();
 
+        /*if(applied_All){
 
-    //No Images selected on delete operation
+        }else{
+
+        }*/
+
+    //User pressed cancel | User pressed cancel
     }else if (result == -1){
 
         QMessageBox null_Selected;
@@ -185,7 +192,7 @@ void image_Management_Nui::delete_(QStringList file_Names)
         null_Selected.exec();
 
     } else {
-        //Delete cancelled
+        //qInfo()<<"Failed cancel";
         QMessageBox deletion_Cancellation;
         deletion_Cancellation.setText("Delete Operation Cancelled.");
         deletion_Cancellation.setInformativeText("No images will be deleted.");

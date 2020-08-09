@@ -21,19 +21,8 @@ fitter_Widget::fitter_Widget(QWidget *parent) :
 
     ui->setupUi(this);
     QStringList image_Names = image_Management_Nui::get_Working_Image_Names();
-    //ui->image_Graphics_View->resetCachedContent();
     ui->image_Name->clear();
 
-    /*
-    QImage image = QImage(this->get_File_List().value(0));
-    QPixmap img = QPixmap::fromImage(image);
-
-    int w = img.width();
-    int h = img.height();
-
-    ui->image_Label->setPixmap(img.scaled(w,h,Qt::KeepAspectRatio));
-    ui->image_Label->update();
-    */
     QString first_Image_File_Name = image_Names.first();
     ui->image_Name->setText(first_Image_File_Name);
     QImage first_Image = QImage(image_Management_Nui::get_Working_Image_Paths().first());
@@ -58,9 +47,9 @@ fitter_Widget::~fitter_Widget()
 }
 
 //======================================== FITTERS PAGE ================================
-/// Runs the selected fitter program on the images in the {@link CropExecuteLayout#lpImagesGrid} by creating a new
-/// LP file for them, cropping them if the crop is selected, and running the fitter using the new LP file. Prints
-/// the output of th e fitter to the {@link CropExecuteLayout#fitterOutputArea}.Deals with all errors that
+/// Runs the selected fitter program on the images by loading a appropriate LP file for them,
+/// cropping them if the crop is selected, and running the fitter using the new LP file. Prints
+/// the output of the fitter to the {@link CropExecuteLayout#fitterOutputArea}.Deals with all errors that
 /// could occur in this method through the use of an error dialog.
 
 void fitter_Widget::on_generate_Btn_clicked()
@@ -181,7 +170,6 @@ void fitter_Widget::on_generate_Btn_clicked()
 
                 process->start(fitter_Location);
                 ui->progress_Bar->setValue(current_Slide+1);
-                //QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
 
                 while(process->state() == 1)
@@ -363,10 +351,12 @@ void fitter_Widget::on_fitter_Location_clicked()
 {
     QFileDialog dialog(this);
 
-    //QString filter_2 = "fitter(*.exe)";     //(ptm or hsh)
-    dialog.setFilter(QDir::Executable | QDir::Files);
+    QString filter_2 = "fitter(*.exe)";     //(ptm or hsh)
 
-    fitter_Location = dialog.getOpenFileName(this, tr("Open File"),"");
+
+    fitter_Location = dialog.getOpenFileName(this, tr("Open File"),
+                                                    "",
+                                                    filter_2);
 
     ui->fitter_Placeholder->setText(fitter_Location);
 

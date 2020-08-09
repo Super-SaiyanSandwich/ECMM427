@@ -36,12 +36,13 @@ private:
 
     int current_Image_Index;
     QString current_Image_Name;
+    QString reason_Delete_Text;
 
     int dialog_Status_Code;
     int apply_All_Check_Status;
     //Image and reason lists are linked by indexes.
     QStringList image_Delete_List;
-    QString reason_Delete_Text;
+    QStringList reason_Delete_List;
 
 
 protected:
