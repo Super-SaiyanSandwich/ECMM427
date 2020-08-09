@@ -13,7 +13,6 @@ public:
     image_Management_Nui();
     static void import(QWidget* main);
     static QStringList get_Working_Image_Paths();
-    static QStringList get_Working_Image_Names();
     static void delete_(QStringList file_Names);
     virtual ~image_Management_Nui();
 

@@ -37,38 +37,25 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setNameFilter("*.rtie");
-
 
     if(dialog.exec()){
-
-        //qInfo()<<"diolog opens";
         QFile project_File(dialog.selectedFiles().at(0).toLocal8Bit().constData());
 
         if (project_File.open(QIODevice::ReadOnly))
         {
-            //qInfo()<<"Dialog accepted";
             QTextStream in(&project_File);
             splashScreen::project_Path = in.readLine();
             splashScreen::project_Name = project_File.fileName().remove(".rtie").remove(splashScreen::project_Path);
             project_File.close();
         }
 
-        // Project file selected, open project
-        this->start();
-
-    } else {
-        //project selection cancelled, return to splash screen
-
-        qApp->exit(splashScreen::REBOOT_EXIT_CODE);
-        //qInfo()<<"Cancel test";
     }
 
     qInfo() << "OPEN PATH:: " << splashScreen::project_Path;
 
     //system_Ui::start();
 
-
+    this->start();
 
 
 

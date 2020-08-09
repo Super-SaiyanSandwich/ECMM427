@@ -9,27 +9,20 @@
 #include "new_Project_Wizard.h"
 #include "project_Wizard.h"
 
-static int const RESTART_EXIT_CODE = -123456789;
-
 int main(int argc, char **argv)
 {
-    int current_Exit_Code = 0;
-
-    do {
-        QApplication app(argc, argv);
-        QString project_Path;
-        app.setWindowIcon(QIcon(":/RTIEx.ico"));
-
-        splashScreen splashScreen;
-        splashScreen.show();
-
-        current_Exit_Code = app.exec();
+    QApplication* app = new QApplication(argc, argv);
+    QString project_Path;
+    app->setWindowIcon(QIcon(":/RTIEx.ico"));  //set the icon HERE.
+    //PREVIEW SPLASH SCREEN & PROJECT WIZARD
+    splashScreen splashScreen;
+    splashScreen.show();
 
 
-    } while (current_Exit_Code == RESTART_EXIT_CODE);
+    //PREVIEW IMAGE MANAMGEMENT
+    //image_Management img;
+    //img.show();
 
-    return current_Exit_Code;
 
+    return app->exec();
 }
-
-

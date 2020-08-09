@@ -14,7 +14,6 @@ public:
     explicit splashScreen(QWidget *parent = nullptr);
     static QString project_Path;
     static QString project_Name;
-    static int const REBOOT_EXIT_CODE;
 
 private:
     new_Project new_project;

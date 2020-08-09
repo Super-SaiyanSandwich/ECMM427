@@ -8,8 +8,6 @@
 #include <QTextStream>
 #include <QThread>
 #include <math.h>
-#include <QDebug>
-#include <QMessageBox>
 
 
 import_Widget::import_Widget(QWidget *parent) :
@@ -24,14 +22,9 @@ import_Widget::import_Widget(QWidget *parent) :
 
     scene = new QGraphicsScene(this);
     ui->graphics_View->setScene(scene);
-    ui->graphics_View->fitInView(scene->itemsBoundingRect(), Qt::KeepAspectRatio);
-
 
     this->preview_Item = scene->addPixmap(QPixmap(0,0));
     this->preview_Item->setFlag(QGraphicsItem::ItemClipsChildrenToShape,true);
-
-
-
 }
 
 import_Widget::~import_Widget()
@@ -114,33 +107,30 @@ void import_Widget::reset_Image_Zoom()
     int h = ui->graphics_View->height();
 
     qreal s = fmin(w/float(preview_Item->pixmap().width()),h/float(preview_Item->pixmap().height()));
+
     ui->graphics_View->scale(s, s);
 }
 
 void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
 {
-    // Updates Image in Large Previewer
     QString preview_Image = splashScreen::project_Path+ "/images/wd/" +item->text();
     this->preview_Item->setPixmap( QPixmap::fromImage(QImage(preview_Image)) );
     ui->graphics_View->update();
     reset_Image_Zoom();
-    ui->graphics_View->fitInView(scene->itemsBoundingRect(), Qt::KeepAspectRatio);
 
 
-    // Updates metadata in table with selected image data
     for (int i=0; i<ui->metadata_Table->rowCount(); ++i)
     {
         ui->metadata_Table->setItem(i, 0, new QTableWidgetItem("")); // clear value.
         ui->metadata_Table->update();
     }
 
-
     QStringList pieces = splashScreen::project_Path.split( "/" );
     QString neededWord = pieces.value( pieces.length() - 1 );
 //    qInfo()<<project_Wizard().editor;
 
     QString rti_Filename = splashScreen::project_Path + "/"+neededWord+".rtie";
-    QString  creator;
+    QString  editor;
     QString  date_Created;
 
     QFile file(rti_Filename);
@@ -157,9 +147,9 @@ void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
         line.removeAt(0);
         QString temp1 = line.value(0);
         QString temp2 = line.value(1);
-        creator = temp1.remove("Editor Name: ");
+        editor = temp1.remove("Editor Name: ");
         date_Created = temp2.remove("Created on: ");
-        creator = creator.remove("\n");
+        editor = editor.remove("\n");
         date_Created = date_Created.remove("\n");
 
     }
@@ -167,12 +157,11 @@ void import_Widget::on_listWidget_itemClicked(QListWidgetItem *item)
 
     ui->metadata_Table->setItem(0, 0, new QTableWidgetItem(neededWord)); // Project Name
     ui->metadata_Table->setItem(1, 0, new QTableWidgetItem(item->text())); // Picture Name
-    ui->metadata_Table->setItem(2, 0, new QTableWidgetItem(creator)); // Creator's Name
+    ui->metadata_Table->setItem(2, 0, new QTableWidgetItem(editor)); // Editor's Name
     ui->metadata_Table->setItem(3, 0, new QTableWidgetItem(preview_Image)); // File location
     ui->metadata_Table->setItem(4, 0, new QTableWidgetItem(date_Created)); // Date Created
     ui->metadata_Table->setItem(5, 0, new QTableWidgetItem( QString::number(this->preview_Item->pixmap().width()))); // Image width
     ui->metadata_Table->setItem(6, 0, new QTableWidgetItem( QString::number(this->preview_Item->pixmap().height()))); // Image height
-
 }
 
 void import_Widget::on_import_btn_clicked()
@@ -224,11 +213,7 @@ void import_Widget::on_delete_Btn_clicked()
         }
     }
 
-
-     image_Management_Nui::delete_(checked_Image_Names);
-
-
-
+    image_Management_Nui::delete_(checked_Image_Names);
 
     // We must clear the listWidget in order to prevent populating it with the
     // same items repeatedly

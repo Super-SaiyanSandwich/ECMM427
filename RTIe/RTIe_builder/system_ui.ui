@@ -135,7 +135,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Image Crop</string>
+            <string>Crop Marble from Images</string>
            </property>
           </widget>
          </item>
@@ -165,7 +165,7 @@
      <x>0</x>
      <y>0</y>
      <width>1090</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

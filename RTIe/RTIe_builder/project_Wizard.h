@@ -42,8 +42,6 @@ private slots:
     void create_Project();
 
     void on_project_Name_Line_Edit_textChanged(const QString &arg1);
-    void on_project_Wizard_rejected();
-
 };
 
 #endif // project_Wizard_H

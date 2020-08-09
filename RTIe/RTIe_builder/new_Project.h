@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <QLineEdit>
 
-#include "new_Project_Settings.h"
+#include <new_Project_Settings.h>
 
 class new_Project : public QMainWindow
 {
