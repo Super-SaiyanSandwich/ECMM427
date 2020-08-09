@@ -36,7 +36,6 @@ private:
 
     int current_Image_Index;
     QString current_Image_Name;
-    QString current_Reason_Text;
 
     int dialog_Status_Code;
     int apply_All_Check_Status;
