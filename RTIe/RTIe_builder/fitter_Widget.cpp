@@ -75,8 +75,8 @@ void fitter_Widget::on_generate_Btn_clicked()
                 //run the executable with the command-line arguments
                 ui->progress_Bar->setValue(current_Slide+1);
                 QProcess *process = new QProcess(this);
-
-
+                qInfo() << fitter_Location;
+                process->setWorkingDirectory(lp_Path.left(lp_Path.lastIndexOf(QChar('/'))));
 
 
                 connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(itHasFinished(int, QProcess::ExitStatus)));
@@ -92,9 +92,11 @@ void fitter_Widget::on_generate_Btn_clicked()
                    ui->fitter_Info->setText("Working\n------------------\n"+std_Output);
 
                    QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
+
+                   process->waitForFinished(-1);
                }
 
-               process->waitForFinished(-1);
+
 
                 // will wait forever until finished
                 ui->progress_Bar->setValue(100);
@@ -362,12 +364,11 @@ void fitter_Widget::on_lp_Location_clicked()
         QString fileName = dialog.getOpenFileName(this, tr("Open File"),
                                                         "",
                                                         filter);
-
+        lp_Path += fileName +" ";
         ui->temp->setText(fileName);
         if(ui->ptm_Fitter->isChecked()){
             fitter_Args += " -i " + fileName +" ";
-        }else{
-            lp_Path += fileName +" ";
+
         }
 
 

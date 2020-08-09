@@ -67,6 +67,9 @@ public:
 
         graphics_View = new QGraphicsView(import_Widget);
         graphics_View->setObjectName(QString::fromUtf8("graphics_View"));
+        QBrush brush(QColor(0, 0, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        graphics_View->setBackgroundBrush(brush);
 
         preview_Layout->addWidget(graphics_View);
 
@@ -99,8 +102,6 @@ public:
         __qtablewidgetitem1->setFont(font2);
         __qtablewidgetitem1->setBackground(QColor(0, 85, 255));
         metadata_Table->setVerticalHeaderItem(0, __qtablewidgetitem1);
-        QBrush brush(QColor(0, 0, 0, 255));
-        brush.setStyle(Qt::SolidPattern);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         __qtablewidgetitem2->setTextAlignment(Qt::AlignCenter);
         __qtablewidgetitem2->setFont(font2);

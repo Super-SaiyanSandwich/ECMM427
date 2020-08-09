@@ -50,7 +50,7 @@ public:
     QVBoxLayout *verticalLayout_8;
     QToolBox *toolBox_2;
     QWidget *movement_Page_2;
-    QVBoxLayout *verticalLayout_9;
+    QGridLayout *gridLayout_4;
     QLabel *label_X_2;
     QSpinBox *spin_Box_X_2;
     QSlider *horizontal_Slider_X_2;
@@ -59,14 +59,13 @@ public:
     QSlider *horizontal_Slider_Y_2;
     QWidget *scale_Page_2;
     QGridLayout *gridLayout_5;
-    QCheckBox *check_Box_Spherical_2;
-    QSlider *horizontal_Slider_Width;
-    QDoubleSpinBox *spin_Box_Height;
-    QLabel *radius_Label_3;
-    QDoubleSpinBox *spin_Box_Width;
-    QSlider *horizontal_Slider_Height;
     QFrame *line_2;
     QLabel *radius_Label_2;
+    QSlider *horizontal_Slider_Width;
+    QDoubleSpinBox *spin_Box_Width;
+    QLabel *radius_Label_3;
+    QSlider *horizontal_Slider_Height;
+    QDoubleSpinBox *spin_Box_Height;
     QWidget *tools_Page_2;
     QVBoxLayout *verticalLayout_10;
     QLabel *zoom_Label_2;
@@ -83,7 +82,8 @@ public:
     QScrollBar *horizontal_Scroll_Bar_Blue_2;
     QToolButton *colour_Selector_Button_2;
     QWidget *images_Page_2;
-    QVBoxLayout *verticalLayout_11;
+    QSplitter *splitter_3;
+    QLabel *label;
     QScrollArea *scrollArea_3;
     QWidget *scrollAreaWidgetContents_3;
     QGridLayout *gridLayout_2;
@@ -139,8 +139,13 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(image_Graphics_View->sizePolicy().hasHeightForWidth());
         image_Graphics_View->setSizePolicy(sizePolicy2);
+        image_Graphics_View->setAcceptDrops(true);
+        image_Graphics_View->setAutoFillBackground(false);
         image_Graphics_View->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         image_Graphics_View->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        QBrush brush(QColor(0, 0, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        image_Graphics_View->setBackgroundBrush(brush);
 
         gridLayout->addWidget(image_Graphics_View, 1, 0, 1, 1);
 
@@ -227,9 +232,9 @@ public:
 "}*/"));
         movement_Page_2 = new QWidget();
         movement_Page_2->setObjectName(QString::fromUtf8("movement_Page_2"));
-        movement_Page_2->setGeometry(QRect(0, 0, 83, 160));
-        verticalLayout_9 = new QVBoxLayout(movement_Page_2);
-        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        movement_Page_2->setGeometry(QRect(0, 0, 360, 379));
+        gridLayout_4 = new QGridLayout(movement_Page_2);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         label_X_2 = new QLabel(movement_Page_2);
         label_X_2->setObjectName(QString::fromUtf8("label_X_2"));
         QSizePolicy sizePolicy6(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -242,14 +247,14 @@ public:
         label_X_2->setFont(font1);
         label_X_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
-        verticalLayout_9->addWidget(label_X_2);
+        gridLayout_4->addWidget(label_X_2, 0, 0, 1, 1);
 
         spin_Box_X_2 = new QSpinBox(movement_Page_2);
         spin_Box_X_2->setObjectName(QString::fromUtf8("spin_Box_X_2"));
         spin_Box_X_2->setMaximum(2088);
         spin_Box_X_2->setValue(0);
 
-        verticalLayout_9->addWidget(spin_Box_X_2);
+        gridLayout_4->addWidget(spin_Box_X_2, 1, 0, 1, 1);
 
         horizontal_Slider_X_2 = new QSlider(movement_Page_2);
         horizontal_Slider_X_2->setObjectName(QString::fromUtf8("horizontal_Slider_X_2"));
@@ -257,7 +262,7 @@ public:
         horizontal_Slider_X_2->setValue(0);
         horizontal_Slider_X_2->setOrientation(Qt::Horizontal);
 
-        verticalLayout_9->addWidget(horizontal_Slider_X_2);
+        gridLayout_4->addWidget(horizontal_Slider_X_2, 2, 0, 1, 1);
 
         label_Y_2 = new QLabel(movement_Page_2);
         label_Y_2->setObjectName(QString::fromUtf8("label_Y_2"));
@@ -267,14 +272,14 @@ public:
         label_Y_2->setFont(font1);
         label_Y_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
-        verticalLayout_9->addWidget(label_Y_2);
+        gridLayout_4->addWidget(label_Y_2, 3, 0, 1, 1);
 
         spin_Box_Y_2 = new QSpinBox(movement_Page_2);
         spin_Box_Y_2->setObjectName(QString::fromUtf8("spin_Box_Y_2"));
         spin_Box_Y_2->setMaximum(1387);
         spin_Box_Y_2->setValue(0);
 
-        verticalLayout_9->addWidget(spin_Box_Y_2);
+        gridLayout_4->addWidget(spin_Box_Y_2, 4, 0, 1, 1);
 
         horizontal_Slider_Y_2 = new QSlider(movement_Page_2);
         horizontal_Slider_Y_2->setObjectName(QString::fromUtf8("horizontal_Slider_Y_2"));
@@ -284,22 +289,36 @@ public:
         horizontal_Slider_Y_2->setInvertedAppearance(false);
         horizontal_Slider_Y_2->setInvertedControls(false);
 
-        verticalLayout_9->addWidget(horizontal_Slider_Y_2);
+        gridLayout_4->addWidget(horizontal_Slider_Y_2, 5, 0, 1, 1);
 
         toolBox_2->addItem(movement_Page_2, QString::fromUtf8("Position"));
         scale_Page_2 = new QWidget();
         scale_Page_2->setObjectName(QString::fromUtf8("scale_Page_2"));
-        scale_Page_2->setGeometry(QRect(0, 0, 102, 219));
+        scale_Page_2->setGeometry(QRect(0, 0, 360, 379));
         gridLayout_5 = new QGridLayout(scale_Page_2);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        check_Box_Spherical_2 = new QCheckBox(scale_Page_2);
-        check_Box_Spherical_2->setObjectName(QString::fromUtf8("check_Box_Spherical_2"));
-        check_Box_Spherical_2->setEnabled(true);
-        sizePolicy4.setHeightForWidth(check_Box_Spherical_2->sizePolicy().hasHeightForWidth());
-        check_Box_Spherical_2->setSizePolicy(sizePolicy4);
-        check_Box_Spherical_2->setChecked(true);
+        line_2 = new QFrame(scale_Page_2);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
+        sizePolicy4.setHeightForWidth(line_2->sizePolicy().hasHeightForWidth());
+        line_2->setSizePolicy(sizePolicy4);
+        line_2->setFrameShape(QFrame::HLine);
+        line_2->setFrameShadow(QFrame::Sunken);
 
-        gridLayout_5->addWidget(check_Box_Spherical_2, 7, 0, 1, 1);
+        gridLayout_5->addWidget(line_2, 6, 0, 1, 1);
+
+        radius_Label_2 = new QLabel(scale_Page_2);
+        radius_Label_2->setObjectName(QString::fromUtf8("radius_Label_2"));
+        sizePolicy4.setHeightForWidth(radius_Label_2->sizePolicy().hasHeightForWidth());
+        radius_Label_2->setSizePolicy(sizePolicy4);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Segoe Script"));
+        font2.setPointSize(12);
+        font2.setBold(true);
+        font2.setWeight(75);
+        radius_Label_2->setFont(font2);
+        radius_Label_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
+
+        gridLayout_5->addWidget(radius_Label_2, 0, 0, 1, 1);
 
         horizontal_Slider_Width = new QSlider(scale_Page_2);
         horizontal_Slider_Width->setObjectName(QString::fromUtf8("horizontal_Slider_Width"));
@@ -312,31 +331,6 @@ public:
 
         gridLayout_5->addWidget(horizontal_Slider_Width, 2, 0, 1, 1);
 
-        spin_Box_Height = new QDoubleSpinBox(scale_Page_2);
-        spin_Box_Height->setObjectName(QString::fromUtf8("spin_Box_Height"));
-        sizePolicy4.setHeightForWidth(spin_Box_Height->sizePolicy().hasHeightForWidth());
-        spin_Box_Height->setSizePolicy(sizePolicy4);
-        spin_Box_Height->setDecimals(1);
-        spin_Box_Height->setMinimum(100.000000000000000);
-        spin_Box_Height->setMaximum(5000.000000000000000);
-        spin_Box_Height->setValue(300.000000000000000);
-
-        gridLayout_5->addWidget(spin_Box_Height, 4, 0, 1, 1);
-
-        radius_Label_3 = new QLabel(scale_Page_2);
-        radius_Label_3->setObjectName(QString::fromUtf8("radius_Label_3"));
-        sizePolicy4.setHeightForWidth(radius_Label_3->sizePolicy().hasHeightForWidth());
-        radius_Label_3->setSizePolicy(sizePolicy4);
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Segoe Script"));
-        font2.setPointSize(12);
-        font2.setBold(true);
-        font2.setWeight(75);
-        radius_Label_3->setFont(font2);
-        radius_Label_3->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
-
-        gridLayout_5->addWidget(radius_Label_3, 3, 0, 1, 1);
-
         spin_Box_Width = new QDoubleSpinBox(scale_Page_2);
         spin_Box_Width->setObjectName(QString::fromUtf8("spin_Box_Width"));
         sizePolicy4.setHeightForWidth(spin_Box_Width->sizePolicy().hasHeightForWidth());
@@ -347,6 +341,15 @@ public:
         spin_Box_Width->setValue(300.000000000000000);
 
         gridLayout_5->addWidget(spin_Box_Width, 1, 0, 1, 1);
+
+        radius_Label_3 = new QLabel(scale_Page_2);
+        radius_Label_3->setObjectName(QString::fromUtf8("radius_Label_3"));
+        sizePolicy4.setHeightForWidth(radius_Label_3->sizePolicy().hasHeightForWidth());
+        radius_Label_3->setSizePolicy(sizePolicy4);
+        radius_Label_3->setFont(font2);
+        radius_Label_3->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
+
+        gridLayout_5->addWidget(radius_Label_3, 3, 0, 1, 1);
 
         horizontal_Slider_Height = new QSlider(scale_Page_2);
         horizontal_Slider_Height->setObjectName(QString::fromUtf8("horizontal_Slider_Height"));
@@ -361,28 +364,21 @@ public:
 
         gridLayout_5->addWidget(horizontal_Slider_Height, 5, 0, 1, 1);
 
-        line_2 = new QFrame(scale_Page_2);
-        line_2->setObjectName(QString::fromUtf8("line_2"));
-        sizePolicy4.setHeightForWidth(line_2->sizePolicy().hasHeightForWidth());
-        line_2->setSizePolicy(sizePolicy4);
-        line_2->setFrameShape(QFrame::HLine);
-        line_2->setFrameShadow(QFrame::Sunken);
+        spin_Box_Height = new QDoubleSpinBox(scale_Page_2);
+        spin_Box_Height->setObjectName(QString::fromUtf8("spin_Box_Height"));
+        sizePolicy4.setHeightForWidth(spin_Box_Height->sizePolicy().hasHeightForWidth());
+        spin_Box_Height->setSizePolicy(sizePolicy4);
+        spin_Box_Height->setDecimals(1);
+        spin_Box_Height->setMinimum(100.000000000000000);
+        spin_Box_Height->setMaximum(5000.000000000000000);
+        spin_Box_Height->setValue(300.000000000000000);
 
-        gridLayout_5->addWidget(line_2, 6, 0, 1, 1);
-
-        radius_Label_2 = new QLabel(scale_Page_2);
-        radius_Label_2->setObjectName(QString::fromUtf8("radius_Label_2"));
-        sizePolicy4.setHeightForWidth(radius_Label_2->sizePolicy().hasHeightForWidth());
-        radius_Label_2->setSizePolicy(sizePolicy4);
-        radius_Label_2->setFont(font2);
-        radius_Label_2->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
-
-        gridLayout_5->addWidget(radius_Label_2, 0, 0, 1, 1);
+        gridLayout_5->addWidget(spin_Box_Height, 4, 0, 1, 1);
 
         toolBox_2->addItem(scale_Page_2, QString::fromUtf8("Scale"));
         tools_Page_2 = new QWidget();
         tools_Page_2->setObjectName(QString::fromUtf8("tools_Page_2"));
-        tools_Page_2->setGeometry(QRect(0, 0, 93, 267));
+        tools_Page_2->setGeometry(QRect(0, 0, 360, 379));
         verticalLayout_10 = new QVBoxLayout(tools_Page_2);
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
         zoom_Label_2 = new QLabel(tools_Page_2);
@@ -621,14 +617,21 @@ public:
         images_Page_2 = new QWidget();
         images_Page_2->setObjectName(QString::fromUtf8("images_Page_2"));
         images_Page_2->setGeometry(QRect(0, 0, 360, 379));
-        verticalLayout_11 = new QVBoxLayout(images_Page_2);
-        verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
-        scrollArea_3 = new QScrollArea(images_Page_2);
+        splitter_3 = new QSplitter(images_Page_2);
+        splitter_3->setObjectName(QString::fromUtf8("splitter_3"));
+        splitter_3->setGeometry(QRect(20, 0, 311, 371));
+        sizePolicy.setHeightForWidth(splitter_3->sizePolicy().hasHeightForWidth());
+        splitter_3->setSizePolicy(sizePolicy);
+        splitter_3->setOrientation(Qt::Vertical);
+        label = new QLabel(splitter_3);
+        label->setObjectName(QString::fromUtf8("label"));
+        splitter_3->addWidget(label);
+        scrollArea_3 = new QScrollArea(splitter_3);
         scrollArea_3->setObjectName(QString::fromUtf8("scrollArea_3"));
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 340, 359));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 309, 343));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_3);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         work_Images = new QListWidget(scrollAreaWidgetContents_3);
@@ -640,9 +643,7 @@ public:
         gridLayout_2->addWidget(work_Images, 0, 0, 1, 1);
 
         scrollArea_3->setWidget(scrollAreaWidgetContents_3);
-
-        verticalLayout_11->addWidget(scrollArea_3);
-
+        splitter_3->addWidget(scrollArea_3);
         toolBox_2->addItem(images_Page_2, QString::fromUtf8("Images"));
 
         verticalLayout_8->addWidget(toolBox_2);
@@ -667,6 +668,7 @@ public:
         sizePolicy8.setHeightForWidth(preview_Graphics_View->sizePolicy().hasHeightForWidth());
         preview_Graphics_View->setSizePolicy(sizePolicy8);
         preview_Graphics_View->setMinimumSize(QSize(360, 280));
+        preview_Graphics_View->setBackgroundBrush(brush);
         splitter->addWidget(preview_Graphics_View);
 
         verticalLayout_8->addWidget(splitter);
@@ -699,15 +701,14 @@ public:
 #endif // QT_NO_TOOLTIP
         label_Y_2->setText(QApplication::translate("crop_Widget", "Y Position:", nullptr));
         toolBox_2->setItemText(toolBox_2->indexOf(movement_Page_2), QApplication::translate("crop_Widget", "Position", nullptr));
-        check_Box_Spherical_2->setText(QApplication::translate("crop_Widget", "Force Scale", nullptr));
-#ifndef QT_NO_TOOLTIP
-        spin_Box_Height->setToolTip(QApplication::translate("crop_Widget", "Selecter for Radius of Sphere", nullptr));
-#endif // QT_NO_TOOLTIP
-        radius_Label_3->setText(QApplication::translate("crop_Widget", "Height:", nullptr));
+        radius_Label_2->setText(QApplication::translate("crop_Widget", "Width:", nullptr));
 #ifndef QT_NO_TOOLTIP
         spin_Box_Width->setToolTip(QApplication::translate("crop_Widget", "Selecter for Radius of Sphere", nullptr));
 #endif // QT_NO_TOOLTIP
-        radius_Label_2->setText(QApplication::translate("crop_Widget", "Width:", nullptr));
+        radius_Label_3->setText(QApplication::translate("crop_Widget", "Height:", nullptr));
+#ifndef QT_NO_TOOLTIP
+        spin_Box_Height->setToolTip(QApplication::translate("crop_Widget", "Selecter for Radius of Sphere", nullptr));
+#endif // QT_NO_TOOLTIP
         toolBox_2->setItemText(toolBox_2->indexOf(scale_Page_2), QApplication::translate("crop_Widget", "Scale", nullptr));
         zoom_Label_2->setText(QApplication::translate("crop_Widget", "Zoom:", nullptr));
         zoom_In_Button_2->setText(QApplication::translate("crop_Widget", "Zoom In", nullptr));
@@ -719,6 +720,7 @@ public:
         label_Blue_2->setText(QApplication::translate("crop_Widget", "   Blue:", nullptr));
         colour_Selector_Button_2->setText(QApplication::translate("crop_Widget", "...", nullptr));
         toolBox_2->setItemText(toolBox_2->indexOf(tools_Page_2), QApplication::translate("crop_Widget", "Tools", nullptr));
+        label->setText(QApplication::translate("crop_Widget", "Select Image to change Display:", nullptr));
         toolBox_2->setItemText(toolBox_2->indexOf(images_Page_2), QApplication::translate("crop_Widget", "Images", nullptr));
         label_3->setText(QApplication::translate("crop_Widget", "Preview:", nullptr));
     } // retranslateUi

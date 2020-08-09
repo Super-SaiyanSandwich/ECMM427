@@ -654,7 +654,7 @@ void marble_Widget::on_test_Button_clicked()
             progress->setValue(i);
             QApplication::processEvents( QEventLoop::ExcludeUserInputEvents);
 
-            QString coords = this->detect_Reflection(this->generate_Preview_Image(splashScreen::project_Path+ "/images/wd/" + ui->listWidget->item(i)->text())->toImage());
+            QString coords = this->detect_Reflection(this->generate_Preview_Image("./images/wd/" + ui->listWidget->item(i)->text())->toImage());
             stream << splashScreen::project_Path+ "/images/wd/" + ui->listWidget->item(i)->text() << " " << coords << endl;
 
         }

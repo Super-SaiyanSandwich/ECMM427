@@ -158,6 +158,9 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(marbleGraphicView->sizePolicy().hasHeightForWidth());
         marbleGraphicView->setSizePolicy(sizePolicy2);
+        QBrush brush(QColor(0, 0, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        marbleGraphicView->setBackgroundBrush(brush);
         splitter->addWidget(marbleGraphicView);
 
         gridLayout->addWidget(splitter, 0, 0, 1, 1);

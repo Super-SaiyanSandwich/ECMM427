@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_fitter_Widget_t {
     QByteArrayData data[16];
-    char stringdata0[317];
+    char stringdata0[308];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,10 +43,10 @@ QT_MOC_LITERAL(8, 172, 21), // "on_ptm_Fitter_clicked"
 QT_MOC_LITERAL(9, 194, 21), // "on_hsh_Fitter_clicked"
 QT_MOC_LITERAL(10, 216, 29), // "on_previous_Image_Btn_clicked"
 QT_MOC_LITERAL(11, 246, 25), // "on_next_Image_Btn_clicked"
-QT_MOC_LITERAL(12, 272, 13), // "itHasFinished"
-QT_MOC_LITERAL(13, 286, 4), // "arg1"
-QT_MOC_LITERAL(14, 291, 20), // "QProcess::ExitStatus"
-QT_MOC_LITERAL(15, 312, 4) // "arg2"
+QT_MOC_LITERAL(12, 272, 4), // "done"
+QT_MOC_LITERAL(13, 277, 4), // "arg1"
+QT_MOC_LITERAL(14, 282, 20), // "QProcess::ExitStatus"
+QT_MOC_LITERAL(15, 303, 4) // "arg2"
 
     },
     "fitter_Widget\0on_generate_Btn_clicked\0"
@@ -57,8 +57,8 @@ QT_MOC_LITERAL(15, 312, 4) // "arg2"
     "on_resize_Checkbox_clicked\0"
     "on_ptm_Fitter_clicked\0on_hsh_Fitter_clicked\0"
     "on_previous_Image_Btn_clicked\0"
-    "on_next_Image_Btn_clicked\0itHasFinished\0"
-    "arg1\0QProcess::ExitStatus\0arg2"
+    "on_next_Image_Btn_clicked\0done\0arg1\0"
+    "QProcess::ExitStatus\0arg2"
 };
 #undef QT_MOC_LITERAL
 
@@ -120,7 +120,7 @@ void fitter_Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 7: _t->on_hsh_Fitter_clicked(); break;
         case 8: _t->on_previous_Image_Btn_clicked(); break;
         case 9: _t->on_next_Image_Btn_clicked(); break;
-        case 10: _t->itHasFinished((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QProcess::ExitStatus(*)>(_a[2]))); break;
+        case 10: _t->done((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QProcess::ExitStatus(*)>(_a[2]))); break;
         default: ;
         }
     }
