@@ -32,6 +32,7 @@ system_Ui::~system_Ui()
     delete ui;
 }
 
+
 void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 {
 
@@ -42,17 +43,43 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
 
     if(dialog.exec()){
 
-        //qInfo()<<"diolog opens";
         QFile project_File(dialog.selectedFiles().at(0).toLocal8Bit().constData());
 
+        QString project_Dir;
+        QString project_Name;
+        QString project_File_Path = project_File.fileName();
+
+        for(int i = project_File_Path.length() - 1; i >= 0; i--){
+            if(project_File_Path.at(i) == "/" || project_File_Path.at(i) == "\\"){
+                project_Dir = project_File_Path.mid(0, i+1);
+
+                int name_start = i+1;
+                int name_length = project_File_Path.length() - name_start - 5;
+                project_Name = project_File_Path.mid(name_start, name_length);
+
+
+                break;
+
+            }
+
+
+        }
+
+        splashScreen :: project_Path = project_Dir;
+        splashScreen::project_Name = project_Name;
+        qInfo() << "NAME:" << project_Name << " | path:" << project_Dir;
+
+        // DEPRECATED
+        /*
         if (project_File.open(QIODevice::ReadOnly))
         {
             //qInfo()<<"Dialog accepted";
             QTextStream in(&project_File);
             splashScreen::project_Path = in.readLine();
+
             splashScreen::project_Name = project_File.fileName().remove(".rtie").remove(splashScreen::project_Path);
             project_File.close();
-        }
+        }*/
 
         // Project file selected, open project
         this->start();
