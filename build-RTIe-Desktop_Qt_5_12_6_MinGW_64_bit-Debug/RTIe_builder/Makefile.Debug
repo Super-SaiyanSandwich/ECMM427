@@ -2176,41 +2176,6 @@ debug/crop_Widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/crop_Wi
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QProgressBar \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qprogressbar.h \
 		ui_crop_Widget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QCheckBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDoubleSpinBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qspinbox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QFrame \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGridLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollArea \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollBar \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollbar.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSlider \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpinBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSplitter \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QToolBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtoolbox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QToolButton \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtoolbutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QDebug \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QColorDialog \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcolordialog.h \
@@ -2218,6 +2183,8 @@ debug/crop_Widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/crop_Wi
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qfiledialog.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QImageReader \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qimagereader.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qimageiohandler.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qplugin.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qpointer.h \
@@ -2475,26 +2442,26 @@ debug/deletion_dialog.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/del
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLabel \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlabel.h \
 		ui_deletion_dialog.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qpainter.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsscene.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGridLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
+		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/splash_Screen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMainWindow \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmainwindow.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
+		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLineEdit \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlineedit.h \
+		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project_Settings.h \
+		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/project_Wizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizardPage \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizard \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QAction \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
+		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidgetItem \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistwidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlistview.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractitemview.h \
@@ -2509,32 +2476,11 @@ debug/deletion_dialog.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/del
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractslider.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstyle.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabbar.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtabwidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qrubberband.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollArea \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/splash_Screen.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMainWindow \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmainwindow.h \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLineEdit \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlineedit.h \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project_Settings.h \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/project_Wizard.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizardPage \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwizard.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizard \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QAction \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidgetItem \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QFile \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsScene \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsscene.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QComboBox \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcombobox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QBasicTimer \
@@ -2545,6 +2491,7 @@ debug/deletion_dialog.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/del
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qdir.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qfileinfo.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QPainter \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qpainter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QPaintEvent \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QProgressBar \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qprogressbar.h \
@@ -2697,48 +2644,19 @@ debug/fitter_Widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/fitte
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMainWindow \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmainwindow.h \
 		ui_fitter_Widget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QLocale \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QCheckBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QComboBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcombobox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGridLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLabel \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlabel.h \
+		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/splash_Screen.h \
+		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLineEdit \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlineedit.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextcursor.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextformat.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QProgressBar \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qprogressbar.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QRadioButton \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qradiobutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QTextBrowser \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextbrowser.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextedit.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextdocument.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/splash_Screen.h \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project_Settings.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/project_Wizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLabel \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlabel.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizardPage \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwizard.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialog.h \
@@ -2751,6 +2669,8 @@ debug/fitter_Widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/fitte
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsScene \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QComboBox \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcombobox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QBasicTimer \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qbasictimer.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QImage \
@@ -2759,6 +2679,8 @@ debug/fitter_Widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/fitte
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qfileinfo.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QPainter \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QPaintEvent \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QProgressBar \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qprogressbar.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/cropped_area.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsItem \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QFileDialog \
@@ -3444,25 +3366,6 @@ debug/import_Widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/impor
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/cropped_area.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsItem \
 		ui_import_Widget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHeaderView \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qheaderview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSplitter \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QTableWidget \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtablewidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtableview.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QFileInfo \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QTextStream \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QThread \
@@ -4064,61 +3967,12 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextoption.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsItem \
 		ui_marble_widget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/QIcon \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QCheckBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QDoubleSpinBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qspinbox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QFrame \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsView \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollArea \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSlider \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpacerItem \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSpinBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QSplitter \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QToolBox \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtoolbox.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QToolButton \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtoolbutton.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
 		ui_system_ui.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QAction \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMainWindow \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmainwindow.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMenu \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenu.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMenuBar \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenubar.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QStackedWidget \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QStatusBar \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstatusbar.h \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/import_Widget.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/image_Management_Nui.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QStringList \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QList \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMainWindow \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmainwindow.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/image_Gatherer.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QObject \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QImage \
@@ -4130,11 +3984,18 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtextformat.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project_Settings.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/project_Wizard.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QPushButton \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qpushbutton.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizardPage \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qwizard.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdialog.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWizard \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QAction \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QListWidget \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QFile \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QComboBox \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcombobox.h \
@@ -4153,6 +4014,7 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QtCoreDepends \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractanimation.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstracteventdispatcher.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractnativeeventfilter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractproxymodel.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractstate.h \
@@ -4175,6 +4037,7 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcollator.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcommandlineoption.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcommandlineparser.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcryptographichash.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qdeadlinetimer.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qelapsedtimer.h \
@@ -4286,6 +4149,8 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qgenericmatrix.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qgenericplugin.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qgenericpluginfactory.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qiconengine.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qiconengineplugin.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qimageiohandler.h \
@@ -4357,8 +4222,15 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtexttable.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtguiversion.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaccessiblewidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qbuttongroup.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcalendarwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcolordialog.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcolormap.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcolumnview.h \
@@ -4395,6 +4267,8 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicssceneevent.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicstransform.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/QVector3D \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsview.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollarea.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgroupbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qheaderview.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qinputdialog.h \
@@ -4405,6 +4279,8 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlcdnumber.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmdiarea.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmdisubwindow.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenu.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenubar.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmessagebox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmouseeventtransition.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qopenglwidget.h \
@@ -4419,10 +4295,15 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollerProperties \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollerproperties.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QMetaType \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qshortcut.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsizegrip.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qspinbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplashscreen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstatusbar.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstyleditemdelegate.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstylefactory.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstylepainter.h \
@@ -4432,6 +4313,8 @@ debug/marble_widget.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marbl
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtablewidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtextbrowser.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtoolbar.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtoolbox.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtoolbutton.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtooltip.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtreeview.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qtreewidget.h \
@@ -5160,24 +5043,9 @@ debug/project_Wizard.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/proj
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/cropped_area.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QGraphicsItem \
 		ui_project_Wizard.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QFormLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qformlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project_Wizard.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/splash_Screen.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QWidget \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/new_Project_Settings.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QtWidgets \
@@ -5186,6 +5054,7 @@ debug/project_Wizard.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/proj
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QtCoreDepends \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractanimation.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstracteventdispatcher.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractnativeeventfilter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractproxymodel.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qabstractstate.h \
@@ -5208,6 +5077,7 @@ debug/project_Wizard.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/proj
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcollator.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcommandlineoption.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcommandlineparser.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qcryptographichash.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qdeadlinetimer.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/qelapsedtimer.h \
@@ -5321,6 +5191,8 @@ debug/project_Wizard.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/proj
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qgenericmatrix.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qgenericplugin.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qgenericpluginfactory.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qiconengine.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qiconengineplugin.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qimageiohandler.h \
@@ -5392,6 +5264,12 @@ debug/project_Wizard.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/proj
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtexttable.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtguiversion.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaccessiblewidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qbuttongroup.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcalendarwidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
@@ -5415,6 +5293,8 @@ debug/project_Wizard.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/proj
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qfocusframe.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qfontcombobox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qfontdialog.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qformlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QLayout \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgesture.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgesturerecognizer.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgraphicsanchorlayout.h \
@@ -5458,6 +5338,7 @@ debug/project_Wizard.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/proj
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollerProperties \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollerproperties.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QMetaType \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qshortcut.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsizegrip.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qspinbox.h \
@@ -5963,30 +5844,6 @@ debug/system_ui.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaction.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qactiongroup.h \
 		ui_system_ui.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/QIcon \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
-		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QHBoxLayout \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMenu \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenu.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QMenuBar \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenubar.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QStackedWidget \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedwidget.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QStatusBar \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstatusbar.h \
-		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QVBoxLayout \
-		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/import_Widget.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/image_Gatherer.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QObject \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/fitter_Widget.h \
@@ -6000,6 +5857,13 @@ debug/system_ui.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollBar \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollbar.h \
 		C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/marble.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QApplication \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qcoreapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/qeventloop.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qguiapplication.h \
+		F:/QT/5.12.6/mingw73_64/include/QtGui/qinputmethod.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QtWidgets \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QtWidgetsDepends \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QtCore \
@@ -6209,6 +6073,10 @@ debug/system_ui.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtexttable.h \
 		F:/QT/5.12.6/mingw73_64/include/QtGui/qtguiversion.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qaccessiblewidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qboxlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlayoutitem.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qgridlayout.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qbuttongroup.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcalendarwidget.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qcheckbox.h \
@@ -6258,6 +6126,8 @@ debug/system_ui.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qlcdnumber.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmdiarea.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmdisubwindow.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenu.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmenubar.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmessagebox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qmouseeventtransition.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qopenglwidget.h \
@@ -6272,12 +6142,15 @@ debug/system_ui.o: C:/Users/Dave/Desktop/New\ folder/RTIe/RTIe_builder/system_ui
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/QScrollerProperties \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qscrollerproperties.h \
 		F:/QT/5.12.6/mingw73_64/include/QtCore/QMetaType \
+		F:/QT/5.12.6/mingw73_64/include/QtCore/QVariant \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qshortcut.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsizegrip.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qspinbox.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplashscreen.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qsplitter.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedlayout.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstackedwidget.h \
+		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstatusbar.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstyleditemdelegate.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstylefactory.h \
 		F:/QT/5.12.6/mingw73_64/include/QtWidgets/qstylepainter.h \

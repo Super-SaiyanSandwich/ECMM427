@@ -85,7 +85,7 @@ void fitter_Widget::on_generate_Btn_clicked()
                 ui->progress_Bar->setValue(current_Slide+1);
                 QProcess *process = new QProcess(this);
 
-
+                process->setWorkingDirectory(splashScreen::project_Path);
 
 
                 connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(itHasFinished(int, QProcess::ExitStatus)));
