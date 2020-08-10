@@ -136,6 +136,12 @@ QStringList image_Management_Nui::get_Working_Image_Paths()
     return file_Paths;
 }
 
+/*
+ *
+ *  Returns a stringlist containing all image names::
+ *  No file paths in QStringList items. Only image names.
+ *
+ */
 QStringList image_Management_Nui::get_Working_Image_Names(){
 
     QStringList file_Paths = get_Working_Image_Paths();
@@ -164,23 +170,16 @@ QStringList image_Management_Nui::get_Working_Image_Names(){
  */
 void image_Management_Nui::delete_(QStringList file_Names)
 {
+    // Create new deletion dialog
     deletion_Dialog del;
     int result = del.process_Images(file_Names);
-    qInfo()<<"result:"<<result;
+    //qInfo()<<"result:"<<result;
 
     //if result = 1 | User pressed OK
     if(result == 1){
 
-        //qInfo()<<"QDIALOG::ACCEPTED WORKING";
-        //QString reason = del.get_Deletion_Reason();
 
-        /*if(applied_All){
-
-        }else{
-
-        }*/
-
-    //User pressed cancel | User pressed cancel
+    //User tried to press delete without selecting any images.
     }else if (result == -1){
 
         QMessageBox null_Selected;
@@ -191,6 +190,7 @@ void image_Management_Nui::delete_(QStringList file_Names)
 
         null_Selected.exec();
 
+    // User pressed abort or cancelled delete process
     } else {
         //qInfo()<<"Failed cancel";
         QMessageBox deletion_Cancellation;
@@ -202,117 +202,6 @@ void image_Management_Nui::delete_(QStringList file_Names)
 
     }
 
-
-    /* START
-    //Combines QStringList into singular QStrings
-    QString file_List_Str = file_Names.join( "\n");
-
-    //Verification & Notification of choices to be deleted
-    QMessageBox verify;
-    verify.setText("Are you sure you want to delete these images?\n");
-    verify.setInformativeText("This includes the follwing file(s):\n" + file_List_Str);
-    verify.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
-    verify.setDefaultButton(QMessageBox::Yes);
-
-    //If cancelled operation will not occur and wil alert user.
-    if(QMessageBox::Cancel == verify.exec()){
-        QMessageBox deletion_Cancellation;
-        deletion_Cancellation.setText("Delete Operation Cancelled.");
-        deletion_Cancellation.setInformativeText("No images will be deleted.");
-        deletion_Cancellation.setStandardButtons(QMessageBox::Ok);
-        deletion_Cancellation.setDefaultButton(QMessageBox::Ok);
-        deletion_Cancellation.exec();
-
-    } else {
-        // wd_Path is used to prepend the file_Names for the file_Path List
-        QString wd_Path = splashScreen::project_Path + "/images/wd/";
-        // QStringList will contain all the file paths for the checked images
-        QStringList file_Path_List;
-
-        //If confirmed user still has choice to individually confirm or cancel images.
-        QStringListIterator file_Name_Iterator(file_Names);
-        QStringList removed_Files;
-        QStringList cancelled_Files;
-
-
-         * Iterates per image requesting reason from user and appends the given
-         * reason to the separating headers.
-
-
-
-        while(file_Name_Iterator.hasNext()){
-
-            QString file_Name = file_Name_Iterator.next().toLocal8Bit().constData();
-            QString file_Path = wd_Path + file_Name;
-            QFile file(file_Path);
-
-            bool ok;
-            QInputDialog removal_Reason;
-
-            QString window_Title = "Delete Image";
-            QString info_Text = "Image: \"" + file_Name + "\".\nReason for removal:";
-            QString removal_Text_File_Header = "--===-- " + file_Name + " removal reason --===--\n";
-            QString reason = removal_Reason.getMultiLineText(NULL, window_Title, info_Text, "Type reason here", &ok);
-
-            //The user still has a choice to cancel, despite prior confirmation
-            if(ok){
-
-
-                 * Given confirmation, the user's input will be taken and written to the
-                 * removed_Images_Reasons text file in the working directory. Moreover,
-                 * the givem image file will be removed from ONLY the working directory.
-
-                removed_Files << file_Name;
-                file.remove();
-
-                QString image_Deletion_Reasons_File_Name = "removed_Images_Reasons.txt";
-                QString image_Deletion_Reasons_File_Path = splashScreen::project_Path + "/images/wd/" + image_Deletion_Reasons_File_Name;
-
-                //Writes to image deletion file, and appends newline ( '\n' ) for separation.
-                QFile file(image_Deletion_Reasons_File_Path);
-                if (file.open(QIODevice::ReadWrite)) {
-                    QTextStream stream(&file);
-                    stream << removal_Text_File_Header << reason << endl;
-                }
-
-
-            }else{
-
-
-                 *
-                 * Given the user's choice to cancel, despite prior confirmation. Secondary
-                 * confirmation will be given, notifying the user that the operation will not occur.
-                 *
-                cancelled_Files << file_Name;
-                QMessageBox delete_Cancellation_Alert;
-                delete_Cancellation_Alert.setText("Delete operation cancelled.");
-                delete_Cancellation_Alert.setInformativeText("Image \"" + file_Name + "\" will remain unchanged." );
-                delete_Cancellation_Alert.setStandardButtons(QMessageBox::Ok);
-                delete_Cancellation_Alert.setDefaultButton(QMessageBox::Ok);
-                delete_Cancellation_Alert.exec();
-
-
-            }
-
-
-        //END OF WHILE LOOP
-        }
-
-        *
-         * A summary is given containing all images that have been confirmed to be
-         * deleted as well as those that have confirmed to be cancelled.
-         *
-        QString summary = "The following files were removed:\n" + removed_Files.join(", ")
-        + "\n\nThe following files were not removed:\n" + cancelled_Files.join(", ");
-
-        QMessageBox deletion_Summary;
-        deletion_Summary.setText("Delete operation summary.");
-        deletion_Summary.setInformativeText(summary );
-        deletion_Summary.setStandardButtons(QMessageBox::Ok);
-        deletion_Summary.setDefaultButton(QMessageBox::Ok);
-        deletion_Summary.exec();
-
-    } END*/
 
 
 }

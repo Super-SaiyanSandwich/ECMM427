@@ -101,9 +101,10 @@ void project_Wizard::create_Project(){
           editor = ui->editor_Name->text();
           valid = date.toString();
           stream << dir.path() << "/" << project_Name << endl;
-//          stream << "Owner Name: "  << owner << endl;
           stream << "Editor Name: "  << editor << endl;
           stream << "Created on: "  << valid << endl;
+
+          //ROOM FOR EASY EXPANSION
 
       }
 
@@ -164,7 +165,9 @@ void project_Wizard::on_project_Name_Line_Edit_textChanged(const QString &arg1)
     ui->path_Placeholder->setText(chosen_Path);
 }
 
-
+/*
+ *  Reboots on cancelled selection.
+ */
 void project_Wizard::on_project_Wizard_rejected()
 {
     qInfo()<<"restarting";
