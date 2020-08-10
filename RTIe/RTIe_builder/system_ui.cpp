@@ -50,13 +50,15 @@ void system_Ui::open_Selected_Project()//IMPORTANT FUNCTION
         QString project_File_Path = project_File.fileName();
 
         for(int i = project_File_Path.length() - 1; i >= 0; i--){
+            // Iterates to get the first '/' or '\' to find the beginning of the file name.
             if(project_File_Path.at(i) == "/" || project_File_Path.at(i) == "\\"){
+                //Gets the absolute file path for the project directory.
                 project_Dir = project_File_Path.mid(0, i+1);
 
                 int name_start = i+1;
                 int name_length = project_File_Path.length() - name_start - 5;
+                //gets the name of the project from the file path.
                 project_Name = project_File_Path.mid(name_start, name_length);
-
 
                 break;
 
